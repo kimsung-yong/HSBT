@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="HSBT" target="1.5" />
+      <module name="HSBT" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>
