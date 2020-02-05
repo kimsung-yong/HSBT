@@ -163,6 +163,11 @@ a {
   text-decoration: none;
   background-color: transparent;
 }
+a.MypageNB {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
 
 a:hover {
   color: #d6370c;
@@ -597,6 +602,13 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+}
+.rows {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 15px;
+
 }
 
 .no-gutters {

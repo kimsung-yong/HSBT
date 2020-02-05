@@ -11,10 +11,14 @@ public class HomeContoller {
     }
     @RequestMapping("/board/index")
     public String my(){
-        return "/board/index";
+        return "index";
     }
     @RequestMapping("/board/reg")
     public String insert(){
         return "/board/register";
+    }
+    @RequestMapping("/board/list")
+    public String list(){
+        return "/board/noticeBoard/list";
     }
 }
