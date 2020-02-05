@@ -6,6 +6,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="HSBT" />
+          <element id="jpa-descriptors" facet="HSBT/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
@@ -43,6 +44,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.3.RELEASE" />
+          <element id="library" level="project" name="ojdbc8" />
         </element>
       </element>
     </root>
