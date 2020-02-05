@@ -69,7 +69,8 @@
     </div>
   </header>
 
-  <!-- About Section -->
+
+  <!-- /About Section -->
   <section class="page-section bg-primary" id="about">
     <div class="container">
       <div class="row justify-content-center">
