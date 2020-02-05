@@ -9,7 +9,10 @@ public class HomeContoller {
     public String home(){
         return "index";
     }
-
+    @RequestMapping("/board/index")
+    public String my(){
+        return "/board/index";
+    }
     @RequestMapping("/board/reg")
     public String insert(){
         return "/board/register";
