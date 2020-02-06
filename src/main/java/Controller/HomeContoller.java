@@ -13,14 +13,14 @@ public class HomeContoller {
     public String my(){
         return "index";
     }
-    @RequestMapping("/board/reg")
-    public String insert(){
-        return "/board/register";
-    }
-    @RequestMapping("/board/list")
-    public String list(){
-        return "/board/noticeBoard/list";
-    }
+//    @RequestMapping("/board/reg")
+//    public String insert(){
+//        return "/board/register";
+//    }
+//    @RequestMapping("/board/list")
+//    public String list(){
+//        return "board/noticeBoard/list";
+//    }
 
     @RequestMapping("/intro/introduce")
     public String introduce(){ return "/intro/company/introduce"; }
