@@ -24,7 +24,7 @@
     <!-- 컴포넌트 스캔 -->
     <context:component-scan base-package="Controller" />
     <mvc:resources mapping="/resources/**" location="/resources/"/>
-    <mvc:resources mapping="/resources/**" location="/resourcesKIM/"/>
+    <mvc:resources mapping="/resourcesKIM/**" location="/resourcesKIM/"/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
