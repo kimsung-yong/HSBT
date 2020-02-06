@@ -21,4 +21,9 @@ public class HomeContoller {
     public String list(){
         return "/board/noticeBoard/list";
     }
+
+    @RequestMapping("/introduce/history")
+    public String lee(){
+        return "/introduce/company/history";
+    }
 }
