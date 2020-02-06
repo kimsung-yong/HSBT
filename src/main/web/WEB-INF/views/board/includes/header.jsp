@@ -57,13 +57,13 @@
 
         <div class="col-lg-3">
 
-            <h1 class="my-4">Shop Name</h1>
+            <h1 class="my-4">커뮤니티</h1>
             <div class="list-group">
-                <a href="#" class="list-group-item">공지사항</a>
-                <a href="#" class="list-group-item">자유게시판</a>
-                <a href="#" class="list-group-item">후기</a>
-                <a href="#" class="list-group-item">Tip</a>
-                <a href="#" class="list-group-item">Q＆A</a>
+                <a href="/board/noticeBoard/list" class="list-group-item">공지사항</a>
+                <a href="/board/freeboard/list" class="list-group-item">자유게시판</a>
+                <a href="/board/reviewboard/list" class="list-group-item">후기</a>
+                <a href="/board/tipboard/list" class="list-group-item">Tip</a>
+                <a href="/board/qnaboard/list" class="list-group-item">Q＆A</a>
             </div>
 
         </div>

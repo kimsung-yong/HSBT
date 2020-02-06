@@ -1,15 +1,17 @@
 package Controller;
 
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-@RequestMapping("board/*")
+@RequestMapping("/board/*")
+@Log4j
 public class BoardController {
-    @RequestMapping("/board/list")
-    public String list() {
-        return "board/noticeBoard/list";
+    @GetMapping({"/noticeBoard/list","/freeboard/list","/qnaboard/list","/reviewboard/list","/tipboard/list"})
+    public void list() {
+
     }
 }
