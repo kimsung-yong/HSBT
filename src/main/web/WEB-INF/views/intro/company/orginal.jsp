@@ -58,10 +58,10 @@
 
         <div class="col-lg-3">
 
-            <h1 class="my-4">회사 소개</h1>
+            <h1 class="my-4">Shop Name</h1>
             <div class="list-group">
-                <a href="http://localhost:8112/intro/introduce" class="list-group-item">회사 소개</a>
-                <a href="http://localhost:8112/intro/history" class="list-group-item">회사 연혁</a>
+                <a href="#" class="list-group-item">회사 연혁</a>
+                <a href="#" class="list-group-item">회사 소개</a>
                 <a href="#" class="list-group-item">조 직 도</a>
                 <a href="#" class="list-group-item">오시는 길</a>
             </div>
@@ -134,60 +134,60 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <%--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a style="font-weight: bold">2017 -</a>
-                                </h4>
-                                <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
-                                <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                                <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
-                            </div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a style="font-weight: bold">2017 -</a>
+                            </h4>
+                            <hr style="border: solid 2px;">
+                            <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                            <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
+                            <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <%--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a style="font-weight: bold">2018 -</a>
-                                </h4>
-                                <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
-                                <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                                <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
-                            </div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a style="font-weight: bold">2018 -</a>
+                            </h4>
+                            <hr style="border: solid 2px;">
+                            <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                            <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
+                            <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <%--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a style="font-weight: bold">2019 -</a>
-                                </h4>
-                                <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
-                                <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                                <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
-                            </div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a style="font-weight: bold">2019 -</a>
+                            </h4>
+                            <hr style="border: solid 2px;">
+                            <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                            <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
+                            <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <%--<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a style="font-weight: bold">2020 -</a>
-                                </h4>
-                                <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
-                                <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                                <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
-                            </div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a style="font-weight: bold">2020 -</a>
+                            </h4>
+                            <hr style="border: solid 2px;">
+                            <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                            <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
+                            <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                        </div>
                     </div>
                 </div>
 

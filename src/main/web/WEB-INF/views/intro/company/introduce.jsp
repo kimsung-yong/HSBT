@@ -1,183 +1,143 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: IT
-  Date: 2020-02-06
-  Time: 오전 11:50
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
 <head>
-    <title>Title</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <%--    <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <%--    <link href="resources/css/shop-homepage.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/resourcesKIM/css/shop-homepage.css" rel="stylesheet" type="text/css">
+
 </head>
+
 <body>
 
-<style>
-    body {
-        margin: 0;
-        font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #212529;
-        text-align: left;
-        background-color: #fff;
-    }
-    .container {
-        width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    .navbar {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem 1rem;
-    }
-    #mainNav {
-        display: block;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        background-color: #fff;
-        transition: background-color 0.2s ease;
-    }
-
-    #mainNav .navbar-brand {
-        font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-weight: 700;
-        color: #212529;
-    }
-
-    #mainNav .navbar-nav .nav-item .nav-link {
-        color: #6c757d;
-        font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-weight: 700;
-        font-size: 0.9rem;
-        padding: 0.75rem 0;
-    }
-
-    #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link:active {
-        color: #f4623a;
-    }
-
-    #mainNav .navbar-nav .nav-item .nav-link.active {
-        color: #f4623a !important;
-    }
-
-
-
-    .col-md-3
-    {
-        width: 25%;
-        height: 400px;
-        border: 1px solid gray;
-        float: left;
-        margin: 0px;
-    }
-    .container h-100{
-        width: 74%;
-        height: 400px;
-        border: 1px solid gray;
-        float: left;
-        margin: 0px;
-    }
-
-
-
-</style>
-
-
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                    <a class="nav-link" href="#">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-3">
+
+            <h1 class="my-4">회사 소개</h1>
+            <div class="list-group">
+                <a href="http://localhost:8112/intro/introduce" class="list-group-item">회사 소개</a>
+                <a href="http://localhost:8112/intro/history" class="list-group-item">회사 연혁</a>
+                <a href="#" class="list-group-item">조 직 도</a>
+                <a href="#" class="list-group-item">오시는 길</a>
+            </div>
+
+        </div>
+        <!-- /.col-lg-3 11-->
+
+        <div class="col-lg-9">
+
+            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+
+                <%--슬라이드--%>
+                    <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+
+                    </div>
+
+                </div>
 
 
-<!-- Masthead -->
-<header class="masthead">
+            </div>
 
-    <%--start사이드바--%>
-    <div class="col-md-3">
-        <!-- 사이드 바 메뉴-->
-        <!-- 패널 타이틀1 -->
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Panel Title</h3>
+            <div class="row">
+                <div>
+                    <hr>
+                    <div>
+                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">KNLS의 설계는 가구가 아니라</p>
+                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">공간을 제안합니다</p>
+                        <p style="font-size: 13px;">KNLS는 가구,조명패브릭,생활용품에 있는 모든 인테리어 아이템을 침실,거실,</p>
+                        <p style="font-size: 13px;">자녀방,부엌,서재,욕실 등 주택의 모든 공간별로 코디네이션한 패키지 설계를 제공합니다.</p>
+                        <p style="font-size: 13px;">세계적 수준의 디자인 역략과 품질을 바탕으로 아름답고 개성있는 주거 공간을 제안하고 있습니다.</p>
+                        <br/><br/>
+                        <img class="d-block img-fluid" src="${pageContext.request.contextPath}\resourcesKIM\img\intro\introduce1.jpg" alt="">
+                        <hr>
+                        <br/><br/>
+                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">동북아시아대를 이끌어갈</p>
+                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">홈인테리어 유통 전문 기업</p>
+                        <p style="font-size: 13px;">1970년 부엌가구에서 시작한 한샘은 1997년에 인테리어 가구를 공급하기 시작하였으며 욕실, 창호, 마루 등 </p>
+                        <p style="font-size: 13px;">건재아이템까지 확대하고 있습니다. 주거공간과 관련된 모든 아이템을 대형직매장, 건설사 특판, 부엌과 인테리어</p>
+                        <p style="font-size: 13px;">전문 매장 뿐만 아니라 온라인 쇼핑몰, 인테리어 제휴점 등의 유통망을 통해서도 공급해 나가고 있습니다.</p>
+                        <p style="font-size: 13px;">이를 통해 ‘세계 최강의 주거환경 전문회사’ 라는 비전을 달성해 나갈 것입니다.</p>
+                        <img class="d-block img-fluid" src="${pageContext.request.contextPath}\resourcesKIM\img\intro\introduce2.jpg" alt="">
+
+                        <hr>
+                    </div>
+
+                </div>
+
+
+
             </div>
-            <!-- 사이드바 메뉴목록1 -->
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#">HTML</a></li>
-                <li class="list-group-item"><a href="#">CSS</a></li>
-                <li class="list-group-item"><a href="#">ECMAScript5</a></li>
-            </ul>
+            <!-- /.row -->
+
         </div>
-        <!-- 패널 타이틀2 -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Panel Title</h3>
-            </div>
-            <!-- 사이드바 메뉴목록2 -->
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#">jQuery</a></li>
-                <li class="list-group-item"><a href="#">BootStrap</a></li>
-            </ul>
-        </div>
-        <!-- 패널 타이틀3 -->
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Panel Title</h3>
-            </div>
-            <!-- 사이드바 메뉴목록3 -->
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#">About</a></li>
-                <li class="list-group-item"><a href="#">Help</a></li>
-            </ul>
-        </div>
+        <!-- /.col-lg-9 -->
+
     </div>
-    <%--end사이드바--%>
+    <!-- /.row -->
 
-    <div class="container h-100">
-        <div class="row h-100 align-items-center justify-content-center text-center">
-            <div class="col-lg-10 align-self-end">
-                <h1 class="text-uppercase text-white font-weight-bold">Your Favorite Source of Free Bootstrap Themes</h1>
-                <hr class="divider my-4">
-            </div>
-            <div class="col-lg-8 align-self-baseline">
-                <p class="text-white-75 font-weight-light mb-5">
-                    Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!
-                </p>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
-            </div>
-        </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>
+    <!-- /.container -->
+</footer>
 
-</header>
-
+<!-- Bootstrap core JavaScript -->
+<%--<script src="resources/vendor/jquery/jquery.min.js"></script>--%>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
+<%--<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
