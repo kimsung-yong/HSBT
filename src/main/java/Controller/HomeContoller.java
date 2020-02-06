@@ -23,7 +23,9 @@ public class HomeContoller {
     }
 
     @RequestMapping("/intro/introduce")
-    public String lee(){
-        return "/intro/company/introduce";
+    public String introduce(){ return "/intro/company/introduce"; }
+    @RequestMapping("/intro/history")
+    public String history(){
+        return "/intro/company/history";
     }
 }
