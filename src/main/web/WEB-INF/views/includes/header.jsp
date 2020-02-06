@@ -52,4 +52,12 @@
         </div>
     </div>
 </nav>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<header class="masthead">
+    <%--    <div class="rows">--%>
+    <%--        <div class="col-lg-12">--%>
+    <%--            <h1 class="page-header">Tables</h1>--%>
+    <%--        </div>--%>
+    <%--        <!-- /.col-lg-12 -->--%>
+    <%--    </div>--%>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
