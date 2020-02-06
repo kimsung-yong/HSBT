@@ -9681,6 +9681,7 @@ header.masthead h1 {
   font-size: 2.25rem;
 }
 
+
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;
@@ -9701,6 +9702,7 @@ header.masthead h1 {
     font-size: 3.5rem;
   }
 }
+
 
 #portfolio .container-fluid {
   max-width: 1920px;

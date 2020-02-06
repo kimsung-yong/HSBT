@@ -22,8 +22,10 @@ public class HomeContoller {
 //        return "board/noticeBoard/list";
 //    }
 
-    @RequestMapping("/introduce/history")
-    public String lee(){
-        return "/introduce/company/history";
+    @RequestMapping("/intro/introduce")
+    public String introduce(){ return "/intro/company/introduce"; }
+    @RequestMapping("/intro/history")
+    public String history(){
+        return "/intro/company/history";
     }
 }
