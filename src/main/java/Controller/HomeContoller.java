@@ -28,6 +28,8 @@ public class HomeContoller {
     public String history(){
         return "/intro/company/history";
     }
+    @RequestMapping("/intro/map")
+    public String map(){      return "/intro/company/map";   }
 
     @RequestMapping("/material/tile")
     public String tile() { return "/material/tile"; }

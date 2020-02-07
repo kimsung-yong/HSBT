@@ -19,9 +19,38 @@
     <%--    <link href="resources/css/shop-homepage.css" rel="stylesheet">--%>
     <link href="${pageContext.request.contextPath}/resourcesKIM/css/shop-homepage.css" rel="stylesheet" type="text/css">
 
+    <%--전화모양 팩스모양 가져오기(Font Awesome  Icon)--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 
 <body>
+
+<style>
+    nav.sub_title {
+        width: 70%;
+        height: 50px;
+        position: absolute;
+        top: 10%;
+        left: 0%;
+        transform: translate(0, -10%);
+        border-bottom: 1px solid #ddd;
+        line-height: 2;
+    }
+    nav.sub_title h2 {
+        letter-spacing: 6px !important;
+    }
+    nav.sub_title span {
+        position: absolute;
+        top: 20%;
+        right: 0;
+        font-size: 13px;
+    }
+
+
+</style>
+
+
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -58,7 +87,7 @@
 
         <div class="col-lg-3">
 
-            <h1 class="my-4">회사 소개</h1>
+            <h1 class="my-4">Shop Name</h1>
             <div class="list-group">
                 <a href="http://localhost:8112/intro/introduce" class="list-group-item">회사 소개</a>
                 <a href="http://localhost:8112/intro/history" class="list-group-item">회사 연혁</a>
@@ -72,43 +101,35 @@
 
             <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
 
-                <%--슬라이드--%>
-                    <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-
-                    </div>
-
-                </div>
-
-
             </div>
 
             <div class="row">
-                <div>
-                    <hr>
-                    <div>
-                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">KNLS의 설계는 가구가 아니라</p>
-                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">공간을 제안합니다</p>
-                        <p style="font-size: 13px;">KNLS는 가구,조명패브릭,생활용품에 있는 모든 인테리어 아이템을 침실,거실,</p>
-                        <p style="font-size: 13px;">자녀방,부엌,서재,욕실 등 주택의 모든 공간별로 코디네이션한 패키지 설계를 제공합니다.</p>
-                        <p style="font-size: 13px;">세계적 수준의 디자인 역략과 품질을 바탕으로 아름답고 개성있는 주거 공간을 제안하고 있습니다.</p>
-                        <br/><br/>
-                        <img class="d-block img-fluid" src="${pageContext.request.contextPath}\resourcesKIM\img\intro\introduce1.jpg" alt="">
-                        <hr>
-                        <br/><br/>
-                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">동북아시아대를 이끌어갈</p>
-                        <p style="font-size: 20px; font-weight: bolder;font-style: oblique">홈인테리어 유통 전문 기업</p>
-                        <p style="font-size: 13px;">1970년 부엌가구에서 시작한 한샘은 1997년에 인테리어 가구를 공급하기 시작하였으며 욕실, 창호, 마루 등 </p>
-                        <p style="font-size: 13px;">건재아이템까지 확대하고 있습니다. 주거공간과 관련된 모든 아이템을 대형직매장, 건설사 특판, 부엌과 인테리어</p>
-                        <p style="font-size: 13px;">전문 매장 뿐만 아니라 온라인 쇼핑몰, 인테리어 제휴점 등의 유통망을 통해서도 공급해 나가고 있습니다.</p>
-                        <p style="font-size: 13px;">이를 통해 ‘세계 최강의 주거환경 전문회사’ 라는 비전을 달성해 나갈 것입니다.</p>
-                        <img class="d-block img-fluid" src="${pageContext.request.contextPath}\resourcesKIM\img\intro\introduce2.jpg" alt="">
-
+                <nav class="sub_title">
+                    <h2>오시는길</h2>
+                    <span>HOME > 회사소개 > 오시는길</span>
+                </nav>
+                <div class="content">
+                    <table cellpadding="0" cellspacing="0" width="536" >
+                        <tr>
+                            <a><br><br><br><br></a>
+                            <td style="border:1px solid #cecece;">
+                                <a href="https://map.naver.com/v5/search/%EB%8C%80%EC%A0%84%20%EC%84%9C%EA%B5%AC%20%EA%B3%84%EB%A3%A1%EB%A1%9C%20636%207%EC%B8%B5?c=14180329.9578669,4347305.8219196,14,0,0,0,dh" target="_blank">
+                                   <img src="${pageContext.request.contextPath}/resourcesKIM/img/intro/map.png" width="534" height="418" alt="지도 크게 보기" title="지도 크게 보기" border="0" style="vertical-align:top;"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="contact" style="color: #0192dc">
+                        <span><i class="fas fa-map-marker"></i></span>
+                        <span class="address"> &nbsp;<b>Adress</b> &nbsp; : 아이티스쿨정보기술교육원 대전광역시 서구 계룡로 636, 7층(용문동, 도산빌딩)</span><br>
+                        <span><i class="fas fa-phone-volume"></i></span>
+                        <span class="address"> &nbsp; &nbsp;<b>TEL</b>  &nbsp; &nbsp; &nbsp;: 042-525-2666</span><br>
+                        <span><i class="fas fa-fax"></i></span>
+                        <span class="address"> &nbsp;&nbsp;<b>FAX</b>  &nbsp; &nbsp;&nbsp;: 042-522-9666</span>
                         <hr>
                     </div>
 
                 </div>
-
 
 
             </div>
