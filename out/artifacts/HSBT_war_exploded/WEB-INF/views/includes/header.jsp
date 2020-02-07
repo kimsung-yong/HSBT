@@ -53,6 +53,7 @@
     </div>
 </nav>
 <header class="masthead">
+<<<<<<< HEAD
 <%--    <div class="rows">--%>
 <%--        <div class="col-lg-12">--%>
 <%--            <h1 class="page-header">Tables</h1>--%>
@@ -61,3 +62,13 @@
 <%--    </div>--%>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+=======
+    <%--    <div class="rows">--%>
+    <%--        <div class="col-lg-12">--%>
+    <%--            <h1 class="page-header">Tables</h1>--%>
+    <%--        </div>--%>
+    <%--        <!-- /.col-lg-12 -->--%>
+    <%--    </div>--%>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+>>>>>>> 6335b31d0441a04edbba1c9048c59271bf09ca7d

@@ -42,4 +42,8 @@
 <!--commit test -->
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 6335b31d0441a04edbba1c9048c59271bf09ca7d
