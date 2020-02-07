@@ -43,7 +43,7 @@
       <div class="row">
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <a class="portfolio-box" href="http://localhost:8112/intro/introduce">
+            <a class="portfolio-box" href="/intro/introduce">
             <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/회사소개.jpg">
             <h3 class="h4 mb-2">회사 소개</h3>
             </a>
