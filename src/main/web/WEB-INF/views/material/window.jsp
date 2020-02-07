@@ -29,14 +29,14 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">Start Bootstrap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
+                    <a class="nav-link" href="/">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -63,10 +63,10 @@
 
             <h1 class="my-4">Materials</h1>
             <div class="list-group">
-                <a href="http://localhost:9301/material/tile" class="list-group-item">타일</a>
-                <a href="http://localhost:9301/material/wallpaper" class="list-group-item">벽지</a>
-                <a href="http://localhost:9301/material/window" class="list-group-item">창호</a>
-                <a href="http://localhost:9301/material/paint" class="list-group-item">페인트</a>
+                <a href="/material/tile" class="list-group-item">타일</a>
+                <a href="/material/wallpaper" class="list-group-item">벽지</a>
+                <a href="/material/window" class="list-group-item">창호</a>
+                <a href="/material/paint" class="list-group-item">페인트</a>
             </div>
 
         </div>
