@@ -51,7 +51,7 @@
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <a class="portfolio-box" href="http://localhost:9301/material/tile">
+            <a class="portfolio-box" href="/material/tile">
               <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/건축자재.jpg">
               <h3 class="h4 mb-2">건축자재</h3>
             </a>

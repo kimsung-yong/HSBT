@@ -63,10 +63,10 @@
 
             <h1 class="my-4">Materials</h1>
             <div class="list-group">
-                <a href="http://localhost:9301/material/tile" class="list-group-item">타일</a>
-                <a href="http://localhost:9301/material/wallpaper" class="list-group-item">벽지</a>
-                <a href="http://localhost:9301/material/window" class="list-group-item">창호</a>
-                <a href="http://localhost:9301/material/paint" class="list-group-item">페인트</a>
+                <a href="/material/tile" class="list-group-item">타일</a>
+                <a href="/material/wallpaper" class="list-group-item">벽지</a>
+                <a href="/material/window" class="list-group-item">창호</a>
+                <a href="/material/paint" class="list-group-item">페인트</a>
             </div>
 
         </div>
