@@ -55,7 +55,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">Start Bootstrap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -89,9 +89,9 @@
 
             <h1 class="my-4">Shop Name</h1>
             <div class="list-group">
-                <a href="http://localhost:8112/intro/introduce" class="list-group-item">회사 소개</a>
-                <a href="http://localhost:8112/intro/history" class="list-group-item">회사 연혁</a>
-                <a href="http://localhost:8112/intro/map" class="list-group-item">오시는 길</a>
+                <a href="/intro/introduce" class="list-group-item">회사 소개</a>
+                <a href="/intro/history" class="list-group-item">회사 연혁</a>
+                <a href="/intro/map" class="list-group-item">오시는 길</a>
             </div>
 
         </div>
