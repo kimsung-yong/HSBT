@@ -28,4 +28,13 @@ public class HomeContoller {
     public String history(){
         return "/intro/company/history";
     }
+
+    @RequestMapping("/material/tile")
+    public String tile() { return "/material/tile"; }
+    @RequestMapping("/material/wallpaper")
+    public String wallpaper() { return "/material/wallpaper"; }
+    @RequestMapping("/material/window")
+    public String window() { return "/material/window"; }
+    @RequestMapping("/material/paint")
+    public String paint() { return "/material/paint"; }
 }
