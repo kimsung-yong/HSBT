@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/board/*")
 @Log4j
 public class BoardController {
-    @GetMapping({"/noticeBoard/list","/freeboard/list","/qnaboard/list","/reviewboard/list","/tipboard/list"})
+    @GetMapping({"/noticeboard/list","/freeboard/list","/qnaboard/list","/reviewboard/list","/tipboard/list"})
     public void list() {
 
     }
