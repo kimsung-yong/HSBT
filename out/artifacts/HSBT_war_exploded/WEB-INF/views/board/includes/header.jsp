@@ -25,7 +25,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">Start Bootstrap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,7 +59,7 @@
 
             <h1 class="my-4">커뮤니티</h1>
             <div class="list-group">
-                <a href="/board/noticeBoard/list" class="list-group-item">공지사항</a>
+                <a href="/board/noticeboard/list" class="list-group-item">공지사항</a>
                 <a href="/board/freeboard/list" class="list-group-item">자유게시판</a>
                 <a href="/board/reviewboard/list" class="list-group-item">후기</a>
                 <a href="/board/tipboard/list" class="list-group-item">Tip</a>
