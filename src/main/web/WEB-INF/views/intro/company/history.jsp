@@ -62,8 +62,7 @@
             <div class="list-group">
                 <a href="http://localhost:8112/intro/introduce" class="list-group-item">회사 소개</a>
                 <a href="http://localhost:8112/intro/history" class="list-group-item">회사 연혁</a>
-                <a href="#" class="list-group-item">조 직 도</a>
-                <a href="#" class="list-group-item">오시는 길</a>
+                <a href="http://localhost:8112/intro/map" class="list-group-item">오시는 길</a>
             </div>
 
         </div>
