@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class BoardController {
     @GetMapping({"/noticeboard/list","/freeboard/list","/qnaboard/list","/reviewboard/list","/tipboard/list"})
     public void list() {
-
+//
     }
 }
