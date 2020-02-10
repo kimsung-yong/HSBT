@@ -22,7 +22,7 @@
     <!-- Process annotations on registered beans like @Autowired... -->
     <context:annotation-config/>
     <!-- 컴포넌트 스캔 -->
-    <context:component-scan base-package="Controller" />
+    <context:component-scan base-package="controller" />
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/resourcesKIM/**" location="/resourcesKIM/"/>
 

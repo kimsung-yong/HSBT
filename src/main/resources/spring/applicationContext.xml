@@ -8,7 +8,7 @@
 <!--            <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>-->
 <!--            <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl1"/>-->
             <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-            <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl1"/>
+            <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"/>
             <property name="username" value="knls"/>
             <property name="password" value="knls"/>
         </bean>
@@ -20,6 +20,6 @@
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
             <property name="dataSource" ref="dataSource"/>
         </bean>
-        <mybatis-spring:scan base-package="Mapper"/>
+        <mybatis-spring:scan base-package="mapper"/>
         <context:component-scan base-package="Service"/>
 </beans>
