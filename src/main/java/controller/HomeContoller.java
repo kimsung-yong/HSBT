@@ -22,14 +22,14 @@ public class HomeContoller {
 //        return "board/noticeBoard/list";
 //    }
 
-//    @RequestMapping("/intro/introduce")
-//    public String introduce(){ return "/intro/company/introduce"; }
-//    @RequestMapping("/intro/history")
-//    public String history(){
-//        return "/intro/company/history";
-//    }
-//    @RequestMapping("/intro/map")
-//    public String map(){      return "/intro/company/map";   }
+    @RequestMapping("/intro/introduce")
+    public String introduce(){ return "/intro/company/introduce"; }
+    @RequestMapping("/intro/history")
+    public String history(){
+        return "/intro/company/history";
+    }
+    @RequestMapping("/intro/map")
+    public String map(){      return "/intro/company/map";   }
 
     @RequestMapping("/material/tile")
     public String tile() { return "/material/tile"; }
