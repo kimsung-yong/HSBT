@@ -21,5 +21,5 @@
             <property name="dataSource" ref="dataSource"/>
         </bean>
         <mybatis-spring:scan base-package="mapper"/>
-        <context:component-scan base-package="Service"/>
+        <context:component-scan base-package="service"/>
 </beans>

@@ -12,11 +12,11 @@ public class ReviewVO {
 ////    private Long uno;
 //    private Date rregtime;
 //    private Date rupdatetime;
-    private Long rNo;
-    private String rTitle;
-    private String rContent;
-    private Long uNo;
-    private Date rRegtime;
-    private Date rUpdatetime;
+    private Long r_no;
+    private String r_title;
+    private String r_content;
+    private Long u_no;
+    private Date r_regtime;
+    private Date r_updatetime;
 }
 
