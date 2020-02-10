@@ -51,7 +51,7 @@
                             </table>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="searchForm" action="/board/list" method="get">
+                                    <form id="searchForm" action="/board/tipboard/list" method="get">
                                         <select name="type">
                                             <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--</option>
                                             <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목</option>
