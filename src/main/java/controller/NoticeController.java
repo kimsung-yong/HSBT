@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/board/freeboard/*")
+@RequestMapping("/board/noticeboard/*")
 @Log4j
-public class BoardController {
+public class NoticeController {
     @GetMapping("/list")
     public void list() {
 //
