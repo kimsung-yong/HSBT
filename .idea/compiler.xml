@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="HSBT" target="12" />
+      <module name="HSBT" target="13" />
     </bytecodeTargetLevel>
   </component>
 </project>
