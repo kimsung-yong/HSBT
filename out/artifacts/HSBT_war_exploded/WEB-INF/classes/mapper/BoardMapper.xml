@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.BoardMapper">
+    <select id="getList" resultType="domain.BoardVO">
+        <![CDATA[
+        select * from tbl_board
+        ]]>
+    </select>
+    <select id="getListSelect" resultType="domain.BoardVO">
+        select * from tbl_board where b_no = #{b_no}
+    </select>
+    
+    <insert id="insert">
+        insert into tbl_board(b_no,b_title,b_content,u_no) values(board_seq.nextval,#{b_title},#{b_content},#{u_no})
+    </insert>
+    <update id="update">
+        update tbl_board set b_title =#{b_title},b_content=#{b_content} where b_no = #{b_no}
+    </update>
+    <delete id="delete">
+        delete from tbl_board where b_no = #{b_no}
+    </delete>
+
+
+</mapper>
