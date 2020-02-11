@@ -18,5 +18,7 @@ public class ReviewVO {
     private Long u_no;
     private Date r_regtime;
     private Date r_updatetime;
+
+    private UserVO userVO;
 }
 
