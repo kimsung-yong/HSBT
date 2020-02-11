@@ -36,15 +36,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${list}" var="board">
+                                <c:forEach items="${list}" var="tip">
                                     <tr>
-                                        <td><c:out value="${board.bno}"/> </td>
+                                        <td><c:out value="${tip.t_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="${board.bno}" >
-                                            <c:out value="${board.title}"/></a> </td>
-                                        <td><c:out value="${board.writer}"/> </td>
-                                        <td><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/> </td>
-                                        <td><fmt:formatDate value="${board.updateDate}" pattern="yyyy-MM-dd"/> </td>
+                                        <td><a id="detailPage" href="#" >
+                                            <c:out value="${tip.t_title}"/></a> </td>
+                                        <td><c:out value="${tip.userVO.id}"/> </td>
+                                        <td><fmt:formatDate value="${tip.t_regtime}" pattern="yyyy-MM-dd"/> </td>
+                                        <td><fmt:formatDate value="${tip.t_updatetime}" pattern="yyyy-MM-dd"/> </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -136,7 +136,7 @@
         </div>
 <script>
     function regloc() {
-        location.href="/board/reg";
+        location.href="/board/tipboard/register";
     }
 
     $(document).ready(function () {
@@ -170,7 +170,7 @@
         $("a#detailPage").on("click",function (e) {
             e.preventDefault();
             console.log("글클릭");
-            actionForm.attr("action","/board/get");
+            actionForm.attr("action","/board/tipboard/get");
 
             actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href")+ "'>");
             actionForm.submit();
