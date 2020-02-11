@@ -3,11 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.TipMapper">
+	<resultMap id="tipMap" type="domain.TipVO">
+		<id property="t_no" column="t_no"/>
+		<result property="t_title" column="t_title"/>
+		<result property="t_content" column="t_content"/>
+		<result property="u_no" column="u_no"/>
+		<result property="t_regtime" column="t_regtime"/>
+		<result property="t_updatetime" column="t_updatetime"/>
+		<association property="userVO" column="id" resultMap="userMap"/>
+	</resultMap>
+	<resultMap id="userMap" type="domain.UserVO">
+		<id property="u_no" column="u_no"/>
+		<result property="id" column="id"/>
+		<result property="pw" column="pw"/>
+		<result property="phone" column="phone"/>
+		<result property="name" column="name"/>
+		<result property="address" column="address"/>
+		<result property="manager" column="manager"/>
+	</resultMap>
 
-    <select id="getList" resultType="domain.TipVO">
+    <select id="getList" resultMap="tipMap">
 		<![CDATA[
-		select t_no, t_title, t_content, u_no, t_regtime, t_updatetime
-		from tbl_tip
+		select t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
+		from tbl_tip t
+		inner join tbl_user u
+		on t.u_no = u.u_no
 		where t_no > 0
 		]]>
 	</select>

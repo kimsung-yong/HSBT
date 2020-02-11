@@ -1,5 +1,6 @@
 package controller;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +11,13 @@ import service.TipService;
 @Controller
 @RequestMapping("/board/tipboard/*")
 @Log4j
+@AllArgsConstructor
 public class TipController {
-    /*private TipService service;*/
+    private TipService service;
 
     @GetMapping("/list")
-    public void list() {
-
+    public void list(Model model) {
+        log.info("list");
+        model.addAttribute("list", service.getList());
     }
 }
