@@ -14,9 +14,14 @@ import service.review.ReviewService;
 @AllArgsConstructor
 public class ReviewController {
     private ReviewService service;
+
     @GetMapping("/list")
     public void list(Model model) {
         log.info("list......");
         model.addAttribute("list",service.getList());
+    }
+    @GetMapping("/register")
+    public void register(){
+        log.info("register..........");
     }
 }
