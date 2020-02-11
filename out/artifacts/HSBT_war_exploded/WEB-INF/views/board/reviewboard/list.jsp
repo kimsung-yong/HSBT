@@ -36,15 +36,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${list}" var="board">
+                                <c:forEach items="${list}" var="review">
                                     <tr>
-                                        <td><c:out value="${board.bno}"/> </td>
+                                        <td><c:out value="${review.r_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="${board.bno}" >
-                                            <c:out value="${board.title}"/></a> </td>
-                                        <td><c:out value="${board.writer}"/> </td>
-                                        <td><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/> </td>
-                                        <td><fmt:formatDate value="${board.updateDate}" pattern="yyyy-MM-dd"/> </td>
+                                        <td><a id="detailPage" href="#" >
+                                            <c:out value="${review.r_title}"/></a> </td>
+                                        <td><c:out value="${review.u_no}"/> </td>
+                                        <td><fmt:formatDate value="${review.r_regtime}" pattern="yyyy-MM-dd"/> </td>
+                                        <td><fmt:formatDate value="${review.r_updatetime}" pattern="yyyy-MM-dd"/> </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -136,7 +136,7 @@
         </div>
 <script>
     function regloc() {
-        location.href="/board/reg";
+        location.href="/board/reviewboard/register";
     }
 
     $(document).ready(function () {

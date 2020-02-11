@@ -1,4 +1,4 @@
-package service;
+package service.review;
 
 import domain.ReviewVO;
 
