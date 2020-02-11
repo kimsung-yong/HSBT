@@ -6,11 +6,12 @@ import java.util.Date;
 
 @Data
 public class TipVO {
-    private Long tNo;
-    private String tTitle;
-    private String tContent;
-    private Long uNo;
-    private Date tRegTime;
-    private Date tUpdateTime;
+    private Long t_no;
+    private String t_title;
+    private String t_content;
+    private Long u_no;
+    private Date t_regtime;
+    private Date t_updatetime;
 
+    /*private UserVO userVO;*/
 }
