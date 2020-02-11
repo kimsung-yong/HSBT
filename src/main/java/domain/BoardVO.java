@@ -14,4 +14,5 @@ public class BoardVO {
     private Date b_regTime;
     private Date b_updateTime;
 
+    private UserVO userVO;
 }

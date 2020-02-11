@@ -74,7 +74,7 @@
                     formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
                 }else if (operation === 'list'){
                     // self.location = "/board/list";
-                    formObj.attr("action","/board/list").attr("method","get");
+                    formObj.attr("action","/board/tipboard/list").attr("method","get");
                     formObj.empty();
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");

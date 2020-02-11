@@ -4,15 +4,37 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.BoardMapper">
-    <select id="getList" resultType="domain.BoardVO">
+    <resultMap id="boardMap" type="domain.BoardVO">
+        <id property="b_no" column="b_no"/>
+        <result property="b_title" column="b_title"/>
+        <result property="b_content" column="b_content"/>
+        <result property="u_no" column="u_no"/>
+        <result property="b_regTime" column="b_regtime"/>
+        <result property="b_updateTime" column="b_updatetime"/>
+        <association property="userVO" column="id" resultMap="userMap"/>
+    </resultMap>
+    <resultMap id="userMap" type="domain.UserVO">
+        <id property="u_no" column="u_no"/>
+        <result property="id" column="id"/>
+        <result property="pw" column="pw"/>
+        <result property="phone" column="phone"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="manager" column="manager"/>
+    </resultMap>
+    <select id="getList" resultMap="boardMap">
         <![CDATA[
-        select * from tbl_board
+        select b.b_no ,b.b_title,b.b_content,u.id,b.b_regtime,b.b_updatetime
+        from tbl_board b
+        inner join tbl_user u
+        on b.u_no = u.u_no
+        where b_no > 0
         ]]>
     </select>
     <select id="getListSelect" resultType="domain.BoardVO">
         select * from tbl_board where b_no = #{b_no}
     </select>
-    
+
     <insert id="insert">
         insert into tbl_board(b_no,b_title,b_content,u_no) values(board_seq.nextval,#{b_title},#{b_content},#{u_no})
     </insert>
