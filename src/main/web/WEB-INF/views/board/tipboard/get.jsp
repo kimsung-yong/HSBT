@@ -20,29 +20,29 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>" readonly="readonly">
+                            <label>글번호</label> <input class="form-control" name="bno" value="<c:out value="${tip.t_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${board.title}"/>" readonly="readonly">
+                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${tip.t_title}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
                             <label>내용</label>
                             <textarea class="form-control" name="content" readonly="readonly">
-                            <c:out value="${board.content}" />
+                            <c:out value="${tip.t_content}" />
                                 </textarea>
                             </div>
 
                             <div class="form-group">
-                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>" readonly="readonly">
+                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${tip.userVO.id}"/>" readonly="readonly">
                             </div>
 
                            <button data-oper="modify" class="btn btn-default">수정</button>
                            <button data-oper="list" class="btn btn-info">목록</button>
 
                             <form id="operForm" action="board/modify" method="get">
-                                <input type="hidden" name="bno" value="${board.bno}">
+                                <input type="hidden" name="bno" value="${tip.t_no}">
                                 <input type="hidden" name="pageNum" value="${cri.pageNum}">
                                 <input type="hidden" name="type" value="${cri.type}">
                                 <input type="hidden" name="keyword" value="${cri.keyword}">
@@ -130,12 +130,12 @@
             <%--operForm.append("<input type='hidden' name='bno' value="+${board.bno} +">");--%>
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");--%>
-            operForm.attr("action","/board/modify").submit();
+            operForm.attr("action","/board/tipboard/modify").submit();
         });
 
         $("button[data-oper='list']").on("click",function(e) {
             // operForm.find("#bno").remove();
-            operForm.attr("action","/board/list");
+            operForm.attr("action","/board/tipboard/list");
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");--%>
