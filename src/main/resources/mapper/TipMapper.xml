@@ -59,7 +59,6 @@
 		update tbl_tip
 		set t_title = #{t_title},
 		t_content = #{t_content},
-		u_no = #{u_no},
 		t_updatetime = sysdate
 		where t_no = #{t_no}
 	</update>

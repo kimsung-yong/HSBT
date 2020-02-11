@@ -40,7 +40,7 @@
                                     <tr>
                                         <td><c:out value="${tip.t_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="#" >
+                                        <td><a id="detailPage" href="${tip.t_no}" >
                                             <c:out value="${tip.t_title}"/></a> </td>
                                         <td><c:out value="${tip.userVO.id}"/> </td>
                                         <td><fmt:formatDate value="${tip.t_regtime}" pattern="yyyy-MM-dd"/> </td>
@@ -68,7 +68,7 @@
                                     </form>
                                 </div>
 
-                                <form id="actionForm" action="/board/list" method="get">
+                                <form id="actionForm" action="/board/tipboard/list" method="get">
                                     <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                     <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
                                     <input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>

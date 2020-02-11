@@ -18,26 +18,26 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form action="/board/modify" method="post">
+                            <form action="/board/tipboard/modify" method="post">
                             <div class="form-group">
 
-                            <label>글번호</label> <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>">
+                            <label>글번호</label> <input class="form-control" name="t_no" value="<c:out value="${tip.t_no}"/>">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${board.title}"/>" >
+                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${tip.t_title}"/>" >
                             </div>
 
                             <div class="form-group">
                             <label>내용</label>
                                 <textarea class="form-control" name="content">
-                                <c:out value="${board.content}"/>
+                                <c:out value="${tip.t_content}"/>
                                </textarea>
                             </div>
 
-                            <div class="form-group">
+                            <%--<div class="form-group">
                             <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>">
-                            </div>
+                            </div>--%>
                                 <button data-oper="modify" type="submit" class="btn btn-danger">저장</button>
                                 <button data-oper="remove" type="submit" class="btn btn-danger">삭제</button>
                                 <button data-oper="list" type="submit" class="btn btn-danger">목록</button>
@@ -67,14 +67,14 @@
                     formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
                     formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
                 }else if(operation === 'remove'){
-                    formObj.attr("action", "/board/remove");
+                    formObj.attr("action", "/board/tipboard/remove");
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
                     formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
                     formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
                 }else if (operation === 'list'){
                     // self.location = "/board/list";
-                    formObj.attr("action","/board/list").attr("method","get");
+                    formObj.attr("action","/board/tipboard/list").attr("method","get");
                     formObj.empty();
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
