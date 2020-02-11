@@ -6,24 +6,41 @@
 
     <select id="getList" resultType="domain.TipVO">
 		<![CDATA[
-		select * from tbl_tip where t_no > 0
+		select t_no, t_title, t_content, u_no, t_regtime, t_updatetime
+		from tbl_tip
+		where t_no > 0
 		]]>
 	</select>
 
 	<insert id="insert">
 		insert into tbl_tip (t_no, t_title, t_content, u_no)
-		values(tip_seq.nextval, #{tTitle}, #{tContent}, #{uNo})
+		values(tip_seq.nextval, #{t_title}, #{t_content}, #{u_no})
 	</insert>
 
 	<insert id="insertSelectKey">
-		<selectKey keyProperty="tNo" order="BEFORE" resultType="long">
+		<selectKey keyProperty="t_no" order="BEFORE" resultType="long">
 			select tip_seq.nextval from dual
 		</selectKey>
 		insert into tbl_tip (t_no, t_title, t_content, u_no)
-		values(#{tNo}, #{tTitle}, #{tContent}, #{uNo})
+		values(#{t_no}, #{t_title}, #{t_content}, #{u_no})
 	</insert>
 
 	<select id="read" resultType="domain.TipVO">
-		select * from tbl_tip where t_no = #{tNO}
+		select t_no, t_title, t_content, u_no, t_regtime, t_updatetime
+		from tbl_tip
+		where t_no = #{t_no}
 	</select>
+
+	<delete id="delete">
+		delete from tbl_tip where t_no = #{t_no}
+	</delete>
+
+	<update id="update">
+		update tbl_tip
+		set t_title = #{t_title},
+		t_content = #{t_content},
+		u_no = #{u_no},
+		t_updatetime = sysdate
+		where t_no = #{t_no}
+	</update>
 </mapper>
