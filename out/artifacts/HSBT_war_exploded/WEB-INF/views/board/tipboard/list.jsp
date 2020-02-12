@@ -39,7 +39,7 @@
                                 <c:forEach items="${list}" var="tip">
                                     <tr>
                                         <td><c:out value="${tip.t_no}"/> </td>
-                                        <td><a <%--id="detailPage"--%> href='/board/tipboard/get?t_no=<c:out value="${tip.t_no}"/>'>
+                                        <td><a id="detailPage" href='<c:out value="${tip.t_no}"/>'>
                                             <c:out value="${tip.t_title}"/></a> </td>
                                         <td><c:out value="${tip.userVO.id}"/> </td>
                                         <td><fmt:formatDate value="${tip.t_regtime}" pattern="yyyy-MM-dd"/> </td>
@@ -158,7 +158,7 @@
         $("#regBtn").on("click", function () {
             self.location="/board/tipboard/register";
         })
-        /*var actionForm = $("#actionForm");*/
+        var actionForm = $("#actionForm");
         var searchForm = $("#searchForm");
 
         $(".paginate_button a").on("click",function (e) {
@@ -170,14 +170,12 @@
             searchForm.submit();
         });
 
-        /*$("a#detailPage").on("click",function (e) {
+        $("a#detailPage").on("click",function (e) {
             e.preventDefault();
-            console.log("글클릭");
+            actionForm.append("<input type='hidden' name='t_no' value='" + $(this).attr("href") + "'>");
             actionForm.attr("action","/board/tipboard/get");
-
-            actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href")+ "'>");
             actionForm.submit();
-        });*/
+        });
 
         $("#searchForm button").on("click",function (e) {
 
