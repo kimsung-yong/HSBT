@@ -22,14 +22,54 @@
 		<result property="manager" column="manager"/>
 	</resultMap>
 
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							t.t_title like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'C'.toString()">
+							t.t_content like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'W'.toString()">
+							u.id like '%' || #{keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
     <select id="getList" resultMap="tipMap">
 		<![CDATA[
-		select t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
-		from tbl_tip t
-		inner join tbl_user u
-		on t.u_no = u.u_no
-		where t_no > 0
-		order by t_no desc
+			select t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
+			from tbl_tip t
+			inner join tbl_user u
+			on t.u_no = u.u_no
+			where t.t_no > 0
+			order by t.t_no desc
+		]]>
+	</select>
+
+	<select id="getListWithPaging" resultMap="tipMap">
+		<![CDATA[
+			select t_no, t_title, t_content, id, t_regtime, t_updatetime
+			from (
+				select /*+INDEX_DESC(tbl_tip PK_TIP) */
+				rownum rn, t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
+				from tbl_tip t
+				inner join tbl_user u
+				on t.u_no = u.u_no
+				where
+		]]>
+				<include refid="criteria"></include>
+		<![CDATA[
+				rownum <= #{pageNum} * #{amount}
+				order by t_no desc
+			)
+			where rn > (#{pageNum} -1) * #{amount}
 		]]>
 	</select>
 
@@ -51,7 +91,7 @@
 		from tbl_tip t
 		join tbl_user u
 		on t.u_no = u.u_no
-		where t_no = #{t_no}
+		where t.t_no = #{t_no}
 	</select>
 
 	<delete id="delete">
@@ -65,4 +105,15 @@
 		t_updatetime = sysdate
 		where t_no = #{t_no}
 	</update>
+
+	<select id="getTotalCount" resultType="int">
+		<![CDATA[
+			select count(*) from tbl_tip t inner join tbl_user u on t.u_no = u.u_no
+			where
+		]]>
+		<include refid="criteria"></include>
+		<![CDATA[
+			t.t_no > 0
+		]]>
+	</select>
 </mapper>

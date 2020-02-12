@@ -1,5 +1,7 @@
 package controller;
 
+import domain.Criteria;
+import domain.TipPageDTO;
 import domain.TipVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -19,10 +21,19 @@ import service.TipService;
 public class TipController {
     private TipService service;
 
-    @GetMapping("/list")
+    /*@GetMapping("/list")
     public void list(Model model) {
-        /*log.info("list");*/
+        *//*log.info("list");*//*
         model.addAttribute("list", service.getList());
+    }*/
+    @GetMapping("/list")
+    public void list(Criteria cri, Model model) {
+        /*log.info("list : " + cri);*/
+        model.addAttribute("list", service.getList(cri));
+        //model.addAttribute("pageMaker", new TipPageDTO(cri, 123));
+
+        int total = service.getTotalCount(cri);
+        model.addAttribute("pageMaker", new TipPageDTO(cri, total));
     }
 
     @PostMapping("/register")
