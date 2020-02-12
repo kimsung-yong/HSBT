@@ -39,8 +39,7 @@
                                 <c:forEach items="${list}" var="tip">
                                     <tr>
                                         <td><c:out value="${tip.t_no}"/> </td>
-                                            <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="${tip.t_no}" >
+                                        <td><a <%--id="detailPage"--%> href='/board/tipboard/get?t_no=<c:out value="${tip.t_no}"/>'>
                                             <c:out value="${tip.t_title}"/></a> </td>
                                         <td><c:out value="${tip.userVO.id}"/> </td>
                                         <td><fmt:formatDate value="${tip.t_regtime}" pattern="yyyy-MM-dd"/> </td>
@@ -105,21 +104,21 @@
                                 </ul>
 
                             </div>
-                            <button type="button" class="btn btn-default" style="float: left" onclick="regloc()">글작성</button>
+                            <button type="button" id="regBtn" class="btn btn-default" style="float: left">글작성</button>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                            <h4 class="modal-title" id="myModalLabel">알림</h4>
                                         </div>
                                         <div class="modal-body">
                                             처리가 완료되었습니다
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <%--<button type="button" class="btn btn-primary">Save changes</button>--%>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -135,9 +134,9 @@
 
         </div>
 <script>
-    function regloc() {
+    /*function regloc() {
         location.href="/board/tipboard/register";
-    }
+    }*/
 
     $(document).ready(function () {
         var result = '<c:out value="${result}"/>';
@@ -146,7 +145,7 @@
 
         history.replaceState({},null,null);
         function checkModal(result) {
-            if(result === '' || history.state){
+            if(result === '' || history.state) {
                 return;
             }
             if(parseInt(result) > 0){
@@ -155,7 +154,11 @@
 
             $("#myModal").modal("show");
         }
-        var actionForm = $("#actionForm");
+
+        $("#regBtn").on("click", function () {
+            self.location="/board/tipboard/register";
+        })
+        /*var actionForm = $("#actionForm");*/
         var searchForm = $("#searchForm");
 
         $(".paginate_button a").on("click",function (e) {
@@ -167,14 +170,14 @@
             searchForm.submit();
         });
 
-        $("a#detailPage").on("click",function (e) {
+        /*$("a#detailPage").on("click",function (e) {
             e.preventDefault();
             console.log("글클릭");
             actionForm.attr("action","/board/tipboard/get");
 
             actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href")+ "'>");
             actionForm.submit();
-        });
+        });*/
 
         $("#searchForm button").on("click",function (e) {
 
@@ -203,5 +206,6 @@
 </div>
 <!-- /.container -->
 
+<%@include file="../includes/footer.jsp"%>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
