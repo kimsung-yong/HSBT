@@ -27,21 +27,40 @@ public class TipController {
 
     @PostMapping("/register")
     public String register(TipVO tipVO, RedirectAttributes rttr) {
-        log.info("register......." + tipVO);
+        /*log.info("register......." + tipVO);*/
         service.register(tipVO);
         rttr.addAttribute("result", tipVO.getT_no());
         return "redirect:/board/tipboard/list";
     }
 
     @GetMapping("/register")
-    public String register1(TipVO tipVO) {
-        log.info("register......." + tipVO);
-        return "/board/tipboard/register";
+    public void register(TipVO tipVO) {
+        /*log.info("register......." + tipVO);*/
     }
 
-    @GetMapping("/get")
+    @GetMapping({"/get", "/modify"})
     public void get(@RequestParam("t_no") Long t_no, Model model) {
-        log.info("/get");
+        /*log.info("/get or modify");*/
         model.addAttribute("tip", service.get(t_no));
+    }
+
+    @PostMapping("/modify")
+    public String modify(TipVO tipVO, RedirectAttributes rttr) {
+        /*log.info("modify : " + tipVO);*/
+
+        if(service.modify(tipVO)) {
+            rttr.addFlashAttribute("result", "success");
+        }
+        return "redirect:/board/tipboard/list";
+    }
+
+    @PostMapping("/remove")
+    public String remove(@RequestParam("t_no") Long t_no, RedirectAttributes rttr) {
+        /*log.info("remove...." + t_no);*/
+
+        if(service.remove(t_no)) {
+            rttr.addFlashAttribute("result", "success");
+        }
+        return "redirect:/board/tipboard/list";
     }
 }

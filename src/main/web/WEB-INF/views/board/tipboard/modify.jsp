@@ -5,7 +5,9 @@
 
              <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Tables</h1>
+                    <br>
+                    <h1 class="page-header">Tip</h1>
+                    <br>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -13,31 +15,35 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
+                        <br><br><br><br>
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            <h3>게시글 수정</h3>
+                            <br>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <form action="/board/tipboard/modify" method="post">
                             <div class="form-group">
-
-                            <label>글번호</label> <input class="form-control" name="t_no" value="<c:out value="${tip.t_no}"/>">
+                                <label>글번호</label>
+                                <input class="form-control" name="t_no" value="<c:out value="${tip.t_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${tip.t_title}"/>" >
+                                <label>제목</label>
+                                <input class="form-control" name="t_title" value="<c:out value="${tip.t_title}"/>" >
                             </div>
 
                             <div class="form-group">
                             <label>내용</label>
-                                <textarea class="form-control" name="content">
+                                <textarea class="form-control" name="t_content">
                                 <c:out value="${tip.t_content}"/>
                                </textarea>
                             </div>
 
-                            <%--<div class="form-group">
-                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>">
-                            </div>--%>
+                            <div class="form-group">
+                                <label>작성자</label>
+                                <input class="form-control" name="id" value="<c:out value="${tip.userVO.id}"/>" readonly="readonly">
+                            </div>
                                 <button data-oper="modify" type="submit" class="btn btn-danger">저장</button>
                                 <button data-oper="remove" type="submit" class="btn btn-danger">삭제</button>
                                 <button data-oper="list" type="submit" class="btn btn-danger">목록</button>
@@ -60,6 +66,7 @@
                 var operation = $(this).data("oper");
 
                 console.log(operation);
+
                 if(operation === 'modify'){
                     // e.preventDefault();
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");

@@ -29,6 +29,7 @@
 		inner join tbl_user u
 		on t.u_no = u.u_no
 		where t_no > 0
+		order by t_no desc
 		]]>
 	</select>
 
@@ -45,9 +46,11 @@
 		values(#{t_no}, #{t_title}, #{t_content}, #{u_no})
 	</insert>
 
-	<select id="read" resultType="domain.TipVO">
-		select t_no, t_title, t_content, u_no, t_regtime, t_updatetime
-		from tbl_tip
+	<select id="read" resultMap="tipMap">
+		select t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
+		from tbl_tip t
+		join tbl_user u
+		on t.u_no = u.u_no
 		where t_no = #{t_no}
 	</select>
 

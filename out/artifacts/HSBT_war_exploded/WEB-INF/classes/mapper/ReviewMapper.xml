@@ -3,12 +3,36 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ReviewMapper">
+	<resultMap id="reviewMap" type="domain.ReviewVO">
+		<id property="r_no" column="r_no"/>
+		<result property="r_title" column="r_title"/>
+		<result property="r_content" column="r_content"/>
+		<result property="u_no" column="u_no"/>
+		<result property="r_regtime" column="r_regtime"/>
+		<result property="r_updatetime" column="r_updatetime"/>
+		<association property="userVO" column="id" resultMap="userMap"/>
+	</resultMap>
+	<resultMap id="userMap" type="domain.UserVO">
+		<id property="u_no" column="u_no"/>
+		<result property="id" column="id"/>
+		<result property="pw" column="pw"/>
+		<result property="phone" column="phone"/>
+		<result property="name" column="name"/>
+		<result property="address" column="address"/>
+		<result property="manager" column="manager"/>
+	</resultMap>
 
-	<select id="getList" resultType="domain.ReviewVO">
+
+	<select id="getList" resultMap="reviewMap">
       <![CDATA[
-      select * from tbl_review where r_no >= 0
+      select r.r_no, r.r_title, r.r_content, u.id, r.r_regtime, r.r_updatetime
+      from tbl_review r
+      inner join tbl_user u
+      on r.u_no = u.u_no
+       where r_no >= 0
       ]]>
    </select>
+
 	<!--
         <select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
           <![CDATA[
