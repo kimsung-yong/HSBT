@@ -7,10 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.TipService;
 
@@ -50,28 +47,36 @@ public class TipController {
     }
 
     @GetMapping({"/get", "/modify"})
-    public void get(@RequestParam("t_no") Long t_no, Model model) {
+    public void get(@RequestParam("t_no") Long t_no, @ModelAttribute("cri") Criteria cri, Model model) {
         /*log.info("/get or modify");*/
         model.addAttribute("tip", service.get(t_no));
     }
 
     @PostMapping("/modify")
-    public String modify(TipVO tipVO, RedirectAttributes rttr) {
+    public String modify(TipVO tipVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
         /*log.info("modify : " + tipVO);*/
 
         if(service.modify(tipVO)) {
             rttr.addFlashAttribute("result", "success");
         }
+
+        rttr.addAttribute("pageNum", cri.getPageNum());
+        rttr.addAttribute("amount", cri.getAmount());
+
         return "redirect:/board/tipboard/list";
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("t_no") Long t_no, RedirectAttributes rttr) {
+    public String remove(@RequestParam("t_no") Long t_no, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
         /*log.info("remove...." + t_no);*/
 
         if(service.remove(t_no)) {
             rttr.addFlashAttribute("result", "success");
         }
+
+        rttr.addAttribute("pageNum", cri.getPageNum());
+        rttr.addAttribute("amount", cri.getAmount());
+
         return "redirect:/board/tipboard/list";
     }
 }
