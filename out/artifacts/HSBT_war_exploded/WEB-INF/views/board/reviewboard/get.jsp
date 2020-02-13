@@ -1,13 +1,15 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@include file="/WEB-INF/views/includes/header.jsp"%>
+
+<%@include file="../includes/header.jsp"%>
 
 
              <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Tables</h1>
+                    <h1 class="page-header">Review</h1>
                 </div>
+
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
@@ -20,32 +22,33 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>" readonly="readonly">
+                            <label>글번호</label> <input class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${board.title}"/>" readonly="readonly">
+                            <label>제목</label> <input class="form-control" name="r_title" value="<c:out value="${review.r_title}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
                             <label>내용</label>
-                            <textarea class="form-control" name="content" readonly="readonly">
-                            <c:out value="${board.content}" />
-                                </textarea>
+                            <textarea class="form-control" name="r_content" readonly="readonly">
+                                <c:out value="${review.r_content}" />
+                            </textarea>
                             </div>
 
                             <div class="form-group">
-                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>" readonly="readonly">
+                            <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
 
-                           <button data-oper="modify" class="btn btn-default">수정</button>
-                           <button data-oper="list" class="btn btn-info">목록</button>
+                            <button data-oper="modify" class="btn btn-default">수정</button>
+                            <button data-oper="list" class="btn btn-info">목록</button>
 
-                            <form id="operForm" action="board/modify" method="get">
-                                <input type="hidden" name="bno" value="${board.bno}">
-                                <input type="hidden" name="pageNum" value="${cri.pageNum}">
-                                <input type="hidden" name="type" value="${cri.type}">
-                                <input type="hidden" name="keyword" value="${cri.keyword}">
+                            <form id="operForm" action="board/reviewboard/modify" method="get">
+                                <input type="hidden" id="r_no" name="r_no" value="<c:out value="${review.r_no}"/>">
+                                <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
+                                <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
+                                <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
+                                <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
 
                             </form>
                         </div>
@@ -122,7 +125,7 @@
 <%--         /.modal   --%>
 
     </div>
-<script type="text/javascript" src="/resources/js/reply.js"></script>
+<script type="text/javascript" ></script>
 <script>
     $(document).ready(function () {
         var operForm = $("#operForm");

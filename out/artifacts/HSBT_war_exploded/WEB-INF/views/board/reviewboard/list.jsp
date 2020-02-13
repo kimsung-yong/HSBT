@@ -40,9 +40,9 @@
                                     <tr>
                                         <td><c:out value="${review.r_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="#" >
+                                        <td><a id="detailPage" href='<c:out value="${review.r_no}"/>'>
                                             <c:out value="${review.r_title}"/></a> </td>
-                                        <td><c:out value="${review.u_no}"/> </td>
+                                        <td><c:out value="${review.id}"/> </td>
                                         <td><fmt:formatDate value="${review.r_regtime}" pattern="yyyy-MM-dd"/> </td>
                                         <td><fmt:formatDate value="${review.r_updatetime}" pattern="yyyy-MM-dd"/> </td>
                                     </tr>
@@ -51,7 +51,7 @@
                             </table>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="searchForm" action="/board/list" method="get">
+                                    <form id="searchForm" action="/board/reviewboard/list" method="get">
                                         <select name="type">
                                             <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--</option>
                                             <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목</option>
@@ -68,7 +68,7 @@
                                     </form>
                                 </div>
 
-                                <form id="actionForm" action="/board/list" method="get">
+                                <form id="actionForm" action="/board/reviewboard/list" method="get">
                                     <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                     <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
                                     <input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
