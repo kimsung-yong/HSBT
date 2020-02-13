@@ -22,7 +22,7 @@ public class BoardServiceTest {
     }
     @Test
     public void testGet(){
-        service.get(6L);
+        service.get(8L);
     }
     @Test
     public void testRegster(){

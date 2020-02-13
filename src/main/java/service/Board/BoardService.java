@@ -1,7 +1,6 @@
 package service.Board;
 
 import domain.BoardVO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ public interface BoardService {
 
     public void regster(BoardVO vo);
 
-    public void modify(BoardVO vo);
+    public boolean modify(BoardVO vo);
 
     public void remove(Long BN);
 }
