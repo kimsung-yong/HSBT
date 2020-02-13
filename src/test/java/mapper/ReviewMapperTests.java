@@ -26,7 +26,7 @@ public class ReviewMapperTests {
 //        ReviewVO reviewVO = new ReviewVO();
 //        reviewVO.setR_title("New Test");
 //        reviewVO.setR_content("New Test");
-//        reviewVO.setId(1L);
+//        reviewVO.setU_no(1L);
 //
 //        mapper.insert(reviewVO);
 //        log.info(reviewVO);
