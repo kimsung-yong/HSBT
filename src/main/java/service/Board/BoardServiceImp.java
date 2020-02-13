@@ -30,8 +30,9 @@ public class BoardServiceImp implements BoardService{
     }
 
     @Override
-    public void modify(BoardVO vo) {
+    public boolean modify(BoardVO vo) {
         mapper.update(vo);
+        return true;
     }
 
     @Override

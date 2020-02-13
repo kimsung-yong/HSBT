@@ -138,7 +138,7 @@
 </div>
 <script>
     function regloc() {
-        location.href="/board/reg";
+        location.href="/board/freeboard/register";
     }
 
     $(document).ready(function () {
@@ -172,9 +172,9 @@
         $("a#detailPage").on("click",function (e) {
             e.preventDefault();
             console.log("글클릭");
-            actionForm.attr("action","/board/get");
+            actionForm.attr("action","/board/freeboard/get");
 
-            actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href")+ "'>");
+            actionForm.append("<input type='hidden' name='b_no' value='" + $(this).attr("href")+ "'>");
             actionForm.submit();
         });
 
