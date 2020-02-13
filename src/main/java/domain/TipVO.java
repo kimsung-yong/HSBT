@@ -9,9 +9,8 @@ public class TipVO {
     private Long t_no;
     private String t_title;
     private String t_content;
-    private Long u_no;
+    private String id;
     private Date t_regtime;
     private Date t_updatetime;
 
-    private UserVO userVO;
 }

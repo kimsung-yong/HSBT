@@ -42,7 +42,7 @@
 
                                 <div class="form-group">
                                     <label>작성자</label>
-                                    <input class="form-control" name="id" value="<c:out value="${tip.userVO.id}"/>" readonly="readonly">
+                                    <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
                                 </div>
 
                                 <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
