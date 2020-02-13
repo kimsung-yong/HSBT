@@ -18,10 +18,11 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+<%--                            DataTables Advanced Tables--%>
                         </div>
+                        <br><br><br><br>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" style="width: 600px">
                             <div class="form-group">
                             <label>글번호</label> <input class="form-control" name="b_no" value="<c:out value="${board.b_no}"/>" readonly="readonly">
                             </div>
@@ -53,9 +54,8 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row" style="width: auto">
+            <br>
+            <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
 <%--                    panel--%>
                     <div class="panel panel-default">
@@ -67,7 +67,7 @@
                             <i class="fa fa-comments fa-fw"></i> Reply
                             <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
                          </div>
-
+                        <br>
 <%--                     panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">
@@ -88,6 +88,8 @@
                     </div>
                 </div>
 <%--                ./end row--%>
+            </div>
+                </div>
             </div>
         <!-- /#page-wrapper -->
         <div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
