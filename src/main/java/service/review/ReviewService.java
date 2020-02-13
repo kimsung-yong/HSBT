@@ -9,7 +9,7 @@ public interface ReviewService {
     //    public List<BoardVO> getList(Criteria cri);
 
     public void register(ReviewVO review);
-    public ReviewVO get(Long rNo);
+    public ReviewVO get(Long r_no);
     public boolean modify(ReviewVO review);
-    public boolean remove(Long rNo);
+    public boolean remove(Long r_no);
 }

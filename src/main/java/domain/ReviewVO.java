@@ -15,7 +15,7 @@ public class ReviewVO {
     private Long r_no;
     private String r_title;
     private String r_content;
-    private Long u_no;
+    private String id;
     private Date r_regtime;
     private Date r_updatetime;
 
