@@ -21,27 +21,27 @@ public class ReviewMapperTests {
         mapper.getList().forEach(ReviewVO -> log.info(ReviewVO));
     }
 
-    @Test
-    public void testInsert() {
-        ReviewVO reviewVO = new ReviewVO();
-        reviewVO.setR_title("New Test");
-        reviewVO.setR_content("New Test");
-        reviewVO.setU_no(1L);
-
-        mapper.insert(reviewVO);
-        log.info(reviewVO);
-    }
-
-    @Test
-    public void testInsertSelectKey() {
-        ReviewVO reviewVO = new ReviewVO();
-        reviewVO.setR_title("New Select Key Test");
-        reviewVO.setR_content("New Select Key Test");
-        reviewVO.setU_no(1L);
-
-        mapper.insertSelectKey(reviewVO);
-        log.info(reviewVO);
-    }
+//    @Test
+//    public void testInsert() {
+//        ReviewVO reviewVO = new ReviewVO();
+//        reviewVO.setR_title("New Test");
+//        reviewVO.setR_content("New Test");
+//        reviewVO.setId(1L);
+//
+//        mapper.insert(reviewVO);
+//        log.info(reviewVO);
+//    }
+//
+//    @Test
+//    public void testInsertSelectKey() {
+//        ReviewVO reviewVO = new ReviewVO();
+//        reviewVO.setR_title("New Select Key Test");
+//        reviewVO.setR_content("New Select Key Test");
+//        reviewVO.setU_no(1L);
+//
+//        mapper.insertSelectKey(reviewVO);
+//        log.info(reviewVO);
+//    }
 
     @Test
     public void testRead() {

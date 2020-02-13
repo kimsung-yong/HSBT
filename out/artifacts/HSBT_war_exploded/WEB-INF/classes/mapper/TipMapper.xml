@@ -45,7 +45,6 @@
 				<include refid="criteria"></include>
 		<![CDATA[
 				rownum <= #{pageNum} * #{amount}
-				order by t.t_no desc
 			)
 			where rn > (#{pageNum} -1) * #{amount}
 		]]>
