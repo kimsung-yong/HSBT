@@ -7,7 +7,9 @@
 
              <div class="row">
                 <div class="col-lg-12">
+                    <br>
                     <h1 class="page-header">Review</h1>
+                    <br>
                 </div>
 
                 <!-- /.col-lg-12 -->
@@ -17,7 +19,9 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            <br><br><br><br>
+                            <h3>게시글</h3>
+                            <hr>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body" style="width: 600px">
@@ -49,12 +53,12 @@
                                 <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
                                 <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
                                 <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
-
                             </form>
+                            <hr>
                         </div>
                     </div>
-                </div>
-            </div>
+                <%--</div>
+            </div>--%>
             <div class="row">
                 <div class="col-lg-12">
 <%--                    panel--%>
@@ -64,8 +68,8 @@
 <%--                        </div>--%>
 
                          <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> Reply
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                            <%--<i class="fa fa-comments fa-fw"></i> 댓글--%>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">댓글추가</button>
                          </div>
 
 <%--                     panel-heading   --%>
@@ -89,6 +93,7 @@
                 </div>
 <%--                ./end row--%>
             </div>
+                    </div></div>
         <!-- /#page-wrapper -->
         <div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">

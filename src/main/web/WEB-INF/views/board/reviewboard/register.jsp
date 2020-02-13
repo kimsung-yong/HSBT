@@ -5,30 +5,34 @@
 
              <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Tables</h1>
+                    <br>
+                    <h1 class="page-header">Review</h1>
+                    <br>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" style="width: 600px">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            <br><br><br><br>
+                            <h3>게시글작성</h3>
+                            <hr>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <form role="form" action="/board/reviewboard/register" method="post">
                                 <div class="form=group">
-                                    <label>title</label>
+                                    <label>제목</label>
                                     <input class="form-control" name="r_title">
                                 </div>
                                 <div class="form-group">
-                                    <label>Text area</label>
+                                    <label>내용</label>
                                     <textarea class="form-control" rows="3" name="r_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Writer</label>
+                                    <label>작성자</label>
                                     <input type="text" name="id" class="form-control" >
                                 </div>
                                 <button type="submit" class="btn btn-default">저장</button>
