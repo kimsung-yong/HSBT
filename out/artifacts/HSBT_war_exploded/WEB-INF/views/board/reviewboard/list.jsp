@@ -40,7 +40,7 @@
                                     <tr>
                                         <td><c:out value="${review.r_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href='<c:out value="${review.r_no}"/>'>
+                                        <td><a id="detailPage" href="${review.r_no}">
                                             <c:out value="${review.r_title}"/></a> </td>
                                         <td><c:out value="${review.id}"/> </td>
                                         <td><fmt:formatDate value="${review.r_regtime}" pattern="yyyy-MM-dd"/> </td>
@@ -170,9 +170,9 @@
         $("a#detailPage").on("click",function (e) {
             e.preventDefault();
             console.log("글클릭");
-            actionForm.attr("action","/board/get");
+            actionForm.attr("action","/board/reviewboard/get");
 
-            actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href")+ "'>");
+            actionForm.append("<input type='hidden' name='r_no' value='" + $(this).attr("href")+ "'>");
             actionForm.submit();
         });
 

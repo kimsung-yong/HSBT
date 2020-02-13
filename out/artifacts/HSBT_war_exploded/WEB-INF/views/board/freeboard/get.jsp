@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="width: auto">
+            <div class="row">
                 <div class="col-lg-12">
 <%--                    panel--%>
                     <div class="panel panel-default">

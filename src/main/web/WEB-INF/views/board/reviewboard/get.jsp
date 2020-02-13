@@ -20,9 +20,9 @@
                             DataTables Advanced Tables
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" style="width: 600px">
                             <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
+                            <label>글번호</label> <input size="40" class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
@@ -123,7 +123,8 @@
 <%--                <div class="modal-dialog">--%>
             </div>
 <%--         /.modal   --%>
-
+            </div>
+        </div>
     </div>
 <script type="text/javascript" ></script>
 <script>
@@ -133,12 +134,12 @@
             <%--operForm.append("<input type='hidden' name='bno' value="+${board.bno} +">");--%>
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");--%>
-            operForm.attr("action","/board/modify").submit();
+            operForm.attr("action","/board/reviewboard/modify").submit();
         });
 
         $("button[data-oper='list']").on("click",function(e) {
             // operForm.find("#bno").remove();
-            operForm.attr("action","/board/list");
+            operForm.attr("action","/board/reviewboard/list");
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");--%>
@@ -191,7 +192,7 @@
         $(".chat").on("click","li",function (e) {
             var rno = $(this).data("rno");
 
-            replyService.get(rno,function (reply) {
+            replyService.get(r_no,function (reply) {
                 modalInputReply.val(reply.reply);
                 modalInputReplyer.val(reply.replyer);
                 modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly","readonly");
@@ -271,4 +272,4 @@
 
 
 </script>
-<%@include file="/WEB-INF/views/includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>
