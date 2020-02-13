@@ -20,29 +20,29 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>" readonly="readonly">
+                            <label>글번호</label> <input class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${board.title}"/>" readonly="readonly">
+                            <label>제목</label> <input class="form-control" name="r_title" value="<c:out value="${review.r_title}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
                             <label>내용</label>
-                            <textarea class="form-control" name="content" readonly="readonly">
-                            <c:out value="${board.content}" />
+                            <textarea class="form-control" name="r_content" readonly="readonly">
+                            <c:out value="${review.r_content}" />
                                 </textarea>
                             </div>
 
                             <div class="form-group">
-                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>" readonly="readonly">
+                            <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
 
                            <button data-oper="modify" class="btn btn-default">수정</button>
                            <button data-oper="list" class="btn btn-info">목록</button>
 
-                            <form id="operForm" action="board/modify" method="get">
-                                <input type="hidden" name="bno" value="${board.bno}">
+                            <form id="operForm" action="board/reviewboard/modify" method="get">
+                                <input type="hidden" name="bno" value="${review.r_no}">
                                 <input type="hidden" name="pageNum" value="${cri.pageNum}">
                                 <input type="hidden" name="type" value="${cri.type}">
                                 <input type="hidden" name="keyword" value="${cri.keyword}">

@@ -1,7 +1,7 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@include file="/WEB-INF/views/includes/header.jsp"%>
+<%@include file="/WEB-INF/views/board/includes/header.jsp"%>
 
 
              <div class="row">
@@ -10,6 +10,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <br>
+            <br>
+            <br>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -20,29 +23,29 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>" readonly="readonly">
+                            <label>글번호</label> <input class="form-control" name="b_no" value="<c:out value="${board.b_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${board.title}"/>" readonly="readonly">
+                            <label>제목</label> <input class="form-control" name="b_title" value="<c:out value="${board.b_title}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
                             <label>내용</label>
-                            <textarea class="form-control" name="content" readonly="readonly">
-                            <c:out value="${board.content}" />
+                            <textarea class="form-control" name="b_content" readonly="readonly">
+                            <c:out value="${board.b_content}" />
                                 </textarea>
                             </div>
 
                             <div class="form-group">
-                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>" readonly="readonly">
+<%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
                             </div>
 
                            <button data-oper="modify" class="btn btn-default">수정</button>
                            <button data-oper="list" class="btn btn-info">목록</button>
 
                             <form id="operForm" action="board/modify" method="get">
-                                <input type="hidden" name="bno" value="${board.bno}">
+                                <input type="hidden" name="b_no" value="${board.b_no}">
                                 <input type="hidden" name="pageNum" value="${cri.pageNum}">
                                 <input type="hidden" name="type" value="${cri.type}">
                                 <input type="hidden" name="keyword" value="${cri.keyword}">
@@ -52,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="width: auto">
                 <div class="col-lg-12">
 <%--                    panel--%>
                     <div class="panel panel-default">
@@ -120,8 +123,9 @@
 <%--                <div class="modal-dialog">--%>
             </div>
 <%--         /.modal   --%>
-
+        </div>
     </div>
+</div>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script>
     $(document).ready(function () {
@@ -130,12 +134,12 @@
             <%--operForm.append("<input type='hidden' name='bno' value="+${board.bno} +">");--%>
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");--%>
-            operForm.attr("action","/board/modify").submit();
+            operForm.attr("action","/board/freeboard/modify").submit();
         });
 
         $("button[data-oper='list']").on("click",function(e) {
             // operForm.find("#bno").remove();
-            operForm.attr("action","/board/list");
+            operForm.attr("action","/board/freeboard/list");
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");--%>
@@ -152,7 +156,7 @@
         console.log("=======================");
         console.log("JS TEST");
 
-        var bnoValue = '<c:out value="${board.bno}"/>';
+        var bnoValue = '<c:out value="${board.b_no}"/>';
         var replyUL = $(".chat");
         var modal = $(".modal");
         var modalInputReply = modal.find("input[name = 'reply']");
@@ -268,4 +272,4 @@
 
 
 </script>
-<%@include file="/WEB-INF/views/includes/footer.jsp"%>
+<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>

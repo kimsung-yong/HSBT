@@ -1,7 +1,7 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@include file="/WEB-INF/views/includes/header.jsp"%>
+<%@include file="/WEB-INF/views/board/includes/header.jsp"%>
 
 
              <div class="row">
@@ -10,6 +10,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <br>
+            <br>
+            <br>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -120,8 +123,9 @@
 <%--                <div class="modal-dialog">--%>
             </div>
 <%--         /.modal   --%>
-
+        </div>
     </div>
+</div>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script>
     $(document).ready(function () {
@@ -268,4 +272,4 @@
 
 
 </script>
-<%@include file="/WEB-INF/views/includes/footer.jsp"%>
+<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>

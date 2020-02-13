@@ -18,25 +18,25 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form action="/board/modify" method="post">
+                            <form action="/board/freeboard/modify" method="post">
                             <div class="form-group">
 
-                            <label>글번호</label> <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>">
+                            <label>글번호</label> <input class="form-control" name="b_no" readonly="readonly" value="<c:out value="${board.b_no}"/>">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="title" value="<c:out value="${board.title}"/>" >
+                            <label>제목</label> <input class="form-control" name="b_title" value="<c:out value="${board.b_title}"/>" >
                             </div>
 
                             <div class="form-group">
                             <label>내용</label>
-                                <textarea class="form-control" name="content">
-                                <c:out value="${board.content}"/>
+                                <textarea class="form-control" name="b_content">
+                                <c:out value="${board.b_content}"/>
                                </textarea>
                             </div>
 
                             <div class="form-group">
-                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>">
+<%--                            <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>">--%>
                             </div>
                                 <button data-oper="modify" type="submit" class="btn btn-danger">저장</button>
                                 <button data-oper="remove" type="submit" class="btn btn-danger">삭제</button>
@@ -67,14 +67,14 @@
                     formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
                     formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
                 }else if(operation === 'remove'){
-                    formObj.attr("action", "/board/remove");
+                    formObj.attr("action", "/board/freeboard/remove");
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
                     formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
                     formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
                 }else if (operation === 'list'){
                     // self.location = "/board/list";
-                    formObj.attr("action","/board/list").attr("method","get");
+                    formObj.attr("action","/board/freeboard/list").attr("method","get");
                     formObj.empty();
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
