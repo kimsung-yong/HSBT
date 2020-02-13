@@ -44,10 +44,11 @@
                             <button data-oper="list" class="btn btn-info">목록</button>
 
                             <form id="operForm" action="board/tipboard/modify" method="get">
-                                <input type="hidden" id="t_no" name="t_no" value="${tip.t_no}">
-                                <input type="hidden" name="pageNum" value="${cri.pageNum}">
-                                <input type="hidden" name="type" value="${cri.type}">
-                                <input type="hidden" name="keyword" value="${cri.keyword}">
+                                <input type="hidden" id="t_no" name="t_no" value="<c:out value="${tip.t_no}"/>">
+                                <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
+                                <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
+                                <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
+                                <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
 
                             </form>
                         </div>
