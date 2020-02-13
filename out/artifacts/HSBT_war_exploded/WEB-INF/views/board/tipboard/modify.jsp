@@ -42,11 +42,13 @@
 
                                 <div class="form-group">
                                     <label>작성자</label>
-                                    <input class="form-control" name="id" value="<c:out value="${tip.userVO.id}"/>" readonly="readonly">
+                                    <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
                                 </div>
 
                                 <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
-                                <input type="hidden" name="amount" value="<c:out value="#{cri.amount}"/>">
+                                <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
+                                <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
+                                <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
 
                                 <button data-oper="modify" type="submit" class="btn btn-danger">저장</button>
                                 <button data-oper="remove" type="submit" class="btn btn-danger">삭제</button>
@@ -86,12 +88,11 @@
                 }else if (operation === 'list'){
                     // self.location = "/board/list";
                     formObj.attr("action","/board/tipboard/list").attr("method","get");
-                    formObj.empty();
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
                     formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
                     formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
-
+                    formObj.empty();
                 }
                 formObj.submit();
             });

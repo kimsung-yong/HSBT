@@ -50,6 +50,7 @@ public class TipController {
     public void get(@RequestParam("t_no") Long t_no, @ModelAttribute("cri") Criteria cri, Model model) {
         /*log.info("/get or modify");*/
         model.addAttribute("tip", service.get(t_no));
+
     }
 
     @PostMapping("/modify")

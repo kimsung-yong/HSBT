@@ -3,24 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.TipMapper">
-	<resultMap id="tipMap" type="domain.TipVO">
-		<id property="t_no" column="t_no"/>
-		<result property="t_title" column="t_title"/>
-		<result property="t_content" column="t_content"/>
-		<result property="u_no" column="u_no"/>
-		<result property="t_regtime" column="t_regtime"/>
-		<result property="t_updatetime" column="t_updatetime"/>
-		<association property="userVO" column="id" resultMap="userMap"/>
-	</resultMap>
-	<resultMap id="userMap" type="domain.UserVO">
-		<id property="u_no" column="u_no"/>
-		<result property="id" column="id"/>
-		<result property="pw" column="pw"/>
-		<result property="phone" column="phone"/>
-		<result property="name" column="name"/>
-		<result property="address" column="address"/>
-		<result property="manager" column="manager"/>
-	</resultMap>
 
 	<sql id="criteria">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
@@ -28,13 +10,13 @@
 				<trim prefix="OR">
 					<choose>
 						<when test="type == 'T'.toString()">
-							t.t_title like '%' || #{keyword} || '%'
+							t_title like '%' || #{keyword} || '%'
 						</when>
 						<when test="type == 'C'.toString()">
-							t.t_content like '%' || #{keyword} || '%'
+							t_content like '%' || #{keyword} || '%'
 						</when>
 						<when test="type == 'W'.toString()">
-							u.id like '%' || #{keyword} || '%'
+							id like '%' || #{keyword} || '%'
 						</when>
 					</choose>
 				</trim>
@@ -42,26 +24,22 @@
 		</trim>
 	</sql>
 
-    <select id="getList" resultMap="tipMap">
+    <select id="getList" resultType="domain.TipVO">
 		<![CDATA[
-			select t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
-			from tbl_tip t
-			inner join tbl_user u
-			on t.u_no = u.u_no
-			where t.t_no > 0
-			order by t.t_no desc
+			select t_no, t_title, t_content, id, t_regtime, t_updatetime
+			from tbl_tip
+			where t_no > 0
+			order by t_no desc
 		]]>
 	</select>
 
-	<select id="getListWithPaging" resultMap="tipMap">
+	<select id="getListWithPaging" resultType="domain.TipVO">
 		<![CDATA[
 			select t_no, t_title, t_content, id, t_regtime, t_updatetime
 			from (
-				select /*+INDEX_DESC(tbl_tip PK_TIP) */
-				rownum rn, t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
-				from tbl_tip t
-				inner join tbl_user u
-				on t.u_no = u.u_no
+				select /*+ INDEX_DESC(tbl_tip pk_tip) */
+				rownum rn, t_no, t_title, t_content, id, t_regtime, t_updatetime
+				from tbl_tip
 				where
 		]]>
 				<include refid="criteria"></include>
@@ -69,29 +47,26 @@
 				rownum <= #{pageNum} * #{amount}
 			)
 			where rn > (#{pageNum} -1) * #{amount}
-			order by t_no desc
 		]]>
 	</select>
 
 	<insert id="insert">
-		insert into tbl_tip (t_no, t_title, t_content, u_no)
-		values(tip_seq.nextval, #{t_title}, #{t_content}, #{u_no})
+		insert into tbl_tip (t_no, t_title, t_content, id)
+		values(tip_seq.nextval, #{t_title}, #{t_content}, #{id})
 	</insert>
 
 	<insert id="insertSelectKey">
 		<selectKey keyProperty="t_no" order="BEFORE" resultType="long">
 			select tip_seq.nextval from dual
 		</selectKey>
-		insert into tbl_tip (t_no, t_title, t_content, u_no)
-		values(#{t_no}, #{t_title}, #{t_content}, #{u_no})
+		insert into tbl_tip (t_no, t_title, t_content, id)
+		values(#{t_no}, #{t_title}, #{t_content}, #{id})
 	</insert>
 
-	<select id="read" resultMap="tipMap">
-		select t.t_no, t.t_title, t.t_content, u.id, t.t_regtime, t.t_updatetime
-		from tbl_tip t
-		join tbl_user u
-		on t.u_no = u.u_no
-		where t.t_no = #{t_no}
+	<select id="read" resultType="domain.TipVO">
+		select t_no, t_title, t_content, id, t_regtime, t_updatetime
+		from tbl_tip
+		where t_no = #{t_no}
 	</select>
 
 	<delete id="delete">
@@ -108,12 +83,12 @@
 
 	<select id="getTotalCount" resultType="int">
 		<![CDATA[
-			select count(*) from tbl_tip t inner join tbl_user u on t.u_no = u.u_no
+			select count(*) from tbl_tip
 			where
 		]]>
 		<include refid="criteria"></include>
 		<![CDATA[
-			t.t_no > 0
+			t_no > 0
 		]]>
 	</select>
 </mapper>

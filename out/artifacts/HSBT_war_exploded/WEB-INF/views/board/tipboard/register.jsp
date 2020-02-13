@@ -34,7 +34,7 @@
                                 </div>
                                 <iv class="form-group">
                                     <label>Writer</label>
-                                    <input class="form-control" name="u_no">
+                                    <input class="form-control" name="id">
                                 </div>
                                 <button type="submit" class="btn btn-default">저장</button>
                                 <button type="reset" class="btn btn-default">재작성</button>
