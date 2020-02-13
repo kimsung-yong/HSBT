@@ -41,7 +41,7 @@
                                         <td><c:out value="${tip.t_no}"/> </td>
                                         <td><a id="detailPage" href='<c:out value="${tip.t_no}"/>'>
                                             <c:out value="${tip.t_title}"/></a> </td>
-                                        <td><c:out value="${tip.userVO.id}"/> </td>
+                                        <td><c:out value="${tip.id}"/> </td>
                                         <td><fmt:formatDate value="${tip.t_regtime}" pattern="yyyy-MM-dd"/> </td>
                                         <td><fmt:formatDate value="${tip.t_updatetime}" pattern="yyyy-MM-dd"/> </td>
                                     </tr>
