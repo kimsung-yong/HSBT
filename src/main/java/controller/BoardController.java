@@ -1,6 +1,7 @@
 package controller;
 
 import domain.BoardVO;
+import domain.Criteria;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,12 @@ import java.awt.*;
 @Controller
 @RequestMapping("/board/freeboard/*")
 @Log4j
-public class BoardController {
+public class  BoardController {
     @Autowired
     private BoardService service;
 
     @GetMapping("/list")
-    public void list(Model model) {
+    public void list(Model model, Criteria cri) {
 
         model.addAttribute("list",service.read());
     }
