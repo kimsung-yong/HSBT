@@ -1,14 +1,12 @@
 package controller;
 
+import domain.Criteria;
 import domain.ReviewVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.review.ReviewService;
 
@@ -37,11 +35,25 @@ public class ReviewController {
         return "redirect:/board/reviewboard/list";
     }
 
-    @GetMapping("/get")
+    @GetMapping({"/get","/modify"})
     public void get(@RequestParam("r_no") Long r_no,Model model){
-        log.info("/get");
+        log.info("/get or modify");
         model.addAttribute("review",service.get(r_no));
     }
+    @PostMapping("/modify")
+    public String modify(ReviewVO reviewVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+        /*log.info("modify : " + tipVO);*/
 
+        if(service.modify(reviewVO)) {
+            rttr.addFlashAttribute("result", "success");
+        }
+
+        rttr.addAttribute("pageNum", cri.getPageNum());
+        rttr.addAttribute("amount", cri.getAmount());
+        rttr.addAttribute("type", cri.getType());
+        rttr.addAttribute("keyword", cri.getKeyword());
+
+        return "redirect:/board/reviewboard/list";
+    }
 
 }

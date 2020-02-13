@@ -7,7 +7,9 @@
 
              <div class="row">
                 <div class="col-lg-12">
+                    <br>
                     <h1 class="page-header">Review</h1>
+                    <br>
                 </div>
 
                 <!-- /.col-lg-12 -->
@@ -17,12 +19,14 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            <br><br><br><br>
+                            <h3>게시글</h3>
+                            <hr>
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" style="width: 600px">
                             <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
+                            <label>글번호</label> <input size="40" class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
@@ -49,12 +53,12 @@
                                 <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
                                 <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
                                 <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
-
                             </form>
+                            <hr>
                         </div>
                     </div>
-                </div>
-            </div>
+                <%--</div>
+            </div>--%>
             <div class="row">
                 <div class="col-lg-12">
 <%--                    panel--%>
@@ -64,8 +68,8 @@
 <%--                        </div>--%>
 
                          <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> Reply
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                            <%--<i class="fa fa-comments fa-fw"></i> 댓글--%>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">댓글추가</button>
                          </div>
 
 <%--                     panel-heading   --%>
@@ -89,6 +93,7 @@
                 </div>
 <%--                ./end row--%>
             </div>
+                    </div></div>
         <!-- /#page-wrapper -->
         <div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -123,7 +128,8 @@
 <%--                <div class="modal-dialog">--%>
             </div>
 <%--         /.modal   --%>
-
+            </div>
+        </div>
     </div>
 <script type="text/javascript" ></script>
 <script>
@@ -133,12 +139,12 @@
             <%--operForm.append("<input type='hidden' name='bno' value="+${board.bno} +">");--%>
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");--%>
-            operForm.attr("action","/board/modify").submit();
+            operForm.attr("action","/board/reviewboard/modify").submit();
         });
 
         $("button[data-oper='list']").on("click",function(e) {
             // operForm.find("#bno").remove();
-            operForm.attr("action","/board/list");
+            operForm.attr("action","/board/reviewboard/list");
             <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");--%>
             <%--operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");--%>
@@ -191,7 +197,7 @@
         $(".chat").on("click","li",function (e) {
             var rno = $(this).data("rno");
 
-            replyService.get(rno,function (reply) {
+            replyService.get(r_no,function (reply) {
                 modalInputReply.val(reply.reply);
                 modalInputReplyer.val(reply.replyer);
                 modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly","readonly");
@@ -271,4 +277,4 @@
 
 
 </script>
-<%@include file="/WEB-INF/views/includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>
