@@ -35,9 +35,7 @@
 
                             <div class="form-group">
                                 <label>내용</label>
-                                <textarea class="form-control" name="t_content" readonly="readonly">
-                                    <c:out value="${tip.t_content}"/>
-                                </textarea>
+                                <textarea class="form-control" name="t_content" readonly="readonly"><c:out value="${tip.t_content}"/></textarea>
                             </div>
 
                             <div class="form-group">
@@ -326,6 +324,10 @@
             pageNum = targetPageNum;
 
             showList(pageNum);
+        });
+
+        $("#modalCloseBtn").on("click", function () {
+           $(".modal").modal("hide");
         });
 
          // tipReplyService.add(

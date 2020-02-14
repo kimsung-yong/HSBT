@@ -59,7 +59,7 @@ public class TipController {
         if(service.modify(tipVO)) {
             rttr.addFlashAttribute("result", "success");
         }
-        return "redirect:/board/tipboard/list";
+        return "redirect:/board/tipboard/list" + cri.getListLink();
     }
 
     @PostMapping("/remove")
@@ -69,6 +69,6 @@ public class TipController {
         if(service.remove(t_no)) {
             rttr.addFlashAttribute("result", "success");
         }
-        return "redirect:/board/tipboard/list";
+        return "redirect:/board/tipboard/list" + cri.getListLink();
     }
 }

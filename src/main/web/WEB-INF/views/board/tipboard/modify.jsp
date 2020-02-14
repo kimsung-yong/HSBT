@@ -35,9 +35,7 @@
 
                                 <div class="form-group">
                                 <label>내용</label>
-                                    <textarea class="form-control" name="t_content">
-                                        <c:out value="${tip.t_content}"/>
-                                    </textarea>
+                                    <textarea class="form-control" name="t_content"><c:out value="${tip.t_content}"/></textarea>
                                 </div>
 
                                 <div class="form-group">
