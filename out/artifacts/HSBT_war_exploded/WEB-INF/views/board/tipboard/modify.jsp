@@ -15,13 +15,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <br><br><br><br>
                         <div class="panel-heading">
+                            <br><br><br><br>
                             <h3>게시글 수정</h3>
-                            <br>
+                            <hr>
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" style="width: 600px;">
                             <form action="/board/tipboard/modify" method="post">
                                 <div class="form-group">
                                     <label>글번호</label>
@@ -36,8 +36,8 @@
                                 <div class="form-group">
                                 <label>내용</label>
                                     <textarea class="form-control" name="t_content">
-                                    <c:out value="${tip.t_content}"/>
-                                   </textarea>
+                                        <c:out value="${tip.t_content}"/>
+                                    </textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -61,42 +61,41 @@
             </div>
         <!-- /#page-wrapper -->
     </div>
-    <script>
-        $(document).ready(function () {
-            var formObj = $("form");
+</div>
+
+<script>
+    $(document).ready(function () {
+        var formObj = $("form");
             
-            $('button').on("click",function (e) {
+        $('button').on("click",function (e) {
 
-                e.preventDefault();
+            e.preventDefault();
 
-                var operation = $(this).data("oper");
+            var operation = $(this).data("oper");
 
-                console.log(operation);
+            console.log(operation);
 
-                if(operation === 'modify'){
-                    // e.preventDefault();
-                    formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
-                    formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
-                    formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
-                    formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
-                }else if(operation === 'remove'){
-                    formObj.attr("action", "/board/tipboard/remove");
-                    formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
-                    formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
-                    formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
-                    formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
-                }else if (operation === 'list'){
-                    // self.location = "/board/list";
-                    formObj.attr("action","/board/tipboard/list").attr("method","get");
-                    formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
-                    formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
-                    formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
-                    formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
-                    formObj.empty();
-                }
-                formObj.submit();
-            });
-            
+            if(operation === 'remove') {
+                formObj.attr("action", "/board/tipboard/remove");
+            } else if(operation === 'list') {
+                formObj.attr("action", "/board/tipboard/list").attr("method", "get");
+
+                var pageNumTag = $("input[name='pageNum']").clone();
+                var amountTag = $("input[name='amount']").clone();
+                var keywordTag = $("input[name='keyword']").clone();
+                var typeTag = $("input[name='type']").clone();
+
+                formObj.empty();
+
+                formObj.append(pageNumTag);
+                formObj.append(amountTag);
+                formObj.append(keywordTag);
+                formObj.append(typeTag);
+            }
+
+            formObj.submit();
         });
-    </script>
+            
+    });
+</script>
 <%@include file="../includes/footer.jsp"%>

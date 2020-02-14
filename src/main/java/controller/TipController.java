@@ -60,12 +60,6 @@ public class TipController {
         if(service.modify(tipVO)) {
             rttr.addFlashAttribute("result", "success");
         }
-
-        rttr.addAttribute("pageNum", cri.getPageNum());
-        rttr.addAttribute("amount", cri.getAmount());
-        rttr.addAttribute("type", cri.getType());
-        rttr.addAttribute("keyword", cri.getKeyword());
-
         return "redirect:/board/tipboard/list";
     }
 
@@ -76,12 +70,6 @@ public class TipController {
         if(service.remove(t_no)) {
             rttr.addFlashAttribute("result", "success");
         }
-
-        rttr.addAttribute("pageNum", cri.getPageNum());
-        rttr.addAttribute("amount", cri.getAmount());
-        rttr.addAttribute("type", cri.getType());
-        rttr.addAttribute("keyword", cri.getKeyword());
-
         return "redirect:/board/tipboard/list";
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.TipReplyMapper">
+    <insert id="insert">
+        insert into tbl_tip_reply (tr_no, t_no, tr_content, id)
+        values (tip_reply_seq.nextval, #{t_no}, #{tr_content}, #{id})
+    </insert>
+
+    <select id="read" resultType="domain.TipReplyVO">
+        select * from tbl_tip_reply where tr_no = #{tr_no}
+    </select>
+
+    <delete id="delete">
+        delete from tbl_tip_reply where tr_no = #{tr_no}
+    </delete>
+
+    <update id="update">
+        update tbl_tip_reply set tr_content = #{tr_content}, tr_updatetime = sysdate where tr_no = #{tr_no}
+    </update>
+
+    <select id="getListWithPaging" resultType="domain.TipReplyVO">
+        select tr_no, t_no, tr_content, id, tr_regtime, tr_updatetime
+        from tbl_tip_reply
+        where t_no = #{t_no}
+        order by tr_no asc
+    </select>
+</mapper>

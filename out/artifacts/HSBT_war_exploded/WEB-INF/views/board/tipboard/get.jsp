@@ -17,27 +17,32 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            <br><br><br><br>
+                            <h3>게시글 작성</h3>
+                            <hr>
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" style="width: 600px">
                             <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="t_no" value="<c:out value="${tip.t_no}"/>" readonly="readonly">
+                                <label>글번호</label>
+                                <input class="form-control" name="t_no" value="<c:out value="${tip.t_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="t_title" value="<c:out value="${tip.t_title}"/>" readonly="readonly">
+                                <label>제목</label>
+                                <input class="form-control" name="t_title" value="<c:out value="${tip.t_title}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
-                            <label>내용</label>
-                            <textarea class="form-control" name="t_content" readonly="readonly">
-                                <c:out value="${tip.t_content}" />
-                            </textarea>
+                                <label>내용</label>
+                                <textarea class="form-control" name="t_content" readonly="readonly">
+                                    <c:out value="${tip.t_content}"/>
+                                </textarea>
                             </div>
 
                             <div class="form-group">
-                            <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
+                                <label>작성자</label>
+                                <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
                             </div>
 
                             <button data-oper="modify" class="btn btn-default">수정</button>
@@ -53,42 +58,45 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
+                    <br>
+                <div class="row" style="margin: 0">
+                    <div class="col-lg-12">
 <%--                    panel--%>
-                    <div class="panel panel-default">
+                        <div class="panel panel-default">
 <%--                        <div class="panel-heading">--%>
 <%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
 <%--                        </div>--%>
 
-                         <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> Reply
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
-                         </div>
+                            <div class="panel-heading">
+                                <i class="fa fa-comments fa-fw"></i>Reply
+                                <br><br>
+                                <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                            </div>
+                            <hr>
 
-<%--                     panel-heading   --%>
-                        <div class="panel-body">
-                            <ul class="chat">
-                                <li class="left clearfix" data-rno="12">
-                                    <div>
-                                        <div class="header">
-                                            <strong class="primary-font">user00</strong>
-                                            <small class="pull-right text-muted">2020-01-31</small>
+<%--                        panel-heading   --%>
+                            <div class="panel-body">
+                                <ul class="chat">
+                                    <li class="left clearfix" data-tr_no="12">
+                                        <div>
+                                            <div class="header">
+                                                <strong class="primary-font">user00</strong>
+                                                <small class="pull-right text-muted">2020-01-31</small>
+                                            </div>
+                                            <p> Good job!</p>
                                         </div>
-                                        <p> Good job!</p>
-                                    </div>
-                                </li>
+                                    </li>
 <%--                                end reply--%>
-                            </ul>
+                                </ul>
 <%--                            end ul--%>
-                        </div>
+                            </div>
 <%--                        /.panel .chat-panel--%>
+                        </div>
                     </div>
-                </div>
 <%--                ./end row--%>
+                </div>
             </div>
+        </div>
         <!-- /#page-wrapper -->
         <div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -100,15 +108,15 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Reply</label>
-                            <input class="form-control" name="reply" value="new reply">
+                            <input class="form-control" name="tr_content" value="new reply">
                         </div>
                         <div class="form-group">
                             <label>Replyer</label>
-                            <input class="form-control" name="replyer" value="new replyer">
+                            <input class="form-control" name="id" value="new replyer">
                         </div>
                         <div class="form-group">
                             <label>Reply Date</label>
-                            <input class="form-control" name="replyDate" value="">
+                            <input class="form-control" name="tr_regtime" value="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -123,10 +131,12 @@
 <%--                <div class="modal-dialog">--%>
             </div>
 <%--         /.modal   --%>
-
+        </div>
     </div>
+</div>
 <%@include file="../includes/footer.jsp"%>
-<script type="text/javascript" <%--src="/resources/js/reply.js"--%>></script>
+<script type="text/javascript" src="/resources/js/tipReply.js"></script>
+
 <script>
     $(document).ready(function () {
         var operForm = $("#operForm");
@@ -156,19 +166,19 @@
         console.log("=======================");
         console.log("JS TEST");
 
-        var bnoValue = '<c:out value="${board.bno}"/>';
+        var t_noValue = '<c:out value="${tip.t_no}"/>';
         var replyUL = $(".chat");
         var modal = $(".modal");
-        var modalInputReply = modal.find("input[name = 'reply']");
-        var modalInputReplyer = modal.find("input[name = 'replyer']");
-        var modalInputReplyDate = modal.find("input[name ='replyDate']");
+        var modalInputTr_content = modal.find("input[name = 'tr_content']");
+        var modalInputId = modal.find("input[name = 'id']");
+        var modalInputTr_regtime = modal.find("input[name ='tr_regtime']");
 
         var modalModBtn = $("#modalModBtn");
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
         $("#addReplyBtn").on("click",function (e) {
             modal.find("input").val("");
-            modalInputReplyDate.closest("div").hide();
+            modalInputTr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
 
             modalRegisterBtn.show();
@@ -177,11 +187,11 @@
         });
         modalRegisterBtn.on("click",function (e) {
 
-            var reply = {reply : modalInputReply.val(),
-                        replyer : modalInputReplyer.val(),
-                        bno : bnoValue
+            var tr_content = {tr_content : modalInputTr_content.val(),
+                        id : modalInputId.val(),
+                        tr_no : tr_noValue
             };
-            replyService.add(reply,function (result) {
+            tipReplyService.add(tr_content,function (result) {
                 alert(result);
 
                 modal.find("input").val("");
@@ -190,13 +200,13 @@
             })
         });
         $(".chat").on("click","li",function (e) {
-            var rno = $(this).data("rno");
+            var tr_no = $(this).data("tr_no");
 
-            replyService.get(rno,function (reply) {
-                modalInputReply.val(reply.reply);
-                modalInputReplyer.val(reply.replyer);
-                modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly","readonly");
-                modal.data("rno","reply.rno");
+            tipReplyService.get(tr_no,function (tr_content) {
+                modalInputReply.val(tr_content.tr_content);
+                modalInputReplyer.val(tr_content.id);
+                modalInputReplyDate.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly","readonly");
+                modal.data("tr_no","reply.rno");
 
                 modal.find("button[id !='modalCloseBtn']").hide();
                 modalModBtn.show();
@@ -206,7 +216,7 @@
 
             });
 
-            console.log(rno);
+            console.log(tr_no);
         });
 
         showList(1);
@@ -214,7 +224,7 @@
         
 
         function showList(page) {
-            replyService.getList({bno:bnoValue,page: page}, function (list) {
+            tipReplyService.getList({t_no:t_noValue, page: page || 1}, function (list) {
 
                 var str = "";
                 if(list == null || list.length == 0){
@@ -222,50 +232,50 @@
 
                     return;
                 }
-                for(var i=0,len = list.length || 0; i < len; i++){
-                    str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-                    str += "<div><div class='header'><strong class='primary-font'>"+ list[i].replyer+"</strong>";
-                    str += "<small class='pull-right text-muted'>" +replyService.displayTime(list[i].replyDate)+"</small></div>";
-                    str += "<p>" + list[i].reply+"</p></div></li>"
+                for(var i=0, len = list.length || 0; i < len; i++){
+                    str += "<li class='left clearfix' data-tr_no='"+list[i].tr_no+"'>";
+                    str += "<div><div class='header'><strong class='primary-font'>"+ list[i].id+"</strong>";
+                    str += "<small class='pull-right text-muted'>" + tipReplyService.displayTime(list[i].tr_regtime)+"</small></div>";
+                    str += "<p>" + list[i].tr_content+"</p></div></li>"
                 }
                 replyUL.html(str);
             });
         }
 
-    //     replyService.add(
-    //         {reply:"JS TEST", replyer:"tester", bno:bnoValue},
-    //         function (result) {
-    //             alert("Result :" + result);
-    //         }
-    //         );
-    //     replyService.getList({bno:bnoValue, page:1},function (list) {
-    //         for(var i = 0, len =list.length||0; i < len; i++){
-    //             console.log(list[i]);
-    //         }
-    //     });
-    //
-    //     replyService.remove(49, function (count) {
-    //         console.log(count);
-    //
-    //         if(count === "success"){
-    //             alert("removed");
-    //         }
-    //     },function (err) {
-    //         alert("error");
-    //         }
-    //     )
-    //
-    //     replyService.update({
-    //         rno :50,
-    //         bno : bnoValue,
-    //         reply : "Modifyed Reply..."
-    //     },function (result) {
-    //         alert("수정완료");
-    //     });
-    //
-    //     replyService.get(49, function (data) {
-    //         console.log(data)
-    //     })
+         // tipReplyService.add(
+         //     {tr_content:"JS TEST", id:"Lee123", t_no:t_noValue},
+         //     function (result) {
+         //         alert("Result :" + result);
+         //     }
+         //     );
+         // tipReplyService.getList({t_no:t_noValue, page:1},function (list) {
+         //     for(var i = 0, len =list.length||0; i < len; i++){
+         //         console.log(list[i]);
+         //     }
+         // });
+
+         // tipReplyService.remove(49, function (count) {
+         //     console.log(count);
+         //
+         //     if(count === "success"){
+         //         alert("removed");
+         //     }
+         // },function (err) {
+         //     alert("error");
+         //     }
+         // )
+         //
+         // tipReplyService.update({
+         //     rno :50,
+         //     bno : bnoValue,
+         //     reply : "Modifyed Reply..."
+         // },function (result) {
+         //     alert("수정완료");
+         // });
+         //
+         // tipReplyService.get(49, function (data) {
+         //     console.log(data)
+         // })
 
 
     });
