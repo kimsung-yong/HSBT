@@ -1,6 +1,7 @@
 package service.Board;
 
 import domain.BoardVO;
+import domain.Criteria;
 import lombok.Setter;
 import mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class BoardServiceImp implements BoardService{
     BoardMapper mapper;
 
     @Override
-    public List<BoardVO> read() {
-        return mapper.getList();
+    public List<BoardVO> read(Criteria cri) {
+        return mapper.getListWithPaging(cri);
     }
 
     @Override
@@ -38,5 +39,10 @@ public class BoardServiceImp implements BoardService{
     @Override
     public void remove(Long BN) {
         mapper.delete(BN);
+    }
+
+    @Override
+    public int total(Criteria cri) {
+        return mapper.getCount(cri);
     }
 }
