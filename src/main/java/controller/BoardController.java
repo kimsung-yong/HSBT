@@ -38,15 +38,15 @@ public class  BoardController {
         rttr.addFlashAttribute("result",vo.getB_no());
         return "redirect:/board/freeboard/list";
     }
-    @GetMapping("/get")
-    public void get(@RequestParam("b_no") Long b_no,Model model){
+    @GetMapping({"/get","/modify"})
+    public void get(@RequestParam("b_no") Long b_no,@ModelAttribute("cri") Criteria cri,Model model){
 
        model.addAttribute("board",service.get(b_no));
     }
-    @GetMapping("/modify")
-    public void modify(@RequestParam("b_no") Long b_no,Model model){
-        model.addAttribute("board",service.get(b_no));
-    }
+//    @GetMapping("/modify")
+//    public void modify(@RequestParam("b_no") Long b_no,Model model){
+//        model.addAttribute("board",service.get(b_no));
+//    }
     @PostMapping("/modify")
     public String modify(BoardVO vo,Model model,RedirectAttributes rttr){
 

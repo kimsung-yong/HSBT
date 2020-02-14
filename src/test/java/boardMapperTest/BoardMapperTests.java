@@ -27,27 +27,27 @@ public class BoardMapperTests {
     public void testGetListSelect(){
         mapper.getListSelect(6L);
     }
-    @Test
-    public void testInsert(){
-        BoardVO vo = new BoardVO();
-        vo.setB_title("asd111");
-        vo.setB_content("asdas22");
-        vo.setU_no(1L);
-
-        mapper.insert(vo);
-        log.info(vo);
-    }
-    @Test
-    public void testUpdate(){
-        BoardVO vo = new BoardVO();
-        vo.setB_title("asdada");
-        vo.setB_no(3L);
-        vo.setB_content("azdfq2q");
-        vo.setU_no(1L);
-
-        mapper.update(vo);
-        log.info(vo);
-    }
+//    @Test
+//    public void testInsert(){
+//        BoardVO vo = new BoardVO();
+//        vo.setB_title("asd111");
+//        vo.setB_content("asdas22");
+//        vo.setU_no(1L);
+//
+//        mapper.insert(vo);
+//        log.info(vo);
+//    }
+//    @Test
+//    public void testUpdate(){
+//        BoardVO vo = new BoardVO();
+//        vo.setB_title("asdada");
+//        vo.setB_no(3L);
+//        vo.setB_content("azdfq2q");
+//        vo.setU_no(1L);
+//
+//        mapper.update(vo);
+//        log.info(vo);
+//    }
     @Test
     public void testDelete(){
 
