@@ -229,7 +229,7 @@
                 modalInputTr_content.val(tr_content.tr_content);
                 modalInputId.val(tr_content.id);
                 modalInputTr_regtime.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly","readonly");
-                modal.data("tr_no","tr_content.tr_no");
+                modal.data("tr_no",tr_content.tr_no);
 
                 modal.find("button[id !='modalCloseBtn']").hide();
                 modalModBtn.show();
