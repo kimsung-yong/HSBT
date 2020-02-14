@@ -3,13 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <jsp:include page="../includes/header.jsp"/>
-<style>
-    .pagination {
-        width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
+
         <div class="col-lg-9">
 
             <div class="row">
@@ -29,8 +23,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <%--                            table table-striped table-bordered table-hover--%>
-                            <%--                            dataTables-example--%>
+
                             <table width="100%" class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
@@ -83,26 +76,26 @@
                             </div>
 
                             <div class="pull-right">
-                                <ul class="pagination" >
+                                <ul class="lpagination" >
                                     <c:if test="${pageMaker.prev}">
-                                        <li class="paginate_button previous"><a href="${pageMaker.realStart}" style="padding: 6px 12px">◀◀</a></li>
+                                        <li class="paginate_button previous"><a href="${pageMaker.realStart}">◀◀</a></li>
                                     </c:if>
                                     <c:if test="${pageMaker.prev}">
-                                        <li class="paginate_button previous"><a href="${pageMaker.startPage -1}" style="padding: 6px 12px">◀</a></li>
+                                        <li class="paginate_button previous"><a href="${pageMaker.startPage -1}">◀</a></li>
                                     </c:if>
                                     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                                         <li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}" >
-                                            <a href="${num}" style="padding: 6px 12px">${num}</a>
+                                            <a href="${num}">${num}</a>
                                         </li>
                                     </c:forEach>
                                     <c:if test="${pageMaker.next}">
                                         <li class="paginate_button next">
-                                            <a href="${pageMaker.endPage +1}" style="padding: 6px 12px">▶</a>
+                                            <a href="${pageMaker.endPage +1}">▶</a>
                                         </li>
                                     </c:if>
                                     <c:if test="${pageMaker.next}">
                                         <li class="paginate_button next">
-                                            <a href="${pageMaker.realEnd}" style="padding: 6px 12px">▶▶</a>
+                                            <a href="${pageMaker.realEnd}">▶▶</a>
                                         </li>
                                     </c:if>
                                 </ul>
