@@ -37,9 +37,7 @@
 
                             <div class="form-group">
                             <label>내용</label>
-                                <textarea class="form-control" name="r_content">
-                                <c:out value="${review.r_content}"/>
-                               </textarea>
+                                <textarea class="form-control" name="r_content"><c:out value="${review.r_content}"/></textarea>
                             </div>
 
                             <div class="form-group">
@@ -68,13 +66,13 @@
                 var operation = $(this).data("oper");
 
                 console.log(operation);
-                /*if(operation === 'modify'){
+                if(operation === 'modify'){
                     // e.preventDefault();
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
                     formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
                     formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
-                }else */if(operation === 'remove'){
+                }else if(operation === 'remove'){
                     formObj.attr("action", "/board/reviewboard/remove");
                     formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
                     formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
