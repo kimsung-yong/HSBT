@@ -1,7 +1,7 @@
 package controller;
 
 import domain.Criteria;
-import domain.TipPageDTO;
+import domain.PageDTO;
 import domain.TipVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -30,7 +30,7 @@ public class TipController {
         //model.addAttribute("pageMaker", new TipPageDTO(cri, 123));
 
         int total = service.getTotalCount(cri);
-        model.addAttribute("pageMaker", new TipPageDTO(cri, total));
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
     }
 
     @PostMapping("/register")
