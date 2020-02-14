@@ -24,15 +24,15 @@ public class BoardServiceTest {
     public void testGet(){
         service.get(8L);
     }
-    @Test
-    public void testRegster(){
-        BoardVO vo = new BoardVO();
-        vo.setB_title("키키키");
-        vo.setB_content("키키키키키");
-        vo.setU_no(1L);
-
-        service.regster(vo);
-    }
+//    @Test
+//    public void testRegster(){
+//        BoardVO vo = new BoardVO();
+//        vo.setB_title("키키키");
+//        vo.setB_content("키키키키키");
+//        vo.setU_no(1L);
+//
+//        service.regster(vo);
+//    }
     @Test
     public void testModify(){
         BoardVO vo = new BoardVO();
