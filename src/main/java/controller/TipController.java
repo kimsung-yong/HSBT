@@ -27,7 +27,6 @@ public class TipController {
     public void list(Criteria cri, Model model) {
         /*log.info("list : " + cri);*/
         model.addAttribute("list", service.getList(cri));
-        //model.addAttribute("pageMaker", new TipPageDTO(cri, 123));
 
         int total = service.getTotalCount(cri);
         model.addAttribute("pageMaker", new PageDTO(cri, total));

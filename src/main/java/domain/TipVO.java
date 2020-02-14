@@ -13,4 +13,5 @@ public class TipVO {
     private Date t_regtime;
     private Date t_updatetime;
 
+    private int replyCnt;
 }
