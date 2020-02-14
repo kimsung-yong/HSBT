@@ -224,7 +224,7 @@
                 showList(pageNum);
            });
         });
-
+/**/
         $(".chat").on("click","li",function (e) {
             var tr_no = $(this).data("tr_no");
 
