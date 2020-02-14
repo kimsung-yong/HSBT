@@ -9,6 +9,7 @@ public class PageDTO {
     private int startPage;
     private int endPage;
     private boolean prev, next;
+    private int realStart = 1;
     private int realEnd;
 
     private int total;
@@ -27,7 +28,7 @@ public class PageDTO {
             this.endPage = realEnd;
         }
 
-        this.prev = this.startPage > 1;
+        this.prev = this.startPage > realStart;
         this.next = this.endPage < realEnd;
     }
 }
