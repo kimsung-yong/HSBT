@@ -1,5 +1,6 @@
 package mapper;
 
+import domain.Criteria;
 import domain.ReviewVO;
 
 
@@ -8,6 +9,8 @@ import java.util.List;
 public interface ReviewMapper {
 
     public List<ReviewVO> getList();
+    public List<ReviewVO> getListWithPaging(Criteria cri);
+    public int getTotalCount(Criteria cri);
 
     public void insert(ReviewVO review);
     public void insertSelectKey(ReviewVO review);

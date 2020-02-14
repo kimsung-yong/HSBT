@@ -1,12 +1,14 @@
 package service.review;
 
+import domain.Criteria;
 import domain.ReviewVO;
 
 import java.util.List;
 
 public interface ReviewService {
-    public List<ReviewVO> getList();
-    //    public List<BoardVO> getList(Criteria cri);
+//    public List<ReviewVO> getList();
+    public List<ReviewVO> getList(Criteria cri);
+    public int getTotal(Criteria cri);
 
     public void register(ReviewVO review);
     public ReviewVO get(Long r_no);

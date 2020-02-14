@@ -1,5 +1,6 @@
 package service.review;
 
+import domain.Criteria;
 import domain.ReviewVO;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -43,8 +44,12 @@ public class reviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewVO> getList() {
-        log.info("getList............!!");
-        return mapper.getList();
+    public List<ReviewVO> getList(Criteria cri) {
+        return mapper.getListWithPaging(cri);
+    }
+
+    @Override
+    public int getTotal(Criteria cri) {
+        return mapper.getTotalCount(cri);
     }
 }
