@@ -1,4 +1,4 @@
-package service;
+package service.tip;
 
 import domain.Criteria;
 import domain.TipVO;
