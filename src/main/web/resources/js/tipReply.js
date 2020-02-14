@@ -29,7 +29,7 @@ var tipReplyService = (function () {
         $.getJSON("/tip/replies/pages/" + t_no + "/" + page + ".json",
             function (data) {
                 if(callback) {
-                    callback(data);
+                    callback(data.replyCnt, data.list);
                 }
             }).fail(function (xhr, status, err) {
             if(error) {
@@ -41,7 +41,7 @@ var tipReplyService = (function () {
     function remove(tr_no, callback, error) {
         $.ajax({
             type : 'delete',
-            url : 'tip/replies/' + tr_no,
+            url : '/tip/replies/' + tr_no,
             success : function (deleteResult, status, xhr) {
                 if(callback) {
                     callback(deleteResult);

@@ -10,7 +10,7 @@ public class BoardVO {
     private Long b_no;
     private String b_title;
     private String b_content;
-    private Long u_no;
+    private String u_id;
     private Date b_regTime;
     private Date b_updateTime;
 

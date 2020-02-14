@@ -1,6 +1,7 @@
 package service.tip;
 
 import domain.Criteria;
+import domain.TipReplyPageDTO;
 import domain.TipReplyVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -39,5 +40,10 @@ public class TipReplyServiceImpl implements TipReplyService {
     @Override
     public List<TipReplyVO> getList(Criteria cri, Long t_no) {
         return mapper.getListWithPaging(cri, t_no);
+    }
+
+    @Override
+    public TipReplyPageDTO getListPage(Criteria cri, Long t_no) {
+        return new TipReplyPageDTO(mapper.getCountByT_no(t_no), mapper.getListWithPaging(cri, t_no));
     }
 }

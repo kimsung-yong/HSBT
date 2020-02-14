@@ -41,10 +41,10 @@
                             <tr>
                                 <td><c:out value="${board.b_no}"/> </td>
                                     <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                <td><a id="detailPage" href="${board.b_no}" >
+                                <td><a id="detailPage" class="move" href="${board.b_no}" >
                                     <c:out value="${board.b_title}"/></a> </td>
 
-                                <td><c:out value="${board.userVO.id}"/> </td>
+                                <td><c:out value="${board.u_id}"/> </td>
                                 <td><fmt:formatDate value="${board.b_regTime}" pattern="yyyy-MM-dd"/> </td>
                                 <td><fmt:formatDate value="${board.b_updateTime}" pattern="yyyy-MM-dd"/> </td>
                             </tr>
@@ -53,7 +53,7 @@
                     </table>
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="searchForm" action="/board/list" method="get">
+                            <form id="searchForm" action="/board/freeboard/list" method="get">
                                 <select name="type">
                                     <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--</option>
                                     <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목</option>
@@ -70,7 +70,7 @@
                             </form>
                         </div>
 
-                        <form id="actionForm" action="/board/list" method="get">
+                        <form id="actionForm" action="/board/freeboard/list" method="get">
                             <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                             <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
                             <input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
@@ -193,6 +193,12 @@
             searchForm.submit();
         })
 
+        // $(".move").on("click",function (e) {
+        //     e.preventDefault();
+        //     actionForm.append("<input type='hidden' name='b_no' value="+$(this).attr("href")+">");
+        //     actionForm.attr("action","/board/freeboard/get");
+        //     actionForm.submit();
+        // })
     });
 </script>
 
