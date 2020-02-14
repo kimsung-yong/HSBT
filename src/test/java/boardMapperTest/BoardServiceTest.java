@@ -16,10 +16,10 @@ import service.Board.BoardService;
 public class BoardServiceTest {
     @Setter(onMethod_ = @Autowired)
     BoardService service;
-    @Test
-    public void testGetList(){
-        service.read().forEach(boardVO -> log.info(boardVO));
-    }
+//    @Test
+//    public void testGetList(){
+//        service.read().forEach(boardVO -> log.info(boardVO));
+//    }
     @Test
     public void testGet(){
         service.get(8L);

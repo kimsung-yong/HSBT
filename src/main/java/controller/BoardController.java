@@ -2,6 +2,8 @@ package controller;
 
 import domain.BoardVO;
 import domain.Criteria;
+import domain.PageDTO;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,13 +19,14 @@ import java.awt.*;
 @RequestMapping("/board/freeboard/*")
 @Log4j
 public class  BoardController {
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private BoardService service;
 
     @GetMapping("/list")
     public void list(Model model, Criteria cri) {
 
-        model.addAttribute("list",service.read());
+        model.addAttribute("list",service.read(cri));
+        model.addAttribute("pageMaker",new PageDTO(cri,service.total(cri)));
     }
     @GetMapping("/register")
     public void register(){
