@@ -40,7 +40,7 @@
                                     <tr>
                                         <td><c:out value="${review.r_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="${review.r_no}">
+                                        <td><a id="detailPage" href="/board/reviewboard/get?r_no=<c:out value='${review.r_no}'/>">
                                             <c:out value="${review.r_title}"/></a> </td>
                                         <td><c:out value="${review.id}"/> </td>
                                         <td><fmt:formatDate value="${review.r_regtime}" pattern="yyyy-MM-dd"/> </td>
@@ -79,27 +79,27 @@
                             <div class="pull-right">
                                 <ul class="pagination">
                                     <c:if test="${pageMaker.prev}">
-                                        <li class="paginate_button previous"><a href="${pageMaker.realStart}">◀◀</a></li>
+                                        <li class="paginate_button previous"><a href="#">◀◀</a></li>
                                     </c:if>
                                     <c:if test="${pageMaker.prev}">
-                                        <li class="paginate_button previous"><a href="${pageMaker.startPage -10}">◀</a></li>
+                                        <li class="paginate_button previous"><a href="#">◀</a></li>
                                     </c:if>
                                     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                                         <%--                                            ${pageMaker.cri.pageNum = num ? "active":""}--%>
                                         <%--                                        ${pageMaker.cri.pageNum == num ? "active" : ""}--%>
                                         <%--                                            /board/list?pageNum=${num}--%>
-                                        <li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}" >
-                                            <a href="${num}">${num}</a>
+                                        <li class="paginate_button <%--${pageMaker.cri.pageNum == num ? "active":""}--%>" >
+                                            <a href="#">${num}</a>
                                         </li>
                                     </c:forEach>
                                     <c:if test="${pageMaker.next}">
                                         <li class="paginate_button next">
-                                            <a href="${pageMaker.endPage +1}">▶</a>
+                                            <a href="#">▶</a>
                                         </li>
                                     </c:if>
                                     <c:if test="${pageMaker.next}">
                                         <li class="paginate_button next">
-                                            <a href="${pageMaker.realEnd}">▶▶</a>
+                                            <a href="#">▶▶</a>
                                         </li>
                                     </c:if>
                                 </ul>
