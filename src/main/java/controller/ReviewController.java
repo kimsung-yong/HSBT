@@ -40,13 +40,13 @@ public class ReviewController {
     }
 
     @GetMapping({"/get","/modify"})
-    public void get(@RequestParam("r_no") Long r_no,Model model){
+    public void get(@RequestParam("r_no") Long r_no, @ModelAttribute("cri")Criteria cri, Model model){
         log.info("/get or modify");
         model.addAttribute("review",service.get(r_no));
     }
+
     @PostMapping("/modify")
     public String modify(ReviewVO reviewVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-        /*log.info("modify : " + tipVO);*/
 
         if(service.modify(reviewVO)) {
             rttr.addFlashAttribute("result", "success");
@@ -54,8 +54,21 @@ public class ReviewController {
 
         rttr.addAttribute("pageNum", cri.getPageNum());
         rttr.addAttribute("amount", cri.getAmount());
-        rttr.addAttribute("type", cri.getType());
-        rttr.addAttribute("keyword", cri.getKeyword());
+        /*rttr.addAttribute("type", cri.getType());
+        rttr.addAttribute("keyword", cri.getKeyword());*/
+
+        return "redirect:/board/reviewboard/list";
+    }
+
+    @PostMapping("/remove")
+    public String remove(@RequestParam("r_no")Long r_no, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
+        if(service.remove(r_no)){
+            rttr.addFlashAttribute("result","success");
+        }
+        rttr.addAttribute("pageNum", cri.getPageNum());
+        rttr.addAttribute("amount", cri.getAmount());
+        /*rttr.addAttribute("type", cri.getType());
+        rttr.addAttribute("keyword", cri.getKeyword());*/
 
         return "redirect:/board/reviewboard/list";
     }

@@ -24,6 +24,8 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <form action="/board/reviewboard/modify" method="post">
+                                <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+                                <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
                             <div class="form-group">
 
                             <label>글번호</label> <input class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>">
