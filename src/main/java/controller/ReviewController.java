@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Criteria;
+import domain.PageDTO;
 import domain.ReviewVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -18,9 +19,12 @@ public class ReviewController {
     private ReviewService service;
 
     @GetMapping("/list")
-    public void list(Model model) {
-        log.info("list......");
-        model.addAttribute("list",service.getList());
+    public void list(Criteria cri, Model model) {
+        model.addAttribute("list",service.getList(cri));
+
+        int total = service.getTotal(cri);
+        log.info("total........::: "+ total);
+        model.addAttribute("pageMaker",new PageDTO(cri,total));
     }
     @GetMapping("/register")
     public void register(){
