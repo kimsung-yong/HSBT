@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class TipPageDTO {
+public class PageDTO {
     private int startPage;
     private int endPage;
     private boolean prev, next;
@@ -13,7 +13,7 @@ public class TipPageDTO {
     private int total;
     private Criteria cri;
 
-    public TipPageDTO(Criteria cri, int total) {
+    public PageDTO(Criteria cri, int total) {
         this.cri = cri;
         this.total = total;
 

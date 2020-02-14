@@ -168,6 +168,7 @@
 
         var t_noValue = '<c:out value="${tip.t_no}"/>';
         var replyUL = $(".chat");
+
         var modal = $(".modal");
         var modalInputTr_content = modal.find("input[name = 'tr_content']");
         var modalInputId = modal.find("input[name = 'id']");
@@ -176,6 +177,7 @@
         var modalModBtn = $("#modalModBtn");
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
+
         $("#addReplyBtn").on("click",function (e) {
             modal.find("input").val("");
             modalInputTr_regtime.closest("div").hide();
@@ -185,12 +187,15 @@
 
             $(".modal").modal("show");
         });
+
         modalRegisterBtn.on("click",function (e) {
 
-            var tr_content = {tr_content : modalInputTr_content.val(),
-                        id : modalInputId.val(),
-                        tr_no : tr_noValue
+            var tr_content = {
+                tr_content : modalInputTr_content.val(),
+                id : modalInputId.val(),
+                t_no : t_noValue
             };
+
             tipReplyService.add(tr_content,function (result) {
                 alert(result);
 
@@ -199,13 +204,14 @@
                 showList(1);
             })
         });
+
         $(".chat").on("click","li",function (e) {
             var tr_no = $(this).data("tr_no");
 
             tipReplyService.get(tr_no,function (tr_content) {
-                modalInputReply.val(tr_content.tr_content);
-                modalInputReplyer.val(tr_content.id);
-                modalInputReplyDate.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly","readonly");
+                modalInputTr_content.val(tr_content.tr_content);
+                modalInputId.val(tr_content.id);
+                modalInputTr_regtime.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly","readonly");
                 modal.data("tr_no","reply.rno");
 
                 modal.find("button[id !='modalCloseBtn']").hide();
