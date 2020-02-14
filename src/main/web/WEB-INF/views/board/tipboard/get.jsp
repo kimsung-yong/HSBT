@@ -63,10 +63,6 @@
                     <div class="col-lg-12">
 <%--                    panel--%>
                         <div class="panel panel-default">
-<%--                        <div class="panel-heading">--%>
-<%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
-<%--                        </div>--%>
-
                             <div class="panel-heading">
                                 <i class="fa fa-comments fa-fw"></i>Reply
                                 <br><br>
@@ -135,6 +131,9 @@
     </div>
 </div>
 <%@include file="../includes/footer.jsp"%>
+
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="/resources/js/tipReply.js"></script>
 
 <script>
