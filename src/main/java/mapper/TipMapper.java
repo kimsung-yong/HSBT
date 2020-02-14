@@ -18,4 +18,6 @@ public interface TipMapper {
     public int update(TipVO tipVO);
 
     public int getTotalCount(Criteria cri);
+
+    public void updateReplyCnt(@Param("t_no") Long t_no, @Param("amount") int amount);
 }

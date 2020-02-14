@@ -39,8 +39,12 @@
                                 <c:forEach items="${list}" var="tip">
                                     <tr>
                                         <td><c:out value="${tip.t_no}"/> </td>
-                                        <td><a id="detailPage" href='<c:out value="${tip.t_no}"/>'>
-                                            <c:out value="${tip.t_title}"/></a> </td>
+                                        <td>
+                                            <a id="detailPage" href='<c:out value="${tip.t_no}"/>'>
+                                                <c:out value="${tip.t_title}"/>
+                                                <b>[ <c:out value="${tip.replyCnt}"/> ]</b>
+                                            </a>
+                                        </td>
                                         <td><c:out value="${tip.id}"/> </td>
                                         <td><fmt:formatDate value="${tip.t_regtime}" pattern="yyyy-MM-dd"/> </td>
                                         <td><fmt:formatDate value="${tip.t_updatetime}" pattern="yyyy-MM-dd"/> </td>

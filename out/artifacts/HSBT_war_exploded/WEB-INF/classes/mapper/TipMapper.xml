@@ -35,10 +35,10 @@
 
 	<select id="getListWithPaging" resultType="domain.TipVO">
 		<![CDATA[
-			select t_no, t_title, t_content, id, t_regtime, t_updatetime
+			select t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt
 			from (
 				select /*+ INDEX_DESC(tbl_tip pk_tip) */
-				rownum rn, t_no, t_title, t_content, id, t_regtime, t_updatetime
+				rownum rn, t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt
 				from tbl_tip
 				where
 		]]>
@@ -79,6 +79,10 @@
 		t_content = #{t_content},
 		t_updatetime = sysdate
 		where t_no = #{t_no}
+	</update>
+
+	<update id="updateReplyCnt">
+		update tbl_tip set replyCnt = replycnt + #{amount} where t_no = #{t_no}
 	</update>
 
 	<select id="getTotalCount" resultType="int">
