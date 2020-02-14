@@ -328,6 +328,10 @@
             showList(pageNum);
         });
 
+        $("#modalCloseBtn").on("click", function () {
+           $(".modal").modal("hide");
+        });
+
          // tipReplyService.add(
          //     {tr_content:"JS TEST", id:"Lee123", t_no:t_noValue},
          //     function (result) {
