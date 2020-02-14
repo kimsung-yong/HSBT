@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="pull-right">
-                                <ul class="pagination">
+                                <ul class="lpagination">
                                     <c:if test="${pageMaker.prev}">
                                         <li class="paginate_button previous"><a href="${pageMaker.realStart}">◀◀</a></li>
                                     </c:if>
