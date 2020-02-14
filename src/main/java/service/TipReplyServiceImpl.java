@@ -1,4 +1,4 @@
-package service.review;
+package service;
 
 import domain.Criteria;
 import domain.TipReplyVO;
@@ -7,7 +7,6 @@ import lombok.extern.log4j.Log4j;
 import mapper.TipReplyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import service.TipReplyService;
 
 import java.util.List;
 
