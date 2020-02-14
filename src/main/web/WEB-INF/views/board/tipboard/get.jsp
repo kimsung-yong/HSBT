@@ -201,7 +201,25 @@
                 modal.find("input").val("");
                 modal.modal("hide");
                 showList(1);
-            })
+            });
+        });
+
+        modalModBtn.on("click", function (e) {
+            var tr_content = {tr_no:modal.data("tr_no"), tr_content:modalInputTr_content.val()};
+            tipReplyService.update(tr_content, function (result) {
+                alert(result);
+                modal.modal("hide");
+                showList(1);
+            });
+        });
+
+        modalRemoveBtn.on("click", function (e) {
+            var tr_no = modal.data("tr_no");
+            tipReplyService.remove(tr_no, function(result) {
+                alert(result);
+                modal.modal("hide");
+                showList(1);
+           });
         });
 
         $(".chat").on("click","li",function (e) {
@@ -211,7 +229,7 @@
                 modalInputTr_content.val(tr_content.tr_content);
                 modalInputId.val(tr_content.id);
                 modalInputTr_regtime.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly","readonly");
-                modal.data("tr_no","reply.rno");
+                modal.data("tr_no",tr_content.tr_no);
 
                 modal.find("button[id !='modalCloseBtn']").hide();
                 modalModBtn.show();
