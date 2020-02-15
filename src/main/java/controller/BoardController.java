@@ -3,6 +3,7 @@ package controller;
 import domain.BoardVO;
 import domain.Criteria;
 import domain.PageDTO;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,9 @@ import java.awt.*;
 @Controller
 @RequestMapping("/board/freeboard/*")
 @Log4j
+@AllArgsConstructor
 public class  BoardController {
-    @Setter(onMethod_ = @Autowired)
+
     private BoardService service;
 
     @GetMapping("/list")
@@ -35,7 +37,7 @@ public class  BoardController {
     @PostMapping("/register")
     public String register(BoardVO vo, RedirectAttributes rttr){
         service.regster(vo);
-        rttr.addFlashAttribute("result",vo.getB_no());
+        rttr.addAttribute("result",vo.getB_no());
         return "redirect:/board/freeboard/list";
     }
     @GetMapping({"/get","/modify"})

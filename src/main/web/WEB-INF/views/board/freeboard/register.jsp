@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="form-group">
 
-                                    <input type="text" name="u_no" class="form-control">
+                                    <input type="text" name="u_id" class="form-control">
                                 </div>
                                 <button type="submit" class="btn btn-default">저장</button>
                                 <button type="reset" class="btn btn-default">재작성</button>
