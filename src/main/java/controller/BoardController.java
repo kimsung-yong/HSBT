@@ -37,7 +37,7 @@ public class  BoardController {
     @PostMapping("/register")
     public String register(BoardVO vo, RedirectAttributes rttr){
         service.regster(vo);
-        rttr.addAttribute("result",vo.getB_no());
+        rttr.addFlashAttribute("result",vo.getB_no());
         return "redirect:/board/freeboard/list";
     }
     @GetMapping({"/get","/modify"})

@@ -27,7 +27,7 @@ public class BoardServiceImp implements BoardService{
     @Override
     public void regster(BoardVO vo) {
 
-        mapper.insert(vo);
+        mapper.insertSelectkey(vo);
     }
 
     @Override
