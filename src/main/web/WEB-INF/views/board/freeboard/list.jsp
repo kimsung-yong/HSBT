@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="pull-right">
-                        <ul class="pagination" id="page_btn">
+                        <ul class="lpagination" id="page_btn">
                             <c:if test="${pageMaker.prev}">
                                 <li class="paginate_button previous"><a href="${pageMaker.realStart}" style="padding: 6px 12px">◀◀</a></li>
                             </c:if>
@@ -139,7 +139,7 @@
     <!-- /#page-wrapper -->
 
 </div>
-<script>
+<script type="text/javascript">
     function regloc() {
         location.href="/board/freeboard/register";
     }

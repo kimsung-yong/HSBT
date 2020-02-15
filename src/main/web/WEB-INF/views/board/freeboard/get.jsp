@@ -33,9 +33,7 @@
 
                             <div class="form-group">
                             <label>내용</label>
-                            <textarea class="form-control" name="b_content" readonly="readonly">
-                            <c:out value="${board.b_content}" />
-                                </textarea>
+                            <textarea class="form-control" name="b_content" readonly="readonly"><c:out value="${board.b_content}"/></textarea>
                             </div>
 
                             <div class="form-group">
