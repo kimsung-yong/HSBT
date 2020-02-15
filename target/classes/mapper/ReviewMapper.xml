@@ -8,6 +8,7 @@
 	<select id="getList" resultType="domain.ReviewVO">
       <![CDATA[
        select * from tbl_review
+       where r_no >0
       ]]>
    </select>
 
@@ -39,7 +40,7 @@
           r_no,r_title,r_content,id,r_regtime,r_updatetime
        from
           (
-             select  /*+INDEX_DESC(tbl_board pk_board)*/
+             select  /*+INDEX_DESC(tbl_review pk_review)*/
              rownum rn, r_no, r_title, r_content, id, r_regtime, r_updatetime
              from tbl_review
              where
