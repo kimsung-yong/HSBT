@@ -22,15 +22,9 @@
 <!--        <result property="address" column="address"/>-->
 <!--        <result property="manager" column="manager"/>-->
 <!--    </resultMap>-->
-<!--    <select id="getList" resultMap="boardMap">-->
-<!--        <![CDATA[-->
-<!--        select b.b_no ,b.b_title,b.b_content,u.id,b.b_regtime,b.b_updatetime-->
-<!--        from tbl_board b-->
-<!--        inner join tbl_user u-->
-<!--        on b.u_no = u.u_no-->
-<!--        where b_no > 0-->
-<!--        ]]>-->
-<!--    </select>-->
+    <select id="getList" resultType="domain.BoardVO">
+        select * from tbl_board
+    </select>
     <select id="getListWithPaging" resultType="domain.BoardVO">
         <![CDATA[
             select b_no,b_title,b_content,u_id,b_regtime,b_updatetime from (
