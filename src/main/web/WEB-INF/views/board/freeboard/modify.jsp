@@ -3,12 +3,17 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../includes/header.jsp"%>
 
-             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Tables</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+<div class="col-lg-9">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <h1 class="page-header">자유게시판</h1>
+            <br>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -46,8 +51,10 @@
                     </div>
                 </div>
             </div>
+</div>
         <!-- /#page-wrapper -->
-    </div>
+
+
     <script>
         $(document).ready(function () {
             var formObj = $("form");
