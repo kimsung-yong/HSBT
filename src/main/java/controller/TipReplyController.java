@@ -1,8 +1,8 @@
 package controller;
 
 import domain.Criteria;
-import domain.TipReplyPageDTO;
-import domain.TipReplyVO;
+import domain.tip.TipReplyPageDTO;
+import domain.tip.TipReplyVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.http.HttpStatus;
@@ -10,8 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.tip.TipReplyService;
-
-import java.util.List;
 
 @RequestMapping("/tip/replies/*")
 @RestController

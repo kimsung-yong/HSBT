@@ -1,14 +1,13 @@
 package service.review;
 
 import domain.Criteria;
-import domain.ReviewVO;
+import domain.review.ReviewVO;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import mapper.ReviewMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import service.review.ReviewService;
 
 import java.util.List;
 

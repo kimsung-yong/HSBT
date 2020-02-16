@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.BoardMapper">
-<!--    <resultMap id="boardMap" type="domain.BoardVO">-->
+<!--    <resultMap id="boardMap" type="domain.board.BoardVO">-->
 <!--        <id property="b_no" column="b_no"/>-->
 <!--        <result property="b_title" column="b_title"/>-->
 <!--        <result property="b_content" column="b_content"/>-->
@@ -13,7 +13,7 @@
 <!--        <result property="b_updateTime" column="b_updatetime"/>-->
 <!--        <association property="userVO" column="id" resultMap="userMap"/>-->
 <!--    </resultMap>-->
-<!--    <resultMap id="userMap" type="domain.UserVO">-->
+<!--    <resultMap id="userMap" type="domain.user.UserVO">-->
 <!--        <id property="u_no" column="u_no"/>-->
 <!--        <result property="id" column="id"/>-->
 <!--        <result property="pw" column="pw"/>-->
@@ -22,10 +22,10 @@
 <!--        <result property="address" column="address"/>-->
 <!--        <result property="manager" column="manager"/>-->
 <!--    </resultMap>-->
-    <select id="getList" resultType="domain.BoardVO">
+    <select id="getList" resultType="domain.board.BoardVO">
         select * from tbl_board
     </select>
-    <select id="getListWithPaging" resultType="domain.BoardVO">
+    <select id="getListWithPaging" resultType="domain.board.BoardVO">
         <![CDATA[
             select b_no,b_title,b_content,u_id,b_regtime,b_updatetime from (
             select /*+index_desc(tbl_board pk_board) */
@@ -38,7 +38,7 @@
     <select id="getCount" resultType="int">
         select count(*) from tbl_board
     </select>
-    <select id="getListSelect" resultType="domain.BoardVO">
+    <select id="getListSelect" resultType="domain.board.BoardVO">
         select * from tbl_board where b_no = #{b_no}
     </select>
 

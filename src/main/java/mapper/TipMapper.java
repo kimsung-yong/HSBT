@@ -1,7 +1,7 @@
 package mapper;
 
 import domain.Criteria;
-import domain.TipVO;
+import domain.tip.TipVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

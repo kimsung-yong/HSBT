@@ -1,6 +1,6 @@
 package service.Board;
 
-import domain.BoardVO;
+import domain.board.BoardVO;
 import domain.Criteria;
 import lombok.Setter;
 import mapper.BoardMapper;

@@ -24,7 +24,7 @@
 		</trim>
 	</sql>
 
-    <select id="getList" resultType="domain.TipVO">
+    <select id="getList" resultType="domain.tip.TipVO">
 		<![CDATA[
 			select t_no, t_title, t_content, id, t_regtime, t_updatetime
 			from tbl_tip
@@ -33,7 +33,7 @@
 		]]>
 	</select>
 
-	<select id="getListWithPaging" resultType="domain.TipVO">
+	<select id="getListWithPaging" resultType="domain.tip.TipVO">
 		<![CDATA[
 			select t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt
 			from (
@@ -63,7 +63,7 @@
 		values(#{t_no}, #{t_title}, #{t_content}, #{id})
 	</insert>
 
-	<select id="read" resultType="domain.TipVO">
+	<select id="read" resultType="domain.tip.TipVO">
 		select t_no, t_title, t_content, id, t_regtime, t_updatetime
 		from tbl_tip
 		where t_no = #{t_no}

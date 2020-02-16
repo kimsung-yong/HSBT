@@ -1,7 +1,7 @@
 package service.tip;
 
 import domain.Criteria;
-import domain.TipVO;
+import domain.tip.TipVO;
 
 import java.util.List;
 

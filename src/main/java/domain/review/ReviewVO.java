@@ -1,5 +1,6 @@
-package domain;
+package domain.review;
 
+import domain.user.UserVO;
 import lombok.Data;
 
 import java.util.Date;

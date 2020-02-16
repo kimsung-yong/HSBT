@@ -1,7 +1,7 @@
 package service.tip;
 
 import domain.Criteria;
-import domain.TipVO;
+import domain.tip.TipVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import mapper.TipMapper;

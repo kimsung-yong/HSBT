@@ -1,7 +1,7 @@
 package mapper;
 
 import domain.Criteria;
-import domain.ReviewVO;
+import domain.review.ReviewVO;
 
 
 import java.util.List;

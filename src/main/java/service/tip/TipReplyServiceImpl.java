@@ -1,8 +1,8 @@
 package service.tip;
 
 import domain.Criteria;
-import domain.TipReplyPageDTO;
-import domain.TipReplyVO;
+import domain.tip.TipReplyPageDTO;
+import domain.tip.TipReplyVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import mapper.TipMapper;

@@ -1,8 +1,7 @@
 package mapper;
 
-import domain.BoardVO;
+import domain.board.BoardVO;
 import domain.Criteria;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

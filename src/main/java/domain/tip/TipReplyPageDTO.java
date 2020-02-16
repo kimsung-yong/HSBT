@@ -1,4 +1,4 @@
-package domain;
+package domain.tip;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

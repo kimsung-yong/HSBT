@@ -1,6 +1,6 @@
 package mapper;
 
-import domain.ReviewVO;
+import domain.review.ReviewVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;

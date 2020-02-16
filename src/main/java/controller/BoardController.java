@@ -1,20 +1,15 @@
 package controller;
 
-import domain.BoardVO;
+import domain.board.BoardVO;
 import domain.Criteria;
 import domain.PageDTO;
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.Board.BoardService;
-import service.Board.BoardServiceImp;
-
-import java.awt.*;
 
 @Controller
 @RequestMapping("/board/freeboard/*")

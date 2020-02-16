@@ -1,5 +1,6 @@
-package domain;
+package domain.board;
 
+import domain.user.UserVO;
 import lombok.Data;
 
 import java.util.Date;

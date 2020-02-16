@@ -8,11 +8,11 @@
         values (tip_reply_seq.nextval, #{t_no}, #{tr_content}, #{id})
     </insert>
 
-    <select id="read" resultType="domain.TipReplyVO">
+    <select id="read" resultType="domain.tip.TipReplyVO">
         select * from tbl_tip_reply where tr_no = #{tr_no}
     </select>
 
-    <select id="getListWithPaging" resultType="domain.TipReplyVO">
+    <select id="getListWithPaging" resultType="domain.tip.TipReplyVO">
         <![CDATA[
             select tr_no, t_no, tr_content, id, tr_regtime, tr_updatetime
             from (

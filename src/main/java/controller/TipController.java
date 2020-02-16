@@ -2,7 +2,7 @@ package controller;
 
 import domain.Criteria;
 import domain.PageDTO;
-import domain.TipVO;
+import domain.tip.TipVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;

@@ -5,7 +5,7 @@
 <mapper namespace="mapper.ReviewMapper">
 
 
-	<select id="getList" resultType="domain.ReviewVO">
+	<select id="getList" resultType="domain.review.ReviewVO">
       <![CDATA[
        select * from tbl_review
        where r_no >0
@@ -34,7 +34,7 @@
 		</trim>
 	</sql>
 	
-    <select id="getListWithPaging" resultType="domain.ReviewVO">
+    <select id="getListWithPaging" resultType="domain.review.ReviewVO">
       <![CDATA[
        select
           r_no,r_title,r_content,id,r_regtime,r_updatetime
@@ -78,7 +78,7 @@
 		values(#{r_no},#{r_title},#{r_content},#{id})
 	</insert>
 
-	<select id="read" resultType="domain.ReviewVO">
+	<select id="read" resultType="domain.review.ReviewVO">
       select * from tbl_review where r_no= #{r_no}
    </select>
 
