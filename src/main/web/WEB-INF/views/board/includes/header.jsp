@@ -2,6 +2,17 @@
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<style>
+    footer {
+
+        position:fixed;
+        left:0px;
+        bottom:0px;
+        width: 100%;
+        text-align: center;
+    }
+
+</style>
 <head>
 
     <meta charset="utf-8">
@@ -13,7 +24,7 @@
 
     <!-- Bootstrap core CSS -->
     <%--    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
-    <link href="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">SSSSSS
+    <link href="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resourcesKIM/css/paging.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resourcesKIM/css/shop-homepage.css" rel="stylesheet">

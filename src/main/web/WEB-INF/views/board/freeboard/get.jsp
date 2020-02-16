@@ -4,15 +4,16 @@
 <%@include file="/WEB-INF/views/board/includes/header.jsp"%>
 
 
-             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Tables</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+<div class="col-lg-9">
+
+    <div class="row">
+        <div class="col-lg-12">
             <br>
-            <br>
-            <br>
+            <h1 class="page-header">자유게시판</h1>
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -20,7 +21,7 @@
                         <div class="panel-heading">
 <%--                            DataTables Advanced Tables--%>
                         </div>
-                        <br><br><br><br>
+
                         <!-- /.panel-heading -->
                         <div class="panel-body" style="width: 600px">
                             <div class="form-group">
