@@ -19,6 +19,7 @@
             </plugin>
         </plugins>
     </build>
+<!--    -->
     <properties>
         <java-version>13</java-version>
         <org.springframework-version>5.0.3.RELEASE</org.springframework-version>
