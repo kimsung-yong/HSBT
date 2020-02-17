@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.BoardReplyMapper">
+
+    <insert id="insert">
+        insert into tbl_board_reply (br_no,b_no,u_id,br_content) values (board_reply_seq.nextval,#{b_no},#{u_id},#{br_content})
+    </insert>
+
+    <select id="read" resultType="domain.board.BoardReplyVO">
+        select * from tbl_board_reply where br_no = #{br_no}
+    </select>
+
+    <delete id="delete">
+        delete from tbl_board_reply where br_no = #{br_no}
+    </delete>
+
+    <update id="update">
+        update tbl_board_reply set br_content = #{br_content}, br_updateTime = sysdate where br_no = #{br_no}
+    </update>
+
+    <select id="getListWithPaging" resultType="domain.board.BoardReplyVO">
+        select br_no,u_id,b_no,br_content,br_regtime,br_updatetime from tbl_board_reply where b_no = #{b_no} order by br_no desc
+    </select>
+</mapper>

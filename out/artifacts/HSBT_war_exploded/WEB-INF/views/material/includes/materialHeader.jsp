@@ -1,18 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: IT
+  Date: 2020-02-07
+  Time: 오후 2:43
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<style>
-    footer {
-
-        position:relative;
-        left:0px;
-        bottom:0px;
-        width: 100%;
-        text-align: center;
-    }
-
-</style>
 <head>
 
     <meta charset="utf-8">
@@ -20,14 +14,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Materials</title>
 
     <!-- Bootstrap core CSS -->
-    <%--    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
-    <link href="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resourcesKIM/css/paging.css" rel="stylesheet">
+    <link href="/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/resourcesKIM/css/shop-homepage.css" rel="stylesheet">
+    <link href="/resourcesKIM/css/shop-homepage.css" rel="stylesheet">
 
 </head>
 
@@ -43,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
+                    <a class="nav-link" href="/">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -68,13 +61,12 @@
 
         <div class="col-lg-3">
 
-            <h1 class="my-4">커뮤니티</h1>
+            <h1 class="my-4">Materials</h1>
             <div class="list-group">
-                <a href="/board/noticeboard/list" class="list-group-item">공지사항</a>
-                <a href="/board/freeboard/list" class="list-group-item">자유게시판</a>
-                <a href="/board/reviewboard/list" class="list-group-item">후기</a>
-                <a href="/board/tipboard/list" class="list-group-item">Tip</a>
-                <a href="/board/qnaboard/list" class="list-group-item">Q＆A</a>
+                <a href="/material/tile" class="list-group-item">타일</a>
+                <a href="/material/wallpaper" class="list-group-item">벽지</a>
+                <a href="/material/window" class="list-group-item">창호</a>
+                <a href="/material/paint" class="list-group-item">페인트</a>
             </div>
 
         </div>
