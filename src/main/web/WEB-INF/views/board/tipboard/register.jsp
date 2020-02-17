@@ -32,7 +32,7 @@
                                     <label>Text area</label>
                                     <textarea class="form-control" rows="3" name="t_content"></textarea>
                                 </div>
-                                <iv class="form-group">
+                                <div class="form-group">
                                     <label>Writer</label>
                                     <input class="form-control" name="id">
                                 </div>
