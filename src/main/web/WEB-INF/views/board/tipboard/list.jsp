@@ -163,7 +163,8 @@
 
         $("#regBtn").on("click", function () {
             self.location="/board/tipboard/register";
-        })
+        });
+
         var actionForm = $("#actionForm");
         var searchForm = $("#searchForm");
 
