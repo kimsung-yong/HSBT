@@ -17,7 +17,7 @@
             -괴테<br>
           </p>
           <p class="text-hide-85 font-weight-normal">당신의 세계를 만들어 드리겠습니다</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">더 보기..</a>
         </div>
       </div>
     </div>
@@ -29,10 +29,10 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">We've got what you need!</h2>
+          <h2 class="text-white mt-0">맞춤형 인테리어 전문!</h2>
           <hr class="divider light my-4">
-          <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+          <p class="text-white-50 mb-4">당신에게 맞는 당신을 위한 인테리어</p>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">더 보기..</a>
         </div>
       </div>
     </div>
