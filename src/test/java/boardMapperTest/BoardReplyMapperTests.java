@@ -27,7 +27,7 @@ public class BoardReplyMapperTests {
     public void testInsert(){
         BoardReplyVO vo = new BoardReplyVO();
 
-        vo.setU_id("as");
+        vo.setId("as");
         vo.setBr_content("첫 리플");
         vo.setB_no(2641L);
 

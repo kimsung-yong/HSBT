@@ -47,7 +47,7 @@
                                 <td><a id="detailPage" class="move" href="${board.b_no}" >
                                     <c:out value="${board.b_title}"/></a> </td>
 
-                                <td><c:out value="${board.u_id}"/> </td>
+                                <td><c:out value="${board.id}"/> </td>
                                 <td><fmt:formatDate value="${board.b_regTime}" pattern="yyyy-MM-dd"/> </td>
                                 <td><fmt:formatDate value="${board.b_updateTime}" pattern="yyyy-MM-dd"/> </td>
                             </tr>
