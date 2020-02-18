@@ -31,10 +31,10 @@
 
     <select id="getListWithPaging" resultType="domain.qna.QnaVO">
         <![CDATA[
-            select q_no, q_title, q_content, id, q_regtime, q_updatetime
+            select q_no, q_title, q_content, id, q_regtime, q_updatetime, replyCnt
             from (
                 select /*+ INDEX_DESC(tbl_qna PK_QNA) */
-                    rownum rn, q_no, q_title, q_content, id ,q_regtime, q_updatetime
+                    rownum rn, q_no, q_title, q_content, id ,q_regtime, q_updatetime, replycnt
                 from tbl_qna
                 where
         ]]>
@@ -80,7 +80,11 @@
 
     <update id="update">
         update tbl_qna
-        set q_title = #{q_title}, q_content = #{q_content}, id = #{id}, q_updatetime = sysdate
+        set q_title = #{q_title}, q_content = #{q_content}, q_updatetime = sysdate
         where q_no = #{q_no}
+    </update>
+
+    <update id="updateReplyCnt">
+        update tbl_qna set replycnt = replycnt + #{amount} where q_no = #{q_no}
     </update>
 </mapper>

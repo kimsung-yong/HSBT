@@ -41,7 +41,11 @@
                                         <td><c:out value="${qna.q_no}"/> </td>
                                         <td>
                                             <a id="detailPage" href="<c:out value="${qna.q_no}"/>">
-                                            <c:out value="${qna.q_title}"/></a>
+                                                <c:out value="${qna.q_title}"/>
+                                                <c:if test="${qna.replyCnt > 0}">
+                                                    <b>[ <c:out value="${qna.replyCnt}"/> ]</b>
+                                                </c:if>
+                                            </a>
                                         </td>
                                         <td><c:out value="${qna.id}"/> </td>
                                         <td><fmt:formatDate value="${qna.q_regtime}" pattern="yyyy-MM-dd"/> </td>
@@ -52,7 +56,7 @@
                             </table>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="searchForm" action="/board/qnaboard/list" method="get">
+                                    <form id="searchForm" action="/board/qnaboard/list" method="get" style="float: right">
                                         <select name="type">
                                             <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--</option>
                                             <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목</option>
@@ -65,7 +69,7 @@
                                         <input type="text" name="keyword" value="${pageMaker.cri.keyword}"/>
                                         <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-                                        <button class="btn btn-default">검색</button>
+                                        <button class="btn btn-dark">검색</button>
                                     </form>
                                 </div>
 
@@ -78,7 +82,7 @@
                             </div>
 
                             <div class="pull-right">
-                                <ul class="lpagination">
+                                <ul class="lpagination" id="page_btn">
                                     <c:if test="${pageMaker.prev}">
                                         <li class="paginate_button previous"><a href="${pageMaker.realStart}">◀◀</a></li>
                                     </c:if>
@@ -106,7 +110,7 @@
                                 </ul>
 
                             </div>
-                            <button type="button" id="regBtn" class="btn btn-default" style="float: left">글작성</button>
+                            <button type="button" id="regBtn" class="btn btn-dark">글작성</button>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">

@@ -4,11 +4,13 @@
 
 <%@include file="../includes/header.jsp"%>
 
-             <div class="row">
+        <div class="col-lg-9">
+
+            <div class="row">
                 <div class="col-lg-12">
                     <br>
-                    <h1 class="page-header">Tip</h1>
-                    <br>
+                    <h1 class="page-header">Q&A</h1>
+                    <hr>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -17,12 +19,10 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <br><br><br><br>
-                            <h3>게시글 작성</h3>
-                            <hr>
+
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="width: 600px">
+                        <div class="panel-body">
                             <div class="form-group">
                                 <label>글번호</label>
                                 <input class="form-control" name="t_no" value="<c:out value="${tip.t_no}"/>" readonly="readonly">
@@ -43,8 +43,8 @@
                                 <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
                             </div>
 
-                            <button data-oper="modify" class="btn btn-default">수정</button>
-                            <button data-oper="list" class="btn btn-info">목록</button>
+                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/tipboard/modify" method="get">
                                 <input type="hidden" id="t_no" name="t_no" value="<c:out value="${tip.t_no}"/>">
@@ -57,40 +57,40 @@
                         </div>
                     </div>
                     <br>
-                <div class="row" style="margin: 0">
-                    <div class="col-lg-12">
-<%--                    panel--%>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <i class="fa fa-comments fa-fw"></i>Reply
-                                <br><br>
-                                <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
-                            </div>
-                            <hr>
+                    <div class="row" style="margin: 0">
+                        <div class="col-lg-12">
+    <%--                    panel--%>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-comments fa-fw"></i>Reply
+                                    <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                                </div>
+                                <hr>
 
-<%--                        panel-heading   --%>
-                            <div class="panel-body">
-                                <ul class="chat">
-                                    <li class="left clearfix" data-tr_no="12">
-                                        <div>
-                                            <div class="header">
-                                                <strong class="primary-font">user00</strong>
-                                                <small class="pull-right text-muted">2020-01-31</small>
+    <%--                        panel-heading   --%>
+                                <div class="panel-body">
+                                    <ul class="chat">
+                                        <li class="left clearfix" data-tr_no="12">
+                                            <div>
+                                                <div class="header">
+                                                    <strong class="primary-font">user00</strong>
+                                                    <small class="pull-right text-muted">2020-01-31</small>
+                                                </div>
+                                                <p> Good job!</p>
                                             </div>
-                                            <p> Good job!</p>
-                                        </div>
-                                    </li>
-<%--                                end reply--%>
-                                </ul>
-<%--                            end ul--%>
-                            </div>
-<%--                        /.panel .chat-panel--%>
-                            <div class="panel-footer">
+                                        </li>
+    <%--                                end reply--%>
+                                    </ul>
+    <%--                            end ul--%>
+                                </div>
+    <%--                        /.panel .chat-panel--%>
+                                <div class="panel-footer">
 
+                                </div>
                             </div>
                         </div>
+    <%--                ./end row--%>
                     </div>
-<%--                ./end row--%>
                 </div>
             </div>
         </div>
@@ -177,6 +177,7 @@
         var modalModBtn = $("#modalModBtn");
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
+        var modalCloseBtn = $("#modalCloseBtn");
 
         $("#addReplyBtn").on("click",function (e) {
             modal.find("input").val("");
@@ -221,6 +222,10 @@
                 modal.modal("hide");
                 showList(pageNum);
            });
+        });
+
+        modalCloseBtn.on("click", function () {
+            modal.modal("hide");
         });
 
         $(".chat").on("click","li",function (e) {
@@ -325,46 +330,6 @@
 
             showList(pageNum);
         });
-
-        $("#modalCloseBtn").on("click", function () {
-           $(".modal").modal("hide");
-        });
-
-         // tipReplyService.add(
-         //     {tr_content:"JS TEST", id:"Lee123", t_no:t_noValue},
-         //     function (result) {
-         //         alert("Result :" + result);
-         //     }
-         //     );
-         // tipReplyService.getList({t_no:t_noValue, page:1},function (list) {
-         //     for(var i = 0, len =list.length||0; i < len; i++){
-         //         console.log(list[i]);
-         //     }
-         // });
-
-         // tipReplyService.remove(49, function (count) {
-         //     console.log(count);
-         //
-         //     if(count === "success"){
-         //         alert("removed");
-         //     }
-         // },function (err) {
-         //     alert("error");
-         //     }
-         // )
-         //
-         // tipReplyService.update({
-         //     rno :50,
-         //     bno : bnoValue,
-         //     reply : "Modifyed Reply..."
-         // },function (result) {
-         //     alert("수정완료");
-         // });
-         //
-         // tipReplyService.get(49, function (data) {
-         //     console.log(data)
-         // })
-
 
     });
 

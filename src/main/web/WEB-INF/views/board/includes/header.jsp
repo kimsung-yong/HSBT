@@ -11,6 +11,9 @@
         width: 100%;
         text-align: center;
     }
+    .pull-right {
+        float: right !important;
+    }
 
 </style>
 <head>

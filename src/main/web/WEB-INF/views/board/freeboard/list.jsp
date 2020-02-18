@@ -47,16 +47,17 @@
                                 <td><a id="detailPage" class="move" href="${board.b_no}" >
                                     <c:out value="${board.b_title}"/></a> </td>
 
-                                <td><c:out value="${board.u_id}"/> </td>
+                                <td><c:out value="${board.id}"/> </td>
                                 <td><fmt:formatDate value="${board.b_regTime}" pattern="yyyy-MM-dd"/> </td>
                                 <td><fmt:formatDate value="${board.b_updateTime}" pattern="yyyy-MM-dd"/> </td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
+                        <button type="button" class="btn btn-dark" onclick="regloc()">글작성</button>
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="searchForm" action="/board/freeboard/list" method="get">
+                            <form id="searchForm" action="/board/freeboard/list" method="get" style="float: right">
                                 <select name="type">
                                     <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--</option>
                                     <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목</option>
@@ -69,7 +70,7 @@
                                 <input type="text" name="keyword" value="${pageMaker.cri.keyword}"/>
                                 <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                 <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-                                <button class="btn btn-default">검색</button>
+                                <button class="btn btn-dark">검색</button>
                             </form>
                         </div>
 
@@ -110,7 +111,7 @@
                         </ul>
                         <%----%>
                     </div>
-                    <button type="button" class="btn btn-default" style="float: left" onclick="regloc()">글작성</button>
+
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -213,6 +214,6 @@
 
 </div>
 <!-- /.container -->
-
+<jsp:include page="../includes/footer.jsp"/>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -12,4 +12,6 @@ public class QnaVO {
     private String id;
     private Date q_regtime;
     private Date q_updatetime;
+
+    private int replyCnt;
 }
