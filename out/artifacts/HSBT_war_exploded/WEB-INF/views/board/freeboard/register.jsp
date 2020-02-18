@@ -3,21 +3,25 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../includes/header.jsp"%>
 
-             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Tables</h1>
+<div class="col-lg-9">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <h1 class="page-header">자유게시판</h1>
+            <br>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            DataTables Advanced Tables
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
+                <!-- /.panel-heading -->
+                <div class="panel-body">
                             <form role="form" action="/board/freeboard/register" method="post">
                                 <div class="form=group">
                                     <label>title</label>
@@ -39,6 +43,7 @@
                 </div>
             </div>
         <!-- /#page-wrapper -->
-
-    </div>
+</div>
+</div>
+</div>
 <%@include file="../includes/footer.jsp"%>
