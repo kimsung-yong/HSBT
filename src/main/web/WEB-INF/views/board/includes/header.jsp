@@ -5,7 +5,7 @@
 <style>
     footer {
 
-        position:fixed;
+        position:relative;
         left:0px;
         bottom:0px;
         width: 100%;

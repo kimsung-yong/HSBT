@@ -125,6 +125,13 @@
                            name="userName" maxlength="20">
 
                 </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="휴대폰번호"
+
+                           name="userID" maxlength="20">
+
+                </div>
 
                 <div class="form-group" style="text-align: center;">
 

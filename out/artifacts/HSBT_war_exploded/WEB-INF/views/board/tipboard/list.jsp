@@ -42,7 +42,9 @@
                                         <td>
                                             <a id="detailPage" href='<c:out value="${tip.t_no}"/>'>
                                                 <c:out value="${tip.t_title}"/>
-                                                <b>[ <c:out value="${tip.replyCnt}"/> ]</b>
+                                                <c:if test="${tip.replyCnt > 0}">
+                                                    <b id="rCnt">[ <c:out value="${tip.replyCnt}"/> ]</b>
+                                                </c:if>
                                             </a>
                                         </td>
                                         <td><c:out value="${tip.id}"/> </td>
@@ -161,7 +163,8 @@
 
         $("#regBtn").on("click", function () {
             self.location="/board/tipboard/register";
-        })
+        });
+
         var actionForm = $("#actionForm");
         var searchForm = $("#searchForm");
 

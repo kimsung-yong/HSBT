@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Criteria;
+import domain.board.BoardReplyPageDTO;
 import domain.board.BoardReplyVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -32,12 +33,12 @@ public class BoardReplyController {
         return insertCount == 1? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
     @GetMapping(value = "/pages/{b_no}/{page}",produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<List<BoardReplyVO>> getList(@PathVariable("page")int page, @PathVariable("b_no") Long b_no){
+    public ResponseEntity<BoardReplyPageDTO> getList(@PathVariable("page")int page, @PathVariable("b_no") Long b_no){
         log.info("getList....");
         Criteria cri = new Criteria(page,10);
         log.info(cri);
 
-        return new ResponseEntity<>(service.getList(cri,b_no), HttpStatus.OK);
+        return new ResponseEntity<>(service.getListPage(cri,b_no), HttpStatus.OK);
     }
     @GetMapping(value = "/{br_no}",produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<BoardReplyVO> get(@PathVariable("br_no") Long br_no){
