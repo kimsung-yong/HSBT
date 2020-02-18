@@ -177,6 +177,7 @@
         var modalModBtn = $("#modalModBtn");
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
+        var modalCloseBtn = $("#modalCloseBtn");
 
         $("#addReplyBtn").on("click",function (e) {
             modal.find("input").val("");
@@ -221,6 +222,10 @@
                 modal.modal("hide");
                 showList(pageNum);
            });
+        });
+
+        modalCloseBtn.on("click", function () {
+            modal.modal("hide");
         });
 
         $(".chat").on("click","li",function (e) {
@@ -325,46 +330,6 @@
 
             showList(pageNum);
         });
-
-        $("#modalCloseBtn").on("click", function () {
-           $(".modal").modal("hide");
-        });
-
-         // tipReplyService.add(
-         //     {tr_content:"JS TEST", id:"Lee123", t_no:t_noValue},
-         //     function (result) {
-         //         alert("Result :" + result);
-         //     }
-         //     );
-         // tipReplyService.getList({t_no:t_noValue, page:1},function (list) {
-         //     for(var i = 0, len =list.length||0; i < len; i++){
-         //         console.log(list[i]);
-         //     }
-         // });
-
-         // tipReplyService.remove(49, function (count) {
-         //     console.log(count);
-         //
-         //     if(count === "success"){
-         //         alert("removed");
-         //     }
-         // },function (err) {
-         //     alert("error");
-         //     }
-         // )
-         //
-         // tipReplyService.update({
-         //     rno :50,
-         //     bno : bnoValue,
-         //     reply : "Modifyed Reply..."
-         // },function (result) {
-         //     alert("수정완료");
-         // });
-         //
-         // tipReplyService.get(49, function (data) {
-         //     console.log(data)
-         // })
-
 
     });
 

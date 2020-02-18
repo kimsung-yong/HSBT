@@ -41,7 +41,11 @@
                                         <td><c:out value="${qna.q_no}"/> </td>
                                         <td>
                                             <a id="detailPage" href="<c:out value="${qna.q_no}"/>">
-                                            <c:out value="${qna.q_title}"/></a>
+                                                <c:out value="${qna.q_title}"/>
+                                                <c:if test="${qna.replyCnt > 0}">
+                                                    <b>[ <c:out value="${qna.replyCnt}"/> ]</b>
+                                                </c:if>
+                                            </a>
                                         </td>
                                         <td><c:out value="${qna.id}"/> </td>
                                         <td><fmt:formatDate value="${qna.q_regtime}" pattern="yyyy-MM-dd"/> </td>
