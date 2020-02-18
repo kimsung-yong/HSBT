@@ -19,7 +19,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserVO get(String id) {
-        return null;
+        log.info("get......" + id);
+        return mapper.read(id);
     }
 
     @Override
