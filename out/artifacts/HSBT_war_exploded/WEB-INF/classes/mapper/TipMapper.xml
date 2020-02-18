@@ -82,7 +82,7 @@
 	</update>
 
 	<update id="updateReplyCnt">
-		update tbl_tip set replyCnt = replycnt + #{amount} where t_no = #{t_no}
+		update tbl_tip set replycnt = replycnt + #{amount} where t_no = #{t_no}
 	</update>
 
 	<select id="getTotalCount" resultType="int">
