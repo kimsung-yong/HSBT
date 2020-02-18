@@ -4,11 +4,13 @@
 
 <%@include file="../includes/header.jsp"%>
 
+        <div class="col-lg-9">
+
             <div class="row">
                 <div class="col-lg-12">
                     <br>
                     <h1 class="page-header">Tip</h1>
-                    <br>
+                    <hr>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -16,10 +18,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <br><br><br><br>
                         <div class="panel-heading">
-                            <h3>게시글 작성</h3>
-                            <hr>
+
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -46,4 +46,5 @@
         <!-- /#page-wrapper -->
         </div>
     </div>
+</div>
 <%@include file="../includes/footer.jsp"%>

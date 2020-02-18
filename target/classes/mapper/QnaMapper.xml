@@ -80,7 +80,7 @@
 
     <update id="update">
         update tbl_qna
-        set q_title = #{q_title}, q_content = #{q_content}, id = #{id}, q_updatetime = sysdate
+        set q_title = #{q_title}, q_content = #{q_content}, q_updatetime = sysdate
         where q_no = #{q_no}
     </update>
 
