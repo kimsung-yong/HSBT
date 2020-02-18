@@ -102,16 +102,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Reply</label>
-                            <input class="form-control" name="reply" value="new reply">
+                            <label>Content</label>
+                            <input class="form-control" name="rr_content" value="new reply">
                         </div>
                         <div class="form-group">
                             <label>Replyer</label>
-                            <input class="form-control" name="replyer" value="new replyer">
+                            <input class="form-control" name="id" value="new replyer">
                         </div>
                         <div class="form-group">
                             <label>Reply Date</label>
-                            <input class="form-control" name="replyDate" value="">
+                            <input class="form-control" name="rr_regtime" value="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -129,24 +129,29 @@
             </div>
         </div>
     </div>
-<script type="text/javascript" ></script>
+
+
+
+<script type="text/javascript" src="/resources/js/reviewReply.js"></script>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function () {
         var operForm = $("#operForm");
         ($("button[data-oper='modify']")).on("click",function (e) {
-            <%--operForm.append("<input type='hidden' name='bno' value="+${board.bno} +">");--%>
-            <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");--%>
+            operForm.append("<input type='hidden' name='r_no' value="+${review.r_no} +">");
+            operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
+            operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");
             operForm.attr("action","/board/reviewboard/modify").submit();
         });
 
         $("button[data-oper='list']").on("click",function(e) {
             // operForm.find("#bno").remove();
             operForm.attr("action","/board/reviewboard/list");
-            <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name='keyword' value='"+${cri.keyword} +"'>");--%>
+            operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
+            operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
+            operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");
+            operForm.append("<input type='hidden' name='keyword' value='"+${cri.keyword} +"'>");
             operForm.submit();
     })
 
@@ -159,57 +164,77 @@
         console.log("=======================");
         console.log("JS TEST");
 
-        var bnoValue = '<c:out value="${board.bno}"/>';
+        var r_noValue = '<c:out value="${review.r_no}"/>';
         var replyUL = $(".chat");
+
         var modal = $(".modal");
-        var modalInputReply = modal.find("input[name = 'reply']");
-        var modalInputReplyer = modal.find("input[name = 'replyer']");
-        var modalInputReplyDate = modal.find("input[name ='replyDate']");
+        var modalInputRr_content = modal.find("input[name = 'rr_content']");
+        var modalInputId = modal.find("input[name = 'id']");
+        var modalInputRr_regtime = modal.find("input[name ='rr_regtime']");
 
         var modalModBtn = $("#modalModBtn");
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
+
         $("#addReplyBtn").on("click",function (e) {
             modal.find("input").val("");
-            modalInputReplyDate.closest("div").hide();
+            modalInputRr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
 
             modalRegisterBtn.show();
 
             $(".modal").modal("show");
         });
-        modalRegisterBtn.on("click",function (e) {
 
-            var reply = {reply : modalInputReply.val(),
-                        replyer : modalInputReplyer.val(),
-                        bno : bnoValue
+        modalRegisterBtn.on("click",function (e) {
+            var rr_content = {
+                rr_content : modalInputRr_content.val(),
+                id : modalInputId.val(),
+                r_no : r_noValue
             };
-            replyService.add(reply,function (result) {
+            reviewReplyService.add(rr_content,function (result) {
                 alert(result);
 
                 modal.find("input").val("");
                 modal.modal("hide");
                 showList(1);
-            })
+            });
+        });
+
+        modalModBtn.on("click", function (e) {
+            var rr_content = {rr_no:modal.data("rr_no"), rr_content:modalInputRr_content.val()};
+            reviewReplyService.update(rr_content, function (result) {
+                alert(result);
+                modal.modal("hide");
+                showList(1);
+            });
+        });
+
+        modalRemoveBtn.on("click", function (e) {
+            var rr_no = modal.data("rr_no");
+            reviewReplyService.remove(rr_no, function(result) {
+                alert(result);
+                modal.modal("hide");
+                showList(1);
+            });
         });
         $(".chat").on("click","li",function (e) {
-            var rno = $(this).data("rno");
+            var rr_no = $(this).data("rr_no");
 
-            replyService.get(r_no,function (reply) {
-                modalInputReply.val(reply.reply);
-                modalInputReplyer.val(reply.replyer);
-                modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly","readonly");
-                modal.data("rno","reply.rno");
+            reviewReplyService.get(rr_no,function (rr_content) {
+                modalInputRr_content.val(rr_content.rr_content);
+                modalInputId.val(rr_content.id);
+                modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly","readonly");
+                modal.data("rr_no",rr_content.rr_no);
 
                 modal.find("button[id !='modalCloseBtn']").hide();
                 modalModBtn.show();
                 modalRemoveBtn.show();
 
                 $(".modal").modal("show");
-
             });
 
-            console.log(rno);
+            console.log(rr_no);
         });
 
         showList(1);
@@ -217,8 +242,7 @@
         
 
         function showList(page) {
-            replyService.getList({bno:bnoValue,page: page}, function (list) {
-
+            reviewReplyService.getList({r_no:r_noValue, page: page || 1}, function (list) {
                 var str = "";
                 if(list == null || list.length == 0){
                     replyUL.html("");
@@ -226,14 +250,19 @@
                     return;
                 }
                 for(var i=0,len = list.length || 0; i < len; i++){
-                    str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-                    str += "<div><div class='header'><strong class='primary-font'>"+ list[i].replyer+"</strong>";
-                    str += "<small class='pull-right text-muted'>" +replyService.displayTime(list[i].replyDate)+"</small></div>";
-                    str += "<p>" + list[i].reply+"</p></div></li>"
+                    str += "<li class='left clearfix' data-rr_no='"+list[i].rr_no+"'>";
+                    str += "<div><div class='header'><strong class='primary-font'>"+ list[i].id+"</strong>";
+                    str += "<small class='pull-right text-muted'>" +reviewReplyService.displayTime(list[i].rr_regtime)+"</small></div>";
+                    str += "<p>" + list[i].rr_content+"</p></div></li>"
+                   console.log(list[i]);
                 }
                 replyUL.html(str);
             });
         }
+        $("#modalCloseBtn").on("click", function () {
+            $(".modal").modal("hide");
+        });
+
 
     //     replyService.add(
     //         {reply:"JS TEST", replyer:"tester", bno:bnoValue},
