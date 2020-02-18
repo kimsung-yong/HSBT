@@ -92,6 +92,7 @@
             </div>
                 </div>
             </div>
+</div>
         <!-- /#page-wrapper -->
         <div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -290,7 +291,7 @@
                 var str = "<ul class='pagination pull-right'>";
 
                 if(prev){
-                    str = +"<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
+                    str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
 
                 }
 
