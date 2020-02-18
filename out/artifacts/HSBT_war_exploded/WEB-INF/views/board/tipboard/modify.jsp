@@ -3,11 +3,13 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../includes/header.jsp"%>
 
-             <div class="row">
+        <div class="col-lg-9">
+
+            <div class="row">
                 <div class="col-lg-12">
                     <br>
-                    <h1 class="page-header">Tip</h1>
-                    <br>
+                    <h1 class="page-header">Q&A</h1>
+                    <hr>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -16,12 +18,10 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <br><br><br><br>
-                            <h3>게시글 수정</h3>
-                            <hr>
+
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="width: 600px;">
+                        <div class="panel-body">
                             <form action="/board/tipboard/modify" method="post">
                                 <div class="form-group">
                                     <label>글번호</label>
@@ -57,6 +57,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         <!-- /#page-wrapper -->
     </div>
 </div>
