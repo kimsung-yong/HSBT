@@ -1,5 +1,6 @@
 package service.notice;
 
+import domain.Criteria;
 import domain.notice.NoticeVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -35,7 +36,12 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<NoticeVO> getList() {
-        return mapper.getList();
+    public List<NoticeVO> getList(Criteria cri) {
+        return mapper.getListWithPaging(cri);
+    }
+
+    @Override
+    public int total() {
+        return mapper.getCount();
     }
 }

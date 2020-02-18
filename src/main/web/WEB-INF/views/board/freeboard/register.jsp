@@ -35,8 +35,8 @@
 
                                     <input type="text" name="u_id" class="form-control">
                                 </div>
-                                <button type="submit" class="btn btn-default">저장</button>
-                                <button type="reset" class="btn btn-default">재작성</button>
+                                <button type="submit" class="btn btn-dark">저장</button>
+                                <button type="reset" class="btn btn-dark">재작성</button>
                             </form>
                         </div>
                     </div>

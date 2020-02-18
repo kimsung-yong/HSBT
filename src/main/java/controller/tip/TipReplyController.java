@@ -1,4 +1,4 @@
-package controller;
+package controller.tip;
 
 import domain.Criteria;
 import domain.tip.TipReplyPageDTO;

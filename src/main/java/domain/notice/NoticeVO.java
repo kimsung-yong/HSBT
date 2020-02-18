@@ -10,6 +10,6 @@ public class NoticeVO {
     private String n_title;
     private String n_content;
     private String id;
-    private Date n_regtime;
-    private Date n_updatetime;
+    private Date n_regTime;
+    private Date n_updateTime;
 }

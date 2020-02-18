@@ -10,6 +10,7 @@
         bottom:0px;
         width: 100%;
         text-align: center;
+        margin-top: 10px;
     }
     .pull-right {
         float: right !important;
