@@ -14,4 +14,5 @@ public interface TipReplyMapper {
 
     public List<TipReplyVO> getListWithPaging(@Param("cri") Criteria cri, @Param("t_no") Long t_no);
     public int getCountByT_no(Long t_no);
+    //1
 }
