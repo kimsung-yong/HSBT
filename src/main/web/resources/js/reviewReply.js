@@ -1,96 +1,86 @@
-console.log("Reply Module.....");
+console.log("Reply Module............");
 
-var BoardReplyService = (function () {
-
-    function add(br_content,callback,error) {
-       console.log("add reply");
+var reviewReplyService = (function(){
+    function add(rr_content, callback, error) {
+        console.log("add reply........");
 
         $.ajax({
-            type : 'post',
-            url : '/board/freeboardreplies/new',
-            data : JSON.stringify(br_content),
+            type: 'post',
+            url : '/review/reviewReplies/new',
+            data : JSON.stringify(rr_content),
             contentType : "application/json; charset=utf-8",
             success : function (result, status, xhr) {
-                if(callback) {
+                if(callback){
                     callback(result);
                 }
             },
             error : function (xhr, status, er) {
-                if(error) {
+                if(error){
                     error(er);
                 }
             }
         })
     }
-
     function getList(param, callback, error) {
-        var b_no = param.b_no;
+        var r_no = param.r_no;
         var page = param.page || 1;
-
-        $.getJSON("/board/freeboardreplies/pages/" + b_no + "/" + page + ".json",
+        $.getJSON("/review/reviewReplies/pages/" + r_no + "/" + page + ".json",
             function (data) {
-                if(callback) {
-                    // callback(data);
-                    callback(data.replyCnt,data.list)
+                if(callback){
+                    callback(data);
                 }
-
             }).fail(function (xhr, status, err) {
-            if(error) {
+            if(error){
                 error();
             }
         });
     }
-
-    function remove(br_no, callback, error) {
+    function remove(rr_no, callback, error) {
         $.ajax({
             type : 'delete',
-            url : '/board/freeboardreplies/' + br_no,
+            url : '/review/reviewReplies/'+rr_no,
             success : function (deleteResult, status, xhr) {
-                if(callback) {
+                if(callback){
                     callback(deleteResult);
                 }
             },
             error : function (xhr, status, er) {
-                if(error) {
+                if(error){
                     error(er);
                 }
             }
         });
     }
-
-    function update(br_content, callback, error) {
-        console.log("br_bo : " + br_content.br_no);
-
+    function update(rr_content, callback, error) {
+        console.log("RR_NO: " + rr_content.rr_no);
         $.ajax({
             type : 'put',
-            url : '/board/freeboardreplies/' + br_content.br_no,
-            data : JSON.stringify(br_content),
+            url : '/review/reviewReplies/'+ rr_content.rr_no,
+            data : JSON.stringify(rr_content),
             contentType : "application/json; charset=utf-8",
             success : function (result, status, xhr) {
-                if(callback) {
+                if(callback){
                     callback(result);
                 }
             },
             error : function (xhr, status, er) {
-                if(error) {
+                if(error){
                     error(er);
                 }
             }
         });
     }
-
-    function get(br_no, callback, error) {
-        $.get("/board/freeboardreplies/" + br_no + ".json", function (result) {
-            if(callback) {
+    function get(rr_no, callback, error) {
+        $.get("/review/reviewReplies/"+rr_no+".json",function (result) {
+            if(callback){
                 callback(result);
             }
         }).fail(function (xhr, status, err) {
-            if(error) {
+            if(error){
                 error();
             }
         });
     }
-
     function displayTime(timeValue) {
         var today  = new Date();
 
@@ -114,13 +104,14 @@ var BoardReplyService = (function () {
         }
     }
     ;
-
-    return {
+    return{
         add:add,
-        getList:getList,
-        remove:remove,
-        update:update,
-        get:get,
-        displayTime:displayTime
+        getList : getList,
+        remove : remove,
+        update : update,
+        get : get,
+        displayTime : displayTime
     };
 })();
+
+

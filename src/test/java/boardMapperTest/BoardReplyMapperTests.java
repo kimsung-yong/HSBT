@@ -27,7 +27,7 @@ public class BoardReplyMapperTests {
     public void testInsert(){
         BoardReplyVO vo = new BoardReplyVO();
 
-        vo.setU_id("as");
+        vo.setId("as");
         vo.setBr_content("첫 리플");
         vo.setB_no(2641L);
 
@@ -64,4 +64,16 @@ public class BoardReplyMapperTests {
         List<BoardReplyVO> list = mapper.getListWithPaging(cri,2641L);
         list.forEach(reply ->log.info(reply));
     }
+    @Test
+    public void testList2() {
+        Criteria cri = new Criteria(2, 10);
+        //206L
+        List<BoardReplyVO> contents = mapper.getListWithPaging(cri, 206L);
+        contents.forEach(content -> log.info(content));
+    }
+
+    public void testgetCount(){
+
+    }
+
 }
