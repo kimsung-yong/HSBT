@@ -108,7 +108,7 @@
                         </div>
                         <div class="form-group">
                             <label>id</label>
-                            <input class="form-control" name="u_id" value="new replyer">
+                            <input class="form-control" name="id" value="new replyer">
                         </div>
                         <div class="form-group">
                             <label>Reply Date</label>
@@ -171,7 +171,7 @@
 
         var modal = $(".modal");
         var modalInputBr_content = modal.find("input[name = 'br_content']");
-        var modalInputU_id = modal.find("input[name = 'u_id']");
+        var modalInputid = modal.find("input[name = 'id']");
         var modalInputBr_regtime = modal.find("input[name ='br_regTime']");
 
         var modalModBtn = $("#modalModBtn");
@@ -192,7 +192,7 @@
 
             var br_content = {
                 br_content : modalInputBr_content.val(),
-                u_id : modalInputU_id.val(),
+                id : modalInputid.val(),
                 b_no : b_noValue
             };
 
@@ -232,7 +232,7 @@
 
             BoardReplyService.get(br_no,function (br_content) {
                 modalInputBr_content.val(br_content.br_content);
-                modalInputU_id.val(br_content.u_id).attr("readonly","readonly");
+                modalInputid.val(br_content.id).attr("readonly","readonly");
                 modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");
                 modal.data("br_no",br_content.br_no);
 
@@ -264,7 +264,7 @@
                     }
                     for (var i = 0, len = list.length || 0; i < len; i++){
                         str +="<li class='left clearfix' data-br_no='" + list[i].br_no+"'>";
-                        str +=" <div><div class='header'><strong class='primary-font'>" + list[i].u_id +"</strong>";
+                        str +=" <div><div class='header'><strong class='primary-font'>" + list[i].id +"</strong>";
                         str +="<small class='pull-right text-muted'>" + BoardReplyService.displayTime(list[i].br_regTime) + "</small></div>";
                         str +="<p>" + list[i].br_content + "</p></div></li>";
                     }
