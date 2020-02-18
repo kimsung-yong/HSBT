@@ -4,26 +4,26 @@
 <%@include file="/WEB-INF/views/board/includes/header.jsp"%>
 
 
+
 <div class="col-lg-9">
 
     <div class="row">
         <div class="col-lg-12">
             <br>
             <h1 class="page-header">자유게시판</h1>
-
+            <br>
         </div>
         <!-- /.col-lg-12 -->
     </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-<%--                            DataTables Advanced Tables--%>
-                        </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
 
-                        <!-- /.panel-heading -->
-                        <div class="panel-body" style="width: 600px">
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
                             <div class="form-group">
                             <label>글번호</label> <input class="form-control" name="b_no" value="<c:out value="${board.b_no}"/>" readonly="readonly">
                             </div>
@@ -41,8 +41,8 @@
 <%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
                             </div>
 
-                           <button data-oper="modify" class="btn btn-default">수정</button>
-                           <button data-oper="list" class="btn btn-info">목록</button>
+                           <button data-oper="modify" class="btn btn-dark">수정</button>
+                           <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/modify" method="get">
                                 <input type="hidden" name="b_no" value="${board.b_no}">
@@ -53,6 +53,9 @@
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+
             <br>
             <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
@@ -90,9 +93,11 @@
                 </div>
 <%--                ./end row--%>
             </div>
-                </div>
-            </div>
+                    </div>
 </div>
+
+
+
         <!-- /#page-wrapper -->
         <div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -129,7 +134,7 @@
 <%--         /.modal   --%>
         </div>
     </div>
-</div>
+
 <script type="text/javascript" src="/resources/js/boardReply.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
