@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+
+    <select id="getList" resultType="domain.user.UserVO">
+        <![CDATA[
+        select * from tbl_user;
+        ]]>
+    </select>
+    <!--정보 Insert-->
+    <insert id="insert">
+        insert into tbl_user (id,pw,phone,name,address,manager)
+        values (#{id},#{pw},#{phone},#{name},#{address},#{manager})
+    </insert>
+    <!--존재하는 아이디 조회-->
+    <select id="read" resultType="domain.user.UserVO">
+        select * from tbl_user where id = #{id}
+    </select>
+    <!--아이디로 정보 상제-->
+    <delete id="delete">
+        delete from tbl_user where id = #{id}
+    </delete>
+    <!--정보 업데이트1-->
+    <update id="update">
+        update tbl_user
+        set pw = #{pw},
+         phone = #{phone},
+         name = #{name},
+         address = #{address}
+         where id = #{id}
+    </update>
+<!--
+    <insert id="insertSelectKey">
+
+        <selectKey keyProperty="id" order="BEFORE" resultType="String">
+            select seq_user.nextval from dual
+        </selectKey>
+
+        insert into tbl_user (id,pw,phone,name,address,manager)
+        values (#{id},#{pw},#{phone},#{name},#{address},#{manager})
+    </insert>-->
+
+</mapper>
