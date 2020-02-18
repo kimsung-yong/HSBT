@@ -68,13 +68,15 @@
 
                                  <div class="panel-heading">
                                     <i class="fa fa-comments fa-fw"></i> Reply
+                                     <br><br>
                                     <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
                                  </div>
+                                <hr>
 
         <%--                     panel-heading   --%>
                                 <div class="panel-body">
                                     <ul class="chat">
-                                        <li class="left clearfix" data-rno="12">
+                                        <li class="left clearfix" data-qr_no="12">
                                             <div>
                                                 <div class="header">
                                                     <strong class="primary-font">user00</strong>
@@ -88,6 +90,8 @@
 <%--                            end ul--%>
                                 </div>
 <%--                        /.panel .chat-panel--%>
+                                <div class="panel-footer">
+                                </div>
                             </div>
                         </div>
 <%--                ./end row--%>
@@ -105,15 +109,15 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Reply</label>
-                                <input class="form-control" name="reply" value="new reply">
+                                <input class="form-control" name="qr_content" value="new reply">
                             </div>
                             <div class="form-group">
                                 <label>Replyer</label>
-                                <input class="form-control" name="replyer" value="new replyer">
+                                <input class="form-control" name="id" value="new replyer">
                             </div>
                             <div class="form-group">
                                 <label>Reply Date</label>
-                                <input class="form-control" name="replyDate" value="">
+                                <input class="form-control" name="qr_regtime" value="">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -132,29 +136,34 @@
             </div>
         </div>
     </div>
-<script type="text/javascript" src="/resources/js/reply.js"></script>
+<script type="text/javascript" src="/resources/js/qnaReply.js"></script>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <script>
     $(document).ready(function () {
+
         var operForm = $("#operForm");
-        ($("button[data-oper='modify']")).on("click",function (e) {
-            <%--operForm.append("<input type='hidden' name='q_no' value="+${qna.q_no} +">");--%>
-            <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");--%>
+
+        $("button[data-oper='modify']").on("click",function (e) {
+            operForm.append("<input type='hidden' name='q_no' value="+${qna.q_no} +">");
+            operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
+            operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");
             operForm.attr("action","/board/qnaboard/modify").submit();
         });
 
         $("button[data-oper='list']").on("click",function(e) {
             operForm.find("#q_no").remove();
             operForm.attr("action","/board/qnaboard/list");
-            <%--operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");--%>
-            <%--operForm.append("<input type='hidden' name='keyword' value='"+${cri.keyword} +"'>");--%>
+            operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
+            operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
+            operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");
+            operForm.append("<input type='hidden' name='keyword' value='"+${cri.keyword} +"'>");
             operForm.submit();
-    })
+    });
 
         
-    })
+    });
 </script>
 
 <script type="text/javascript">
@@ -162,47 +171,80 @@
         console.log("=======================");
         console.log("JS TEST");
 
-        var bnoValue = '<c:out value="${board.bno}"/>';
+        var q_noValue = '<c:out value="${qna.q_no}"/>';
+
         var replyUL = $(".chat");
+
         var modal = $(".modal");
-        var modalInputReply = modal.find("input[name = 'reply']");
-        var modalInputReplyer = modal.find("input[name = 'replyer']");
-        var modalInputReplyDate = modal.find("input[name ='replyDate']");
+        var modalInputQr_content = modal.find("input[name = 'qr_content']");
+        var modalInputId = modal.find("input[name = 'id']");
+        var modalInputQr_regtime = modal.find("input[name ='qr_regtime']");
 
         var modalModBtn = $("#modalModBtn");
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
+        var modalCloseBtn = $("#modalCloseBtn");
+
+        var pageNum = 1;
+        var replyPageFooter = $(".panel-footer");
+
         $("#addReplyBtn").on("click",function (e) {
             modal.find("input").val("");
-            modalInputReplyDate.closest("div").hide();
+            modalInputQr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
 
             modalRegisterBtn.show();
 
             $(".modal").modal("show");
         });
-        modalRegisterBtn.on("click",function (e) {
 
-            var reply = {reply : modalInputReply.val(),
-                        replyer : modalInputReplyer.val(),
-                        bno : bnoValue
+        modalRegisterBtn.on("click", function (e) {
+
+            var qr_content = {
+                qr_content : modalInputQr_content.val(),
+                id : modalInputId.val(),
+                q_no : q_noValue
             };
-            replyService.add(reply,function (result) {
+            qnaReplyService.add(qr_content,function (result) {
                 alert(result);
 
                 modal.find("input").val("");
                 modal.modal("hide");
-                showList(1);
-            })
-        });
-        $(".chat").on("click","li",function (e) {
-            var rno = $(this).data("rno");
 
-            replyService.get(rno,function (reply) {
-                modalInputReply.val(reply.reply);
-                modalInputReplyer.val(reply.replyer);
-                modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly","readonly");
-                modal.data("rno","reply.rno");
+                showList(-1);
+            });
+        });
+
+        modalModBtn.on("click", function (e) {
+           var qr_content = {qr_no:modal.data("qr_no"), qr_content:modalInputQr_content.val()};
+           qnaReplyService.update(qr_content, function (result) {
+               alert(result);
+               modal.modal("hide");
+               showList(pageNum);
+           });
+        });
+
+        modalRemoveBtn.on("click", function (e) {
+            var qr_no = modal.data("qr_no");
+            qnaReplyService.remove(qr_no, function (result) {
+                alert(result);
+                modal.modal("hide");
+                showList(pageNum);
+            });
+        });
+
+        modalCloseBtn.on("click", function (e) {
+            modal.modal("hide");
+        });
+
+        $(".chat").on("click", "li", function (e) {
+            var qr_no = $(this).data("qr_no");
+
+            qnaReplyService.get(qr_no, function (qr_content) {
+                modalInputQr_content.val(qr_content.qr_content);
+                modalInputId.val(qr_content.id);
+                modalInputQr_regtime.val(qnaReplyService.displayTime(qr_content.qr_regtime)).attr("readonly","readonly");
+                modal.data("qr_no", qr_content.qr_no);
 
                 modal.find("button[id !='modalCloseBtn']").hide();
                 modalModBtn.show();
@@ -212,67 +254,75 @@
 
             });
 
-            console.log(rno);
+            console.log(qr_no);
         });
 
         showList(1);
 
-        
-
         function showList(page) {
-            replyService.getList({bno:bnoValue,page: page}, function (list) {
-
-                var str = "";
-                if(list == null || list.length == 0){
-                    replyUL.html("");
-
+            qnaReplyService.getList({q_no:q_noValue, page: page || 1}, function (replyCnt, list) {
+                if(page == -1) {
+                    pageNum = Math.ceil(replyCnt/10.0);
+                    showList(pageNum);
                     return;
                 }
-                for(var i=0,len = list.length || 0; i < len; i++){
-                    str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-                    str += "<div><div class='header'><strong class='primary-font'>"+ list[i].replyer+"</strong>";
-                    str += "<small class='pull-right text-muted'>" +replyService.displayTime(list[i].replyDate)+"</small></div>";
-                    str += "<p>" + list[i].reply+"</p></div></li>"
+
+                var str = "";
+
+                if(list == null || list.length == 0){
+                    return;
+                }
+                for(var i=0, len = list.length || 0; i < len; i++){
+                    str += "<li class='left clearfix' data-qr_no='"+list[i].qr_no+"'>";
+                    str += "<div><div class='header'><strong class='primary-font'>[" + list[i].qr_no + "] " + list[i].id + "</strong>";
+                    str += "<small class='pull-right text-muted'>" + qnaReplyService.displayTime(list[i].qr_regtime)+"</small></div>";
+                    str += "<p>" + list[i].qr_content+"</p></div></li>"
                 }
                 replyUL.html(str);
+                showReplyPage(replyCnt);
             });
         }
 
-    //     replyService.add(
-    //         {reply:"JS TEST", replyer:"tester", bno:bnoValue},
-    //         function (result) {
-    //             alert("Result :" + result);
-    //         }
-    //         );
-    //     replyService.getList({bno:bnoValue, page:1},function (list) {
-    //         for(var i = 0, len =list.length||0; i < len; i++){
-    //             console.log(list[i]);
-    //         }
-    //     });
-    //
-    //     replyService.remove(49, function (count) {
-    //         console.log(count);
-    //
-    //         if(count === "success"){
-    //             alert("removed");
-    //         }
-    //     },function (err) {
-    //         alert("error");
-    //         }
-    //     )
-    //
-    //     replyService.update({
-    //         rno :50,
-    //         bno : bnoValue,
-    //         reply : "Modifyed Reply..."
-    //     },function (result) {
-    //         alert("수정완료");
-    //     });
-    //
-    //     replyService.get(49, function (data) {
-    //         console.log(data)
-    //     })
+        function showReplyPage(replyCnt) {
+            var endNum = Math.ceil(pageNum/10.0) * 10;
+            var startNum = endNum - 9;
+            var prev = startNum != 1;
+            var next = false;
 
+            if(endNum * 10 >= replyCnt) {
+                endNum = Math.ceil(replyCnt/10.0);
+            }
+            if(endNum * 10 < replyCnt) {
+                next = true;
+            }
+
+            var str = "<ul class='pagination pull-right'>";
+
+            if(prev) {
+                str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
+            }
+
+            for(var i = startNum; i <= endNum; i++) {
+                var active = pageNum == i ? "active" : "";
+                str += "<li class='page-item " + active + " '><a class='page-link' href='" + i + "'>" + i + "</a></li>";
+            }
+
+            if(next) {
+                str += "<li class='page-item'><a class='page-link' href='" + (endNum + 1) + "'>Next</a></li>";
+            }
+
+            str += "</ul></div>";
+
+            replyPageFooter.html(str);
+        }
+
+        replyPageFooter.on("click", "li a", function (e) {
+            e.preventDefault();
+
+            var targetPageNum = $(this).attr("href");
+            pageNum = targetPageNum;
+            showList(pageNum);
+        })
 
     });
 
