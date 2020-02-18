@@ -1,4 +1,4 @@
-package controller;
+package controller.review;
 
 import domain.Criteria;
 import domain.PageDTO;

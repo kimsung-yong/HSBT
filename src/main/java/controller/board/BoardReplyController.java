@@ -1,4 +1,4 @@
-package controller;
+package controller.board;
 
 import domain.Criteria;
 import domain.board.BoardReplyPageDTO;

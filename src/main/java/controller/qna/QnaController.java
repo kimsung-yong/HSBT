@@ -1,4 +1,4 @@
-package controller;
+package controller.qna;
 
 import domain.Criteria;
 import domain.PageDTO;

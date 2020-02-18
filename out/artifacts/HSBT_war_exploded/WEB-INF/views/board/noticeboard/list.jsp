@@ -36,22 +36,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${list}" var="board">
+                                <c:forEach items="${list}" var="notice">
                                     <tr>
-                                        <td><c:out value="${board.bno}"/> </td>
+                                        <td><c:out value="${notice.n_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="${board.bno}" >
-                                            <c:out value="${board.title}"/></a> </td>
-                                        <td><c:out value="${board.writer}"/> </td>
-                                        <td><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/> </td>
-                                        <td><fmt:formatDate value="${board.updateDate}" pattern="yyyy-MM-dd"/> </td>
+                                        <td><a id="detailPage" href="${notice.n_no}" >
+                                            <c:out value="${notice.n_title}"/></a> </td>
+                                        <td><c:out value="${notice.id}"/> </td>
+                                        <td><fmt:formatDate value="${notice.n_regTime}" pattern="yyyy-MM-dd"/> </td>
+                                        <td><fmt:formatDate value="${notice.n_updateTime}" pattern="yyyy-MM-dd"/> </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
+                                <button type="button" class="btn btn-dark" onclick="regloc()">글작성</button>
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <form id="searchForm" action="/board/list" method="get">
+                                <div class="col-lg-12" >
+                                    <form id="searchForm" action="/board/noticeboard/list" method="get" style="float: right">
                                         <select name="type">
                                             <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--</option>
                                             <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목</option>
@@ -64,7 +65,7 @@
                                         <input type="text" name="keyword" value="${pageMaker.cri.keyword}"/>
                                         <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-                                        <button class="btn btn-default">검색</button>
+                                        <button class="btn btn-dark">검색</button>
                                     </form>
                                 </div>
 
@@ -77,7 +78,7 @@
                             </div>
 
                             <div class="pull-right">
-                                <ul class="pagination">
+                                <ul class="lpagination">
                                     <c:if test="${pageMaker.prev}">
                                         <li class="paginate_button previous"><a href="${pageMaker.realStart}">◀◀</a></li>
                                     </c:if>
@@ -105,7 +106,7 @@
                                 </ul>
 
                             </div>
-                            <button type="button" class="btn btn-default" style="float: left" onclick="regloc()">글작성</button>
+
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -136,7 +137,7 @@
         </div>
 <script>
     function regloc() {
-        location.href="/board/reg";
+        location.href="/board/noticeboard/register";
     }
 
     $(document).ready(function () {
@@ -170,9 +171,9 @@
         $("a#detailPage").on("click",function (e) {
             e.preventDefault();
             console.log("글클릭");
-            actionForm.attr("action","/board/get");
+            actionForm.attr("action","/board/noticeboard/get");
 
-            actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href")+ "'>");
+            actionForm.append("<input type='hidden' name='n_no' value='" + $(this).attr("href")+ "'>");
             actionForm.submit();
         });
 

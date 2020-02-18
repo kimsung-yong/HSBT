@@ -22,17 +22,46 @@
 <!--        <result property="address" column="address"/>-->
 <!--        <result property="manager" column="manager"/>-->
 <!--    </resultMap>-->
+    <sql id="criteria">
+        <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+            <foreach item="type" collection="typeArr">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            b_title like '%' || #{keyword} || '%'
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            b_content like '%' || #{keyword} || '%'
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            id like '%' || #{keyword} || '%'
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
     <select id="getList" resultType="domain.board.BoardVO">
-        select * from tbl_board
+        <![CDATA[
+            select * from tbl_board where b_no > 0
+        ]]>
     </select>
+
     <select id="getListWithPaging" resultType="domain.board.BoardVO">
         <![CDATA[
-            select b_no,b_title,b_content,id,b_regtime,b_updatetime from (
-            select /*+index_desc(tbl_board pk_board) */
-            rownum rn , b_no,b_title,b_content,id,b_regtime,b_updatetime from tbl_board
-            where rownum <= #{pageNum} * #{amount}
+            select b_no, b_title, b_content, id, b_regtime, b_updatetime
+            from (
+                select /*+ INDEX_DESC(tbl_board pk_board) */
+                    rownum rn, b_no, b_title, b_content, id ,b_regtime, b_updatetime
+                from tbl_board
+                where
+        ]]>
+        <include refid="criteria"></include>
+        <![CDATA[
+                rownum <= #{pageNum} * #{amount}
             )
-            where rn >(#{pageNum} -1) * #{amount}
+            where rn > (#{pageNum} - 1) * #{amount}
         ]]>
     </select>
     <select id="getCount" resultType="int">

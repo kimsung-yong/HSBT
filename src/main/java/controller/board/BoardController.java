@@ -1,4 +1,4 @@
-package controller;
+package controller.board;
 
 import domain.board.BoardVO;
 import domain.Criteria;

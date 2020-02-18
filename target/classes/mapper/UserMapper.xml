@@ -22,7 +22,7 @@
     <delete id="delete">
         delete from tbl_user where id = #{id}
     </delete>
-    <!--정보 업데이트-->
+    <!--정보 업데이트1-->
     <update id="update">
         update tbl_user
         set pw = #{pw},
