@@ -25,7 +25,7 @@
                             <form action="/board/qnaboard/modify" method="post">
                                 <div class="form-group">
                                     <label>글번호</label>
-                                    <input class="form-control" name="q_no" value="<c:out value="${qna.q_no}"/>">
+                                    <input class="form-control" name="q_no" value="<c:out value="${qna.q_no}"/>" readonly="readonly">
                                 </div>
 
                                 <div class="form-group">
@@ -40,7 +40,7 @@
 
                                 <div class="form-group">
                                     <label>작성자</label>
-                                    <input class="form-control" name="id" value="<c:out value="${qna.id}"/>">
+                                    <input class="form-control" name="id" value="<c:out value="${qna.id}"/>" readonly="readonly">
                                 </div>
 
                                 <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
@@ -61,36 +61,37 @@
         <!-- /#page-wrapper -->
     </div>
 </div>
-    <script>
-        $(document).ready(function () {
-            var formObj = $("form");
+
+<script>
+    $(document).ready(function () {
+        var formObj = $("form");
             
-            $('button').on("click",function (e) {
+        $('button').on("click",function (e) {
 
-                e.preventDefault();
+            e.preventDefault();
 
-                var operation = $(this).data("oper");
+            var operation = $(this).data("oper");
 
-                console.log(operation);
+            console.log(operation);
 
-                if(operation === 'remove') {
-                    formObj.attr("action", "/board/qnaboard/remove");
-                } else if(operation === 'list') {
-                    formObj.attr("action", "/board/qnaboard/list").attr("method", "get");
-                    var pageNumTag = $("input[name='pageNum']").clone();
-                    var amountTag = $("input[name='amount']").clone();
-                    var keywordTag = $("input[name='keyword']").clone();
-                    var typeTag = $("input[name='type']").clone();
+            if(operation === 'remove') {
+                formObj.attr("action", "/board/qnaboard/remove");
+            } else if(operation === 'list') {
+                formObj.attr("action", "/board/qnaboard/list").attr("method", "get");
+                var pageNumTag = $("input[name='pageNum']").clone();
+                var amountTag = $("input[name='amount']").clone();
+                var keywordTag = $("input[name='keyword']").clone();
+                var typeTag = $("input[name='type']").clone();
 
-                    formObj.empty();
-                    formObj.append(pageNumTag);
-                    formObj.append(amountTag);
-                    formObj.append(keywordTag);
-                    formObj.append(typeTag);
-                }
-                formObj.submit();
-            });
-            
+                formObj.empty();
+                formObj.append(pageNumTag);
+                formObj.append(amountTag);
+                formObj.append(keywordTag);
+                formObj.append(typeTag);
+            }
+            formObj.submit();
         });
-    </script>
+            
+    });
+</script>
 <%@include file="../includes/footer.jsp"%>

@@ -25,7 +25,7 @@
                             <form action="/board/qnaboard/modify" method="post">
                                 <div class="form-group">
                                     <label>글번호</label>
-                                    <input class="form-control" name="q_no" value="<c:out value="${qna.q_no}"/>">
+                                    <input class="form-control" name="q_no" value="<c:out value="${qna.q_no}"/>" readonly="readonly">
                                 </div>
 
                                 <div class="form-group">
@@ -40,7 +40,7 @@
 
                                 <div class="form-group">
                                     <label>작성자</label>
-                                    <input class="form-control" name="id" value="<c:out value="${qna.id}"/>">
+                                    <input class="form-control" name="id" value="<c:out value="${qna.id}"/>" readonly="readonly">
                                 </div>
 
                                 <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
