@@ -43,6 +43,6 @@
                 </div>
             </div>
         <!-- /#page-wrapper -->
-
+        </div>
     </div>
 <%@include file="../includes/footer.jsp"%>
