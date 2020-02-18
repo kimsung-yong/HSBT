@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+    <select id="getList" resultType="src.main.java.domain.user.UserVO">
+        <![CDATA[
+        select * from tbl_user;
+        ]]>
+    </select>
+    <insert id="insert">
+        insert into tbl_user (id,pw,phone,name,address,manager)
+        value (#{id},#{pw},#{phone},#{name},#{address},#{manager})
+    </insert>
+    <insert id="insertSelectKey">
+        <selectKey keyProperty="id" order="BEFORE" resultType="String">
+            select seq
+        </selectKey>
+    </insert>
+</mapper>
