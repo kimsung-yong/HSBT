@@ -4,7 +4,7 @@
 
 <%@include file="../includes/header.jsp"%>
 
-             <div class="row">
+            <div class="row">
                 <div class="col-lg-12">
                     <br>
                     <h1 class="page-header">Tip</h1>
@@ -19,7 +19,7 @@
                         <br><br><br><br>
                         <div class="panel-heading">
                             <h3>게시글 작성</h3>
-                            <br>
+                            <hr>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -44,6 +44,6 @@
                 </div>
             </div>
         <!-- /#page-wrapper -->
-
+        </div>
     </div>
 <%@include file="../includes/footer.jsp"%>
