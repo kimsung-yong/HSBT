@@ -56,7 +56,7 @@
                             </table>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="searchForm" action="/board/tipboard/list" method="get">
+                                    <form id="searchForm" action="/board/tipboard/list" method="get" style="float: right">
                                         <select name="type">
                                             <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--</option>
                                             <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목</option>
@@ -69,7 +69,7 @@
                                         <input type="text" name="keyword" value="${pageMaker.cri.keyword}"/>
                                         <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-                                        <button class="btn btn-default">검색</button>
+                                        <button class="btn btn-dark">검색</button>
                                     </form>
                                 </div>
 
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="pull-right">
-                                <ul class="lpagination">
+                                <ul class="lpagination" id="page_btn">
                                     <c:if test="${pageMaker.prev}">
                                         <li class="paginate_button previous"><a href="${pageMaker.realStart}">◀◀</a></li>
                                     </c:if>

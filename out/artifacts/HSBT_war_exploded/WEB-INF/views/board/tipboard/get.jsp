@@ -43,8 +43,8 @@
                                 <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
                             </div>
 
-                            <button data-oper="modify" class="btn btn-default">수정</button>
-                            <button data-oper="list" class="btn btn-info">목록</button>
+                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/tipboard/modify" method="get">
                                 <input type="hidden" id="t_no" name="t_no" value="<c:out value="${tip.t_no}"/>">
@@ -63,7 +63,6 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <i class="fa fa-comments fa-fw"></i>Reply
-                                    <br><br>
                                     <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
                                 </div>
                                 <hr>
