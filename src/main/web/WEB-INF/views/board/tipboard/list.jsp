@@ -110,7 +110,7 @@
                                 </ul>
 
                             </div>
-                            <button type="button" id="regBtn" class="btn btn-default" style="float: left">글작성</button>
+                            <button type="button" id="regBtn" class="btn btn-dark">글작성</button>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
