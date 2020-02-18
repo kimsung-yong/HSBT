@@ -1,6 +1,7 @@
 package service.Board;
 
 import domain.Criteria;
+import domain.board.BoardReplyPageDTO;
 import domain.board.BoardReplyVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -42,5 +43,14 @@ public class BoardReplyServiceImp implements BoardReplyService{
     @Override
     public List<BoardReplyVO> getList(Criteria cri, Long b_no) {
         return mapper.getListWithPaging(cri,b_no);
+    }
+
+    @Override
+    public BoardReplyPageDTO getListPage(Criteria cri, Long b_no) {
+
+        return new BoardReplyPageDTO(
+                mapper.getCountByBno(b_no),
+                mapper.getListWithPaging(cri,b_no)
+        );
     }
 }
