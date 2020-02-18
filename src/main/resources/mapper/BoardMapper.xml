@@ -27,9 +27,9 @@
     </select>
     <select id="getListWithPaging" resultType="domain.board.BoardVO">
         <![CDATA[
-            select b_no,b_title,b_content,u_id,b_regtime,b_updatetime from (
+            select b_no,b_title,b_content,id,b_regtime,b_updatetime from (
             select /*+index_desc(tbl_board pk_board) */
-            rownum rn , b_no,b_title,b_content,u_id,b_regtime,b_updatetime from tbl_board
+            rownum rn , b_no,b_title,b_content,id,b_regtime,b_updatetime from tbl_board
             where rownum <= #{pageNum} * #{amount}
             )
             where rn >(#{pageNum} -1) * #{amount}
@@ -43,13 +43,13 @@
     </select>
 
     <insert id="insert">
-        insert into tbl_board(b_no,b_title,b_content,u_id) values(board_seq.nextval,#{b_title},#{b_content},#{u_id})
+        insert into tbl_board(b_no,b_title,b_content,id) values(board_seq.nextval,#{b_title},#{b_content},#{id})
     </insert>
     <insert id="insertSelectkey">
         <selectKey keyProperty="b_no" order="BEFORE" resultType="long">
             select board_seq.nextval from dual
         </selectKey>
-        insert into tbl_board(b_no,b_title,b_content,u_id) values(#{b_no},#{b_title},#{b_content},#{u_id})
+        insert into tbl_board(b_no,b_title,b_content,id) values(#{b_no},#{b_title},#{b_content},#{id})
     </insert>
     <update id="update">
         update tbl_board set b_title =#{b_title},b_content=#{b_content} where b_no = #{b_no}

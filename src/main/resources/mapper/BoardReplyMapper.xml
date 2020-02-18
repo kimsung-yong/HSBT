@@ -6,7 +6,7 @@
 <mapper namespace="mapper.BoardReplyMapper">
 
     <insert id="insert">
-        insert into tbl_board_reply (br_no,b_no,u_id,br_content) values (board_reply_seq.nextval,#{b_no},#{u_id},#{br_content})
+        insert into tbl_board_reply (br_no,b_no,id,br_content) values (board_reply_seq.nextval,#{b_no},#{id},#{br_content})
     </insert>
 
     <select id="read" resultType="domain.board.BoardReplyVO">
@@ -23,9 +23,9 @@
 
     <select id="getListWithPaging" resultType="domain.board.BoardReplyVO">
         <![CDATA[
-            select  br_no,b_no, br_content,u_id,br_regTime,br_updateTime
+            select  br_no,b_no, br_content,id,br_regTime,br_updateTime
             from (select /*+index(tbl_reply idx_reply) */
-            rownum rn, br_no,b_no,br_content,u_id,br_regTime,br_updateTime
+            rownum rn, br_no,b_no,br_content,id,br_regTime,br_updateTime
             from tbl_board_reply
             where b_no = #{b_no}
             and br_no > 0
