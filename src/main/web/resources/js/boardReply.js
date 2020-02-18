@@ -30,8 +30,10 @@ var BoardReplyService = (function () {
         $.getJSON("/board/freeboardreplies/pages/" + b_no + "/" + page + ".json",
             function (data) {
                 if(callback) {
-                    callback(data);
+                    // callback(data);
+                    callback(data.replyCnt,data.list)
                 }
+
             }).fail(function (xhr, status, err) {
             if(error) {
                 error();
