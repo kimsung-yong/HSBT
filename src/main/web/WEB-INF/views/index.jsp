@@ -103,9 +103,9 @@
                 <tr>
                   <td>시공 항목</td>
                   <td style="text-align: center">
-                    <input type="checkbox" value="tile">타일&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" value="window">창호&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="checkbox" value="paint">페인트
                   </td>
                 </tr>
