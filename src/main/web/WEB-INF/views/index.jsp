@@ -70,11 +70,53 @@
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <a class="portfolio-box" href="#">
+            <a class="portfolio-box" id="eModal-btn" href="#eModal">
               <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/Estimate.jpg">
               <h3 class="h4 mb-2">견적 신청</h3>
             </a>
           </div>
+        </div>
+        <%--견적 모달--%>
+        <div id="eModal" class="emodal">
+          <div class="emodal-content">
+            <span class="emodalClose">&times;</span>
+            <h3>견적 신청</h3>
+            <hr>
+            <div>
+              <table class="emodal-table">
+                <tr>
+                  <td>ID</td>
+                  <td>OOO님</td>
+                </tr>
+                <tr>
+                  <td>공간 면적</td>
+                  <td><input type="text" class="t"></td>
+                </tr>
+                <tr>
+                  <td>주소</td>
+                  <td><input type="text" class="t"></td>
+                </tr>
+                <tr>
+                  <td>인테리어 예산</td>
+                  <td><input type="text" class="t"></td>
+                </tr>
+                <tr>
+                  <td>시공 항목</td>
+                  <td style="text-align: center">
+                    <input type="checkbox" value="tile">타일&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" value="window">창호&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" value="paint">페인트
+                  </td>
+                </tr>
+                <tr>
+                  <td>문의사항</td>
+                  <td><textarea></textarea></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        <%--모달 끝--%>
         </div>
       </div>
     </div>
@@ -167,5 +209,6 @@
       <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
     </div>
   </section>--%>
+<script type="text/javascript" src="/resources/js/eModal.js"></script>
 
 <jsp:include page="includes/footer.jsp"/>
