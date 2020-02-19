@@ -35,5 +35,10 @@
         ]]>
     </select>
 
+    <select id="getCountByR_no" resultType="int">
+        <![CDATA[
+            select count(rr_no) from tbl_review_reply where r_no = #{r_no}
+        ]]>
+    </select>
 
 </mapper>

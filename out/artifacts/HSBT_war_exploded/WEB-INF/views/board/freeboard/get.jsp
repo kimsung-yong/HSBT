@@ -51,12 +51,13 @@
                                 <input type="hidden" name="keyword" value="${cri.keyword}">
 
                             </form>
+                    <hr>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <br>
+            <hr>
             <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
 <%--                    panel--%>
@@ -66,10 +67,10 @@
 <%--                        </div>--%>
 
                          <div class="panel-heading">
-                            <i class="btn btn-outline-dark">Reply</i>
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                            <i class="btn btn-outline-dark">댓글</i>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">댓글추가</button>
                          </div>
-                        <br>
+                        <hr>
 <%--                     panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">

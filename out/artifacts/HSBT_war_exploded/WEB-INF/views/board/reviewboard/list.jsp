@@ -101,7 +101,7 @@
                                 </ul>
 
                             </div>
-                            <button type="button" class="btn btn-default" style="float: left" onclick="regloc()">글작성</button>
+                            <button type="button" class="btn btn-dark" onclick="regloc()">글작성</button>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -114,7 +114,7 @@
                                             처리가 완료되었습니다
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -145,7 +145,7 @@
                 return;
             }
             if(parseInt(result) > 0){
-                $(".modal-body").html("게시글" + parseInt(result) + "번이 등록되었습니다");
+                $(".modal-body").html("게시글 " + parseInt(result) + "번이 등록되었습니다");
             }
 
             $("#myModal").modal("show");

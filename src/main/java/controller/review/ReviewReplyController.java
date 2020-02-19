@@ -1,6 +1,7 @@
 package controller.review;
 
 import domain.Criteria;
+import domain.review.ReviewReplyPageDTO;
 import domain.review.ReviewReplyVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -22,7 +23,6 @@ public class ReviewReplyController {
 //  등록작업
     @PostMapping(value = "/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> create(@RequestBody ReviewReplyVO vo){
-        log.info("replyVO : .............. " + vo);
         int insertCount = service.register(vo);
         return insertCount==1
                 ? new ResponseEntity<>("success", HttpStatus.OK)
@@ -30,9 +30,9 @@ public class ReviewReplyController {
     }
 //  특정 게시물 댓글 목록확인
     @GetMapping(value = "/pages/{r_no}/{page}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<List<ReviewReplyVO>> getList(@PathVariable("page") int page, @PathVariable("r_no")Long r_no){
+    public ResponseEntity<ReviewReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("r_no")Long r_no){
         Criteria cri = new Criteria(page,10);
-        return new ResponseEntity<>(service.getList(cri, r_no), HttpStatus.OK);
+        return new ResponseEntity<>(service.getListPage(cri, r_no), HttpStatus.OK);
     }
 //  댓글 조회
     @GetMapping(value = "/{rr_no}", produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})

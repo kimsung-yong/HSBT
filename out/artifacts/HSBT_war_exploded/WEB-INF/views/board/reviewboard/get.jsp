@@ -57,19 +57,18 @@
                     </div>
                 <%--</div>
             </div>--%>
-            <div class="row">
+                    <br>
+            <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
 <%--                    panel--%>
                     <div class="panel panel-default">
-<%--                        <div class="panel-heading">--%>
-<%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
-<%--                        </div>--%>
+
 
                          <div class="panel-heading">
-                            <%--<i class="fa fa-comments fa-fw"></i> 댓글--%>
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">댓글추가</button>
+                            <i class="fa fa-comments fa-fw">reply</i>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
                          </div>
-
+                        <br>
 <%--                     panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">
@@ -87,6 +86,9 @@
 <%--                            end ul--%>
                         </div>
 <%--                        /.panel .chat-panel--%>
+                        <div class="panel-footer">
+
+                        </div>
                     </div>
                 </div>
 <%--                ./end row--%>
@@ -197,7 +199,7 @@
 
                 modal.find("input").val("");
                 modal.modal("hide");
-                showList(1);
+                showList(-1);
             });
         });
 
@@ -242,12 +244,18 @@
         
 
         function showList(page) {
-            reviewReplyService.getList({r_no:r_noValue, page: page || 1}, function (list) {
+            reviewReplyService.getList({r_no:r_noValue, page: page || 1},
+            function (replyCnt,list) {
+                if(page == -1){
+                    pageNum = Math.ceil(replyCnt/10.0);
+                    showList(pageNum);
+                    return;
+                }
                 var str = "";
                 if(list == null || list.length == 0){
                     replyUL.html("");
 
-                    return;
+                        return;
                 }
                 for(var i=0,len = list.length || 0; i < len; i++){
                     str += "<li class='left clearfix' data-rr_no='"+list[i].rr_no+"'>";
@@ -257,6 +265,7 @@
                    console.log(list[i]);
                 }
                 replyUL.html(str);
+                showReplyPage(replyCnt);
             });
         }
         $("#modalCloseBtn").on("click", function () {
@@ -264,40 +273,43 @@
         });
 
 
-    //     replyService.add(
-    //         {reply:"JS TEST", replyer:"tester", bno:bnoValue},
-    //         function (result) {
-    //             alert("Result :" + result);
-    //         }
-    //         );
-    //     replyService.getList({bno:bnoValue, page:1},function (list) {
-    //         for(var i = 0, len =list.length||0; i < len; i++){
-    //             console.log(list[i]);
-    //         }
-    //     });
-    //
-    //     replyService.remove(49, function (count) {
-    //         console.log(count);
-    //
-    //         if(count === "success"){
-    //             alert("removed");
-    //         }
-    //     },function (err) {
-    //         alert("error");
-    //         }
-    //     )
-    //
-    //     replyService.update({
-    //         rno :50,
-    //         bno : bnoValue,
-    //         reply : "Modifyed Reply..."
-    //     },function (result) {
-    //         alert("수정완료");
-    //     });
-    //
-    //     replyService.get(49, function (data) {
-    //         console.log(data)
-    //     })
+    var pageNum =1;
+    var replyPageFooter = $(".panel-footer");
+
+    function showReplyPage(replyCnt) {
+        var endNum = Math.ceil(pageNum / 10.0) *10;
+        var startNum = endNum - 9;
+        var prev = startNum != 1;
+        var next = false;
+
+        if(endNum * 10 >= replyCnt){
+            endNum = Math.ceil(replyCnt/10.0);
+        }
+        if (endNum * 10 < replyCnt ){
+            next = true;
+        }
+
+        var str = "<ul class='pagination pull-right'>";
+
+        if (prev){
+            str+= "<li class = 'page-item'><a class='page-link'href='"+(startNum-1)+"'>Previous</a></li>";
+        }
+        for(var i = startNum; i<= endNum; i++){
+            var active = pageNum == i ? "active" : "";
+            str+= "<li class = 'page-item "+active+" '><a class='page-link'href='"+i+"'>"+i+"</a></li>";
+        }
+        if(next){
+            str += "<li class='page-item'><a class='page-link' href='" + (endNum + 1) + "'>Next</a></li>";
+        }
+        str+="</ul></div>";
+        replyPageFooter.html(str);
+    }
+    replyPageFooter.on("click","li a",function (e) {
+        e.preventDefault();
+        var targetPageNum = $(this).attr("href");
+        pageNum = targetPageNum;
+        showList(pageNum);
+    });
 
 
     });
