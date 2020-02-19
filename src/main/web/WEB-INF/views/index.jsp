@@ -71,7 +71,7 @@
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <a class="portfolio-box" href="#">
-              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/estimate.jpg">
+              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/Estimate.jpg">
               <h3 class="h4 mb-2">견적 신청</h3>
             </a>
           </div>

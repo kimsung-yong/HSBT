@@ -42,8 +42,8 @@
                             <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
 
-                            <button data-oper="modify" class="btn btn-default">수정</button>
-                            <button data-oper="list" class="btn btn-info">목록</button>
+                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/reviewboard/modify" method="get">
                                 <input type="hidden" id="r_no" name="r_no" value="<c:out value="${review.r_no}"/>">
@@ -66,9 +66,10 @@
 <%--                        </div>--%>
 
                          <div class="panel-heading">
-                            <%--<i class="fa fa-comments fa-fw"></i> 댓글--%>
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">댓글추가</button>
+                            <i class="btn btn-outline-dark">Reply</i>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">New Reply</button>
                          </div>
+                        <hr>
 
 <%--                     panel-heading   --%>
                         <div class="panel-body">
