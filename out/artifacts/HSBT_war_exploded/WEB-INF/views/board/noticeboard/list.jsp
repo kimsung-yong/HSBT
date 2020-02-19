@@ -119,8 +119,7 @@
                                             처리가 완료되었습니다
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -151,7 +150,7 @@
                 return;
             }
             if(parseInt(result) > 0){
-                $(".modal-body").html("게시글" + parseInt(result) + "번이 등록되었습니다");
+                $(".modal-body").html("공지글 " + parseInt(result) + "번이 등록되었습니다");
             }
 
             $("#myModal").modal("show");
@@ -203,6 +202,6 @@
 
 </div>
 <!-- /.container -->
-
+<jsp:include page="../includes/footer.jsp"/>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

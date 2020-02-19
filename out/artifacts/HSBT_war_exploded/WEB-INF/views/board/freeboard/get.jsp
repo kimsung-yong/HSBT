@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <br>
+            <hr>
             <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
 <%--                    panel--%>
@@ -69,7 +69,7 @@
                             <i class="btn btn-outline-dark">Reply</i>
                             <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
                          </div>
-                        <br>
+                        <hr>
 <%--                     panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">
