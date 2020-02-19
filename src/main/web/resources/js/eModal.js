@@ -7,6 +7,8 @@ var btn = document.getElementById("eModal-btn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("emodalClose")[0];
 
+var close = document.getElementById("emodalReset");
+
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
@@ -22,4 +24,8 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+close.onclick = function () {
+    modal.style.display = "none";
 }
