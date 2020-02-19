@@ -56,10 +56,10 @@
                                 <input type="hidden" name="keyword" value="${cri.keyword}">
 
                             </form>
+                            <hr>
                         </div>
-
                     </div>
-                    <hr>
+                    <br>
                     <div class="row">
                         <div class="col-lg-12">
         <%--                    panel--%>
@@ -69,10 +69,10 @@
         <%--                        </div>--%>
 
                                  <div class="panel-heading">
-                                    <i class="btn btn-outline-dark">Reply</i>
+                                    <i class="fa fa-comments fa-fw">Reply</i>
                                     <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
                                  </div>
-                                <hr>
+                                <br>
 
         <%--                     panel-heading   --%>
                                 <div class="panel-body">

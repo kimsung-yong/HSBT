@@ -1,6 +1,7 @@
 package service.review;
 
 import domain.Criteria;
+import domain.review.ReviewReplyPageDTO;
 import domain.review.ReviewReplyVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -39,5 +40,12 @@ public class ReviewReplyServiceImpl implements ReviewReplyService{
     @Override
     public List<ReviewReplyVO> getList(Criteria cri, Long r_no) {
         return mapper.getListWithPaging(cri, r_no);
+    }
+
+    @Override
+    public ReviewReplyPageDTO getListPage(Criteria cri, Long r_no) {
+        return new ReviewReplyPageDTO(
+                mapper.getCountByR_no(r_no),
+                mapper.getListWithPaging(cri,r_no));
     }
 }
