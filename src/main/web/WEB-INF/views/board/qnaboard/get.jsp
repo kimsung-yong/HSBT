@@ -59,7 +59,7 @@
                         </div>
 
                     </div>
-                    <br>
+                    <hr>
                     <div class="row">
                         <div class="col-lg-12">
         <%--                    panel--%>
@@ -69,7 +69,7 @@
         <%--                        </div>--%>
 
                                  <div class="panel-heading">
-                                    <i class="fa fa-comments fa-fw"></i>Reply
+                                    <i class="btn btn-outline-dark">Reply</i>
                                     <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
                                  </div>
                                 <hr>

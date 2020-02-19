@@ -60,22 +60,22 @@
             </a>
           </div>
         </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="mt-5">
-              <a class="portfolio-box" href="/board/noticeboard/list">
-                <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/Community.jpg">
-                <h3 class="h4 mb-2">Community</h3>
-              </a>
-            </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <a class="portfolio-box" href="/board/noticeboard/list">
+              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/Community.jpg">
+              <h3 class="h4 mb-2">Community</h3>
+            </a>
           </div>
-            <div class="col-lg-3 col-md-6 text-center">
-              <div class="mt-5">
-                <a class="portfolio-box" href="http://www.naver.com">
-                  <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/회사소개.jpg">
-                  <h3 class="h4 mb-2">회사 소개</h3>
-                </a>
-              </div>
-            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <a class="portfolio-box" href="#">
+              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/회사소개.jpg">
+              <h3 class="h4 mb-2">견적 신청</h3>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
