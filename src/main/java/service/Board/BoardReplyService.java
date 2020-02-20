@@ -22,4 +22,6 @@ public interface BoardReplyService {
 
     public BoardReplyPageDTO getListPage(Criteria cri,Long b_no);
 
+
+
 }

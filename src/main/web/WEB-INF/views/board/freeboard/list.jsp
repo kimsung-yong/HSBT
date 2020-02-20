@@ -45,7 +45,10 @@
                                 <td><c:out value="${board.b_no}"/> </td>
                                     <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
                                 <td><a id="detailPage" class="move" href="${board.b_no}" >
-                                    <c:out value="${board.b_title}"/></a> </td>
+                                    <c:out value="${board.b_title}"/>
+                                    <c:if test="${board.replyCnt !=0}">[${board.replyCnt}]</c:if>
+                                </a>
+                                </td>
 
                                 <td><c:out value="${board.id}"/> </td>
                                 <td><fmt:formatDate value="${board.b_regTime}" pattern="yyyy-MM-dd"/> </td>
