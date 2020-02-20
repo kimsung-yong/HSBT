@@ -1,13 +1,12 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%@include file="../includes/header.jsp"%>
 
-
+<div class="col-lg-9">
              <div class="row">
                 <div class="col-lg-12">
-                    <br>
+                    <br><br><br>
                     <h1 class="page-header">Review</h1>
                     <br>
                 </div>
@@ -19,14 +18,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <br><br><br><br>
-                            <h3>게시글</h3>
-                            <hr>
+
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="width: 600px">
+                        <div class="panel-body" >
                             <div class="form-group">
-                            <label>글번호</label> <input size="40" class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
+                            <label>글번호</label> <input class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
@@ -41,9 +38,9 @@
                             <div class="form-group">
                             <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
-
-                            <button data-oper="modify" class="btn btn-dark">수정</button>
-                            <button data-oper="list" class="btn btn-dark">목록</button>
+                            <br>
+                            <button data-oper="modify" class="btn btn-default">수정</button>
+                            <button data-oper="list" class="btn btn-info">목록</button>
 
                             <form id="operForm" action="board/reviewboard/modify" method="get">
                                 <input type="hidden" id="r_no" name="r_no" value="<c:out value="${review.r_no}"/>">
@@ -52,35 +49,32 @@
                                 <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
                                 <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
                             </form>
-                            <hr>
+<hr>
                         </div>
                     </div>
-                <%--</div>
-            </div>--%>
-            <div class="row">
+                </div>
+            </div>
+                    <br>
+            <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
 <%--                    panel--%>
                     <div class="panel panel-default">
-<%--                        <div class="panel-heading">--%>
-<%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
-<%--                        </div>--%>
 
                          <div class="panel-heading">
-                            <i class="btn btn-outline-dark">Reply</i>
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">New Reply</button>
+                            <i class="fa fa-comments fa-fw"><a style="font-size: 25px">reply</a></i>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="margin-top: 10px">new Reply</button>
                          </div>
                         <hr>
-
 <%--                     panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">
                                 <li class="left clearfix" data-rno="12">
                                     <div>
                                         <div class="header">
-                                            <strong class="primary-font">user00</strong>
-                                            <small class="pull-right text-muted">2020-01-31</small>
+                                            <strong class="primary-font"></strong>
+                                            <small class="pull-right text-muted"></small>
                                         </div>
-                                        <p> Good job!</p>
+                                        <p></p>
                                     </div>
                                 </li>
 <%--                                end reply--%>
@@ -88,6 +82,9 @@
 <%--                            end ul--%>
                         </div>
 <%--                        /.panel .chat-panel--%>
+                        <div class="panel-footer">
+
+                        </div>
                     </div>
                 </div>
 <%--                ./end row--%>
@@ -198,7 +195,7 @@
 
                 modal.find("input").val("");
                 modal.modal("hide");
-                showList(1);
+                showList(-1);
             });
         });
 
@@ -243,12 +240,18 @@
         
 
         function showList(page) {
-            reviewReplyService.getList({r_no:r_noValue, page: page || 1}, function (list) {
+            reviewReplyService.getList({r_no:r_noValue, page: page || 1},
+            function (replyCnt,list) {
+                if(page == -1){
+                    pageNum = Math.ceil(replyCnt/10.0);
+                    showList(pageNum);
+                    return;
+                }
                 var str = "";
                 if(list == null || list.length == 0){
                     replyUL.html("");
 
-                    return;
+                        return;
                 }
                 for(var i=0,len = list.length || 0; i < len; i++){
                     str += "<li class='left clearfix' data-rr_no='"+list[i].rr_no+"'>";
@@ -258,6 +261,7 @@
                    console.log(list[i]);
                 }
                 replyUL.html(str);
+                showReplyPage(replyCnt);
             });
         }
         $("#modalCloseBtn").on("click", function () {
@@ -265,40 +269,43 @@
         });
 
 
-    //     replyService.add(
-    //         {reply:"JS TEST", replyer:"tester", bno:bnoValue},
-    //         function (result) {
-    //             alert("Result :" + result);
-    //         }
-    //         );
-    //     replyService.getList({bno:bnoValue, page:1},function (list) {
-    //         for(var i = 0, len =list.length||0; i < len; i++){
-    //             console.log(list[i]);
-    //         }
-    //     });
-    //
-    //     replyService.remove(49, function (count) {
-    //         console.log(count);
-    //
-    //         if(count === "success"){
-    //             alert("removed");
-    //         }
-    //     },function (err) {
-    //         alert("error");
-    //         }
-    //     )
-    //
-    //     replyService.update({
-    //         rno :50,
-    //         bno : bnoValue,
-    //         reply : "Modifyed Reply..."
-    //     },function (result) {
-    //         alert("수정완료");
-    //     });
-    //
-    //     replyService.get(49, function (data) {
-    //         console.log(data)
-    //     })
+    var pageNum =1;
+    var replyPageFooter = $(".panel-footer");
+
+    function showReplyPage(replyCnt) {
+        var endNum = Math.ceil(pageNum / 10.0) *10;
+        var startNum = endNum - 9;
+        var prev = startNum != 1;
+        var next = false;
+
+        if(endNum * 10 >= replyCnt){
+            endNum = Math.ceil(replyCnt/10.0);
+        }
+        if (endNum * 10 < replyCnt ){
+            next = true;
+        }
+
+        var str = "<ul class='pagination pull-right'>";
+
+        if (prev){
+            str+= "<li class = 'page-item'><a class='page-link'href='"+(startNum-1)+"'>Previous</a></li>";
+        }
+        for(var i = startNum; i<= endNum; i++){
+            var active = pageNum == i ? "active" : "";
+            str+= "<li class = 'page-item "+active+" '><a class='page-link'href='"+i+"'>"+i+"</a></li>";
+        }
+        if(next){
+            str += "<li class='page-item'><a class='page-link' href='" + (endNum + 1) + "'>Next</a></li>";
+        }
+        str+="</ul></div>";
+        replyPageFooter.html(str);
+    }
+    replyPageFooter.on("click","li a",function (e) {
+        e.preventDefault();
+        var targetPageNum = $(this).attr("href");
+        pageNum = targetPageNum;
+        showList(pageNum);
+    });
 
 
     });

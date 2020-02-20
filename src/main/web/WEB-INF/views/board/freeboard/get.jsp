@@ -9,13 +9,14 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <br>
+            <br><br><br>
             <h1 class="page-header">자유게시판</h1>
             <br>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -23,6 +24,7 @@
 
                 </div>
                 <!-- /.panel-heading -->
+
                 <div class="panel-body">
                             <div class="form-group">
                             <label>글번호</label> <input class="form-control" name="b_no" value="<c:out value="${board.b_no}"/>" readonly="readonly">
@@ -51,12 +53,13 @@
                                 <input type="hidden" name="keyword" value="${cri.keyword}">
 
                             </form>
+                    <hr>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <hr>
+            <br>
             <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
 <%--                    panel--%>
@@ -66,8 +69,9 @@
 <%--                        </div>--%>
 
                          <div class="panel-heading">
-                            <i class="btn btn-outline-dark">Reply</i>
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+<%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
+                            <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
                          </div>
                         <hr>
 <%--                     panel-heading   --%>
@@ -373,4 +377,4 @@
 
 
 </script>
-<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>
+<%--<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>--%>

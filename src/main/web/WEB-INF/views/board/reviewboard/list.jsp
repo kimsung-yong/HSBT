@@ -3,7 +3,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <jsp:include page="../includes/header.jsp"/>
-
+<%--<style>--%>
+<%--    html, body {--%>
+<%--        margin:0px;--%>
+<%--        padding:0;--%>
+<%--        height:100%;--%>
+<%--    }--%>
+<%--    .table-hover {--%>
+<%--        min-height:80%;--%>
+<%--        position:relative;--%>
+<%--        padding-bottom:100px;/* footer height */--%>
+<%--    }--%>
+<%--    footer {--%>
+<%--        margin-top: 20px;--%>
+<%--        width:100%;--%>
+<%--        height:100px;--%>
+<%--        position:absolute;--%>
+<%--        bottom:0;--%>
+<%--        background:#5eaeff;--%>
+<%--        text-align: center;--%>
+<%--        color: white;--%>
+<%--    }--%>
+<%--</style>--%>
         <div class="col-lg-9">
 
             <div class="row">
@@ -101,7 +122,7 @@
                                 </ul>
 
                             </div>
-                            <button type="button" class="btn btn-default" style="float: left" onclick="regloc()">글작성</button>
+                            <button type="button" class="btn btn-dark" onclick="regloc()">글작성</button>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -114,7 +135,7 @@
                                             처리가 완료되었습니다
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -145,7 +166,7 @@
                 return;
             }
             if(parseInt(result) > 0){
-                $(".modal-body").html("게시글" + parseInt(result) + "번이 등록되었습니다");
+                $(".modal-body").html("게시글 " + parseInt(result) + "번이 등록되었습니다");
             }
 
             $("#myModal").modal("show");
@@ -196,6 +217,6 @@
 
 </div>
 <!-- /.container -->
-<jsp:include page="../includes/footer.jsp"/>
+<%--<jsp:include page="../includes/footer.jsp"/>--%>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

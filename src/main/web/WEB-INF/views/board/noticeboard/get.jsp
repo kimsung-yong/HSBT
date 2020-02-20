@@ -50,44 +50,38 @@
                                 <input type="hidden" name="keyword" value="${cri.keyword}">
 
                             </form>
+                            <hr>
                         </div>
                     </div>
                 </div>
             </div>
 
     <br>
-    <div class="row" style="margin: 0 ">
-        <div class="col-lg-12">
-            <%--                    panel--%>
-            <div class="panel panel-default">
-                <%--                        <div class="panel-heading">--%>
-                <%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
-                <%--                        </div>--%>
+<%--    <div class="row" style="margin: 0 ">--%>
+<%--        <div class="col-lg-12">--%>
+<%--            &lt;%&ndash;                    panel&ndash;%&gt;--%>
+<%--            <div class="panel panel-default">--%>
+<%--                &lt;%&ndash;                        <div class="panel-heading">&ndash;%&gt;--%>
+<%--                &lt;%&ndash;                            <i class="fa fa-comments fa-fw"></i> Reply&ndash;%&gt;--%>
+<%--                &lt;%&ndash;                        </div>&ndash;%&gt;--%>
 
-                <div class="panel-heading">
-                    <i class="btn btn-outline-dark">Reply</i>
-                    <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
-                </div>
-                <br>
-                <%--                     panel-heading   --%>
-                <div class="panel-body">
-                    <ul class="chat">
-                        <li class="left clearfix" data-br_no="12">
-                            <div>
-                                <div class="header">
-                                    <strong class="primary-font">user00</strong>
-                                    <small class="pull-right text-muted">2020-01-31</small>
-                                </div>
-                                <p> Good job!</p>
-                            </div>
-                        </li>
-                        <%--                                end reply--%>
-                    </ul>
-                    <%--                            end ul--%>
-                </div>
-                <%--                        /.panel .chat-panel--%>
-                <div class="panel-footer">
-                </div>
+<%--                --%>
+<%--                &lt;%&ndash;                     panel-heading   &ndash;%&gt;--%>
+<%--                <div class="panel-body">--%>
+<%--                    <ul class="chat">--%>
+<%--                        <li class="left clearfix" data-br_no="12">--%>
+<%--                            <div>--%>
+<%--                               --%>
+<%--                                <p> Good job!</p>--%>
+<%--                            </div>--%>
+<%--                        </li>--%>
+<%--                        &lt;%&ndash;                                end reply&ndash;%&gt;--%>
+<%--                    </ul>--%>
+<%--                    &lt;%&ndash;                            end ul&ndash;%&gt;--%>
+<%--                </div>--%>
+<%--                &lt;%&ndash;                        /.panel .chat-panel&ndash;%&gt;--%>
+<%--                <div class="panel-footer">--%>
+<%--                </div>--%>
             </div>
         </div>
         <%--                ./end row--%>
@@ -372,4 +366,4 @@
 
 
 </script>
-    <jsp:include page="../includes/footer.jsp"/>
+<%--    <jsp:include page="../includes/footer.jsp"/>--%>

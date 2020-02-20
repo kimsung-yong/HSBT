@@ -52,18 +52,19 @@
                                 <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>">
                                 <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
                                 <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
-
                             </form>
+                            <hr>
                         </div>
                     </div>
-                    <hr>
+                    <br>
                     <div class="row" style="margin: 0">
                         <div class="col-lg-12">
     <%--                    panel--%>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="btn btn-outline-dark">Reply</i>
-                                    <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                                    <%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
+                                    <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
+                                    <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
                                 </div>
                                 <hr>
 
@@ -131,7 +132,7 @@
         </div>
     </div>
 </div>
-<%@include file="../includes/footer.jsp"%>
+<%--<%@include file="../includes/footer.jsp"%>--%>
 
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
