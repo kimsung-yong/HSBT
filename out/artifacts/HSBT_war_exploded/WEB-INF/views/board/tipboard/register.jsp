@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Writer</label>
-                                    <input class="form-control" name="id">
+                                    <input type="text" name="id" class="form-control" readonly="readonly" value="${vo.id}">
                                 </div>
                                 <button type="submit" class="btn btn-default">저장</button>
                                 <button type="reset" class="btn btn-default">재작성</button>

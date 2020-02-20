@@ -59,11 +59,13 @@
                     </c:if>
                 </li>
                 <li class="nav-item">
+                    <c:if test="${empty vo}">
                     <a class="nav-link js-scroll-trigger" href="/member/join">MemberShip</a>
+                    </c:if>
                 </li>
                 <li class="nav-item">
                     <c:if test="${!empty vo}">
-                        <a class="nav-link js-scroll-trigger" href="#">Logout</a>
+                        <a class="nav-link js-scroll-trigger" href="/member/logout">Logout</a>
                     </c:if>
                 </li>
                 <li class="nav-item">
