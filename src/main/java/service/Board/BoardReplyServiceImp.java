@@ -9,6 +9,7 @@ import mapper.BoardMapper;
 import mapper.BoardReplyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,10 +19,12 @@ public class BoardReplyServiceImp implements BoardReplyService{
     @Setter(onMethod_ = @Autowired)
     private BoardReplyMapper mapper;
 
-
+    @Setter(onMethod_ = @Autowired)
+    private BoardMapper boardMapper;
+    @Transactional
     @Override
     public int register(BoardReplyVO vo) {
-
+        boardMapper.updateReplyCnt(vo.getB_no(),1);
         return mapper.insert(vo);
     }
 
@@ -34,9 +37,11 @@ public class BoardReplyServiceImp implements BoardReplyService{
     public int modify(BoardReplyVO vo) {
         return mapper.update(vo);
     }
-
+    @Transactional
     @Override
     public int remove(Long br_no) {
+        BoardReplyVO vo = mapper.read(br_no);
+        boardMapper.updateReplyCnt(vo.getB_no(),-1);
         return mapper.delete(br_no);
     }
 
