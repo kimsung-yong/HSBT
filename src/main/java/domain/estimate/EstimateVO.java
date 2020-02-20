@@ -7,7 +7,7 @@ import java.sql.Date;
 @Data
 public class EstimateVO {
     private Long e_no;
-    private String e_area;
+    private Long e_area;
     private String e_content;
     private String e_address;
     private String id;

@@ -18,14 +18,6 @@
         values(est_seq.nextval, #{id}, #{e_area}, #{e_address}, #{e_price}, #{e_construction}, #{e_content})
     </insert>
 
-    <insert id="insertSelectKey">
-        <selectKey keyProperty="e_no" order="BEFORE" resultType="Long">
-            select est_seq.nextval from dual
-        </selectKey>
-        insert into tbl_estimate (e_no, id, e_area, e_address, e_price, e_construction, e_content)
-        values(#{e_no}, #{id}, #{e_area}, #{e_address}, #{e_price}, #{e_construction}, #{e_content})
-    </insert>
-
     <delete id="delete">
         delete from tbl_estimate where e_no = #{e_no}
     </delete>
