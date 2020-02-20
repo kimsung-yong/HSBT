@@ -37,8 +37,14 @@ public class UserServiceImpl implements UserService {
             return "/member/login";
         }else {
         session.setAttribute("vo",vs);
-        return "/index";
+        return "index";
         }
 
+    }
+
+    @Override
+    public String logout() {
+        session.invalidate();
+        return "index";
     }
 }

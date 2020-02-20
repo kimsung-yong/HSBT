@@ -18,9 +18,9 @@ public class UserControllerkim {
 
     private UserService userService;
     @PostMapping("/member/join")
-    public String createUser(UserVO user){
+    public void createUser(UserVO user){
         userService.createUser(user);
-        return "redirect:/";
+//        return "redirect:/";
     }
     @PostMapping("/member/login")
     public String loginTest(@RequestParam Map<String,String> paramMap) {
@@ -35,4 +35,8 @@ public class UserControllerkim {
     public String join(){return "member/join";}
     @RequestMapping("/member/loginActon")
     public String loginAction(){return "member/loginAction";}
+    @RequestMapping("/member/logout")
+    public String logout(){
+        return userService.logout();
+    }
 }
