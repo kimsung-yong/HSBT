@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <jsp:include page="includes/header.jsp"/>
@@ -87,37 +89,37 @@
                 <table class="emodal-table">
                   <tr>
                     <td>ID</td>
-                    <td>OOO님</td>
+                    <td><input type="text" name="id">님</td>
                   </tr>
                   <tr>
                     <td>주소</td>
-                    <td><input type="text" style="width: 94%"></td>
+                    <td><input type="text" name="e_address" style="width: 94%"></td>
                   </tr>
                   <tr>
                     <td>공간 면적</td>
-                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">평</td>
+                    <td><input type="text" name="e_area" class="onlyNo" style="width: 94%; text-align: right">평</td>
                   </tr>
                   <tr>
                     <td>인테리어 예산</td>
-                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">원</td>
+                    <td><input type="text" name="e_price" class="onlyNo" style="width: 94%; text-align: right">원</td>
                   </tr>
                   <tr>
                     <td>시공 항목</td>
                     <td style="text-align: center">
-                      <input type="checkbox" class="est-box" name="construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" class="est-box" name="construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" class="est-box" name="construction" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" class="est-box" name="construction" value="paint">페인트
+                      <input type="checkbox" class="est-box" name="e_construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="e_construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="e_construction" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="e_construction" value="paint">페인트
                     </td>
                   </tr>
                   <tr>
                     <td>문의사항</td>
-                    <td><textarea></textarea></td>
+                    <td><textarea name="e_content"></textarea></td>
                   </tr>
                 </table>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-dark">신청</button>
+                <button type="button" id="modalEstimateBtn" class="btn btn-dark">신청</button>
                 <button type="button" class="btn btn-dark" data-dismiss="modal">취소</button>
               </div>
             </div>
@@ -225,15 +227,74 @@
 
 <script type="text/javascript">
 $(function () {
-    $('.modal').on('hidden.bs.modal', function (e) {
-        $(".modal-body input, textarea").val("");
-        // $("input[name=construction]:checkbox:checked").attr("checked", "");
-        $("input[type=checkbox]").prop("checked", false);
+  var modal = $('.modal');
+  var e_noValue = '<c:out value="${est.e_no}"/>';
+
+  var modalInputId = modal.find("input[name='id']");
+  var modalInputAddress = modal.find("input[name='e_address']");
+  var modalInputArea = modal.find("input[name='e_area']");
+  var modalInputPrice = modal.find("input[name='e_price']");
+  // var modalInputCon = modal.find("input[name='e_construction']");
+  var modalInputContent = modal.find("textarea[name='e_content']");
+  var modalInputRegTime = modal.find("input[name='e_regtime']");
+  var construction = new Array();
+
+  modal.on('hidden.bs.modal', function (e) {
+    $(".modal-body input, textarea").val("");
+    $("input[type=checkbox]").prop("checked", false);
+  });
+
+  $('.onlyNo').on("keyup", function () {
+    $(this).val($(this).val().replace(/[^0-9]/g,""));
+  });
+
+  $('#modalEstimateBtn').on("click", function () {
+    $("input[name='e_construction']:checked").each(function () {
+      construction.push($(this).val());
     });
 
-    $('.onlyNo').on("keyup", function () {
-        $(this).val($(this).val().replace(/[^0-9]/g,""));
+    var modalInputCon = construction.join(", ");
+
+    var est = {
+      e_no:e_noValue,
+      id:modalInputId.val(),
+      e_address:modalInputAddress.val(),
+      e_area:modalInputArea.val(),
+      e_price:modalInputPrice.val(),
+      e_construction:modalInputCon,
+      e_content:modalInputContent.val(),
+      e_regtime:modalInputRegTime.val()
+    };
+    estService.add(est, function (result) {
+      alert(result);
+      modal.modal("hide");
+      location.replace("/");
     });
+  });
+
+  var estService = (function () {
+    function add(estimate, callback, error) {
+      $.ajax({
+        type : 'post',
+        url : '/',
+        data : JSON.stringify(estimate),
+        contentType : "application/json; charset=utf-8",
+        success : function (result, status, xhr) {
+          if(callback) {
+            callback(result);
+          }
+        },
+        error : function (xhr, status, er) {
+          if(error) {
+            error(er);
+          }
+        }
+      });
+    }
+    return {
+      add:add
+    };
+  })();
 });
 
 </script>
