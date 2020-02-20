@@ -234,7 +234,6 @@ $(function () {
   var modalInputAddress = modal.find("input[name='e_address']");
   var modalInputArea = modal.find("input[name='e_area']");
   var modalInputPrice = modal.find("input[name='e_price']");
-  // var modalInputCon = modal.find("input[name='e_construction']");
   var modalInputContent = modal.find("textarea[name='e_content']");
   var modalInputRegTime = modal.find("input[name='e_regtime']");
   var construction = new Array();

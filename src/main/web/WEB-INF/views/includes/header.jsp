@@ -34,7 +34,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><h4>KNLS</h4></a>
+        <a class="navbar-brand js-scroll-trigger" href="/"><h4>KNLS</h4></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -62,6 +62,8 @@
         </div>
     </div>
 </nav>
+
+
 <%--<header class="masthead">--%>
     <%--    <div class="rows">--%>
     <%--        <div class="col-lg-12">--%>
