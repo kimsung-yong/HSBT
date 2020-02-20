@@ -5,7 +5,7 @@ import domain.estimate.EstimateVO;
 import java.util.List;
 
 public interface EstimateService {
-    public void register(EstimateVO est);
+    public int register(EstimateVO est);
     public EstimateVO get(Long e_no);
     public boolean modify(EstimateVO est);
     public boolean delete(Long e_no);

@@ -15,8 +15,8 @@ public class EstimateServiceImpl implements EstimateService {
     private EstimateMapper mapper;
 
     @Override
-    public void register(EstimateVO est) {
-        mapper.insertSelectKey(est);
+    public int register(EstimateVO est) {
+        return mapper.insert(est);
     }
 
     @Override
