@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <br><br><br>
+            <br>
             <h1 class="page-header">자유게시판</h1>
             <br>
         </div>
@@ -377,4 +377,4 @@
 
 
 </script>
-<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>
+<%--<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>--%>
