@@ -33,11 +33,11 @@ public class UserMapperTests {
         log.info(user);
     }
     //아이디로 정보 조회 테스트
-    @Test
-    public void testRead(){
-        UserVO user=mapper.read("sxvc779");
-        log.info(user);
-    }
+//    @Test
+//    public void testRead(){
+//        UserVO user=mapper.read("sxvc779");
+//        log.info(user);
+//    }
     //아이디로 삭제 테스트
     @Test
     public void testDelete(){

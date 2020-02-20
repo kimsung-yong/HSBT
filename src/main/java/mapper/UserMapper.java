@@ -13,7 +13,7 @@ public interface UserMapper {
 /*
     public void insertSelectKey(UserVO user);*/
 
-    public UserVO read(String id);
+    public UserVO read(UserVO user);
 
     public int delete(String id);
 

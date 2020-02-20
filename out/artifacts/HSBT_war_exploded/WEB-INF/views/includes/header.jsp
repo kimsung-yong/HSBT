@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
@@ -53,10 +54,22 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/member/login">Login</a>
+                    <c:if test="${empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="/member/login">Login</a>
+                    </c:if>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/member/join">MemberShip</a>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${!empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="#">Logout</a>
+                    </c:if>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${!empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="#">${vo.name}님 환영합니다</a>
+                    </c:if>
                 </li>
             </ul>
         </div>
@@ -65,11 +78,11 @@
 
 
 <%--<header class="masthead">--%>
-    <%--    <div class="rows">--%>
-    <%--        <div class="col-lg-12">--%>
-    <%--            <h1 class="page-header">Tables</h1>--%>
-    <%--        </div>--%>
-    <%--        <!-- /.col-lg-12 -->--%>
-    <%--    </div>--%>
+<%--    <div class="rows">--%>
+<%--        <div class="col-lg-12">--%>
+<%--            <h1 class="page-header">Tables</h1>--%>
+<%--        </div>--%>
+<%--        <!-- /.col-lg-12 -->--%>
+<%--    </div>--%>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
