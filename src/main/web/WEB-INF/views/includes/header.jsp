@@ -23,6 +23,8 @@
     <!-- Theme CSS - Includes Bootstrap -->
     <link href="${pageContext.request.contextPath}/resources/css/creative.min.css" rel="stylesheet">
 
+    <%-- 견적 모달 CSS --%>
+    <link href="${pageContext.request.contextPath}/resources/css/eModal.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top">
