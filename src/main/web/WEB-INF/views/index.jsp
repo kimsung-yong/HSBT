@@ -15,10 +15,10 @@
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-85 font-weight-bold mb-5">자신의 집에서 자신의 세계를 가지고 있는<br> 사람보다 더 행복한 사람은 없다.<br>
+          <p class="text-white-85 font-weight-bold mb-5" style="color: white">자신의 집에서 자신의 세계를 가지고 있는<br> 사람보다 더 행복한 사람은 없다.<br>
             -괴테<br>
           </p>
-          <p class="text-hide-85 font-weight-normal">당신의 세계를 만들어 드리겠습니다</p>
+          <p class="text-hide-85 font-weight-normal" style="color: white">당신의 세계를 만들어 드리겠습니다</p>
           <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">더 보기..</a>
         </div>
       </div>
