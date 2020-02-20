@@ -6,7 +6,7 @@
 <div class="col-lg-9">
              <div class="row">
                 <div class="col-lg-12">
-                    <br><br><br>
+                    <br>
                     <h1 class="page-header">Review</h1>
                     <br>
                 </div>
