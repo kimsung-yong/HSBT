@@ -95,11 +95,11 @@
                   </tr>
                   <tr>
                     <td>공간 면적</td>
-                    <td><input type="text" style="width: 94%; text-align: right">평</td>
+                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">평</td>
                   </tr>
                   <tr>
                     <td>인테리어 예산</td>
-                    <td><input type="text" style="width: 94%; text-align: right">원</td>
+                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">원</td>
                   </tr>
                   <tr>
                     <td>시공 항목</td>
@@ -225,10 +225,15 @@
 
 <script type="text/javascript">
 $(function () {
-  $('.modal').on('hidden.bs.modal', function (e) {
-    $(".modal-body input, textarea").val("");
-    // $("input[name=construction]:checkbox:checked").attr("checked", "");
-    $("input:checkbox[class='est-box']").attr("checked", false);
-  });
+    $('.modal').on('hidden.bs.modal', function (e) {
+        $(".modal-body input, textarea").val("");
+        // $("input[name=construction]:checkbox:checked").attr("checked", "");
+        $("input[type=checkbox]").prop("checked", false);
+    });
+
+    $('.onlyNo').on("keyup", function () {
+        $(this).val($(this).val().replace(/[^0-9]/g,""));
+    });
 });
+
 </script>
