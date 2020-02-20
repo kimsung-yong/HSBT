@@ -70,53 +70,62 @@
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <a class="portfolio-box" id="eModal-btn" href="#eModal">
+            <a class="portfolio-box" id="eModal-btn" data-toggle="modal" href="#myModal">
               <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/Estimate.jpg">
               <h3 class="h4 mb-2">견적 신청</h3>
             </a>
           </div>
         </div>
-        <%--견적 모달--%>
-        <div id="eModal" class="emodal">
-          <div class="emodal-content">
-            <span class="emodalClose">&times;</span>
-            <h3>견적 신청</h3>
-            <hr>
-            <div>
-              <table class="emodal-table">
-                <tr>
-                  <td>ID</td>
-                  <td>OOO님</td>
-                </tr>
-                <tr>
-                  <td>공간 면적</td>
-                  <td><input type="text" class="t"></td>
-                </tr>
-                <tr>
-                  <td>주소</td>
-                  <td><input type="text" class="t"></td>
-                </tr>
-                <tr>
-                  <td>인테리어 예산</td>
-                  <td><input type="text" class="t"></td>
-                </tr>
-                <tr>
-                  <td>시공 항목</td>
-                  <td style="text-align: center">
-                    <input type="checkbox" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" value="paint">페인트
-                  </td>
-                </tr>
-                <tr>
-                  <td>문의사항</td>
-                  <td><textarea></textarea></td>
-                </tr>
-              </table>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">견적 신청</h4>
+              </div>
+              <div class="modal-body">
+                <table class="emodal-table">
+                  <tr>
+                    <td>ID</td>
+                    <td>OOO님</td>
+                  </tr>
+                  <tr>
+                    <td>주소</td>
+                    <td><input type="text" style="width: 94%"></td>
+                  </tr>
+                  <tr>
+                    <td>공간 면적</td>
+                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">평</td>
+                  </tr>
+                  <tr>
+                    <td>인테리어 예산</td>
+                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">원</td>
+                  </tr>
+                  <tr>
+                    <td>시공 항목</td>
+                    <td style="text-align: center">
+                      <input type="checkbox" class="est-box" name="construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="construction" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="construction" value="paint">페인트
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>문의사항</td>
+                    <td><textarea></textarea></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-dark">신청</button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">취소</button>
+              </div>
             </div>
+            <!-- /.modal-content -->
           </div>
-        <%--모달 끝--%>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
         </div>
       </div>
     </div>
@@ -209,6 +218,22 @@
       <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
     </div>
   </section>--%>
-<script type="text/javascript" src="/resources/js/eModal.js"></script>
 
 <jsp:include page="includes/footer.jsp"/>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+$(function () {
+    $('.modal').on('hidden.bs.modal', function (e) {
+        $(".modal-body input, textarea").val("");
+        // $("input[name=construction]:checkbox:checked").attr("checked", "");
+        $("input[type=checkbox]").prop("checked", false);
+    });
+
+    $('.onlyNo').on("keyup", function () {
+        $(this).val($(this).val().replace(/[^0-9]/g,""));
+    });
+});
+
+</script>
