@@ -95,19 +95,19 @@
                   </tr>
                   <tr>
                     <td>공간 면적</td>
-                    <td><input type="text" style="width: 94%; text-align: right">평</td>
+                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">평</td>
                   </tr>
                   <tr>
                     <td>인테리어 예산</td>
-                    <td><input type="text" style="width: 94%; text-align: right">원</td>
+                    <td><input type="text" class="onlyNo" style="width: 94%; text-align: right">원</td>
                   </tr>
                   <tr>
                     <td>시공 항목</td>
                     <td style="text-align: center">
-                      <input type="checkbox" name="construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" name="construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" name="construction" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" name="construction" value="paint">페인트
+                      <input type="checkbox" class="est-box" name="construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="construction" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="checkbox" class="est-box" name="construction" value="paint">페인트
                     </td>
                   </tr>
                   <tr>
@@ -218,8 +218,22 @@
       <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
     </div>
   </section>--%>
-<script type="text/javascript" src="/resources/js/eModal.js"></script>
 
 <jsp:include page="includes/footer.jsp"/>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+$(function () {
+    $('.modal').on('hidden.bs.modal', function (e) {
+        $(".modal-body input, textarea").val("");
+        // $("input[name=construction]:checkbox:checked").attr("checked", "");
+        $("input[type=checkbox]").prop("checked", false);
+    });
+
+    $('.onlyNo').on("keyup", function () {
+        $(this).val($(this).val().replace(/[^0-9]/g,""));
+    });
+});
+
+</script>
