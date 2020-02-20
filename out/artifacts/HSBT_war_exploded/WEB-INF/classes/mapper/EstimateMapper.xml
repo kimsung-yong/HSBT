@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.EstimateMapper">
+    <select id="getList" resultType="domain.estimate.EstimateVO">
+        <![CDATA[
+            select * from tbl_estimate where e_no > 0
+        ]]>
+    </select>
+
+    <select id="read" resultType="domain.estimate.EstimateVO">
+        select * from tbl_estimate where e_no = #{e_no}
+    </select>
+
+    <insert id="insert">
+        insert into tbl_estimate (e_no, id, e_area, e_address, e_price, e_construction, e_content)
+        values(est_seq.nextval, #{id}, #{e_area}, #{e_address}, #{e_price}, #{e_construction}, #{e_content})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_estimate where e_no = #{e_no}
+    </delete>
+
+    <update id="update">
+        update tbl_estimate
+        set e_area = #{e_area},
+        e_address = #{e_address},
+        e_price = #{e_price},
+        e_construction = #{e_construction},
+        e_content = #{e_content},
+        e_updatetime = sysdate
+        where e_no = #{e_no}
+    </update>
+</mapper>
