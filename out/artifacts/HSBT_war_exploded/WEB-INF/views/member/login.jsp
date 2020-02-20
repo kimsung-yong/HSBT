@@ -17,7 +17,7 @@
             <div class="col-lg-8 align-self-baseline">
                 <form method="post" action="/member/loginActon" style="width: 300px; margin: auto auto;border-style: solid; border-color: white;padding: 30px;border-radius: 20px" >
 
-                    <h3 style="text-align: center; color: white"> 로그인화면 </h3>
+                    <h3 style="text-align: center; color: white"> 로그인</h3>
                     <br>
                     <div class="form-group">
 
