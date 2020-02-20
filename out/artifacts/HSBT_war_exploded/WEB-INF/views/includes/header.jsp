@@ -23,6 +23,8 @@
     <!-- Theme CSS - Includes Bootstrap -->
     <link href="${pageContext.request.contextPath}/resources/css/creative.min.css" rel="stylesheet">
 
+    <%-- 견적 모달 CSS --%>
+    <link href="${pageContext.request.contextPath}/resources/css/eModal.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top">
@@ -32,7 +34,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">KNLS</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><h4>KNLS</h4></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

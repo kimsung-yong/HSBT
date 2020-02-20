@@ -62,10 +62,11 @@
     <%--                    panel--%>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="fa fa-comments fa-fw">Reply</i>
-                                    <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                                    <%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
+                                    <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
+                                    <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
                                 </div>
-                                <br>
+                                <hr>
 
     <%--                        panel-heading   --%>
                                 <div class="panel-body">
@@ -131,7 +132,7 @@
         </div>
     </div>
 </div>
-<%@include file="../includes/footer.jsp"%>
+<%--<%@include file="../includes/footer.jsp"%>--%>
 
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

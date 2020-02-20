@@ -3,7 +3,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <jsp:include page="../includes/header.jsp"/>
-
+<%--<style>--%>
+<%--    html, body {--%>
+<%--        margin:0px;--%>
+<%--        padding:0;--%>
+<%--        height:100%;--%>
+<%--    }--%>
+<%--    .table-hover {--%>
+<%--        min-height:80%;--%>
+<%--        position:relative;--%>
+<%--        padding-bottom:100px;/* footer height */--%>
+<%--    }--%>
+<%--    footer {--%>
+<%--        margin-top: 20px;--%>
+<%--        width:100%;--%>
+<%--        height:100px;--%>
+<%--        position:absolute;--%>
+<%--        bottom:0;--%>
+<%--        background:#5eaeff;--%>
+<%--        text-align: center;--%>
+<%--        color: white;--%>
+<%--    }--%>
+<%--</style>--%>
         <div class="col-lg-9">
 
             <div class="row">
@@ -196,6 +217,6 @@
 
 </div>
 <!-- /.container -->
-<jsp:include page="../includes/footer.jsp"/>
+<%--<jsp:include page="../includes/footer.jsp"/>--%>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

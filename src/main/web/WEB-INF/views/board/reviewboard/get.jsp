@@ -1,13 +1,12 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%@include file="../includes/header.jsp"%>
 
-
+<div class="col-lg-9">
              <div class="row">
                 <div class="col-lg-12">
-                    <br>
+                    <br><br><br>
                     <h1 class="page-header">Review</h1>
                     <br>
                 </div>
@@ -19,14 +18,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <br><br><br><br>
-                            <h3>게시글</h3>
-                            <hr>
+
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="width: 600px">
+                        <div class="panel-body" >
                             <div class="form-group">
-                            <label>글번호</label> <input size="40" class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
+                            <label>글번호</label> <input class="form-control" name="r_no" value="<c:out value="${review.r_no}"/>" readonly="readonly">
                             </div>
 
                             <div class="form-group">
@@ -41,7 +38,7 @@
                             <div class="form-group">
                             <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
-
+                            <br>
                             <button data-oper="modify" class="btn btn-default">수정</button>
                             <button data-oper="list" class="btn btn-info">목록</button>
 
@@ -52,33 +49,32 @@
                                 <input type="hidden" name="type" value="<c:out value="${cri.type}"/>">
                                 <input type="hidden" name="keyword" value="<c:out value="${cri.keyword}"/>">
                             </form>
-                            <hr>
+<hr>
                         </div>
                     </div>
-                <%--</div>
-            </div>--%>
+                </div>
+            </div>
                     <br>
             <div class="row" style="margin: 0 ">
                 <div class="col-lg-12">
 <%--                    panel--%>
                     <div class="panel panel-default">
 
-
                          <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw">reply</i>
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
+                            <i class="fa fa-comments fa-fw"><a style="font-size: 25px">reply</a></i>
+                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="margin-top: 10px">new Reply</button>
                          </div>
-                        <br>
+                        <hr>
 <%--                     panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">
                                 <li class="left clearfix" data-rno="12">
                                     <div>
                                         <div class="header">
-                                            <strong class="primary-font">user00</strong>
-                                            <small class="pull-right text-muted">2020-01-31</small>
+                                            <strong class="primary-font"></strong>
+                                            <small class="pull-right text-muted"></small>
                                         </div>
-                                        <p> Good job!</p>
+                                        <p></p>
                                     </div>
                                 </li>
 <%--                                end reply--%>
@@ -316,4 +312,4 @@
 
 
 </script>
-<%@include file="../includes/footer.jsp"%>
+<%--<%@include file="../includes/footer.jsp"%>--%>

@@ -68,11 +68,12 @@
         <%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
         <%--                        </div>--%>
 
-                                 <div class="panel-heading">
-                                    <i class="fa fa-comments fa-fw">Reply</i>
-                                    <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">new Reply</button>
-                                 </div>
-                                <br>
+            <div class="panel-heading">
+                <%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
+                <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
+                <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
+            </div>
+            <hr>
 
         <%--                     panel-heading   --%>
                                 <div class="panel-body">
@@ -330,4 +331,4 @@
 
 
 </script>
-<%@include file="../includes/footer.jsp"%>
+<%--<%@include file="../includes/footer.jsp"%>--%>
