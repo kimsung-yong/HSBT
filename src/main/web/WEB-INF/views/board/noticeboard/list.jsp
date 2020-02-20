@@ -202,6 +202,6 @@
 
 </div>
 <!-- /.container -->
-<jsp:include page="../includes/footer.jsp"/>
+<%--<jsp:include page="../includes/footer.jsp"/>--%>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -374,4 +374,4 @@
 
 
 </script>
-<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>
+<%--<%@include file="/WEB-INF/views/board/includes/footer.jsp"%>--%>
