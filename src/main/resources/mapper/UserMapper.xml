@@ -11,12 +11,12 @@
     </select>
     <!--정보 Insert-->
     <insert id="insert">
-        insert into tbl_user (id,pw,phone,name,address,manager)
-        values (#{id},#{pw},#{phone},#{name},#{address},#{manager})
+        insert into tbl_user (id,pw,phone,name,address)
+        values (#{id},#{pw},#{phone},#{name},#{address})
     </insert>
     <!--존재하는 아이디 조회-->
     <select id="read" resultType="domain.user.UserVO">
-        select * from tbl_user where id = #{id}
+        select * from tbl_user where id = #{id} and pw = #{pw}
     </select>
     <!--아이디로 정보 상제-->
     <delete id="delete">
@@ -31,15 +31,15 @@
          address = #{address}
          where id = #{id}
     </update>
-<!--
-    <insert id="insertSelectKey">
+    <!--
+        <insert id="insertSelectKey">
 
-        <selectKey keyProperty="id" order="BEFORE" resultType="String">
-            select seq_user.nextval from dual
-        </selectKey>
+            <selectKey keyProperty="id" order="BEFORE" resultType="String">
+                select seq_user.nextval from dual
+            </selectKey>
 
-        insert into tbl_user (id,pw,phone,name,address,manager)
-        values (#{id},#{pw},#{phone},#{name},#{address},#{manager})
-    </insert>-->
+            insert into tbl_user (id,pw,phone,name,address,manager)
+            values (#{id},#{pw},#{phone},#{name},#{address},#{manager})
+        </insert>-->
 
 </mapper>

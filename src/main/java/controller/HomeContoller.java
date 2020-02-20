@@ -39,10 +39,10 @@ public class HomeContoller {
     public String window() { return "/material/window"; }
     @RequestMapping("/material/paint")
     public String paint() { return "/material/paint"; }
-    @RequestMapping("/member/login")
-    public String login(){return "/member/login";}
-    @RequestMapping("/member/join")
-    public String join(){return "member/join";}
-    @RequestMapping("/member/loginActon")
-    public String loginAction(){return "member/loginAction";}
+//    @RequestMapping("/member/login")
+//    public String login(){return "/member/login";}
+//    @RequestMapping("/member/join")
+//    public String join(){return "member/join";}
+//    @RequestMapping("/member/loginActon")
+//    public String loginAction(){return "member/loginAction";}
 }
