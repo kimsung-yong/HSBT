@@ -11,6 +11,7 @@
 
     <title>Creative - Start Bootstrap Theme</title>
 
+    <link href="#" rel="shortcut icon">
     <!-- Font Awesome Icons -->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
@@ -70,14 +71,13 @@
                 </li>
                 <li class="nav-item">
                     <c:if test="${!empty vo}">
-                        <a class="nav-link js-scroll-trigger" href="#">${vo.name}님 환영합니다</a>
+                        <a class="nav-link js-scroll-trigger" href="/member/memberInfo">${vo.name}님 환영합니다</a>
                     </c:if>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
 
 <%--<header class="masthead">--%>
 <%--    <div class="rows">--%>
@@ -88,3 +88,4 @@
 <%--    </div>--%>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>

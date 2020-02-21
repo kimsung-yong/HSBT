@@ -81,54 +81,71 @@
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">견적 신청</h4>
-              </div>
-              <div class="modal-body">
-                <table class="emodal-table">
-                  <tr>
-                    <td>ID</td>
-                    <td><input type="text" name="id">님</td>
-                  </tr>
-                  <tr>
-                    <td>주소</td>
-                    <td><input type="text" name="e_address" style="width: 94%"></td>
-                  </tr>
-                  <tr>
-                    <td>공간 면적</td>
-                    <td><input type="text" name="e_area" class="onlyNo" style="width: 94%; text-align: right">평</td>
-                  </tr>
-                  <tr>
-                    <td>인테리어 예산</td>
-                    <td><input type="text" name="e_price" class="onlyNo" style="width: 94%; text-align: right">원</td>
-                  </tr>
-                  <tr>
-                    <td>시공 항목</td>
-                    <td style="text-align: center">
-                      <input type="checkbox" class="est-box" name="e_construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" class="est-box" name="e_construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" class="est-box" name="e_construction" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="checkbox" class="est-box" name="e_construction" value="paint">페인트
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>문의사항</td>
-                    <td><textarea name="e_content"></textarea></td>
-                  </tr>
-                </table>
-              </div>
-              <div class="modal-footer">
-                <button type="button" id="modalEstimateBtn" class="btn btn-dark">신청</button>
-                <button type="button" class="btn btn-dark" data-dismiss="modal">취소</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
+            <c:choose>
+              <c:when test="${!empty vo}">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">견적 신청</h4>
+                  </div>
+                  <div class="modal-body">
+                    <table class="emodal-table">
+                      <tr>
+                        <td>성명</td>
+                        <td><b>${vo.name}</b>님</td>
+                      </tr>
+                      <tr>
+                        <td>주소</td>
+                        <td><input type="text" name="e_address" style="width: 94%"></td>
+                      </tr>
+                      <tr>
+                        <td>공간 면적</td>
+                        <td><input type="text" name="e_area" class="onlyNo" style="width: 94%; text-align: right">평</td>
+                      </tr>
+                      <tr>
+                        <td>인테리어 예산</td>
+                        <td><input type="text" name="e_price" class="onlyNo" style="width: 94%; text-align: right">원</td>
+                      </tr>
+                      <tr>
+                        <td>시공 항목</td>
+                        <td style="text-align: center">
+                          <input type="checkbox" class="est-box" name="e_construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="checkbox" class="est-box" name="e_construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="checkbox" class="est-box" name="e_construction" value="window">창호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="checkbox" class="est-box" name="e_construction" value="paint">페인트
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>문의사항</td>
+                        <td><textarea name="e_content"></textarea></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="modalEstimateBtn" class="btn btn-dark">신청</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">취소</button>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </c:when>
+              <c:when test="${empty vo}">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">알림</h4>
+                  </div>
+                  <div class="modal-body">
+                    로그인이 필요한 서비스입니다.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">확인</button>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </c:when>
+            </c:choose>
           </div>
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-        </div>
       </div>
     </div>
   </section>
@@ -222,15 +239,13 @@
   </section>--%>
 
 <jsp:include page="includes/footer.jsp"/>
-<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
 $(function () {
   var modal = $('.modal');
   var e_noValue = '<c:out value="${est.e_no}"/>';
 
-  var modalInputId = modal.find("input[name='id']");
+  var modalInputId = '<c:out value="${vo.id}"/>';
   var modalInputAddress = modal.find("input[name='e_address']");
   var modalInputArea = modal.find("input[name='e_area']");
   var modalInputPrice = modal.find("input[name='e_price']");
@@ -256,7 +271,7 @@ $(function () {
 
     var est = {
       e_no:e_noValue,
-      id:modalInputId.val(),
+      id:modalInputId,
       e_address:modalInputAddress.val(),
       e_area:modalInputArea.val(),
       e_price:modalInputPrice.val(),

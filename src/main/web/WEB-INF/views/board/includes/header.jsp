@@ -26,6 +26,7 @@
 
     <title>Shop Homepage - Start Bootstrap Template</title>
 
+    <link href="#" rel="shortcut icon">
     <!-- Bootstrap core CSS -->
     <%--    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
     <link href="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
