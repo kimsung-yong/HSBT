@@ -26,15 +26,15 @@
                     <%--                            dataTables-example--%>
                             <form role="form" action="/board/qnaboard/register" method="post">
                                 <div class="form=group">
-                                    <label>title</label>
+                                    <label>제목</label>
                                     <input class="form-control" name="q_title">
                                 </div>
                                 <div class="form-group">
-                                    <label>Text area</label>
+                                    <label>내용</label>
                                     <textarea class="form-control" rows="3" name="q_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Writer</label>
+                                    <label>작성자</label>
                                     <input type="text" name="id" class="form-control" readonly="readonly" value="${vo.id}">
                                 </div>
                                 <button type="submit" class="btn btn-default">저장</button>
