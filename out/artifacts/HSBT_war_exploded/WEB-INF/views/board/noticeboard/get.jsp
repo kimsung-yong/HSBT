@@ -43,11 +43,11 @@
                             <button data-oper="modify" class="btn btn-dark">수정</button>
                             <button data-oper="list" class="btn btn-dark">목록</button>
 
-                            <form id="operForm" action="board/modify" method="get">
-                                <input type="hidden" name="b_no" value="${board.b_no}">
-                                <input type="hidden" name="pageNum" value="${cri.pageNum}">
-                                <input type="hidden" name="type" value="${cri.type}">
-                                <input type="hidden" name="keyword" value="${cri.keyword}">
+                            <form id="operForm" action="/board/noticeboard/modify" method="get">
+<%--                                <input type="hidden" name="n_no" value="${notice.n_no}">--%>
+<%--                                <input type="hidden" name="pageNum" value="${cri.pageNum}">--%>
+<%--                                <input type="hidden" name="type" value="${cri.type}">--%>
+<%--                                <input type="hidden" name="keyword" value="${cri.keyword}">--%>
 
                             </form>
                             <hr>
@@ -83,57 +83,56 @@
 <%--                <div class="panel-footer">--%>
 <%--                </div>--%>
             </div>
-        </div>
+
         <%--                ./end row--%>
-    </div>
-</div>
-</div>
+
+
 
 
 
 <!-- /#page-wrapper -->
-<div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Reply</label>
-                    <input class="form-control" name="br_content" value="new reply">
-                </div>
-                <div class="form-group">
-                    <label>id</label>
-                    <input class="form-control" name="id" value="new replyer">
-                </div>
-                <div class="form-group">
-                    <label>Reply Date</label>
-                    <input class="form-control" name="br_regTime" value="">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
-                <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
-                <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-                <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
-            </div>
-            <%--              /.<div class="modal-content">  --%>
-        </div>
+<%--<div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--%>
+<%--    <div class="modal-dialog">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+<%--                <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">--%>
+<%--                <div class="form-group">--%>
+<%--                    <label>Reply</label>--%>
+<%--                    <input class="form-control" name="nr_content" value="new reply">--%>
+<%--                </div>--%>
+<%--                <div class="form-group">--%>
+<%--                    <label>id</label>--%>
+<%--                    <input class="form-control" name="id" value="new replyer">--%>
+<%--                </div>--%>
+<%--                <div class="form-group">--%>
+<%--                    <label>Reply Date</label>--%>
+<%--                    <input class="form-control" name="nr_regTime" value="">--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="modal-footer">--%>
+<%--                <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>--%>
+<%--                <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>--%>
+<%--                <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>--%>
+<%--                <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>--%>
+<%--            </div>--%>
+<%--            &lt;%&ndash;              /.<div class="modal-content">  &ndash;%&gt;--%>
+<%--        </div>--%>
 
-        <%--                <div class="modal-dialog">--%>
-    </div>
-    <%--         /.modal   --%>
-</div>
+<%--        &lt;%&ndash;                <div class="modal-dialog">&ndash;%&gt;--%>
+<%--    </div>--%>
+<%--    &lt;%&ndash;         /.modal   &ndash;%&gt;--%>
+<%--</div>--%>
 </div>
 
-<script type="text/javascript" src="/resources/js/boardReply.js"></script>
+<%--<script type="text/javascript" src="/resources/js/boardReply.js"></script>--%>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function () {
-        console.log(BoardReplyService);
+        // console.log(BoardReplyService);
         var operForm = $("#operForm");
         ($("button[data-oper='modify']")).on("click",function (e) {
             operForm.append("<input type='hidden' name='n_no' value="+${notice.n_no} +">");
@@ -145,6 +144,7 @@
         $("button[data-oper='list']").on("click",function(e) {
             // operForm.find("#bno").remove();
             operForm.attr("action","/board/noticeboard/list");
+            operForm.append("<input type='hidden' name='n_no' value="+${notice.n_no} +">");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
             operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");
@@ -156,211 +156,211 @@
     })
 </script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        console.log("=======================");
-        console.log("JS TEST");
+<%--<script type="text/javascript">--%>
+<%--    $(document).ready(function () {--%>
+<%--        console.log("=======================");--%>
+<%--        console.log("JS TEST");--%>
 
-        var b_noValue = '<c:out value="${board.b_no}"/>';
-        var replyUL = $(".chat");
+<%--        var b_noValue = '<c:out value="${board.b_no}"/>';--%>
+<%--        var replyUL = $(".chat");--%>
 
-        var pageNum = 1;
-        var replyPageFooter =$(".panel-footer");
+<%--        var pageNum = 1;--%>
+<%--        var replyPageFooter =$(".panel-footer");--%>
 
-        var modal = $(".modal");
-        var modalInputBr_content = modal.find("input[name = 'br_content']");
-        var modalInputid = modal.find("input[name = 'id']");
-        var modalInputBr_regtime = modal.find("input[name ='br_regTime']");
+<%--        var modal = $(".modal");--%>
+<%--        var modalInputBr_content = modal.find("input[name = 'br_content']");--%>
+<%--        var modalInputid = modal.find("input[name = 'id']");--%>
+<%--        var modalInputBr_regtime = modal.find("input[name ='br_regTime']");--%>
 
-        var modalModBtn = $("#modalModBtn");
-        var modalRemoveBtn = $("#modalRemoveBtn");
-        var modalRegisterBtn = $("#modalRegisterBtn");
-        var modalCloseBtn = $("#modalCloseBtn");
-        $("#addReplyBtn").on("click",function (e) {
-            modal.find("input").val("");
-            modalInputBr_regtime.closest("div").hide();
-            modal.find("button[id != 'modalCloseBtn']").hide();
-            // modalInputU_id.val(br_content.u_id).attr();
-            modalRegisterBtn.show();
+<%--        var modalModBtn = $("#modalModBtn");--%>
+<%--        var modalRemoveBtn = $("#modalRemoveBtn");--%>
+<%--        var modalRegisterBtn = $("#modalRegisterBtn");--%>
+<%--        var modalCloseBtn = $("#modalCloseBtn");--%>
+<%--        $("#addReplyBtn").on("click",function (e) {--%>
+<%--            modal.find("input").val("");--%>
+<%--            modalInputBr_regtime.closest("div").hide();--%>
+<%--            modal.find("button[id != 'modalCloseBtn']").hide();--%>
+<%--            // modalInputU_id.val(br_content.u_id).attr();--%>
+<%--            modalRegisterBtn.show();--%>
 
-            $(".modal").modal("show");
-        });
+<%--            $(".modal").modal("show");--%>
+<%--        });--%>
 
-        modalRegisterBtn.on("click",function (e) {
+<%--        modalRegisterBtn.on("click",function (e) {--%>
 
-            var br_content = {
-                br_content : modalInputBr_content.val(),
-                id : modalInputid.val(),
-                b_no : b_noValue
-            };
+<%--            var br_content = {--%>
+<%--                br_content : modalInputBr_content.val(),--%>
+<%--                id : modalInputid.val(),--%>
+<%--                b_no : b_noValue--%>
+<%--            };--%>
 
-            BoardReplyService.add(br_content,function (result) {
-                alert(result);
+<%--            BoardReplyService.add(br_content,function (result) {--%>
+<%--                alert(result);--%>
 
-                modal.find("input").val("");
-                modal.modal("hide");
-                showList(-1);
-            });
-        });
+<%--                modal.find("input").val("");--%>
+<%--                modal.modal("hide");--%>
+<%--                showList(-1);--%>
+<%--            });--%>
+<%--        });--%>
 
-        modalModBtn.on("click", function (e) {
-            var br_content = {br_no:modal.data("br_no"), br_content:modalInputBr_content.val()};
-            BoardReplyService.update(br_content, function (result) {
-                alert(result);
-                modal.modal("hide");
-                showList(pageNum);
-            });
-        });
+<%--        modalModBtn.on("click", function (e) {--%>
+<%--            var br_content = {nr_no:modal.data("nr_no"), nr_content:modalInputBr_content.val()};--%>
+<%--            BoardReplyService.update(br_content, function (result) {--%>
+<%--                alert(result);--%>
+<%--                modal.modal("hide");--%>
+<%--                showList(pageNum);--%>
+<%--            });--%>
+<%--        });--%>
 
-        modalRemoveBtn.on("click", function (e) {
-            var br_no = modal.data("br_no");
-            BoardReplyService.remove(br_no, function(result) {
-                alert(result);
-                modal.modal("hide");
-                showList(pageNum);
-            });
-        });
-        modalCloseBtn.on("click",function (e) {
-            modal.modal("hide");
-        });
+<%--        modalRemoveBtn.on("click", function (e) {--%>
+<%--            var br_no = modal.data("br_no");--%>
+<%--            BoardReplyService.remove(br_no, function(result) {--%>
+<%--                alert(result);--%>
+<%--                modal.modal("hide");--%>
+<%--                showList(pageNum);--%>
+<%--            });--%>
+<%--        });--%>
+<%--        modalCloseBtn.on("click",function (e) {--%>
+<%--            modal.modal("hide");--%>
+<%--        });--%>
 
 
-        $(".chat").on("click","li",function (e) {
-            var br_no = $(this).data("br_no");
+<%--        $(".chat").on("click","li",function (e) {--%>
+<%--            var br_no = $(this).data("br_no");--%>
 
-            BoardReplyService.get(br_no,function (br_content) {
-                modalInputBr_content.val(br_content.br_content);
-                modalInputid.val(br_content.id).attr("readonly","readonly");
-                modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");
-                modal.data("br_no",br_content.br_no);
+<%--            BoardReplyService.get(br_no,function (br_content) {--%>
+<%--                modalInputBr_content.val(br_content.br_content);--%>
+<%--                modalInputid.val(br_content.id).attr("readonly","readonly");--%>
+<%--                modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");--%>
+<%--                modal.data("br_no",br_content.br_no);--%>
 
-                modal.find("button[id !='modalCloseBtn']").hide();
-                modalModBtn.show();
-                modalRemoveBtn.show();
+<%--                modal.find("button[id !='modalCloseBtn']").hide();--%>
+<%--                modalModBtn.show();--%>
+<%--                modalRemoveBtn.show();--%>
 
-                $(".modal").modal("show");
+<%--                $(".modal").modal("show");--%>
 
-            });
+<%--            });--%>
 
-            console.log(br_no);
-        });
-        showList(1);
+<%--            console.log(br_no);--%>
+<%--        });--%>
+<%--        showList(1);--%>
 
-        function showList(page) {
-            BoardReplyService.getList({b_no : b_noValue,page : page || 1}, function (replyCnt,list) {
+<%--        function showList(page) {--%>
+<%--            BoardReplyService.getList({b_no : b_noValue,page : page || 1}, function (replyCnt,list) {--%>
 
-                if(page == -1){
-                    pageNum = Math.ceil(replyCnt/10.0);
-                    showList(pageNum);
-                    return;
-                }
-                var str ="";
-                if(list == null || list.length == 0){
-                    replyUL.html("");
+<%--                if(page == -1){--%>
+<%--                    pageNum = Math.ceil(replyCnt/10.0);--%>
+<%--                    showList(pageNum);--%>
+<%--                    return;--%>
+<%--                }--%>
+<%--                var str ="";--%>
+<%--                if(list == null || list.length == 0){--%>
+<%--                    replyUL.html("");--%>
 
-                    return ;
-                }
-                for (var i = 0, len = list.length || 0; i < len; i++){
-                    str +="<li class='left clearfix' data-br_no='" + list[i].br_no+"'>";
-                    str +=" <div><div class='header'><strong class='primary-font'>" + list[i].id +"</strong>";
-                    str +="<small class='pull-right text-muted'>" + BoardReplyService.displayTime(list[i].br_regTime) + "</small></div>";
-                    str +="<p>" + list[i].br_content + "</p></div></li>";
-                }
-                replyUL.html(str);
-                showReplyPage(replyCnt);
-            });//end function
-        } // end show List
+<%--                    return ;--%>
+<%--                }--%>
+<%--                for (var i = 0, len = list.length || 0; i < len; i++){--%>
+<%--                    str +="<li class='left clearfix' data-br_no='" + list[i].br_no+"'>";--%>
+<%--                    str +=" <div><div class='header'><strong class='primary-font'>" + list[i].id +"</strong>";--%>
+<%--                    str +="<small class='pull-right text-muted'>" + BoardReplyService.displayTime(list[i].br_regTime) + "</small></div>";--%>
+<%--                    str +="<p>" + list[i].br_content + "</p></div></li>";--%>
+<%--                }--%>
+<%--                replyUL.html(str);--%>
+<%--                showReplyPage(replyCnt);--%>
+<%--            });//end function--%>
+<%--        } // end show List--%>
 
-        function showReplyPage(replyCnt){
+<%--        function showReplyPage(replyCnt){--%>
 
-            var endNum = Math.ceil(pageNum / 10.0) * 10;
-            var startNum = endNum -9;
+<%--            var endNum = Math.ceil(pageNum / 10.0) * 10;--%>
+<%--            var startNum = endNum -9;--%>
 
-            var prev = startNum != 1;
-            var next = false;
+<%--            var prev = startNum != 1;--%>
+<%--            var next = false;--%>
 
-            if(endNum * 10 >= replyCnt){
-                endNum = Math.ceil(replyCnt / 10.0);
-            }
-            if(endNum * 10 <= replyCnt){
-                next = true;
-            }
+<%--            if(endNum * 10 >= replyCnt){--%>
+<%--                endNum = Math.ceil(replyCnt / 10.0);--%>
+<%--            }--%>
+<%--            if(endNum * 10 <= replyCnt){--%>
+<%--                next = true;--%>
+<%--            }--%>
 
-            var str = "<ul class='pagination pull-right'>";
+<%--            var str = "<ul class='pagination pull-right'>";--%>
 
-            if(prev){
-                str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
+<%--            if(prev){--%>
+<%--                str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";--%>
 
-            }
+<%--            }--%>
 
-            for( var i = startNum; i <= endNum; i++){
-                var active = pageNum == i ? "active" : "";
+<%--            for( var i = startNum; i <= endNum; i++){--%>
+<%--                var active = pageNum == i ? "active" : "";--%>
 
-                str+= "<li class='page-item "+active+"'><a class='page-link' href='"+i+"'>" +i+"</a></li>";
-            }
+<%--                str+= "<li class='page-item "+active+"'><a class='page-link' href='"+i+"'>" +i+"</a></li>";--%>
+<%--            }--%>
 
-            if(next){
-                str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1)+"'>Next</a></li>";
-            }
+<%--            if(next){--%>
+<%--                str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1)+"'>Next</a></li>";--%>
+<%--            }--%>
 
-            str += "</ul></div>";
-            console.log(str);
+<%--            str += "</ul></div>";--%>
+<%--            console.log(str);--%>
 
-            replyPageFooter.html(str);
-        }
+<%--            replyPageFooter.html(str);--%>
+<%--        }--%>
 
-        replyPageFooter.on("click","li a",function (e) {
-            e.preventDefault();
-            console.log("page click");
+<%--        replyPageFooter.on("click","li a",function (e) {--%>
+<%--            e.preventDefault();--%>
+<%--            console.log("page click");--%>
 
-            var targetPageNum = $(this).attr("href");
+<%--            var targetPageNum = $(this).attr("href");--%>
 
-            console.log("targetPageNum:" + targetPageNum);
+<%--            console.log("targetPageNum:" + targetPageNum);--%>
 
-            pageNum = targetPageNum;
+<%--            pageNum = targetPageNum;--%>
 
-            showList(pageNum);
-        });
+<%--            showList(pageNum);--%>
+<%--        });--%>
 
-        //저장
-        // BoardReplyService.add(
-        //     {br_content : "js test", u_id : "as", b_no:b_noValue}
-        //     ,
-        //     function (result) {
-        //         alert("Result : " +result);
-        //     }
-        // );
-        //목록
-        // BoardReplyService.getList({b_no:b_noValue, page : 1}, function (list) {
-        //
-        //     for(var i = 0, len = list.length || 0; i < len; i ++){
-        //         console.log(list[i]);
-        //     }
-        // })
-        //삭제
-        // BoardReplyService.remove(3,function (count) {
-        //     console.log(count);
-        //
-        //     if(count === "success"){
-        //         alert("remove");
-        //     }
-        // }, function (err) {
-        //     alert("error");
-        //
-        // });
-        //수정
-        // BoardReplyService.update({
-        //     br_no : 4,
-        //     b_no : b_noValue,
-        //     br_content : "수정 리플이다"
-        // }, function (result) {
-        //     alert("수정완료");
-        // });
-        //특정리플 조회
-        // BoardReplyService.get(5,function (data) {
-        //     console.log(data);
-        // });
-    });
+<%--        //저장--%>
+<%--        // BoardReplyService.add(--%>
+<%--        //     {br_content : "js test", u_id : "as", b_no:b_noValue}--%>
+<%--        //     ,--%>
+<%--        //     function (result) {--%>
+<%--        //         alert("Result : " +result);--%>
+<%--        //     }--%>
+<%--        // );--%>
+<%--        //목록--%>
+<%--        // BoardReplyService.getList({b_no:b_noValue, page : 1}, function (list) {--%>
+<%--        //--%>
+<%--        //     for(var i = 0, len = list.length || 0; i < len; i ++){--%>
+<%--        //         console.log(list[i]);--%>
+<%--        //     }--%>
+<%--        // })--%>
+<%--        //삭제--%>
+<%--        // BoardReplyService.remove(3,function (count) {--%>
+<%--        //     console.log(count);--%>
+<%--        //--%>
+<%--        //     if(count === "success"){--%>
+<%--        //         alert("remove");--%>
+<%--        //     }--%>
+<%--        // }, function (err) {--%>
+<%--        //     alert("error");--%>
+<%--        //--%>
+<%--        // });--%>
+<%--        //수정--%>
+<%--        // BoardReplyService.update({--%>
+<%--        //     br_no : 4,--%>
+<%--        //     b_no : b_noValue,--%>
+<%--        //     br_content : "수정 리플이다"--%>
+<%--        // }, function (result) {--%>
+<%--        //     alert("수정완료");--%>
+<%--        // });--%>
+<%--        //특정리플 조회--%>
+<%--        // BoardReplyService.get(5,function (data) {--%>
+<%--        //     console.log(data);--%>
+<%--        // });--%>
+<%--    });--%>
 
 
 
