@@ -39,4 +39,6 @@ public class UserControllerkim {
     public String logout(){
         return userService.logout();
     }
+    @GetMapping("/member/memberInfo")
+    public String info() { return "/member/memberInfo"; }
 }

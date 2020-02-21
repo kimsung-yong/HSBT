@@ -11,6 +11,7 @@
 
     <title>Creative - Start Bootstrap Theme</title>
 
+    <link href="#" rel="shortcut icon">
     <!-- Font Awesome Icons -->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
