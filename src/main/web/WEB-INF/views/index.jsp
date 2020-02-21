@@ -4,7 +4,7 @@
          pageEncoding="UTF-8"%>
 <jsp:include page="includes/header.jsp"/>
 
-<body id="page-top">
+<%--<body id="page-top">--%>
 
   <!-- Masthead -->
   <header class="masthead">
