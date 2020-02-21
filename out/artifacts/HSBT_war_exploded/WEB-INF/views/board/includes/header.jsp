@@ -62,20 +62,36 @@
                     <a class="nav-link" href="/#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <c:if test="${empty vo}">
-                        <a class="nav-link js-scroll-trigger" href="/member/login">Login</a>
-                    </c:if>
+                    <c:choose>
+                        <c:when test="${empty vo}">
+                            <a class="nav-link js-scroll-trigger" href="/member/login">Login</a>
+                            <a class="nav-link js-scroll-trigger" href="/member/join">MemberShip</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="nav-link js-scroll-trigger" href="/member/logout">Logout</a>
+                            <a class="nav-link js-scroll-trigger" href="#">${vo.name}님 환영합니다</a>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
-                <li class="nav-item">
-                    <c:if test="${empty vo}">
-                        <a class="nav-link js-scroll-trigger" href="/member/join">MemberShip</a>
-                    </c:if>
-                </li>
-                <li class="nav-item">
-                    <c:if test="${!empty vo}">
-                        <a class="nav-link js-scroll-trigger" href="/member/logout">Logout</a>
-                    </c:if>
-                </li>
+<%--                    <c:if test="${empty vo}">--%>
+<%--                        <a class="nav-link js-scroll-trigger" href="/member/login">Login</a>--%>
+<%--                    </c:if>--%>
+<%--                </li>--%>
+<%--                <li class="nav-item">--%>
+<%--                    <c:if test="${empty vo}">--%>
+<%--                        <a class="nav-link js-scroll-trigger" href="/member/join">MemberShip</a>--%>
+<%--                    </c:if>--%>
+<%--                </li>--%>
+<%--                <li class="nav-item">--%>
+<%--                    <c:if test="${!empty vo}">--%>
+<%--                        <a class="nav-link js-scroll-trigger" href="/member/logout">Logout</a>--%>
+<%--                    </c:if>--%>
+<%--                </li>--%>
+<%--                <li class="nav-item">--%>
+<%--                    <c:if test="${!empty vo}">--%>
+<%--                        <a class="nav-link js-scroll-trigger" href="#">${vo.name}님 환영합니다</a>--%>
+<%--                    </c:if>--%>
+<%--                </li>--%>
             </ul>
         </div>
     </div>
