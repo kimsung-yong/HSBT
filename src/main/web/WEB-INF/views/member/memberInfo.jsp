@@ -4,7 +4,13 @@
          pageEncoding="UTF-8"%>
 <jsp:include page="../includes/header.jsp"/>
 <style>
-    td {
+    table {
+        margin: auto auto;
+    }
+    #estMod td {
+        padding: 10px;
+    }
+    #memberInfo td {
         padding: 10px;
         color: white;
     }
@@ -26,7 +32,7 @@
                 <div style="width: 500px; margin: auto auto;border-style: solid; border-color: white;padding: 30px;border-radius: 20px">
                     <h3 style="text-align: center; color: white">회원 정보</h3>
                     <hr>
-                    <table style="margin: auto auto;">
+                    <table id="memberInfo">
                         <tr>
                             <td>ID</td>
                             <td>${vo.id}</td>
@@ -44,15 +50,16 @@
                             <td>${vo.address}</td>
                         </tr>
                     </table>
+                    <a data-toggle="modal" href="#estModal">견적신청 내역 보기</a>
                     <hr>
-                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-dark">수정</button>
+                    <button type="button" data-toggle="modal" data-target="#infoModal" class="btn btn-dark">수정</button>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
-<div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<%--infoModal--%>
+<div class="modal fade" id ="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,13 +100,50 @@
 
         <%--                <div class="modal-dialog">--%>
     </div>
-    <%--         /.modal   --%>
+    <%--         /.infoModal   --%>
+</div>
+<%--estModal--%>
+<div class="modal fade" id ="estModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">${vo.name}님의 견적 신청 내역</h4>
+            </div>
+            <div class="modal-body">
+                <table id="estMod">
+                    <th>
+                        <td>견적신청번호</td>
+                        <td>주소</td>
+                        <td>면적</td>
+                        <td>예산</td>
+                        <td>시공항목</td>
+                        <td>문의사항</td>
+                        <td>신청날짜</td>
+                    </th>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="estModalModBtn" class="btn btn-dark">수정</button>
+                <button type="button" data-dismiss="modal" class="btn btn-dark">취소</button>
+            </div>
+            <%--              /.<div class="modal-content">  --%>
+        </div>
+
+        <%--                <div class="modal-dialog">--%>
+    </div>
+    <%--         /.estModal   --%>
 </div>
 </body>
 
 <script type="text/javascript">
-$(function () {
-    var modal = $(".modal");
 
-});
 </script>

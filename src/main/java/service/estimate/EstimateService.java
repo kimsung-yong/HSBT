@@ -9,5 +9,5 @@ public interface EstimateService {
     public EstimateVO get(Long e_no);
     public boolean modify(EstimateVO est);
     public boolean delete(Long e_no);
-    public List<EstimateVO> getList();
+    public List<EstimateVO> getList(String id);
 }

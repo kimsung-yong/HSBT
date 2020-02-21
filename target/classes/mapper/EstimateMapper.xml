@@ -5,7 +5,7 @@
 <mapper namespace="mapper.EstimateMapper">
     <select id="getList" resultType="domain.estimate.EstimateVO">
         <![CDATA[
-            select * from tbl_estimate where e_no > 0
+            select * from tbl_estimate where id = #{id}
         ]]>
     </select>
 
