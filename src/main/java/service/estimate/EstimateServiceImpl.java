@@ -35,7 +35,7 @@ public class EstimateServiceImpl implements EstimateService {
     }
 
     @Override
-    public List<EstimateVO> getList() {
-        return mapper.getList();
+    public List<EstimateVO> getList(String id) {
+        return mapper.getList(id);
     }
 }
