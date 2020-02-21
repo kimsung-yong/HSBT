@@ -18,9 +18,9 @@ public class UserControllerkim {
 
     private UserService userService;
     @PostMapping("/member/join")
-    public void createUser(UserVO user){
+    public String createUser(UserVO user){
         userService.createUser(user);
-//        return "redirect:/";
+        return "redirect:/";
     }
     @PostMapping("/member/login")
     public String loginTest(@RequestParam Map<String,String> paramMap) {

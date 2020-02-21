@@ -3,25 +3,24 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../includes/header.jsp"%>
 
-             <div class="row">
-                <div class="col-lg-12">
-                    <br>
-                    <h1 class="page-header">Review</h1>
-                    <br>
+<div class="col-lg-9">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <h1 class="page-header">후기게시판</h1>
+            <br>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default" style="width: 600px">
-                        <div class="panel-heading">
-                            <br><br><br><br>
-                            <h3>게시글작성</h3>
-                            <hr>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
+                <div class="panel-body">
                             <form role="form" action="/board/reviewboard/register" method="post">
                                 <div class="form=group">
                                     <label>제목</label>
@@ -43,6 +42,7 @@
                 </div>
             </div>
         <!-- /#page-wrapper -->
-
+</div>
+</div>
     </div>
 <%--<%@include file="../includes/footer.jsp"%>--%>
