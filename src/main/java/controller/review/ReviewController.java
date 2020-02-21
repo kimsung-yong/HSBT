@@ -23,17 +23,17 @@ public class ReviewController {
         model.addAttribute("list",service.getList(cri));
 
         int total = service.getTotal(cri);
-        log.info("total........::: "+ total);
+        log.info("total..........:"+ total);
         model.addAttribute("pageMaker",new PageDTO(cri,total));
     }
     @GetMapping("/register")
     public void register(){
-        log.info("register..........");
+        log.info("register..........:");
     }
 
     @PostMapping("/register")
     public String register(ReviewVO review, RedirectAttributes rttr){
-        log.info("register...post :"+review);
+        log.info("register post..........:"+review);
         service.register(review);
         rttr.addFlashAttribute("result",review.getR_no());
         return "redirect:/board/reviewboard/list";
@@ -54,8 +54,6 @@ public class ReviewController {
 
         rttr.addAttribute("pageNum", cri.getPageNum());
         rttr.addAttribute("amount", cri.getAmount());
-        /*rttr.addAttribute("type", cri.getType());
-        rttr.addAttribute("keyword", cri.getKeyword());*/
 
         return "redirect:/board/reviewboard/list";
     }

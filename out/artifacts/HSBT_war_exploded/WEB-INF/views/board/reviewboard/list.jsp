@@ -39,8 +39,29 @@
                                     <tr>
                                         <td><c:out value="${review.r_no}"/> </td>
                                             <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td><a id="detailPage" href="<c:out value='${review.r_no}'/>">
-                                            <c:out value="${review.r_title}"/></a> </td>
+                                        <td>
+<%--                                            <c:choose>--%>
+<%--                                                <c:when test ="${review.replycnt==0}">--%>
+<%--                                                    <a id="detailPage" href="<c:out value='${review.r_no}'/>">--%>
+<%--                                                        <c:out value="${review.r_title}"/>--%>
+<%--                                                    </a>--%>
+<%--                                                </c:when>--%>
+<%--                                                <c:otherwise>--%>
+<%--                                                    <a id="detailPage" href="<c:out value='${review.r_no}'/>">--%>
+<%--                                                        <c:out value="${review.r_title}"/>--%>
+<%--                                                        <b>[ <c:out value="${review.replycnt}"/> ] </b>--%>
+<%--                                                    </a>--%>
+<%--                                                </c:otherwise>--%>
+
+                                                    <a id="detailPage" href="<c:out value='${review.r_no}'/>">
+                                                        <c:out value="${review.r_title}"/>
+                                                        <c:if test ="${review.replycnt!=0}">
+                                                            <b>[ <c:out value="${review.replycnt}"/> ] </b>
+                                                        </c:if>
+                                                    </a>
+
+
+                                        </td>
                                         <td><c:out value="${review.id}"/> </td>
                                         <td><fmt:formatDate value="${review.r_regtime}" pattern="yyyy-MM-dd"/> </td>
                                         <td><fmt:formatDate value="${review.r_updatetime}" pattern="yyyy-MM-dd"/> </td>

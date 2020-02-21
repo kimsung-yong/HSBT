@@ -1,8 +1,9 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%@include file="../includes/header.jsp"%>
+
+<div class="col-lg-9">
 
              <div class="row">
                 <div class="col-lg-12">
@@ -15,11 +16,9 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default" style="width: 600px">
+                    <div class="panel panel-default" >
                         <div class="panel-heading">
-                            <br><br><br><br>
-                            <h3>수정/삭제</h3>
-                            <hr>
+
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -47,14 +46,14 @@
                                 <button data-oper="remove" type="submit" class="btn btn-danger">삭제</button>
                                 <button data-oper="list" type="submit" class="btn btn-danger">목록</button>
                             </form>
-                            <br>
                         </div>
 
                     </div>
                 </div>
-            </div></div>
-        <!-- /#page-wrapper -->
-    </div>
+            </div>
+</div>
+</div>
+</div>
     <script>
         $(document).ready(function () {
             var formObj = $("form");
