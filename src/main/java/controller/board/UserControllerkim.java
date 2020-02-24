@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.Board.UserService;
 
 import java.util.Map;
@@ -23,11 +24,13 @@ public class UserControllerkim {
         return "redirect:/";
     }
     @PostMapping("/member/login")
-    public String loginTest(@RequestParam Map<String,String> paramMap) {
+    public String loginTest(@RequestParam Map<String,String> paramMap,RedirectAttributes rttr) {
         String id = paramMap.get("id");
         String pw = paramMap.get("pw");
 
-        return userService.get(id,pw);
+
+
+        return userService.get(id,pw,rttr);
     }
     @GetMapping("/member/login")
     public String login(){return "/member/login";}
