@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 
     <meta charset="utf-8">
@@ -33,18 +34,38 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
+                    <a class="nav-link" href="/">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/#services">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="/#portfolio">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="/member/login">Login</a>
+                    </c:if>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="/member/join">MemberShip</a>
+                    </c:if>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${!empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="/member/logout">Logout</a>
+                    </c:if>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${!empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="#">${vo.name}님 환영합니다</a>
+                    </c:if>
                 </li>
             </ul>
         </div>
