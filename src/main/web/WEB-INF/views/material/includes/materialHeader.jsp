@@ -1,12 +1,24 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: IT
-  Date: 2020-02-07
-  Time: 오후 2:43
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
+<style>
+    footer {
+
+        position:relative;
+        left:0px;
+        bottom:0px;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .pull-right {
+        float: right !important;
+    }
+
+</style>
 <head>
 
     <meta charset="utf-8">
@@ -14,13 +26,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Materials</title>
+    <title>Shop Homepage - Start Bootstrap Template</title>
 
+    <link href="#" rel="shortcut icon">
     <!-- Bootstrap core CSS -->
-    <link href="/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <%--    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resourcesKIM/css/paging.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="/resourcesKIM/css/shop-homepage.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resourcesKIM/css/shop-homepage.css" rel="stylesheet">
 
 </head>
 
@@ -29,7 +43,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">KNLS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,13 +55,33 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/#services">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="/#portfolio">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="/member/login">Login</a>
+                    </c:if>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="/member/join">MemberShip</a>
+                    </c:if>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${!empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="/member/logout">Logout</a>
+                    </c:if>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${!empty vo}">
+                        <a class="nav-link js-scroll-trigger" href="#">${vo.name}님 환영합니다</a>
+                    </c:if>
                 </li>
             </ul>
         </div>
