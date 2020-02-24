@@ -18,6 +18,18 @@ var estService = (function () {
         });
     }
 
+    function get(e_no, callback, error) {
+        $.get("/member/memberInfo/get/" + e_no + ".json", function (result) {
+            if(callback) {
+                callback(result);
+            }
+        }).fail(function (xhr, status, err) {
+            if(error) {
+                error();
+            }
+        });
+    }
+
     function getList(param, callback, error) {
         var id = param.id;
 
@@ -28,6 +40,42 @@ var estService = (function () {
         }).fail(function (xhr, status, err) {
             if(error) {
                 error();
+            }
+        });
+    }
+
+    function update(estimate, callback, error) {
+        $.ajax({
+            type : 'put',
+            url : '/member/memberInfo/' + estimate.e_no,
+            data : JSON.stringify(estimate),
+            contentType : "application/json; charset=utf-8",
+            success : function (result, status, xhr) {
+                if(callback) {
+                    callback(result);
+                }
+            },
+            error : function (xhr, status, er) {
+                if(error) {
+                    error(er);
+                }
+            }
+        });
+    }
+
+    function remove(e_no, callback, error) {
+        $.ajax({
+            type : 'delete',
+            url : '/member/memberInfo/' + e_no,
+            success : function (deleteResult, status, xhr) {
+                if(callback) {
+                    callback(deleteResult);
+                }
+            },
+            error : function (xhr, status, er) {
+                if(error) {
+                    error(er);
+                }
             }
         });
     }
@@ -53,7 +101,10 @@ var estService = (function () {
 
     return {
         add:add,
+        get:get,
         getList:getList,
+        update:update,
+        remove:remove,
         displayTime:displayTime
     };
 })();
