@@ -231,7 +231,7 @@ $(function () {
     // var cons = modalCheckCon.split(", ");
 
     estMod.on("click", "tr", function (e) {
-        $("input[type=checkbox]").prop("checked", false);
+        // $("input[type=checkbox]").prop("checked", false);
 
         var e_no = $(this).data("e_no");
         estService.get(e_no, function (estReq) {
@@ -287,7 +287,8 @@ $(function () {
         estService.update(est, function (result) {
             alert(result);
             mModal.modal("hide");
-            showList();
+            $("#estModal").modal("hide");
+            location.reload();
         });
     });
 
