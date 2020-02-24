@@ -80,7 +80,7 @@
                 </li>
                 <li class="nav-item">
                     <c:if test="${!empty vo}">
-                        <a class="nav-link js-scroll-trigger" href="#">${vo.name}님 환영합니다</a>
+                        <a class="nav-link js-scroll-trigger" href="/member/memberInfo">${vo.name}님 환영합니다</a>
                     </c:if>
                 </li>
             </ul>
