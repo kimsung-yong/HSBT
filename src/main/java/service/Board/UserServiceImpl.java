@@ -1,7 +1,9 @@
 package service.Board;
 
 import domain.user.UserVO;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,8 +12,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.jms.Session;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Service
+@Log4j
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
     @Autowired
     private HttpSession session;
@@ -48,5 +53,11 @@ public class UserServiceImpl implements UserService {
     public String logout() {
         session.invalidate();
         return "index";
+    }
+
+    @Override
+    public List<UserVO> getList() {
+        log.info("getList............");
+        return mapper.getList();
     }
 }

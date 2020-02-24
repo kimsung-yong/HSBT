@@ -44,4 +44,6 @@ public class UserControllerkim {
     }
     @GetMapping("/member/memberInfo")
     public String info() { return "/member/memberInfo"; }
+    @GetMapping("/member/list")
+    public String list(){return "/member/list";}
 }
