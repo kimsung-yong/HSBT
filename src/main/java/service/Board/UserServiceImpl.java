@@ -16,22 +16,22 @@ import java.util.List;
 
 @Service
 @Log4j
-@AllArgsConstructor
+//@AllArgsConstructor
 public class UserServiceImpl implements UserService {
+    @Setter(onMethod_ = @Autowired)
     private HttpSession session;
     @Setter(onMethod_ = @Autowired)
     private UserMapper mapper;
 
     Model model;
 
-    @Autowired
-    public UserServiceImpl(HttpSession session) {
-        this.session = session;
-    }
+//    @Autowired
+//    public UserServiceImpl(HttpSession session) {
+//        this.session = session;
+//    }
 //    public UserServiceImpl() {
 //
 //    }
-
 
     @Override
     public void createUser(UserVO user) {
@@ -67,15 +67,5 @@ public class UserServiceImpl implements UserService {
     public List<UserVO> getList() {
         log.info("getList............");
         return mapper.getList();
-    }
-
-    @Override
-    public int update(UserVO user) {
-        return mapper.update(user);
-    }
-
-    @Override
-    public int delete(String id) {
-        return mapper.delete(id);
     }
 }
