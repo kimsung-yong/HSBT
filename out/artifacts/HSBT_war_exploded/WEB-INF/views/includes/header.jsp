@@ -74,6 +74,11 @@
                         <a class="nav-link js-scroll-trigger" href="/member/memberInfo">${vo.name}님 환영합니다</a>
                     </c:if>
                 </li>
+                <li class="nav-item">
+                    <c:if test="${vo.manager eq 0}">
+                        <a class="nav-link js-scroll-trigger" href="/member/list">관리자페이지로 이동</a>
+                    </c:if>
+                </li>
             </ul>
         </div>
     </div>

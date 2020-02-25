@@ -25,7 +25,7 @@ public class UserMapperTests {
         UserVO user = new UserVO();
         user.setId("sxvc779");
         user.setPw("1234");
-        user.setManager("1");
+//        user.setManager("1");
         user.setName("송승원");
         user.setAddress("대전 광역시");
         user.setPhone("010-0000-0000");
@@ -56,5 +56,10 @@ public class UserMapperTests {
 
         int count = mapper.update(user);
         log.info("UPDATE COUNT: "+ count);
+    }
+
+    @Test
+    public void testGetList(){
+        mapper.getList().forEach(boardVO -> log.info(boardVO));
     }
 }
