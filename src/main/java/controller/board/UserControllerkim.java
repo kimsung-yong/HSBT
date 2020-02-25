@@ -1,9 +1,11 @@
 package controller.board;
 
+import domain.Criteria;
 import domain.user.UserVO;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,5 +47,10 @@ public class UserControllerkim {
     @GetMapping("/member/memberInfo")
     public String info() { return "/member/memberInfo"; }
     @GetMapping("/member/list")
-    public String list(){return "/member/list";}
+    public String list(Model model, Criteria cri){
+        model.addAttribute("list",userService.getList());
+
+
+        return "/member/list";
+    }
 }

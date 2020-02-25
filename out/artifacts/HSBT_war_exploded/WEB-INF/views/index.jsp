@@ -279,6 +279,17 @@ $(function () {
       e_content:modalInputContent.val(),
       e_regtime:modalInputRegTime.val()
     };
+
+    if(modalInputAddress.val() == "") {
+      alert("주소를 입력해주세요.");
+    } else if(modalInputArea.val() == "") {
+      alert("평수를 입력해주세요.");
+    } else if(modalInputPrice.val() == "") {
+      alert("예산을 입력해주세요.");
+    } else if(modalInputCon == "") {
+      alert("시공항목을 최소 한개 이상 선택해주세요.");
+    }
+
     estService.add(est, function (result) {
       alert(result);
       modal.modal("hide");

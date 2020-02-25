@@ -16,18 +16,22 @@ import java.util.List;
 
 @Service
 @Log4j
-@AllArgsConstructor
+//@AllArgsConstructor
 public class UserServiceImpl implements UserService {
+    @Setter(onMethod_ = @Autowired)
     private HttpSession session;
     @Setter(onMethod_ = @Autowired)
     private UserMapper mapper;
 
     Model model;
 
-    @Autowired
-    public UserServiceImpl(HttpSession session) {
-        this.session = session;
-    }
+//    @Autowired
+//    public UserServiceImpl(HttpSession session) {
+//        this.session = session;
+//    }
+//    public UserServiceImpl() {
+//
+//    }
 
     @Override
     public void createUser(UserVO user) {
