@@ -14,4 +14,8 @@ public interface UserService {
     public String logout();
 
     public List<UserVO> getList();
+
+    public int update(UserVO user);
+
+    public int delete(String id);
 }
