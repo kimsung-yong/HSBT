@@ -28,6 +28,10 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(HttpSession session) {
         this.session = session;
     }
+//    public UserServiceImpl() {
+//
+//    }
+
 
     @Override
     public void createUser(UserVO user) {
@@ -63,5 +67,15 @@ public class UserServiceImpl implements UserService {
     public List<UserVO> getList() {
         log.info("getList............");
         return mapper.getList();
+    }
+
+    @Override
+    public int update(UserVO user) {
+        return mapper.update(user);
+    }
+
+    @Override
+    public int delete(String id) {
+        return mapper.delete(id);
     }
 }
