@@ -24,7 +24,10 @@
     }
     #estList th, #estList td {
         border-bottom: 1px solid #444444;
-        padding: 10px;
+        padding: 20px;
+    }
+    input[type='checkbox']{
+        margin-left: 50px;
     }
 </style>
 <body id="page-top">
@@ -152,12 +155,104 @@
     </div>
     <%--         /.estModal   --%>
 </div>
+<div class="modal fade" id ="modModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">견적신청사항 수정</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>견적신청번호</label>
+                    <input class="form-control" name="e_no" value="" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label>주소</label>
+                    <input class="form-control" name="e_address" value="">
+                </div>
+                <div class="form-group">
+                    <label>면적</label>
+                    <input class="form-control" name="e_area" value="">
+                </div>
+                <div class="form-group">
+                    <label>예산</label>
+                    <input class="form-control" name="e_price" value="">
+                </div>
+                <div class="form-group">
+                    <label>시공항목</label>
+                    <div class="form-control" style="border-color: white;text-align: center">
+                        <input type="checkbox" name="e_construction" value="tile">타일
+                        <input type="checkbox" name="e_construction" value="wallpaper">벽지
+                        <input type="checkbox" name="e_construction" value="window">창호
+                        <input type="checkbox" name="e_construction" value="paint">페인트
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>문의사항</label>
+                    <input class="form-control" name="e_content" value="">
+                </div>
+                <div class="form-group">
+                    <label>신청날짜</label>
+                    <input class="form-control" name="e_regtime" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="mModalModBtn" type="button" class="btn btn-warning">수정</button>
+                <button id="mModalRemoveBtn" type="button" class="btn btn-danger">삭제</button>
+                <button id="modalCloseBtn" type="button" data-dismiss="modal" class="btn btn-dark">닫기</button>
+            </div>
+            <%--              /.<div class="modal-content">  --%>
+        </div>
+
+        <%--                <div class="modal-dialog">--%>
+    </div>
+    <%--         /.modal   --%>
+</div>
 </body>
 <script type="text/javascript" src="/resources/js/estimate.js"></script>
 <script type="text/javascript">
 $(function () {
+    var mModal = $("#modModal");
     var idValue = '<c:out value="${vo.id}"/>';
     var estMod = $("#estMod");
+
+    var mModalModBtn = $("#mModalModBtn");
+    var mModalRemoveBtn = $("#mModalRemoveBtn");
+    var modalCloseBtn = $("#modalCloseBtn");
+
+    var modalInputNo = mModal.find("input[name = 'e_no']");
+    var modalInputAddress = mModal.find("input[name = 'e_address']");
+    var modalInputArea = mModal.find("input[name ='e_area']");
+    var modalInputPrice = mModal.find("input[name='e_price']");
+    var modalCheckCon = mModal.find("input[name='e_construction']");
+    var modalInputContent = mModal.find("input[name='e_content']");
+    var modalInputRegtime = mModal.find("input[name='e_regtime']");
+    var construction = new Array();
+
+    estMod.on("click", "tr", function (e) {
+        $("input[type=checkbox]").prop("checked", false);
+
+        var e_no = $(this).data("e_no");
+        estService.get(e_no, function (estReq) {
+            var cons = estReq.e_construction.split(", ");
+
+            modalInputNo.val(estReq.e_no).attr("readonly", "readonly");
+            modalInputAddress.val(estReq.e_address);
+            modalInputArea.val(estReq.e_area);
+            modalInputPrice.val(estReq.e_price);
+            modalCheckCon.each(function () {
+                if(cons.indexOf(this.value) > -1) {
+                    $(this).prop('checked', true);
+                }
+            });
+            modalInputContent.val(estReq.e_content);
+            modalInputRegtime.val(estService.displayTime(estReq.e_regtime)).attr("readonly", "readonly");
+            mModal.data("e_no", estReq.e_no);
+
+            $("#modModal").modal("show");
+        });
+    });
+
     function showList() {
         estService.getList({id:idValue}, function (list) {
             var str = "<table id='estList'><tr><th>견적신청번호</th><th>주소</th>" +
@@ -171,8 +266,8 @@ $(function () {
             for(var i = 0, len = list.length||0; i < len; i++) {
                 str += "<tr data-e_no='" + list[i].e_no + "'><td>" + list[i].e_no + "</td>";
                 str += "<td>" + list[i].e_address + "</td>";
-                str += "<td>" + list[i].e_area + "</td>";
-                str += "<td>" + list[i].e_price + "</td>";
+                str += "<td>" + list[i].e_area + "평</td>";
+                str += "<td>" + list[i].e_price + "원</td>";
                 str += "<td>" + list[i].e_construction + "</td>";
                 str += "<td>" + list[i].e_content + "</td>";
                 str += "<td>" + estService.displayTime(list[i].e_regtime) + "</td></tr>";
@@ -181,6 +276,56 @@ $(function () {
             estMod.html(str);
         });
     }
+
+    mModalModBtn.on("click", function (e) {
+        construction = [];
+        $("input[name='e_construction']:checked").each(function () {
+            construction.push($(this).val());
+        });
+
+        var modalInputCon = construction.join(", ");
+
+        var est = {
+            e_no:mModal.data("e_no"),
+            e_address:modalInputAddress.val(),
+            e_area:modalInputArea.val(),
+            e_price:modalInputPrice.val(),
+            e_construction:modalInputCon,
+            e_content:modalInputContent.val()
+        };
+
+        if(modalInputAddress.val() == "") {
+            alert("주소를 입력해주세요.");
+        } else if(modalInputArea.val() == "") {
+            alert("평수를 입력해주세요.");
+        } else if(modalInputPrice.val() == "") {
+            alert("예산을 입력해주세요.");
+        } else if(modalInputCon == "") {
+            alert("시공항목을 최소 한개 이상 선택해주세요.");
+        }
+
+        estService.update(est, function (result) {
+            alert(result);
+            mModal.modal("hide");
+            showList();
+            // $("#estModal").modal("hide");
+            // location.reload();
+        });
+    });
+
+    mModalRemoveBtn.on("click", function (e) {
+        var e_no = mModal.data("e_no");
+        estService.remove(e_no, function (result) {
+            alert(result);
+            mModal.modal("hide");
+            showList();
+        });
+    });
+
+    modalCloseBtn.on('hidden.bs.modal', function (e) {
+        $(".modal-body input, textarea").val("");
+        $("input[name='e_construction']").prop("checked", false);
+    });
 
     showList();
 

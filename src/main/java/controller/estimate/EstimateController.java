@@ -17,7 +17,7 @@ import java.util.List;
 public class EstimateController {
     private EstimateService service;
 
-    @GetMapping(value = "/{e_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value = "/member/memberInfo/get/{e_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseEntity<EstimateVO> get(@PathVariable("e_no") Long e_no) {
         return new ResponseEntity<>(service.get(e_no), HttpStatus.OK);
     }
@@ -32,6 +32,22 @@ public class EstimateController {
         int insertCount = service.register(est);
 
         return insertCount == 1
+                ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @DeleteMapping(value = "/member/memberInfo/{e_no}", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> remove(@PathVariable("e_no") Long e_no) {
+        return service.delete(e_no) == 1
+                ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @RequestMapping(method = { RequestMethod.PUT, RequestMethod.PATCH }, value = "/member/memberInfo/{e_no}", consumes = "application/json",
+        produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> modify(@RequestBody EstimateVO est, @PathVariable("e_no") Long e_no) {
+        est.setE_no(e_no);
+        return service.modify(est) == 1
                 ? new ResponseEntity<>("success", HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }

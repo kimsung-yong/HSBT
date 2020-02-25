@@ -25,13 +25,13 @@ public class EstimateServiceImpl implements EstimateService {
     }
 
     @Override
-    public boolean modify(EstimateVO est) {
-        return mapper.update(est) == 1;
+    public int modify(EstimateVO est) {
+        return mapper.update(est);
     }
 
     @Override
-    public boolean delete(Long e_no) {
-        return mapper.delete(e_no) == 1;
+    public int delete(Long e_no) {
+        return mapper.delete(e_no);
     }
 
     @Override
