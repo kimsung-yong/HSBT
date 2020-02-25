@@ -218,32 +218,33 @@ $(function () {
 
     var mModalModBtn = $("#mModalModBtn");
     var mModalRemoveBtn = $("#mModalRemoveBtn");
+    var modalCloseBtn = $("#modalCloseBtn");
 
     var modalInputNo = mModal.find("input[name = 'e_no']");
     var modalInputAddress = mModal.find("input[name = 'e_address']");
     var modalInputArea = mModal.find("input[name ='e_area']");
     var modalInputPrice = mModal.find("input[name='e_price']");
-    // var modalCheckCon = mModal.find("input[name='e_construction']");
+    var modalCheckCon = mModal.find("input[name='e_construction']");
     var modalInputContent = mModal.find("input[name='e_content']");
     var modalInputRegtime = mModal.find("input[name='e_regtime']");
     var construction = new Array();
 
-    // var cons = modalCheckCon.split(", ");
-
     estMod.on("click", "tr", function (e) {
-        // $("input[type=checkbox]").prop("checked", false);
+        $("input[type=checkbox]").prop("checked", false);
 
         var e_no = $(this).data("e_no");
         estService.get(e_no, function (estReq) {
+            var cons = estReq.e_construction.split(", ");
+
             modalInputNo.val(estReq.e_no).attr("readonly", "readonly");
             modalInputAddress.val(estReq.e_address);
             modalInputArea.val(estReq.e_area);
             modalInputPrice.val(estReq.e_price);
-            // $("input:checkbox[name='e_construction']").each(function () {
-            //     if(this.value == cons) {
-            //         this.checked = true;
-            //     }
-            // });
+            modalCheckCon.each(function () {
+                if(cons.indexOf(this.value) > -1) {
+                    $(this).prop('checked', true);
+                }
+            });
             modalInputContent.val(estReq.e_content);
             modalInputRegtime.val(estService.displayTime(estReq.e_regtime)).attr("readonly", "readonly");
             mModal.data("e_no", estReq.e_no);
@@ -277,18 +278,38 @@ $(function () {
     }
 
     mModalModBtn.on("click", function (e) {
+        construction = [];
         $("input[name='e_construction']:checked").each(function () {
             construction.push($(this).val());
         });
+
         var modalInputCon = construction.join(", ");
 
-        var est = {e_no:mModal.data("e_no"), e_address:modalInputAddress.val(), e_area:modalInputArea.val(), e_price:modalInputPrice.val(),
-            e_construction:modalInputCon, e_content:modalInputContent.val()};
+        var est = {
+            e_no:mModal.data("e_no"),
+            e_address:modalInputAddress.val(),
+            e_area:modalInputArea.val(),
+            e_price:modalInputPrice.val(),
+            e_construction:modalInputCon,
+            e_content:modalInputContent.val()
+        };
+
+        if(modalInputAddress.val() == "") {
+            alert("주소를 입력해주세요.");
+        } else if(modalInputArea.val() == "") {
+            alert("평수를 입력해주세요.");
+        } else if(modalInputPrice.val() == "") {
+            alert("예산을 입력해주세요.");
+        } else if(modalInputCon == "") {
+            alert("시공항목을 최소 한개 이상 선택해주세요.");
+        }
+
         estService.update(est, function (result) {
             alert(result);
             mModal.modal("hide");
-            $("#estModal").modal("hide");
-            location.reload();
+            showList();
+            // $("#estModal").modal("hide");
+            // location.reload();
         });
     });
 
@@ -299,6 +320,11 @@ $(function () {
             mModal.modal("hide");
             showList();
         });
+    });
+
+    modalCloseBtn.on('hidden.bs.modal', function (e) {
+        $(".modal-body input, textarea").val("");
+        $("input[name='e_construction']").prop("checked", false);
     });
 
     showList();
