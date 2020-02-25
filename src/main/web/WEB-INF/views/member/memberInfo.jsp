@@ -218,7 +218,6 @@ $(function () {
 
     var mModalModBtn = $("#mModalModBtn");
     var mModalRemoveBtn = $("#mModalRemoveBtn");
-    var modalCloseBtn = $("#modalCloseBtn");
 
     var modalInputNo = mModal.find("input[name = 'e_no']");
     var modalInputAddress = mModal.find("input[name = 'e_address']");
@@ -320,11 +319,6 @@ $(function () {
             mModal.modal("hide");
             showList();
         });
-    });
-
-    modalCloseBtn.on('hidden.bs.modal', function (e) {
-        $(".modal-body input, textarea").val("");
-        $("input[name='e_construction']").prop("checked", false);
     });
 
     showList();
