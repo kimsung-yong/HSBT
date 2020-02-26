@@ -44,7 +44,7 @@
           r_no,r_title,r_content,id,r_regtime,r_updatetime,replycnt
        from
           (
-             select  /*+INDEX_DESC(tbl_review pk_review)*/
+             select  /*+INDEX_DESC(tbl_review pk_r_i)*/
              rownum rn, r_no, r_title, r_content, id, r_regtime, r_updatetime,replycnt
              from tbl_review
              where

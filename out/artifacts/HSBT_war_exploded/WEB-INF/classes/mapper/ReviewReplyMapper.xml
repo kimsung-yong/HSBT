@@ -25,7 +25,7 @@
         <![CDATA[
             select rr_no, r_no, rr_content, id, rr_regtime, rr_updatetime
             from (
-                select /*+ INDEX(tbl_review_reply idx_review_reply */
+                select /*+ INDEX(tbl_review_reply idx_r_r */
                 rownum rn, rr_no, r_no, rr_content, id, rr_regtime, rr_updatetime
                 from tbl_review_reply
                 where r_no = #{r_no}

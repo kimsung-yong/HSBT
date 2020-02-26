@@ -16,7 +16,7 @@
         <![CDATA[
             select tr_no, t_no, tr_content, id, tr_regtime, tr_updatetime
             from (
-                select /*+ INDEX(tbl_tip_reply idx_tip_reply */
+                select /*+ INDEX(tbl_tip_reply idx_tr */
                 rownum rn, tr_no, t_no, tr_content, id, tr_regtime, tr_updatetime
                 from tbl_tip_reply
                 where t_no = #{t_no}

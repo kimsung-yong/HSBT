@@ -16,7 +16,7 @@
         <![CDATA[
             select qr_no, q_no, qr_content, id, qr_regtime, qr_updatetime
             from (
-                select /*+ INDEX(tbl_qna_reply idx_qna_reply */
+                select /*+ INDEX(tbl_qna_reply idx_qr */
                 rownum rn, qr_no, q_no, qr_content, id, qr_regtime, qr_updatetime
                 from tbl_qna_reply
                 where q_no = #{q_no}
