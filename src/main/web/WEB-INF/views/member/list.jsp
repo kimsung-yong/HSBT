@@ -2,7 +2,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<jsp:include page="/WEB-INF/views/board/includes/header.jsp"/>
+<jsp:include page="/WEB-INF/views/member/header.jsp"/>
 <style>
 
 </style>
@@ -44,12 +44,13 @@
                                     <%--                                --%>
                                 <c:forEach items="${list}" var="list">
                                     <tr>
-                                        <td><c:out value="${list.id}"/></td>
-                                            <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
                                         <td><a id="detailPage" class="move" href="${list.id}">
+                                            <c:out value="${list.id}"/>
+                                        </a></td>
+                                            <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
+                                        <td>
                                             <c:out value="${list.pw}"/>
                                                 <%--                                    <c:if test="${list.replyCnt !=0}">[${list.replyCnt}]</c:if>--%>
-                                        </a>
                                         </td>
 
                                         <td><c:out value="${list.name}"/></td>
@@ -60,32 +61,17 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
-                            <button type="button" class="btn btn-dark" onclick="regloc()">글작성</button>
+                                <%--                            <button type="button" class="btn btn-dark" onclick="regloc()">글작성</button>--%>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="searchForm" action="/board/freeboard/list" method="get"
+                                    <form id="searchForm" action="/member/list" method="get"
                                           style="float: right">
                                         <select name="type">
                                             <option value="" <c:out
                                                     value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--
                                             </option>
                                             <option value="T" <c:out
-                                                    value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>제목
-                                            </option>
-                                            <option value="C" <c:out
-                                                    value="${pageMaker.cri.type eq 'C' ?'selected' : ''}"/>>내용
-                                            </option>
-                                            <option value="C" <c:out
-                                                    value="${pageMaker.cri.type eq 'W' ?'selected' : ''}"/>>작성자
-                                            </option>
-                                            <option value="TC" <c:out
-                                                    value="${pageMaker.cri.type eq 'TC' ?'selected' : ''}"/>>제목 내용
-                                            </option>
-                                            <option value="TW" <c:out
-                                                    value="${pageMaker.cri.type eq 'TW' ?'selected' : ''}"/>>제목 작성자
-                                            </option>
-                                            <option value="TWC" <c:out
-                                                    value="${pageMaker.cri.type eq 'TWC' ?'selected' : ''}"/>>제목 내용 작성자
+                                                    value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>아이디
                                             </option>
                                         </select>
                                         <input type="text" name="keyword" value="${pageMaker.cri.keyword}"/>
@@ -95,7 +81,7 @@
                                     </form>
                                 </div>
 
-                                <form id="actionForm" action="/board/freeboard/list" method="get">
+                                <form id="actionForm" action="/member/list" method="get">
                                     <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                     <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
                                     <input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
@@ -222,9 +208,9 @@
         $("a#detailPage").on("click", function (e) {
             e.preventDefault();
             console.log("글클릭");
-            actionForm.attr("action", "/board/freeboard/get");
+            actionForm.attr("action", "/member/get");
 
-            actionForm.append("<input type='hidden' name='b_no' value='" + $(this).attr("href") + "'>");
+            actionForm.append("<input type='hidden' name='id' value='" + $(this).attr("href") + "'>");
             actionForm.submit();
         });
 

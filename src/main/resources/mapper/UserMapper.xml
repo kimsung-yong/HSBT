@@ -4,11 +4,41 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.UserMapper">
 
-<!--    <select id="getList" resultType="domain.user.UserVO">-->
-<!--        <![CDATA[-->
-<!--        select * from tbl_user;-->
-<!--        ]]>-->
-<!--    </select>-->
+    <sql id="criteria">
+        <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+            <foreach item="type" collection="typeArr">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            id like '%' || #{keyword} || '%'
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            b_content like '%' || #{keyword} || '%'
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            id like '%' || #{keyword} || '%'
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
+    <select id="getListWithPaging" resultType="domain.user.UserVO">
+        <![CDATA[
+            select id, pw, phone, name, address,manager
+            from (
+                select rownum rn, id, pw, phone, name ,address, manager
+                from tbl_user
+                where
+        ]]>
+        <include refid="criteria"></include>
+        <![CDATA[
+                rownum <= #{pageNum} * #{amount}
+            )
+            where rn > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
     <!--정보 Insert-->
     <insert id="insert">
         insert into tbl_user (id,pw,phone,name,address)
@@ -31,6 +61,10 @@
          address = #{address}
          where id = #{id}
     </update>
+
+    <select id="getCount" resultType="int">
+        select count(*) from tbl_user
+    </select>
     <!--
         <insert id="insertSelectKey">
 
@@ -41,5 +75,7 @@
             insert into tbl_user (id,pw,phone,name,address,manager)
             values (#{id},#{pw},#{phone},#{name},#{address},#{manager})
         </insert>-->
-
+    <select id="get" resultType="domain.user.UserVO">
+        select * from tbl_user where id = #{id}
+    </select>
 </mapper>

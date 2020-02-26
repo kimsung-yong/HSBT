@@ -1,5 +1,6 @@
 package service.Board;
 
+import domain.Criteria;
 import domain.user.UserVO;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -13,9 +14,13 @@ public interface UserService {
 
     public String logout();
 
-    public List<UserVO> getList();
+    public List<UserVO> getList(Criteria cri);
 
     public int update(UserVO user);
 
     public int delete(String id);
+
+    public int total(Criteria cri);
+
+    public UserVO getListSelect(String id);
 }
