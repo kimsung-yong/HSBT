@@ -17,9 +17,9 @@ public class UserControllerNoh {
 
     @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/member/memberInfo/mod{id}",
             consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-    public ResponseEntity<String> modify(@RequestBody UserVO vo, @PathVariable("id") String id) {
-        vo.setId(id);
-        return service.update(vo) == 1
+    public ResponseEntity<String> modify(@RequestBody UserVO user, @PathVariable("id") String id) {
+        user.setId(id);
+        return service.update(user) == 1
                 ? new ResponseEntity<>("success", HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
