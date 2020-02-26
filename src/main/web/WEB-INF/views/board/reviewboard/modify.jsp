@@ -8,7 +8,7 @@
              <div class="row">
                 <div class="col-lg-12">
                     <br>
-                    <h1 class="page-header">Review</h1>
+                    <h1 class="page-header">후기</h1>
                     <br>
                 </div>
                 <!-- /.col-lg-12 -->

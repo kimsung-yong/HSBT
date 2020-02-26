@@ -17,9 +17,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            DataTables Advanced Tables
-                        </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <form action="/board/noticeboard/modify" method="post">
@@ -63,27 +60,20 @@
                 var operation = $(this).data("oper");
 
                 console.log(operation);
-                if(operation === 'modify'){
-                    // e.preventDefault();
-                    formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
-                    formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
-                    formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
-                    formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
-                }else if(operation === 'remove'){
+                if(operation === 'remove') {
                     formObj.attr("action", "/board/noticeboard/remove");
-                    formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
-                    formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
-                    formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
-                    formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
-                }else if (operation === 'list'){
-                    // self.location = "/board/list";
-                    formObj.attr("action","/board/noticeboard/list").attr("method","get");
-                    formObj.empty();
-                    formObj.append("<input type='hidden' name='pageNum' value='${cri.pageNum}'>");
-                    formObj.append("<input type='hidden' name='amount' value='${cri.amount}'>");
-                    formObj.append("<input type='hidden' name='type' value='${cri.type}'>");
-                    formObj.append("<input type='hidden' name='keyword' value='${cri.keyword}'>");
+                } else if(operation === 'list') {
+                    formObj.attr("action", "/board/noticeboard/list").attr("method", "get");
+                    var pageNumTag = $("input[name='pageNum']").clone();
+                    var amountTag = $("input[name='amount']").clone();
+                    var keywordTag = $("input[name='keyword']").clone();
+                    var typeTag = $("input[name='type']").clone();
 
+                    formObj.empty();
+                    formObj.append(pageNumTag);
+                    formObj.append(amountTag);
+                    formObj.append(keywordTag);
+                    formObj.append(typeTag);
                 }
                 formObj.submit();
             });

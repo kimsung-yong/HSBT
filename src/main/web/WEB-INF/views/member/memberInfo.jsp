@@ -377,9 +377,10 @@ $(function () {
             address:inputAdd.val()
         }
 
-        userService.update(user, function (result) {
-            alert(result);
+        userService.update(user, function () {
+            alert("수정 완료. 다시 로그인해주세요.");
             infoModal.modal("hide");
+            location.replace("/member/login");
         });
     });
 
@@ -399,8 +400,8 @@ $(function () {
             return;
         }
 
-        userService.remove(id, function (result) {
-            alert(result);
+        userService.remove(id, function () {
+            alert("탈퇴 완료. 이용해주셔서 감사합니다.");
             delModal.modal("hide");
             location.replace("/member/logout");
         });

@@ -36,8 +36,8 @@
                                     <label>작성자</label>
                                     <input type="text" name="id" class="form-control" readonly="readonly" value="${vo.id}">
                                 </div>
-                                <button type="submit" class="btn btn-default">저장</button>
-                                <button type="reset" class="btn btn-default">재작성</button>
+                                <button type="submit" class="btn btn-dark">저장</button>
+                                <button type="reset" class="btn btn-dark">재작성</button>
                             </form>
                         </div>
                     </div>
