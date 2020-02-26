@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.UserMapper">
 
-    <select id="getList" resultType="domain.user.UserVO">
-        <![CDATA[
-        select * from tbl_user;
-        ]]>
-    </select>
+<!--    <select id="getList" resultType="domain.user.UserVO">-->
+<!--        <![CDATA[-->
+<!--        select * from tbl_user;-->
+<!--        ]]>-->
+<!--    </select>-->
     <!--정보 Insert-->
     <insert id="insert">
         insert into tbl_user (id,pw,phone,name,address)
