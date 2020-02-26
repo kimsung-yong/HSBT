@@ -1,6 +1,5 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%@include file="/WEB-INF/views/board/includes/header.jsp"%>
-
+<%@include file="/WEB-INF/views/board/includes/header.jsp" %>
 
 
 <div class="col-lg-9">
@@ -24,119 +23,123 @@
                 <!-- /.panel-heading -->
 
                 <div class="panel-body">
-                            <div class="form-group">
-                            <label>글번호</label> <input class="form-control" name="b_no" value="<c:out value="${board.b_no}"/>" readonly="readonly">
-                            </div>
+                    <div class="form-group">
+                        <label>글번호</label> <input class="form-control" name="b_no"
+                                                  value="<c:out value="${board.b_no}"/>" readonly="readonly">
+                    </div>
 
-                            <div class="form-group">
-                            <label>제목</label> <input class="form-control" name="b_title" value="<c:out value="${board.b_title}"/>" readonly="readonly">
-                            </div>
+                    <div class="form-group">
+                        <label>제목</label> <input class="form-control" name="b_title"
+                                                 value="<c:out value="${board.b_title}"/>" readonly="readonly">
+                    </div>
 
-                            <div class="form-group">
-                            <label>내용</label>
-                            <textarea class="form-control" name="b_content" readonly="readonly"><c:out value="${board.b_content}"/></textarea>
-                            </div>
+                    <div class="form-group">
+                        <label>내용</label>
+                        <textarea class="form-control" name="b_content" readonly="readonly"><c:out
+                                value="${board.b_content}"/></textarea>
+                    </div>
 
-                            <div class="form-group">
-<%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
-                            </div>
-                            <c:if test="${board.id == vo.id}">
-                                <button data-oper="modify" class="btn btn-dark">수정</button>
-                            </c:if>
-                            <button data-oper="list" class="btn btn-dark">목록</button>
+                    <div class="form-group">
+                        <%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
+                    </div>
+                    <c:if test="${board.id == vo.id}">
+                        <button data-oper="modify" class="btn btn-dark">수정</button>
+                    </c:if>
+                    <button data-oper="list" class="btn btn-dark">목록</button>
 
-                            <form id="operForm" action="board/modify" method="get">
-                                <input type="hidden" name="b_no" value="${board.b_no}">
-                                <input type="hidden" name="pageNum" value="${cri.pageNum}">
-                                <input type="hidden" name="type" value="${cri.type}">
-                                <input type="hidden" name="keyword" value="${cri.keyword}">
+                    <form id="operForm" action="board/modify" method="get">
+                        <input type="hidden" name="b_no" value="${board.b_no}">
+                        <input type="hidden" name="pageNum" value="${cri.pageNum}">
+                        <input type="hidden" name="type" value="${cri.type}">
+                        <input type="hidden" name="keyword" value="${cri.keyword}">
 
-                            </form>
+                    </form>
                     <hr>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <br>
-            <div class="row" style="margin: 0 ">
-                <div class="col-lg-12">
-<%--                    panel--%>
-                    <div class="panel panel-default">
-<%--                        <div class="panel-heading">--%>
-<%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
-<%--                        </div>--%>
+    <br>
+    <div class="row" style="margin: 0 ">
+        <div class="col-lg-12">
+            <%--                    panel--%>
+            <div class="panel panel-default">
+                <%--                        <div class="panel-heading">--%>
+                <%--                            <i class="fa fa-comments fa-fw"></i> Reply--%>
+                <%--                        </div>--%>
 
-                         <div class="panel-heading">
-<%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
-                            <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
-                            <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
-                         </div>
-                        <hr>
-<%--                     panel-heading   --%>
-                        <div class="panel-body">
-                            <ul class="chat">
-                                <li class="left clearfix" data-br_no="12">
-                                    <div>
-                                        <div class="header">
-                                            <strong class="primary-font">user00</strong>
-                                            <small class="pull-right text-muted">2020-01-31</small>
-                                        </div>
-                                        <p> Good job!</p>
-                                    </div>
-                                </li>
-<%--                                end reply--%>
-                            </ul>
-<%--                            end ul--%>
-                        </div>
-<%--                        /.panel .chat-panel--%>
-                        <div class="panel-footer">
-                        </div>
-                    </div>
+                <div class="panel-heading">
+                    <%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
+                    <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
+                    <c:if test="${!empty vo.id}">
+                        <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
+                    </c:if>
                 </div>
-<%--                ./end row--%>
+                <hr>
+                <%--                     panel-heading   --%>
+                <div class="panel-body">
+                    <ul class="chat">
+                        <li class="left clearfix" data-br_no="12">
+                            <div>
+                                <div class="header">
+                                    <strong class="primary-font">user00</strong>
+                                    <small class="pull-right text-muted">2020-01-31</small>
+                                </div>
+                                <p> Good job!</p>
+                            </div>
+                        </li>
+                        <%--                                end reply--%>
+                    </ul>
+                    <%--                            end ul--%>
+                </div>
+                <%--                        /.panel .chat-panel--%>
+                <div class="panel-footer">
+                </div>
             </div>
-                    </div>
+        </div>
+        <%--                ./end row--%>
+    </div>
+</div>
 </div>
 
 
-
-        <!-- /#page-wrapper -->
-        <div class="modal fade" id ="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Reply</label>
-                            <input class="form-control" name="br_content" value="new reply">
-                        </div>
-                        <div class="form-group">
-                            <label>id</label>
-                            <input class="form-control" name="id" value="new replyer" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label>Reply Date</label>
-                            <input class="form-control" name="br_regTime" value="">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
-                        <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
-                        <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-                        <button id="modalCloseBtn" type="button" class="btn btn-dark">Close</button>
-                    </div>
-                    <%--              /.<div class="modal-content">  --%>
-                </div>
-
-<%--                <div class="modal-dialog">--%>
+<!-- /#page-wrapper -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>
             </div>
-<%--         /.modal   --%>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Reply</label>
+                    <input class="form-control" name="br_content" value="new reply">
+                </div>
+                <div class="form-group">
+                    <label>id</label>
+                    <input class="form-control" name="id" value="new replyer" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label>Reply Date</label>
+                    <input class="form-control" name="br_regTime" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
+                <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
+                <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
+                <button id="modalCloseBtn" type="button" class="btn btn-dark">Close</button>
+            </div>
+            <%--              /.<div class="modal-content">  --%>
         </div>
+
+        <%--                <div class="modal-dialog">--%>
     </div>
+    <%--         /.modal   --%>
+</div>
+</div>
 
 <script type="text/javascript" src="/resources/js/boardReply.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
@@ -145,24 +148,24 @@
     $(document).ready(function () {
         console.log(BoardReplyService);
         var operForm = $("#operForm");
-        $("button[data-oper='modify']").on("click",function (e) {
-            operForm.append("<input type='hidden' name='bno' value="+${board.b_no} +">");
-            operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
-            operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");
-            operForm.attr("action","/board/freeboard/modify").submit();
+        $("button[data-oper='modify']").on("click", function (e) {
+            operForm.append("<input type='hidden' name='bno' value=" + ${board.b_no} +">");
+            operForm.append("<input type='hidden' name='pageNum' value='" + ${cri.pageNum} +"'>");
+            operForm.append("<input type='hidden' name=amount value='" + ${cri.amount} +"'>");
+            operForm.attr("action", "/board/freeboard/modify").submit();
         });
 
-        $("button[data-oper='list']").on("click",function(e) {
+        $("button[data-oper='list']").on("click", function (e) {
             // operForm.find("#bno").remove();
-            operForm.attr("action","/board/freeboard/list");
-            operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
-            operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
-            operForm.append("<input type='hidden' name='type' value='"+${cri.type} +"'>");
-            operForm.append("<input type='hidden' name='keyword' value='"+${cri.keyword} +"'>");
+            operForm.attr("action", "/board/freeboard/list");
+            operForm.append("<input type='hidden' name='pageNum' value='" + ${cri.pageNum} +"'>");
+            operForm.append("<input type='hidden' name='amount' value='" + ${cri.amount} +"'>");
+            operForm.append("<input type='hidden' name='type' value='" + ${cri.type} +"'>");
+            operForm.append("<input type='hidden' name='keyword' value='" + ${cri.keyword} +"'>");
             operForm.submit();
-    })
+        })
 
-        
+
     })
 </script>
 
@@ -176,7 +179,7 @@
         var replyUL = $(".chat");
 
         var pageNum = 1;
-        var replyPageFooter =$(".panel-footer");
+        var replyPageFooter = $(".panel-footer");
 
         var modal = $(".modal");
         var modalInputBr_content = modal.find("input[name = 'br_content']");
@@ -187,7 +190,7 @@
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
         var modalCloseBtn = $("#modalCloseBtn");
-        $("#addReplyBtn").on("click",function (e) {
+        $("#addReplyBtn").on("click", function (e) {
             modal.find("input[name='br_content']").val("");
             modal.find("input[name='id']").val("<c:out value="${vo.id}"/>");
             modalInputBr_regtime.closest("div").hide();
@@ -198,15 +201,15 @@
             $(".modal").modal("show");
         });
 
-        modalRegisterBtn.on("click",function (e) {
+        modalRegisterBtn.on("click", function (e) {
 
             var br_content = {
-                br_content : modalInputBr_content.val(),
-                id : idValue,
-                b_no : b_noValue
+                br_content: modalInputBr_content.val(),
+                id: idValue,
+                b_no: b_noValue
             };
 
-            BoardReplyService.add(br_content,function (result) {
+            BoardReplyService.add(br_content, function (result) {
                 alert(result);
 
                 modal.find("input").val("");
@@ -216,7 +219,7 @@
         });
 
         modalModBtn.on("click", function (e) {
-            var br_content = {br_no:modal.data("br_no"), br_content:modalInputBr_content.val()};
+            var br_content = {br_no: modal.data("br_no"), br_content: modalInputBr_content.val()};
             BoardReplyService.update(br_content, function (result) {
                 alert(result);
                 modal.modal("hide");
@@ -226,36 +229,36 @@
 
         modalRemoveBtn.on("click", function (e) {
             var br_no = modal.data("br_no");
-            BoardReplyService.remove(br_no, function(result) {
+            BoardReplyService.remove(br_no, function (result) {
                 alert(result);
                 modal.modal("hide");
                 showList(pageNum);
             });
         });
-        modalCloseBtn.on("click",function (e) {
+        modalCloseBtn.on("click", function (e) {
             modalInputBr_content.attr("readonly", false);
             modal.modal("hide");
         });
 
 
-        $(".chat").on("click","li",function (e) {
+        $(".chat").on("click", "li", function (e) {
             var br_no = $(this).data("br_no");
             var voId = '<c:out value="${vo.id}"/>';
-            BoardReplyService.get(br_no,function (br_content) {
-                if(br_content.id != voId) {
+            BoardReplyService.get(br_no, function (br_content) {
+                if (br_content.id != voId) {
                     modalInputBr_content.val(br_content.br_content).attr("readonly", "readonly");
-                    modalInputid.val(br_content.id).attr("readonly","readonly");
-                    modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");
-                    modal.data("br_no",br_content.br_no);
+                    modalInputid.val(br_content.id).attr("readonly", "readonly");
+                    modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly", "readonly");
+                    modal.data("br_no", br_content.br_no);
 
                     modal.find("button[id !='modalCloseBtn']").hide();
 
                     $(".modal").modal("show");
                 } else {
                     modalInputBr_content.val(br_content.br_content);
-                    modalInputid.val(br_content.id).attr("readonly","readonly");
-                    modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");
-                    modal.data("br_no",br_content.br_no);
+                    modalInputid.val(br_content.id).attr("readonly", "readonly");
+                    modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly", "readonly");
+                    modal.data("br_no", br_content.br_no);
 
                     modal.find("button[id !='modalCloseBtn']").hide();
                     modalModBtn.show();
@@ -268,72 +271,72 @@
 
             console.log(br_no);
         });
-            showList(1);
+        showList(1);
 
-            function showList(page) {
-                BoardReplyService.getList({b_no : b_noValue,page : page || 1}, function (replyCnt,list) {
+        function showList(page) {
+            BoardReplyService.getList({b_no: b_noValue, page: page || 1}, function (replyCnt, list) {
 
-                    if(page == -1){
-                        pageNum = Math.ceil(replyCnt/10.0);
-                        showList(pageNum);
-                        return;
-                    }
-                    var str ="";
-                    if(list == null || list.length == 0){
-                        replyUL.html("");
-
-                        return ;
-                    }
-                    for (var i = 0, len = list.length || 0; i < len; i++){
-                        str +="<li class='left clearfix' data-br_no='" + list[i].br_no+"'>";
-                        str +=" <div><div class='header'><strong class='primary-font'>" + list[i].id +"</strong>";
-                        str +="<small class='pull-right text-muted'>" + BoardReplyService.displayTime(list[i].br_regTime) + "</small></div>";
-                        str +="<p>" + list[i].br_content + "</p></div></li>";
-                    }
-                    replyUL.html(str);
-                    showReplyPage(replyCnt);
-                });//end function
-            } // end show List
-
-        function showReplyPage(replyCnt){
-
-                var endNum = Math.ceil(pageNum / 10.0) * 10;
-                var startNum = endNum -9;
-
-                var prev = startNum != 1;
-                var next = false;
-
-                if(endNum * 10 >= replyCnt){
-                    endNum = Math.ceil(replyCnt / 10.0);
+                if (page == -1) {
+                    pageNum = Math.ceil(replyCnt / 10.0);
+                    showList(pageNum);
+                    return;
                 }
-                if(endNum * 10 <= replyCnt){
-                    next = true;
+                var str = "";
+                if (list == null || list.length == 0) {
+                    replyUL.html("");
+
+                    return;
                 }
-
-                var str = "<ul class='pagination pull-right'>";
-
-                if(prev){
-                    str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
-
+                for (var i = 0, len = list.length || 0; i < len; i++) {
+                    str += "<li class='left clearfix' data-br_no='" + list[i].br_no + "'>";
+                    str += " <div><div class='header'><strong class='primary-font'>" + list[i].id + "</strong>";
+                    str += "<small class='pull-right text-muted'>" + BoardReplyService.displayTime(list[i].br_regTime) + "</small></div>";
+                    str += "<p>" + list[i].br_content + "</p></div></li>";
                 }
+                replyUL.html(str);
+                showReplyPage(replyCnt);
+            });//end function
+        } // end show List
 
-                for( var i = startNum; i <= endNum; i++){
-                    var active = pageNum == i ? "active" : "";
+        function showReplyPage(replyCnt) {
 
-                    str+= "<li class='page-item "+active+"'><a class='page-link' href='"+i+"'>" +i+"</a></li>";
-                }
+            var endNum = Math.ceil(pageNum / 10.0) * 10;
+            var startNum = endNum - 9;
 
-                if(next){
-                    str+= "<li class='page-item'><a class='page-link' href='"+(endNum+1)+"'>Next</a></li>";
-                }
+            var prev = startNum != 1;
+            var next = false;
 
-                str += "</ul></div>";
-                console.log(str);
+            if (endNum * 10 >= replyCnt) {
+                endNum = Math.ceil(replyCnt / 10.0);
+            }
+            if (endNum * 10 <= replyCnt) {
+                next = true;
+            }
 
-                replyPageFooter.html(str);
+            var str = "<ul class='pagination pull-right'>";
+
+            if (prev) {
+                str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
+
+            }
+
+            for (var i = startNum; i <= endNum; i++) {
+                var active = pageNum == i ? "active" : "";
+
+                str += "<li class='page-item " + active + "'><a class='page-link' href='" + i + "'>" + i + "</a></li>";
+            }
+
+            if (next) {
+                str += "<li class='page-item'><a class='page-link' href='" + (endNum + 1) + "'>Next</a></li>";
+            }
+
+            str += "</ul></div>";
+            console.log(str);
+
+            replyPageFooter.html(str);
         }
 
-        replyPageFooter.on("click","li a",function (e) {
+        replyPageFooter.on("click", "li a", function (e) {
             e.preventDefault();
             console.log("page click");
 
@@ -385,8 +388,6 @@
         //     console.log(data);
         // });
     });
-
-
 
 
 </script>
