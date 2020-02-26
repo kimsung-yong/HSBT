@@ -352,14 +352,14 @@ $(function () {
 
     //회원정보 수정 or 삭제
 
-    var modModal = $("#modModal");
+    var infoModal = $("#infoModal");
     var delModal = $("#delModal");
 
-    var inputPW = modModal.find("input[name='pw']");
-    var inputPWD = modModal.find("input[name='pwd']");
-    var inputName = modModal.find("input[name='name']");
-    var inputPhone = modModal.find("input[name='phone']");
-    var inputAdd = modModal.find("input[name='address']");
+    var inputPW = infoModal.find("input[name='pw']");
+    var inputPWD = infoModal.find("input[name='pwd']");
+    var inputName = infoModal.find("input[name='name']");
+    var inputPhone = infoModal.find("input[name='phone']");
+    var inputAdd = infoModal.find("input[name='address']");
 
     $("#infoModBtn").on("click", function (e) {
         var id = '<c:out value="${vo.id}"/>';
@@ -379,7 +379,7 @@ $(function () {
 
         userService.update(user, function (result) {
             alert(result);
-            modModal.modal("hide");
+            infoModal.modal("hide");
         });
     });
 
