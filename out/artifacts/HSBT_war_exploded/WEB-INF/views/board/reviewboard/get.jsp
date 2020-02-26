@@ -7,7 +7,7 @@
              <div class="row">
                 <div class="col-lg-12">
                     <br>
-                    <h1 class="page-header">Review</h1>
+                    <h1 class="page-header">후기</h1>
                     <br>
                 </div>
 
@@ -38,9 +38,11 @@
                             <div class="form-group">
                             <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
-                            <br>
-                            <button data-oper="modify" class="btn btn-default">수정</button>
-                            <button data-oper="list" class="btn btn-info">목록</button>
+
+                            <c:if test="${review.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
+                            <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/reviewboard/modify" method="get">
                                 <input type="hidden" id="r_no" name="r_no" value="<c:out value="${review.r_no}"/>">
@@ -105,7 +107,7 @@
                         </div>
                         <div class="form-group">
                             <label>Replyer</label>
-                            <input class="form-control" name="id" value="new replyer">
+                            <input class="form-control" name="id" value="new replyer" readonly="readonly">
                         </div>
                         <div class="form-group">
                             <label>Reply Date</label>
@@ -116,7 +118,7 @@
                         <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
                         <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
                         <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-                        <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
+                        <button id="modalCloseBtn" type="button" class="btn btn-dark">Close</button>
                     </div>
                     <%--              /.<div class="modal-content">  --%>
                 </div>
@@ -136,7 +138,7 @@
 <script>
     $(document).ready(function () {
         var operForm = $("#operForm");
-        ($("button[data-oper='modify']")).on("click",function (e) {
+        $("button[data-oper='modify']").on("click",function (e) {
             operForm.append("<input type='hidden' name='r_no' value="+${review.r_no} +">");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");
@@ -163,6 +165,7 @@
         console.log("JS TEST");
 
         var r_noValue = '<c:out value="${review.r_no}"/>';
+        var idValue = '<c:out value="${vo.id}"/>';
         var replyUL = $(".chat");
 
         var modal = $(".modal");
@@ -175,7 +178,8 @@
         var modalRegisterBtn = $("#modalRegisterBtn");
 
         $("#addReplyBtn").on("click",function (e) {
-            modal.find("input").val("");
+            modal.find("input[name='rr_content']").val("");
+            modal.find("input[name='id']").val("<c:out value="${vo.id}"/>");
             modalInputRr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
 
@@ -187,7 +191,7 @@
         modalRegisterBtn.on("click",function (e) {
             var rr_content = {
                 rr_content : modalInputRr_content.val(),
-                id : modalInputId.val(),
+                id : idValue,
                 r_no : r_noValue
             };
             reviewReplyService.add(rr_content,function (result) {
@@ -218,18 +222,30 @@
         });
         $(".chat").on("click","li",function (e) {
             var rr_no = $(this).data("rr_no");
-
+            var voId = '<c:out value="${vo.id}"/>';
             reviewReplyService.get(rr_no,function (rr_content) {
-                modalInputRr_content.val(rr_content.rr_content);
-                modalInputId.val(rr_content.id);
-                modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly","readonly");
-                modal.data("rr_no",rr_content.rr_no);
+                if(rr_content.id != voId) {
+                    modalInputRr_content.val(rr_content.rr_content).attr("readonly", "readonly");
+                    modalInputId.val(rr_content.id).attr("readonly", "readonly");
+                    modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly","readonly");
+                    modal.data("rr_no",rr_content.rr_no);
 
-                modal.find("button[id !='modalCloseBtn']").hide();
-                modalModBtn.show();
-                modalRemoveBtn.show();
+                    modal.find("button[id !='modalCloseBtn']").hide();
 
-                $(".modal").modal("show");
+                    $(".modal").modal("show");
+                } else {
+                    modalInputRr_content.val(rr_content.rr_content);
+                    modalInputId.val(rr_content.id).attr("readonly", "readonly");
+                    modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly","readonly");
+                    modal.data("rr_no",rr_content.rr_no);
+
+                    modal.find("button[id !='modalCloseBtn']").hide();
+                    modalModBtn.show();
+                    modalRemoveBtn.show();
+
+                    $(".modal").modal("show");
+                }
+
             });
 
             console.log(rr_no);
@@ -265,6 +281,7 @@
             });
         }
         $("#modalCloseBtn").on("click", function () {
+            modalInputRr_content.attr("readonly", false);
             $(".modal").modal("hide");
         });
 

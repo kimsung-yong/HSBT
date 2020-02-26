@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-12">
             <br>
-            <h1 class="page-header">후기게시판</h1>
+            <h1 class="page-header">후기</h1>
             <br>
         </div>
         <!-- /.col-lg-12 -->
@@ -34,8 +34,8 @@
                                     <label>작성자</label>
                                     <input type="text" name="id" class="form-control" readonly="readonly" value="${vo.id}">
                                 </div>
-                                <button type="submit" class="btn btn-default">저장</button>
-                                <button type="reset" class="btn btn-default">재작성</button>
+                                <button type="submit" class="btn btn-dark">저장</button>
+                                <button type="reset" class="btn btn-dark">재작성</button>
                             </form>
                         </div>
                     </div>

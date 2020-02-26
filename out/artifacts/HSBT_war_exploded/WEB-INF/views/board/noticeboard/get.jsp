@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12">
             <br>
-            <h1 class="page-header">자유게시판</h1>
+            <h1 class="page-header">공지사항</h1>
             <br>
         </div>
         <!-- /.col-lg-12 -->
@@ -40,7 +40,9 @@
                             <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${notice.id}"/>" readonly="readonly">
                             </div>
 
-                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <c:if test="${notice.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
                             <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="/board/noticeboard/modify" method="get">
