@@ -235,8 +235,8 @@
     <%--         /.modal   --%>
 </div>
 </body>
-<script type="text/javascript" src="/resources/js/estimate.js"></script>
 <script type="text/javascript" src="/resources/js/userNoh.js"></script>
+<script type="text/javascript" src="/resources/js/estimate.js"></script>
 <script type="text/javascript">
 $(function () {
     var mModal = $("#modModal");

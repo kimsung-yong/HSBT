@@ -37,7 +37,7 @@
 		<![CDATA[
 			select t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt
 			from (
-				select /*+ INDEX_DESC(tbl_tip pk_tip) */
+				select /*+ INDEX_DESC(tbl_tip pk_t_n) */
 				rownum rn, t_no, t_title, t_content, id, t_regtime, t_updatetime, replycnt
 				from tbl_tip
 				where
