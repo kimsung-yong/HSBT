@@ -40,9 +40,10 @@
                             <div class="form-group">
 <%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
                             </div>
-
-                           <button data-oper="modify" class="btn btn-dark">수정</button>
-                           <button data-oper="list" class="btn btn-dark">목록</button>
+                            <c:if test="${board.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
+                            <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/modify" method="get">
                                 <input type="hidden" name="b_no" value="${board.b_no}">
@@ -115,7 +116,7 @@
                         </div>
                         <div class="form-group">
                             <label>id</label>
-                            <input class="form-control" name="id" value="new replyer">
+                            <input class="form-control" name="id" value="new replyer" readonly="readonly">
                         </div>
                         <div class="form-group">
                             <label>Reply Date</label>
@@ -126,7 +127,7 @@
                         <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
                         <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
                         <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-                        <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
+                        <button id="modalCloseBtn" type="button" class="btn btn-dark">Close</button>
                     </div>
                     <%--              /.<div class="modal-content">  --%>
                 </div>
@@ -144,7 +145,7 @@
     $(document).ready(function () {
         console.log(BoardReplyService);
         var operForm = $("#operForm");
-        ($("button[data-oper='modify']")).on("click",function (e) {
+        $("button[data-oper='modify']").on("click",function (e) {
             operForm.append("<input type='hidden' name='bno' value="+${board.b_no} +">");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");
@@ -171,6 +172,7 @@
         console.log("JS TEST");
 
         var b_noValue = '<c:out value="${board.b_no}"/>';
+        var idValue = '<c:out value="${vo.id}"/>';
         var replyUL = $(".chat");
 
         var pageNum = 1;
@@ -186,7 +188,8 @@
         var modalRegisterBtn = $("#modalRegisterBtn");
         var modalCloseBtn = $("#modalCloseBtn");
         $("#addReplyBtn").on("click",function (e) {
-            modal.find("input").val("");
+            modal.find("input[name='br_content']").val("");
+            modal.find("input[name='id']").val("<c:out value="${vo.id}"/>");
             modalInputBr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
             // modalInputU_id.val(br_content.u_id).attr();
@@ -199,7 +202,7 @@
 
             var br_content = {
                 br_content : modalInputBr_content.val(),
-                id : modalInputid.val(),
+                id : idValue,
                 b_no : b_noValue
             };
 
@@ -230,24 +233,36 @@
             });
         });
         modalCloseBtn.on("click",function (e) {
+            modalInputBr_content.attr("readonly", false);
             modal.modal("hide");
         });
 
 
         $(".chat").on("click","li",function (e) {
             var br_no = $(this).data("br_no");
-
+            var voId = '<c:out value="${vo.id}"/>';
             BoardReplyService.get(br_no,function (br_content) {
-                modalInputBr_content.val(br_content.br_content);
-                modalInputid.val(br_content.id).attr("readonly","readonly");
-                modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");
-                modal.data("br_no",br_content.br_no);
+                if(br_content.id != voId) {
+                    modalInputBr_content.val(br_content.br_content).attr("readonly", "readonly");
+                    modalInputid.val(br_content.id).attr("readonly","readonly");
+                    modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");
+                    modal.data("br_no",br_content.br_no);
 
-                modal.find("button[id !='modalCloseBtn']").hide();
-                modalModBtn.show();
-                modalRemoveBtn.show();
+                    modal.find("button[id !='modalCloseBtn']").hide();
 
-                $(".modal").modal("show");
+                    $(".modal").modal("show");
+                } else {
+                    modalInputBr_content.val(br_content.br_content);
+                    modalInputid.val(br_content.id).attr("readonly","readonly");
+                    modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly","readonly");
+                    modal.data("br_no",br_content.br_no);
+
+                    modal.find("button[id !='modalCloseBtn']").hide();
+                    modalModBtn.show();
+                    modalRemoveBtn.show();
+
+                    $(".modal").modal("show");
+                }
 
             });
 

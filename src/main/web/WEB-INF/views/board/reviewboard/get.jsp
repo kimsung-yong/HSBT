@@ -107,7 +107,7 @@
                         </div>
                         <div class="form-group">
                             <label>Replyer</label>
-                            <input class="form-control" name="id" value="new replyer">
+                            <input class="form-control" name="id" value="new replyer" readonly="readonly">
                         </div>
                         <div class="form-group">
                             <label>Reply Date</label>
@@ -165,6 +165,7 @@
         console.log("JS TEST");
 
         var r_noValue = '<c:out value="${review.r_no}"/>';
+        var idValue = '<c:out value="${vo.id}"/>';
         var replyUL = $(".chat");
 
         var modal = $(".modal");
@@ -177,7 +178,8 @@
         var modalRegisterBtn = $("#modalRegisterBtn");
 
         $("#addReplyBtn").on("click",function (e) {
-            modal.find("input").val("");
+            modal.find("input[name='rr_content']").val("");
+            modal.find("input[name='id']").val("<c:out value="${vo.id}"/>");
             modalInputRr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
 
@@ -189,7 +191,7 @@
         modalRegisterBtn.on("click",function (e) {
             var rr_content = {
                 rr_content : modalInputRr_content.val(),
-                id : modalInputId.val(),
+                id : idValue,
                 r_no : r_noValue
             };
             reviewReplyService.add(rr_content,function (result) {
@@ -220,18 +222,30 @@
         });
         $(".chat").on("click","li",function (e) {
             var rr_no = $(this).data("rr_no");
-
+            var voId = '<c:out value="${vo.id}"/>';
             reviewReplyService.get(rr_no,function (rr_content) {
-                modalInputRr_content.val(rr_content.rr_content);
-                modalInputId.val(rr_content.id);
-                modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly","readonly");
-                modal.data("rr_no",rr_content.rr_no);
+                if(rr_content.id != voId) {
+                    modalInputRr_content.val(rr_content.rr_content).attr("readonly", "readonly");
+                    modalInputId.val(rr_content.id).attr("readonly", "readonly");
+                    modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly","readonly");
+                    modal.data("rr_no",rr_content.rr_no);
 
-                modal.find("button[id !='modalCloseBtn']").hide();
-                modalModBtn.show();
-                modalRemoveBtn.show();
+                    modal.find("button[id !='modalCloseBtn']").hide();
 
-                $(".modal").modal("show");
+                    $(".modal").modal("show");
+                } else {
+                    modalInputRr_content.val(rr_content.rr_content);
+                    modalInputId.val(rr_content.id).attr("readonly", "readonly");
+                    modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly","readonly");
+                    modal.data("rr_no",rr_content.rr_no);
+
+                    modal.find("button[id !='modalCloseBtn']").hide();
+                    modalModBtn.show();
+                    modalRemoveBtn.show();
+
+                    $(".modal").modal("show");
+                }
+
             });
 
             console.log(rr_no);
@@ -267,6 +281,7 @@
             });
         }
         $("#modalCloseBtn").on("click", function () {
+            modalInputRr_content.attr("readonly", false);
             $(".modal").modal("hide");
         });
 
