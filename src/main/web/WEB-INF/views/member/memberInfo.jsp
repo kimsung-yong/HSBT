@@ -64,7 +64,8 @@
                     </table>
                     <a data-toggle="modal" href="#estModal">견적신청 내역 보기</a>
                     <hr>
-                    <button type="button" data-toggle="modal" data-target="#infoModal" class="btn btn-dark">수정</button>
+                    <button type="button" data-toggle="modal" data-target="#infoModal" class="btn btn-dark">수정</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" data-toggle="modal" data-target="#delModal" class="btn btn-danger">탈퇴</button>
                 </div>
             </div>
         </div>
@@ -79,7 +80,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input type="text" class="form-control" value="<c:out value="${vo.id}"/>" readonly="readonly"
+                    <input type="text" class="form-control" data-id="${vo.id}" value="<c:out value="${vo.id}"/>" readonly="readonly"
                            name="id" maxlength="20">
                 </div>
                 <div class="form-group">
@@ -107,12 +108,39 @@
                 <button type="button" id="infoModBtn" class="btn btn-dark">저장</button>
                 <button type="button" data-dismiss="modal" class="btn btn-dark">취소</button>
             </div>
-            <%--              /.<div class="modal-content">  --%>
+            <%--  /.<div class="modal-content">  --%>
         </div>
-
-        <%--                <div class="modal-dialog">--%>
+        <%-- <div class="modal-dialog">--%>
     </div>
     <%--         /.infoModal   --%>
+</div>
+<%--/.delModal--%>
+<div class="modal fade" id ="delModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">회원 탈퇴</h4>
+            </div>
+            <div class="modal-body">
+                <h5>탈퇴를 원하시면 비밀번호를 입력해주십시오.</h5>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="비밀번호"
+                           name="pw" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="비밀번호 확인"
+                           name="pwd" maxlength="20">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="delBtn" class="btn btn-danger">탈퇴</button>
+                <button type="button" data-dismiss="modal" class="btn btn-dark">취소</button>
+            </div>
+            <%--              /.<div class="modal-content">  --%>
+        </div>
+        <%--                <div class="modal-dialog">--%>
+    </div>
+    <%--         /.delModal   --%>
 </div>
 <%--estModal--%>
 <div class="modal fade" id ="estModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -150,7 +178,6 @@
             </div>
             <%--              /.<div class="modal-content">  --%>
         </div>
-
         <%--                <div class="modal-dialog">--%>
     </div>
     <%--         /.estModal   --%>
@@ -203,12 +230,12 @@
             </div>
             <%--              /.<div class="modal-content">  --%>
         </div>
-
         <%--                <div class="modal-dialog">--%>
     </div>
     <%--         /.modal   --%>
 </div>
 </body>
+<script type="text/javascript" src="/resources/js/userNoh.js"></script>
 <script type="text/javascript" src="/resources/js/estimate.js"></script>
 <script type="text/javascript">
 $(function () {
@@ -218,7 +245,6 @@ $(function () {
 
     var mModalModBtn = $("#mModalModBtn");
     var mModalRemoveBtn = $("#mModalRemoveBtn");
-    var modalCloseBtn = $("#modalCloseBtn");
 
     var modalInputNo = mModal.find("input[name = 'e_no']");
     var modalInputAddress = mModal.find("input[name = 'e_address']");
@@ -322,12 +348,62 @@ $(function () {
         });
     });
 
-    modalCloseBtn.on('hidden.bs.modal', function (e) {
-        $(".modal-body input, textarea").val("");
-        $("input[name='e_construction']").prop("checked", false);
-    });
-
     showList();
 
+    //회원정보 수정 or 삭제
+
+    var modModal = $("#modModal");
+    var delModal = $("#delModal");
+
+    var inputPW = modModal.find("input[name='pw']");
+    var inputPWD = modModal.find("input[name='pwd']");
+    var inputName = modModal.find("input[name='name']");
+    var inputPhone = modModal.find("input[name='phone']");
+    var inputAdd = modModal.find("input[name='address']");
+
+    $("#infoModBtn").on("click", function (e) {
+        var id = '<c:out value="${vo.id}"/>';
+
+        if(inputPW.val() != inputPWD.val()) {
+            alert("두 비밀번호가 일치하지 않습니다.");
+            return;
+        }
+
+        var user = {
+            id:id,
+            pw:inputPW.val(),
+            name:inputName.val(),
+            phone:inputPhone.val(),
+            address:inputAdd.val()
+        }
+
+        userService.update(user, function (result) {
+            alert(result);
+            modModal.modal("hide");
+        });
+    });
+
+    var deletePW = delModal.find("input[name='pw']");
+    var deletePWD = delModal.find("input[name='pwd']");
+
+    $("#delBtn").on("click", function (e) {
+        var id = '<c:out value="${vo.id}"/>';
+        var pw = '<c:out value="${vo.pw}"/>';
+
+        if(deletePW.val() != pw) {
+            alert("비밀번호를 확인하세요.");
+            return;
+        }
+        if(deletePW.val() != deletePWD.val()) {
+            alert("입력하신 두 비밀번호가 일치하지 않습니다.");
+            return;
+        }
+
+        userService.remove(id, function (result) {
+            alert(result);
+            delModal.modal("hide");
+            location.replace("/member/logout");
+        });
+    });
 });
 </script>

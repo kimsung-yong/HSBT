@@ -68,4 +68,14 @@ public class UserServiceImpl implements UserService {
         log.info("getList............");
         return mapper.getList();
     }
+
+    @Override
+    public int update(UserVO user) {
+        return mapper.update(user);
+    }
+
+    @Override
+    public int delete(String id) {
+        return mapper.delete(id);
+    }
 }
