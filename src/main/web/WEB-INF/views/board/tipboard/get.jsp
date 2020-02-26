@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <br>
-                    <h1 class="page-header">Q&A</h1>
+                    <h1 class="page-header">Tip</h1>
                     <hr>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -110,7 +110,7 @@
                         </div>
                         <div class="form-group">
                             <label>Replyer</label>
-                            <input class="form-control" name="id" value="new replyer">
+                            <input class="form-control" name="id" value="new replyer" readonly="readonly">
                         </div>
                         <div class="form-group">
                             <label>Reply Date</label>
@@ -121,7 +121,7 @@
                         <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
                         <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
                         <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-                        <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
+                        <button id="modalCloseBtn" type="button" class="btn btn-dark">Close</button>
                     </div>
                     <%--              /.<div class="modal-content">  --%>
                 </div>
@@ -141,7 +141,7 @@
 <script>
     $(document).ready(function () {
         var operForm = $("#operForm");
-        ($("button[data-oper='modify']")).on("click",function (e) {
+        $("button[data-oper='modify']").on("click",function (e) {
             operForm.append("<input type='hidden' name='t_no' value="+${tip.t_no} +">");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");
@@ -149,7 +149,7 @@
         });
 
         $("button[data-oper='list']").on("click",function(e) {
-            operForm.find("#t_no").remove();
+            // operForm.find("#t_no").remove();
             operForm.attr("action","/board/tipboard/list");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
@@ -168,6 +168,7 @@
         console.log("JS TEST");
 
         var t_noValue = '<c:out value="${tip.t_no}"/>';
+        var idValue = '<c:out value="${vo.id}"/>';
         var replyUL = $(".chat");
 
         var modal = $(".modal");
@@ -181,7 +182,8 @@
         var modalCloseBtn = $("#modalCloseBtn");
 
         $("#addReplyBtn").on("click",function (e) {
-            modal.find("input").val("");
+            modal.find("input[name='tr_content']").val("");
+            modal.find("input[name='id']").val("<c:out value="${vo.id}"/>");
             modalInputTr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
 
@@ -194,7 +196,7 @@
 
             var tr_content = {
                 tr_content : modalInputTr_content.val(),
-                id : modalInputId.val(),
+                id : idValue,
                 t_no : t_noValue
             };
 
@@ -234,7 +236,7 @@
 
             tipReplyService.get(tr_no,function (tr_content) {
                 modalInputTr_content.val(tr_content.tr_content);
-                modalInputId.val(tr_content.id);
+                modalInputId.val(tr_content.id).attr("readonly", "readonly");
                 modalInputTr_regtime.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly","readonly");
                 modal.data("tr_no",tr_content.tr_no);
 
@@ -306,7 +308,7 @@
                 var str = "";
 
                 if(list == null || list.length == 0){
-                    // replyUL.html("");
+                    replyUL.html("");
                     return;
                 }
                 for(var i=0, len = list.length || 0; i < len; i++){

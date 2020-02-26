@@ -156,7 +156,7 @@
         });
 
         $("button[data-oper='list']").on("click",function(e) {
-            operForm.find("#q_no").remove();
+            // operForm.find("#q_no").remove();
             operForm.attr("action","/board/qnaboard/list");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
@@ -273,6 +273,7 @@
                 var str = "";
 
                 if(list == null || list.length == 0){
+                    replyUL.html("");
                     return;
                 }
                 for(var i=0, len = list.length || 0; i < len; i++){

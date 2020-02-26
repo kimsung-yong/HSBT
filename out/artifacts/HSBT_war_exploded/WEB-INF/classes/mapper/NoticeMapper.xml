@@ -33,7 +33,7 @@
         <![CDATA[
             select n_no, n_title, n_content, id, n_regtime, n_updatetime
             from (
-                select /*+ INDEX_DESC(tbl_notice pk_notice) */
+                select /*+ INDEX_DESC(tbl_notice pk_n_n) */
                     rownum rn, n_no, n_title, n_content, id ,n_regtime, n_updatetime
                 from tbl_notice
                 where

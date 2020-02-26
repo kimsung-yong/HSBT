@@ -7,7 +7,7 @@
              <div class="row">
                 <div class="col-lg-12">
                     <br>
-                    <h1 class="page-header">Review</h1>
+                    <h1 class="page-header">후기</h1>
                     <br>
                 </div>
 
@@ -39,8 +39,8 @@
                             <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
                             <br>
-                            <button data-oper="modify" class="btn btn-default">수정</button>
-                            <button data-oper="list" class="btn btn-info">목록</button>
+                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/reviewboard/modify" method="get">
                                 <input type="hidden" id="r_no" name="r_no" value="<c:out value="${review.r_no}"/>">
@@ -116,7 +116,7 @@
                         <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
                         <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
                         <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-                        <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
+                        <button id="modalCloseBtn" type="button" class="btn btn-dark">Close</button>
                     </div>
                     <%--              /.<div class="modal-content">  --%>
                 </div>
@@ -136,7 +136,7 @@
 <script>
     $(document).ready(function () {
         var operForm = $("#operForm");
-        ($("button[data-oper='modify']")).on("click",function (e) {
+        $("button[data-oper='modify']").on("click",function (e) {
             operForm.append("<input type='hidden' name='r_no' value="+${review.r_no} +">");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");

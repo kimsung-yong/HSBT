@@ -1,6 +1,7 @@
 package controller.board;
 
 import domain.user.UserVO;
+import jdk.jfr.ContentType;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class UserControllerNoh {
     public ResponseEntity<String> modify(@RequestBody UserVO user, @PathVariable("id") String id) {
         user.setId(id);
         return service.update(user) == 1
-                ? new ResponseEntity<>("success", HttpStatus.OK)
+                ? new ResponseEntity<>("수정완료. 다시 로그인해주세요.", HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

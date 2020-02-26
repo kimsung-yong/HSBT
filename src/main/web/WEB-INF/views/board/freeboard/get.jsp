@@ -144,7 +144,7 @@
     $(document).ready(function () {
         console.log(BoardReplyService);
         var operForm = $("#operForm");
-        ($("button[data-oper='modify']")).on("click",function (e) {
+        $("button[data-oper='modify']").on("click",function (e) {
             operForm.append("<input type='hidden' name='bno' value="+${board.b_no} +">");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name=amount value='"+${cri.amount} +"'>");
