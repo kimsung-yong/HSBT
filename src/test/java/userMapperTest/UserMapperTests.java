@@ -1,5 +1,6 @@
 package userMapperTest;
 
+import domain.Criteria;
 import domain.user.UserVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -58,8 +59,8 @@ public class UserMapperTests {
         log.info("UPDATE COUNT: "+ count);
     }
 
-    @Test
-    public void testGetList(){
-        mapper.getList().forEach(boardVO -> log.info(boardVO));
-    }
+//    @Test
+//    public void testGetList(){
+//        mapper.getListWithPaging(new Criteria()).forEach(boardVO -> log.info(boardVO));
+//    }
 }

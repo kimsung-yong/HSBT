@@ -1,5 +1,6 @@
 package service.Board;
 
+import domain.Criteria;
 import domain.user.UserVO;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -48,8 +49,8 @@ public class UserServiceImpl implements UserService {
         if(vs == null){
 
 //            model.addAttribute("check",check);
-            rttr.addFlashAttribute("check", true);
-            return "redirect:/member/login";
+                rttr.addFlashAttribute("check", true);
+                return "redirect:/member/login";
         }else {
         session.setAttribute("vo",vs);
         return "index";
@@ -64,9 +65,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserVO> getList() {
+    public List<UserVO> getList(Criteria cri) {
         log.info("getList............");
-        return mapper.getList();
+        return mapper.getListWithPaging(cri);
     }
 
     @Override
@@ -77,5 +78,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public int delete(String id) {
         return mapper.delete(id);
+    }
+
+    @Override
+    public int total(Criteria cri) {
+        return mapper.getCount(cri);
+    }
+
+    @Override
+    public UserVO getListSelect(String id) {
+
+        return mapper.get(id);
     }
 }
