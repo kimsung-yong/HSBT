@@ -42,8 +42,9 @@
                                 <label>작성자</label>
                                 <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
                             </div>
-
-                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <c:if test="${tip.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
                             <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/tipboard/modify" method="get">

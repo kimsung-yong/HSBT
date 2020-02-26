@@ -44,8 +44,9 @@
                                 <label>작성자</label>
                                 <input class="form-control" name="id" value="<c:out value="${qna.id}"/>" readonly="readonly">
                             </div>
-
-                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <c:if test="${qna.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
                             <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/qnaboard/modify" method="get">
@@ -156,7 +157,7 @@
         });
 
         $("button[data-oper='list']").on("click",function(e) {
-            operForm.find("#q_no").remove();
+            // operForm.find("#q_no").remove();
             operForm.attr("action","/board/qnaboard/list");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
@@ -273,6 +274,7 @@
                 var str = "";
 
                 if(list == null || list.length == 0){
+                    replyUL.html("");
                     return;
                 }
                 for(var i=0, len = list.length || 0; i < len; i++){

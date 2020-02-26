@@ -40,9 +40,10 @@
                             <div class="form-group">
 <%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
                             </div>
-
-                           <button data-oper="modify" class="btn btn-dark">수정</button>
-                           <button data-oper="list" class="btn btn-dark">목록</button>
+                            <c:if test="${board.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
+                            <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/modify" method="get">
                                 <input type="hidden" name="b_no" value="${board.b_no}">

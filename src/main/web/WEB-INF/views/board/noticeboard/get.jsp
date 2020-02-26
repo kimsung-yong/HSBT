@@ -40,7 +40,9 @@
                             <label>작성자</label> <input class="form-control" name="writer" value="<c:out value="${notice.id}"/>" readonly="readonly">
                             </div>
 
-                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <c:if test="${notice.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
                             <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="/board/noticeboard/modify" method="get">

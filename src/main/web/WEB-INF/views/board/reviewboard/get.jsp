@@ -38,8 +38,10 @@
                             <div class="form-group">
                             <label>작성자</label> <input class="form-control" name="id" value="<c:out value="${review.id}"/>" readonly="readonly">
                             </div>
-                            <br>
-                            <button data-oper="modify" class="btn btn-dark">수정</button>
+
+                            <c:if test="${review.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
                             <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/reviewboard/modify" method="get">
