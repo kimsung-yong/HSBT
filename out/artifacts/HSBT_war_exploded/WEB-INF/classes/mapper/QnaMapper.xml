@@ -33,7 +33,7 @@
         <![CDATA[
             select q_no, q_title, q_content, id, q_regtime, q_updatetime, replyCnt
             from (
-                select /*+ INDEX_DESC(tbl_qna PK_QNA) */
+                select /*+ INDEX_DESC(tbl_qna PK_Q_N) */
                     rownum rn, q_no, q_title, q_content, id ,q_regtime, q_updatetime, replycnt
                 from tbl_qna
                 where
