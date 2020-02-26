@@ -44,8 +44,9 @@
                                 <label>작성자</label>
                                 <input class="form-control" name="id" value="<c:out value="${qna.id}"/>" readonly="readonly">
                             </div>
-
-                            <button data-oper="modify" class="btn btn-dark">수정</button>
+                            <c:if test="${qna.id == vo.id}">
+                                <button data-oper="modify" class="btn btn-dark">수정</button>
+                            </c:if>
                             <button data-oper="list" class="btn btn-dark">목록</button>
 
                             <form id="operForm" action="board/qnaboard/modify" method="get">
@@ -115,7 +116,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Replyer</label>
-                                <input class="form-control" name="id" value="new replyer">
+                                <input class="form-control" name="id" value="new replyer" readonly="readonly">
                             </div>
                             <div class="form-group">
                                 <label>Reply Date</label>
@@ -126,7 +127,7 @@
                             <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
                             <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
                             <button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-                            <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
+                            <button id="modalCloseBtn" type="button" class="btn btn-dark">Close</button>
                         </div>
                         <%--              /.<div class="modal-content">  --%>
                     </div>
@@ -156,7 +157,7 @@
         });
 
         $("button[data-oper='list']").on("click",function(e) {
-            operForm.find("#q_no").remove();
+            // operForm.find("#q_no").remove();
             operForm.attr("action","/board/qnaboard/list");
             operForm.append("<input type='hidden' name='pageNum' value='"+${cri.pageNum} +"'>");
             operForm.append("<input type='hidden' name='amount' value='"+${cri.amount} +"'>");
@@ -175,7 +176,7 @@
         console.log("JS TEST");
 
         var q_noValue = '<c:out value="${qna.q_no}"/>';
-
+        var idValue = '<c:out value="${vo.id}"/>';
         var replyUL = $(".chat");
 
         var modal = $(".modal");
@@ -192,7 +193,8 @@
         var replyPageFooter = $(".panel-footer");
 
         $("#addReplyBtn").on("click",function (e) {
-            modal.find("input").val("");
+            modal.find("input[name='qr_content']").val("");
+            modal.find("input[name='id']").val("<c:out value="${vo.id}"/>");
             modalInputQr_regtime.closest("div").hide();
             modal.find("button[id != 'modalCloseBtn']").hide();
 
@@ -205,7 +207,7 @@
 
             var qr_content = {
                 qr_content : modalInputQr_content.val(),
-                id : modalInputId.val(),
+                id : idValue,
                 q_no : q_noValue
             };
             qnaReplyService.add(qr_content,function (result) {
@@ -237,23 +239,36 @@
         });
 
         modalCloseBtn.on("click", function (e) {
+            modalInputQr_content.attr("readonly", false);
             modal.modal("hide");
         });
 
         $(".chat").on("click", "li", function (e) {
             var qr_no = $(this).data("qr_no");
+            var voId = '<c:out value="${vo.id}"/>';
 
             qnaReplyService.get(qr_no, function (qr_content) {
-                modalInputQr_content.val(qr_content.qr_content);
-                modalInputId.val(qr_content.id);
-                modalInputQr_regtime.val(qnaReplyService.displayTime(qr_content.qr_regtime)).attr("readonly","readonly");
-                modal.data("qr_no", qr_content.qr_no);
+                if(qr_content.id != voId) {
+                    modalInputQr_content.val(qr_content.qr_content).attr("readonly", "readonly");
+                    modalInputId.val(qr_content.id).attr("readonly", "readonly");
+                    modalInputQr_regtime.val(qnaReplyService.displayTime(qr_content.qr_regtime)).attr("readonly","readonly");
+                    modal.data("qr_no", qr_content.qr_no);
 
-                modal.find("button[id !='modalCloseBtn']").hide();
-                modalModBtn.show();
-                modalRemoveBtn.show();
+                    modal.find("button[id !='modalCloseBtn']").hide();
 
-                $(".modal").modal("show");
+                    $(".modal").modal("show");
+                } else {
+                    modalInputQr_content.val(qr_content.qr_content);
+                    modalInputId.val(qr_content.id).attr("readonly", "readonly");
+                    modalInputQr_regtime.val(qnaReplyService.displayTime(qr_content.qr_regtime)).attr("readonly","readonly");
+                    modal.data("qr_no", qr_content.qr_no);
+
+                    modal.find("button[id !='modalCloseBtn']").hide();
+                    modalModBtn.show();
+                    modalRemoveBtn.show();
+
+                    $(".modal").modal("show");
+                }
 
             });
 
@@ -273,6 +288,7 @@
                 var str = "";
 
                 if(list == null || list.length == 0){
+                    replyUL.html("");
                     return;
                 }
                 for(var i=0, len = list.length || 0; i < len; i++){
