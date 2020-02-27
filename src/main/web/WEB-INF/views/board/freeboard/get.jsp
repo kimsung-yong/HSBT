@@ -247,8 +247,9 @@
         $(".chat").on("click", "li", function (e) {
             var br_no = $(this).data("br_no");
             var voId = '<c:out value="${vo.id}"/>';
+            var voM = ${vo.manager};
             BoardReplyService.get(br_no, function (br_content) {
-                if (br_content.id != voId) {
+                if (br_content.id != voId && voM != 0) {
                     modalInputBr_content.val(br_content.br_content).attr("readonly", "readonly");
                     modalInputid.val(br_content.id).attr("readonly", "readonly");
                     modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly", "readonly");

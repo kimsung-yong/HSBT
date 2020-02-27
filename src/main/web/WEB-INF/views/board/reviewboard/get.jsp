@@ -229,9 +229,9 @@
         $(".chat").on("click", "li", function (e) {
             var rr_no = $(this).data("rr_no");
             var voId = '<c:out value="${vo.id}"/>';
-            <%--var voM = ${vo.manager};--%>
+            var voM = ${vo.manager};
             reviewReplyService.get(rr_no, function (rr_content) {
-                if (rr_content.id != voId) {
+                if (rr_content.id != voId && voM != 0) {
                     modalInputRr_content.val(rr_content.rr_content).attr("readonly", "readonly");
                     modalInputId.val(rr_content.id).attr("readonly", "readonly");
                     modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly", "readonly");

@@ -253,9 +253,9 @@
         $(".chat").on("click", "li", function (e) {
             var qr_no = $(this).data("qr_no");
             var voId = '<c:out value="${vo.id}"/>';
-
+            var voM = ${vo.manager};
             qnaReplyService.get(qr_no, function (qr_content) {
-                if (qr_content.id != voId) {
+                if (qr_content.id != voId && voM != 0) {
                     modalInputQr_content.val(qr_content.qr_content).attr("readonly", "readonly");
                     modalInputId.val(qr_content.id).attr("readonly", "readonly");
                     modalInputQr_regtime.val(qnaReplyService.displayTime(qr_content.qr_regtime)).attr("readonly", "readonly");
