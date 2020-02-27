@@ -31,9 +31,10 @@ public class UserControllerkim {
         String id = paramMap.get("id");
         String pw = paramMap.get("pw");
 
+        userService.get(id,pw,rttr);
+        return "redirect:/";
 
-
-        return userService.get(id,pw,rttr);
+//        return userService.get(id,pw,rttr);
     }
     @GetMapping({"/member/get","/member/modify"})
     public void get(@RequestParam("id") String id, @ModelAttribute("cri") Criteria cri, Model model){
@@ -56,7 +57,8 @@ public class UserControllerkim {
     public String loginAction(){return "member/loginAction";}
     @RequestMapping("/member/logout")
     public String logout(){
-        return userService.logout();
+        userService.logout();
+        return "redirect:/";
     }
     @GetMapping("/member/memberInfo")
     public String info() { return "/member/memberInfo"; }
