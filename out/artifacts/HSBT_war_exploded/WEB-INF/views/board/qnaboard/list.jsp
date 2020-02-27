@@ -41,9 +41,7 @@
                                 <td>
                                     <a id="detailPage" href="<c:out value="${qna.q_no}"/>">
                                         <c:out value="${qna.q_title}"/>
-                                        <c:if test="${qna.replyCnt > 0}">
-                                            <b>[ <c:out value="${qna.replyCnt}"/> ]</b>
-                                        </c:if>
+                                        <c:if test="${qna.replyCnt > 0}">[ <c:out value="${qna.replyCnt}"/> ]</c:if>
                                     </a>
                                 </td>
                                 <td><c:out value="${qna.id}"/></td>

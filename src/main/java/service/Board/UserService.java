@@ -23,4 +23,6 @@ public interface UserService {
     public int total(Criteria cri);
 
     public UserVO getListSelect(String id);
+
+    public int update2(UserVO user);
 }

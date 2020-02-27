@@ -55,9 +55,7 @@
 
                                     <a id="detailPage" href="<c:out value='${review.r_no}'/>">
                                         <c:out value="${review.r_title}"/>
-                                        <c:if test="${review.replycnt!=0}">
-                                            <b>[ <c:out value="${review.replycnt}"/> ] </b>
-                                        </c:if>
+                                        <c:if test="${review.replycnt!=0}">[ <c:out value="${review.replycnt}"/> ]</c:if>
                                     </a>
 
 

@@ -78,15 +78,15 @@
                         <%--                        panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">
-                                <li class="left clearfix" data-tr_no="12">
-                                    <div>
-                                        <div class="header">
-                                            <strong class="primary-font">user00</strong>
-                                            <small class="pull-right text-muted">2020-01-31</small>
-                                        </div>
-                                        <p> Good job!</p>
-                                    </div>
-                                </li>
+<%--                                <li class="left clearfix" data-tr_no="12">--%>
+<%--                                    <div>--%>
+<%--                                        <div class="header">--%>
+<%--                                            <strong class="primary-font">user00</strong>--%>
+<%--                                            <small class="pull-right text-muted">2020-01-31</small>--%>
+<%--                                        </div>--%>
+<%--                                        <p> Good job!</p>--%>
+<%--                                    </div>--%>
+<%--                                </li>--%>
                                 <%--                                end reply--%>
                             </ul>
                             <%--                            end ul--%>
@@ -242,9 +242,9 @@
         $(".chat").on("click", "li", function (e) {
             var tr_no = $(this).data("tr_no");
             var voId = '<c:out value="${vo.id}"/>';
-            var voM = ${vo.manager};
+            var voM = '<c:out value="${vo.manager}"/>';
             tipReplyService.get(tr_no, function (tr_content) {
-                if (tr_content.id != voId && voM != 0) {
+                if (tr_content.id != voId && voM != '0') {
                     modalInputTr_content.val(tr_content.tr_content).attr("readonly", "readonly");
                     modalInputId.val(tr_content.id).attr("readonly", "readonly");
                     modalInputTr_regtime.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly", "readonly");

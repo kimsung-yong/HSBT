@@ -7,7 +7,7 @@
 <%--<body id="page-top">--%>
 
   <!-- Masthead -->
-  <header class="masthead">
+  <header class="masthead" id="mainHeader">
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
@@ -19,7 +19,7 @@
             -괴테<br>
           </p>
           <p class="text-hide-85 font-weight-normal" style="color: white">당신의 세계를 만들어 드리겠습니다</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">더 보기..</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#services">더 보기..</a>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <a class="portfolio-box" href="/intro/introduce">
-            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/회사소개.jpg">
+            <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/dice1.png">
             <h3 class="h4 mb-2">회사 소개</h3>
             </a>
           </div>
@@ -57,7 +57,7 @@
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <a class="portfolio-box" href="/material/tile">
-              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/건축자재.jpg">
+              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/dice2.png">
               <h3 class="h4 mb-2">건축자재</h3>
             </a>
           </div>
@@ -65,7 +65,7 @@
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <a class="portfolio-box" href="/board/noticeboard/list">
-              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/Community.jpg">
+              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/dice3.png">
               <h3 class="h4 mb-2">Community</h3>
             </a>
           </div>
@@ -73,7 +73,7 @@
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <a class="portfolio-box" id="eModal-btn" data-toggle="modal" href="#myModal">
-              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/Estimate.jpg">
+              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/portfolio/service/dice4.png">
               <h3 class="h4 mb-2">견적 신청</h3>
             </a>
           </div>
