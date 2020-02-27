@@ -43,7 +43,7 @@
                                                   readonly="readonly">
                     </div>
 
-                    <c:if test="${review.id == vo.id}">
+                    <c:if test="${review.id == vo.id || vo.manager == 0}">
                         <button data-oper="modify" class="btn btn-dark">수정</button>
                     </c:if>
                     <button data-oper="list" class="btn btn-dark">목록</button>
@@ -109,11 +109,11 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Content</label>
+                    <label>Reply</label>
                     <input class="form-control" name="rr_content" value="new reply">
                 </div>
                 <div class="form-group">
-                    <label>Replyer</label>
+                    <label>ID</label>
                     <input class="form-control" name="id" value="new replyer" readonly="readonly">
                 </div>
                 <div class="form-group">
@@ -229,6 +229,7 @@
         $(".chat").on("click", "li", function (e) {
             var rr_no = $(this).data("rr_no");
             var voId = '<c:out value="${vo.id}"/>';
+            <%--var voM = ${vo.manager};--%>
             reviewReplyService.get(rr_no, function (rr_content) {
                 if (rr_content.id != voId) {
                     modalInputRr_content.val(rr_content.rr_content).attr("readonly", "readonly");

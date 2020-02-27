@@ -43,7 +43,7 @@
                         <label>작성자</label>
                         <input class="form-control" name="id" value="<c:out value="${board.id}"/>" readonly="readonly">
                     </div>
-                    <c:if test="${board.id == vo.id}">
+                    <c:if test="${board.id == vo.id || vo.manager == 0}">
                         <button data-oper="modify" class="btn btn-dark">수정</button>
                     </c:if>
                     <button data-oper="list" class="btn btn-dark">목록</button>
