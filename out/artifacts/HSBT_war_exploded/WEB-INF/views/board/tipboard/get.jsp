@@ -116,7 +116,7 @@
                     <input class="form-control" name="tr_content" value="new reply">
                 </div>
                 <div class="form-group">
-                    <label>Replyer</label>
+                    <label>ID</label>
                     <input class="form-control" name="id" value="new replyer" readonly="readonly">
                 </div>
                 <div class="form-group">
@@ -331,7 +331,7 @@
                 }
                 for (var i = 0, len = list.length || 0; i < len; i++) {
                     str += "<li class='left clearfix' data-tr_no='" + list[i].tr_no + "'>";
-                    str += "<div><div class='header'><strong class='primary-font'>[" + list[i].tr_no + "] " + list[i].id + "</strong>";
+                    str += "<div><div class='header'><strong class='primary-font'>" + list[i].id + "</strong>";
                     str += "<small class='pull-right text-muted'>" + tipReplyService.displayTime(list[i].tr_regtime) + "</small></div>";
                     str += "<p>" + list[i].tr_content + "</p></div></li>"
                 }

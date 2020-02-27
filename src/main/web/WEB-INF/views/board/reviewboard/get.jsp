@@ -109,11 +109,11 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Content</label>
+                    <label>Reply</label>
                     <input class="form-control" name="rr_content" value="new reply">
                 </div>
                 <div class="form-group">
-                    <label>Replyer</label>
+                    <label>ID</label>
                     <input class="form-control" name="id" value="new replyer" readonly="readonly">
                 </div>
                 <div class="form-group">

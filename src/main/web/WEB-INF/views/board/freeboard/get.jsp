@@ -40,7 +40,8 @@
                     </div>
 
                     <div class="form-group">
-                        <%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
+                        <label>작성자</label>
+                        <input class="form-control" name="id" value="<c:out value="${board.id}"/>" readonly="readonly">
                     </div>
                     <c:if test="${board.id == vo.id}">
                         <button data-oper="modify" class="btn btn-dark">수정</button>
@@ -73,7 +74,9 @@
                     <%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
                     <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
                     <c:if test="${!empty vo.id}">
-                        <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
+                        <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new
+                            Reply
+                        </button>
                     </c:if>
                 </div>
                 <hr>
@@ -118,7 +121,7 @@
                     <input class="form-control" name="br_content" value="new reply">
                 </div>
                 <div class="form-group">
-                    <label>id</label>
+                    <label>ID</label>
                     <input class="form-control" name="id" value="new replyer" readonly="readonly">
                 </div>
                 <div class="form-group">
