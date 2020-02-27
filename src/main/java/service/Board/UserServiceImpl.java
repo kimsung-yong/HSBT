@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int update(UserVO user) {
-        session.invalidate();
+//        session.invalidate();
         return mapper.update(user);
     }
 
