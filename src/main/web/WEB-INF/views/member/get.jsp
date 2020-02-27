@@ -53,17 +53,17 @@
                     </div>
                     <div class="form-group">
                         <label>관리자</label>
-                        <input class="form-control" name="address" value="<c:out value="${list.manager}"/>"
+                        <input class="form-control" name="manager" value="<c:out value="${list.manager}"/>"
                                readonly="readonly">
                     </div>
                     <button data-oper="modify" class="btn btn-dark">수정</button>
                     <button data-oper="list" class="btn btn-dark">목록</button>
 
-                    <form id="operForm" action="board/modify" method="get">
-                        <input type="hidden" name="b_no" value="${board.b_no}">
-                        <input type="hidden" name="pageNum" value="${cri.pageNum}">
-                        <input type="hidden" name="type" value="${cri.type}">
-                        <input type="hidden" name="keyword" value="${cri.keyword}">
+                    <form id="operForm" action="/member/modify" method="get">
+<%--                        <input type="hidden" name="id" value="${list.id}">--%>
+<%--                        <input type="hidden" name="pageNum" value="${cri.pageNum}">--%>
+<%--                        <input type="hidden" name="type" value="${cri.type}">--%>
+<%--                        <input type="hidden" name="keyword" value="${cri.keyword}">--%>
 
                     </form>
                     <hr>
@@ -153,16 +153,17 @@
 <%--</div>--%>
 </div>
 
-<%--<script type="text/javascript" src="/resources/js/boardReply.js"></script>--%>
+<script type="text/javascript" src="/resources/js/boardReply.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resourcesKIM/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function () {
         var operForm = $("#operForm");
         ($("button[data-oper='modify']")).on("click", function (e) {
-            operForm.append("<input type='hidden' name='id' value=" + ${list.id} +">");
+            var listId = '<c:out value="${list.id}"/>'
+            operForm.append("<input type='hidden' name='id' value='" + listId +"'>");
             operForm.append("<input type='hidden' name='pageNum' value='" + ${cri.pageNum} +"'>");
-            operForm.append("<input type='hidden' name=amount value='" + ${cri.amount} +"'>");
+            operForm.append("<input type='hidden' name='amount' value='" + ${cri.amount} +"'>");
             operForm.attr("action", "/member/modify").submit();
         });
 
