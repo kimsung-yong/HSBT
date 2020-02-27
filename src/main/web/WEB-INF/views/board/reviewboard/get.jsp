@@ -43,7 +43,7 @@
                                                   readonly="readonly">
                     </div>
 
-                    <c:if test="${review.id == vo.id}">
+                    <c:if test="${review.id == vo.id || vo.manager == 0}">
                         <button data-oper="modify" class="btn btn-dark">수정</button>
                     </c:if>
                     <button data-oper="list" class="btn btn-dark">목록</button>
@@ -105,15 +105,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>
+                <h4 class="modal-title" id="myModalLabel">댓글 작성</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Content</label>
+                    <label>Reply</label>
                     <input class="form-control" name="rr_content" value="new reply">
                 </div>
                 <div class="form-group">
-                    <label>Replyer</label>
+                    <label>ID</label>
                     <input class="form-control" name="id" value="new replyer" readonly="readonly">
                 </div>
                 <div class="form-group">
@@ -229,8 +229,9 @@
         $(".chat").on("click", "li", function (e) {
             var rr_no = $(this).data("rr_no");
             var voId = '<c:out value="${vo.id}"/>';
+            var voM = ${vo.manager};
             reviewReplyService.get(rr_no, function (rr_content) {
-                if (rr_content.id != voId) {
+                if (rr_content.id != voId && voM != 0) {
                     modalInputRr_content.val(rr_content.rr_content).attr("readonly", "readonly");
                     modalInputId.val(rr_content.id).attr("readonly", "readonly");
                     modalInputRr_regtime.val(reviewReplyService.displayTime(rr_content.rr_regtime)).attr("readonly", "readonly");
