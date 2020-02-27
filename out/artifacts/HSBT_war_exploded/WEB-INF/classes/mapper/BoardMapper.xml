@@ -52,7 +52,7 @@
         <![CDATA[
             select b_no, b_title, b_content, id, b_regtime, b_updatetime,replycnt
             from (
-                select /*+ INDEX_DESC(tbl_board pk_board) */
+                select /*+ INDEX_DESC(tbl_board pk_b_n) */
                     rownum rn, b_no, b_title, b_content, id ,b_regtime, b_updatetime,replycnt
                 from tbl_board
                 where
