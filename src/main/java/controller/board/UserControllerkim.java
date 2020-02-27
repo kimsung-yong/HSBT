@@ -32,7 +32,7 @@ public class UserControllerkim {
 
         return userService.get(id,pw,rttr);
     }
-    @GetMapping("/member/get")
+    @GetMapping({"/member/get","/member/modify"})
     public void get(@RequestParam("id") String id, @ModelAttribute("cri") Criteria cri, Model model){
         model.addAttribute("list", userService.getListSelect(id));
     }
