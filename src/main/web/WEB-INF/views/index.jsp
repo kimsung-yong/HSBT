@@ -83,29 +83,29 @@
           <div class="modal-dialog">
             <c:choose>
               <c:when test="${!empty vo}">
-                <div class="modal-content">
+                <div class="modal-content" style="background: linear-gradient(-135deg, black, whitesmoke) fixed; color: white">
                   <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">견적 신청</h4>
                   </div>
                   <div class="modal-body">
-                    <table class="emodal-table">
-                      <tr>
+                    <table class="emodal-table" style="color: white">
+                      <tr style="background-color: rgba( 255, 255, 255, 0)">
                         <td class="tableDiv">성명</td>
                         <td><b>${vo.name}</b>님</td>
                       </tr>
-                      <tr>
+                      <tr style="background-color: rgba( 255, 255, 255, 0)">
                         <td class="tableDiv">주소</td>
                         <td><input type="text" name="e_address" style="width: 94%"></td>
                       </tr>
-                      <tr>
+                      <tr style="background-color: rgba( 255, 255, 255, 0)">
                         <td class="tableDiv">공간 면적</td>
                         <td><input type="text" name="e_area" class="onlyNo" style="width: 94%; text-align: right">평</td>
                       </tr>
-                      <tr>
+                      <tr style="background-color: rgba( 255, 255, 255, 0)">
                         <td class="tableDiv">인테리어 예산</td>
                         <td><input type="text" name="e_price" class="onlyNo" style="width: 94%; text-align: right">원</td>
                       </tr>
-                      <tr>
+                      <tr style="background-color: rgba( 255, 255, 255, 0)">
                         <td class="tableDiv">시공 항목</td>
                         <td style="text-align: center">
                           <input type="checkbox" class="est-box" name="e_construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -114,7 +114,7 @@
                           <input type="checkbox" class="est-box" name="e_construction" value="paint">페인트
                         </td>
                       </tr>
-                      <tr>
+                      <tr style="background-color: rgba( 255, 255, 255, 0)">
                         <td class="tableDiv">문의사항</td>
                         <td><textarea name="e_content"></textarea></td>
                       </tr>
