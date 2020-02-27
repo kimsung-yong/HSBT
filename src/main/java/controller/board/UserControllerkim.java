@@ -40,12 +40,14 @@ public class UserControllerkim {
 
         model.addAttribute("list", userService.getListSelect(id));
     }
+    @PostMapping("/member/remove")
+    public String remove(@RequestParam("id") String id){
+        userService.delete(id);
+        return "redirect:/member/list";
+    }
     @PostMapping("/member/modify")
     public String modify(UserVO user,@RequestParam("id") String id,Model model){
         userService.update(user);
-
-
-
         return "redirect:/member/list";
     }
     @GetMapping("/member/login")
