@@ -47,7 +47,7 @@
                         <label>작성자</label>
                         <input class="form-control" name="id" value="<c:out value="${qna.id}"/>" readonly="readonly">
                     </div>
-                    <c:if test="${qna.id == vo.id}">
+                    <c:if test="${qna.id == vo.id || vo.manager == 0}">
                         <button data-oper="modify" class="btn btn-dark">수정</button>
                     </c:if>
                     <button data-oper="list" class="btn btn-dark">목록</button>
@@ -114,7 +114,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>
+                    <h4 class="modal-title" id="myModalLabel">댓글 작성</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -122,7 +122,7 @@
                         <input class="form-control" name="qr_content" value="new reply">
                     </div>
                     <div class="form-group">
-                        <label>Replyer</label>
+                        <label>ID</label>
                         <input class="form-control" name="id" value="new replyer" readonly="readonly">
                     </div>
                     <div class="form-group">
@@ -253,9 +253,9 @@
         $(".chat").on("click", "li", function (e) {
             var qr_no = $(this).data("qr_no");
             var voId = '<c:out value="${vo.id}"/>';
-
+            var voM = ${vo.manager};
             qnaReplyService.get(qr_no, function (qr_content) {
-                if (qr_content.id != voId) {
+                if (qr_content.id != voId && voM != 0) {
                     modalInputQr_content.val(qr_content.qr_content).attr("readonly", "readonly");
                     modalInputId.val(qr_content.id).attr("readonly", "readonly");
                     modalInputQr_regtime.val(qnaReplyService.displayTime(qr_content.qr_regtime)).attr("readonly", "readonly");
@@ -300,7 +300,7 @@
                 }
                 for (var i = 0, len = list.length || 0; i < len; i++) {
                     str += "<li class='left clearfix' data-qr_no='" + list[i].qr_no + "'>";
-                    str += "<div><div class='header'><strong class='primary-font'>[" + list[i].qr_no + "] " + list[i].id + "</strong>";
+                    str += "<div><div class='header'><strong class='primary-font'>" + list[i].id + "</strong>";
                     str += "<small class='pull-right text-muted'>" + qnaReplyService.displayTime(list[i].qr_regtime) + "</small></div>";
                     str += "<p>" + list[i].qr_content + "</p></div></li>"
                 }

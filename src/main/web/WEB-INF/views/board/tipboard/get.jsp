@@ -45,7 +45,7 @@
                         <label>작성자</label>
                         <input class="form-control" name="id" value="<c:out value="${tip.id}"/>" readonly="readonly">
                     </div>
-                    <c:if test="${tip.id == vo.id}">
+                    <c:if test="${tip.id == vo.id || vo.manager == 0}">
                         <button data-oper="modify" class="btn btn-dark">수정</button>
                     </c:if>
                     <button data-oper="list" class="btn btn-dark">목록</button>
@@ -108,7 +108,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>
+                <h4 class="modal-title" id="myModalLabel">댓글 작성</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -116,7 +116,7 @@
                     <input class="form-control" name="tr_content" value="new reply">
                 </div>
                 <div class="form-group">
-                    <label>Replyer</label>
+                    <label>ID</label>
                     <input class="form-control" name="id" value="new replyer" readonly="readonly">
                 </div>
                 <div class="form-group">
@@ -242,8 +242,9 @@
         $(".chat").on("click", "li", function (e) {
             var tr_no = $(this).data("tr_no");
             var voId = '<c:out value="${vo.id}"/>';
+            var voM = ${vo.manager};
             tipReplyService.get(tr_no, function (tr_content) {
-                if (tr_content.id != voId) {
+                if (tr_content.id != voId && voM != 0) {
                     modalInputTr_content.val(tr_content.tr_content).attr("readonly", "readonly");
                     modalInputId.val(tr_content.id).attr("readonly", "readonly");
                     modalInputTr_regtime.val(tipReplyService.displayTime(tr_content.tr_regtime)).attr("readonly", "readonly");
@@ -331,7 +332,7 @@
                 }
                 for (var i = 0, len = list.length || 0; i < len; i++) {
                     str += "<li class='left clearfix' data-tr_no='" + list[i].tr_no + "'>";
-                    str += "<div><div class='header'><strong class='primary-font'>[" + list[i].tr_no + "] " + list[i].id + "</strong>";
+                    str += "<div><div class='header'><strong class='primary-font'>" + list[i].id + "</strong>";
                     str += "<small class='pull-right text-muted'>" + tipReplyService.displayTime(list[i].tr_regtime) + "</small></div>";
                     str += "<p>" + list[i].tr_content + "</p></div></li>"
                 }

@@ -40,9 +40,10 @@
                     </div>
 
                     <div class="form-group">
-                        <%--                            <label>작성자</label> <input class="form-control" name="u_no" value="<c:out value="${board.}"/>" readonly="readonly">--%>
+                        <label>작성자</label>
+                        <input class="form-control" name="id" value="<c:out value="${board.id}"/>" readonly="readonly">
                     </div>
-                    <c:if test="${board.id == vo.id}">
+                    <c:if test="${board.id == vo.id || vo.manager == 0}">
                         <button data-oper="modify" class="btn btn-dark">수정</button>
                     </c:if>
                     <button data-oper="list" class="btn btn-dark">목록</button>
@@ -73,7 +74,9 @@
                     <%--                            <i class="btn btn-outline-dark"><a style="font-size: 25px">reply</a></i>--%>
                     <i class="fa fa-comment fa-fw"><a style="font-size: 25px">reply</a></i>
                     <c:if test="${!empty vo.id}">
-                        <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new Reply</button>
+                        <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right" style="padding-top: 10px">new
+                            Reply
+                        </button>
                     </c:if>
                 </div>
                 <hr>
@@ -110,7 +113,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Reply Modal</h4>
+                <h4 class="modal-title" id="myModalLabel">댓글 작성</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -118,7 +121,7 @@
                     <input class="form-control" name="br_content" value="new reply">
                 </div>
                 <div class="form-group">
-                    <label>id</label>
+                    <label>ID</label>
                     <input class="form-control" name="id" value="new replyer" readonly="readonly">
                 </div>
                 <div class="form-group">
@@ -244,8 +247,9 @@
         $(".chat").on("click", "li", function (e) {
             var br_no = $(this).data("br_no");
             var voId = '<c:out value="${vo.id}"/>';
+            var voM = ${vo.manager};
             BoardReplyService.get(br_no, function (br_content) {
-                if (br_content.id != voId) {
+                if (br_content.id != voId && voM != 0) {
                     modalInputBr_content.val(br_content.br_content).attr("readonly", "readonly");
                     modalInputid.val(br_content.id).attr("readonly", "readonly");
                     modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly", "readonly");
