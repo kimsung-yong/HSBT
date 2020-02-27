@@ -37,10 +37,10 @@
     height: auto;
 }
 .emodal-table tr:nth-child(2n) {
-    background-color: #FFE08C;
+    background-color: white;
 }
 .emodal-table tr:nth-child(2n+1) {
-    background-color: #FAECC5;
+    background-color: lightgray;
 }
 /*.emodal-table td .t {
     width: 100%;

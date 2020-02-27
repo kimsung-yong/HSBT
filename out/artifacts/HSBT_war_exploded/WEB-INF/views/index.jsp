@@ -90,23 +90,23 @@
                   <div class="modal-body">
                     <table class="emodal-table">
                       <tr>
-                        <td>성명</td>
+                        <td class="tableDiv">성명</td>
                         <td><b>${vo.name}</b>님</td>
                       </tr>
                       <tr>
-                        <td>주소</td>
+                        <td class="tableDiv">주소</td>
                         <td><input type="text" name="e_address" style="width: 94%"></td>
                       </tr>
                       <tr>
-                        <td>공간 면적</td>
+                        <td class="tableDiv">공간 면적</td>
                         <td><input type="text" name="e_area" class="onlyNo" style="width: 94%; text-align: right">평</td>
                       </tr>
                       <tr>
-                        <td>인테리어 예산</td>
+                        <td class="tableDiv">인테리어 예산</td>
                         <td><input type="text" name="e_price" class="onlyNo" style="width: 94%; text-align: right">원</td>
                       </tr>
                       <tr>
-                        <td>시공 항목</td>
+                        <td class="tableDiv">시공 항목</td>
                         <td style="text-align: center">
                           <input type="checkbox" class="est-box" name="e_construction" value="tile">타일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <input type="checkbox" class="est-box" name="e_construction" value="wallpaper">벽지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -115,7 +115,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td>문의사항</td>
+                        <td class="tableDiv">문의사항</td>
                         <td><textarea name="e_content"></textarea></td>
                       </tr>
                     </table>
