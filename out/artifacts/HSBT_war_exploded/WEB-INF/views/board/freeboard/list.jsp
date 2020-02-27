@@ -46,7 +46,7 @@
                                     <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
                                 <td><a id="detailPage" class="move" href="${board.b_no}">
                                     <c:out value="${board.b_title}"/>
-                                    <c:if test="${board.replyCnt !=0}">[${board.replyCnt}]</c:if>
+                                    <c:if test="${board.replyCnt !=0}">[ ${board.replyCnt} ]</c:if>
                                 </a>
                                 </td>
 

@@ -90,4 +90,13 @@ public class UserServiceImpl implements UserService {
 
         return mapper.get(id);
     }
+
+    @Override
+    public int update2(UserVO user) {
+        int updateUser = mapper.update(user);
+        session.invalidate();
+        UserVO vo = mapper.read(user);
+        session.setAttribute("vo", vo);
+        return updateUser;
+    }
 }

@@ -378,9 +378,9 @@ $(function () {
         }
 
         userService.update(user, function () {
-            alert("수정 완료. 다시 로그인해주세요.");
+            alert("수정 완료.");
             infoModal.modal("hide");
-            location.replace("/member/login");
+            location.reload();
         });
     });
 

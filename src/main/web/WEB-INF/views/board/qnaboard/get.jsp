@@ -86,15 +86,15 @@
                         <%--                     panel-heading   --%>
                         <div class="panel-body">
                             <ul class="chat">
-                                <li class="left clearfix" data-qr_no="12">
-                                    <div>
-                                        <div class="header">
-                                            <strong class="primary-font">user00</strong>
-                                            <small class="pull-right text-muted">2020-01-31</small>
-                                        </div>
-                                        <p> Good job!</p>
-                                    </div>
-                                </li>
+<%--                                <li class="left clearfix" data-qr_no="12">--%>
+<%--                                    <div>--%>
+<%--                                        <div class="header">--%>
+<%--                                            <strong class="primary-font">user00</strong>--%>
+<%--                                            <small class="pull-right text-muted">2020-01-31</small>--%>
+<%--                                        </div>--%>
+<%--                                        <p> Good job!</p>--%>
+<%--                                    </div>--%>
+<%--                                </li>--%>
                                 <%--                                end reply--%>
                             </ul>
                             <%--                            end ul--%>
@@ -253,9 +253,9 @@
         $(".chat").on("click", "li", function (e) {
             var qr_no = $(this).data("qr_no");
             var voId = '<c:out value="${vo.id}"/>';
-            var voM = ${vo.manager};
+            var voM = '<c:out value="${vo.manager}"/>';
             qnaReplyService.get(qr_no, function (qr_content) {
-                if (qr_content.id != voId && voM != 0) {
+                if (qr_content.id != voId && voM != '0') {
                     modalInputQr_content.val(qr_content.qr_content).attr("readonly", "readonly");
                     modalInputId.val(qr_content.id).attr("readonly", "readonly");
                     modalInputQr_regtime.val(qnaReplyService.displayTime(qr_content.qr_regtime)).attr("readonly", "readonly");

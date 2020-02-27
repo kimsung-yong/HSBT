@@ -83,15 +83,15 @@
                 <%--                     panel-heading   --%>
                 <div class="panel-body">
                     <ul class="chat">
-                        <li class="left clearfix" data-br_no="12">
-                            <div>
-                                <div class="header">
-                                    <strong class="primary-font">user00</strong>
-                                    <small class="pull-right text-muted">2020-01-31</small>
-                                </div>
-                                <p> Good job!</p>
-                            </div>
-                        </li>
+<%--                        <li class="left clearfix" data-br_no="12">--%>
+<%--                            <div>--%>
+<%--                                <div class="header">--%>
+<%--                                    <strong class="primary-font">user00</strong>--%>
+<%--                                    <small class="pull-right text-muted">2020-01-31</small>--%>
+<%--                                </div>--%>
+<%--                                <p> Good job!</p>--%>
+<%--                            </div>--%>
+<%--                        </li>--%>
                         <%--                                end reply--%>
                     </ul>
                     <%--                            end ul--%>
@@ -247,9 +247,9 @@
         $(".chat").on("click", "li", function (e) {
             var br_no = $(this).data("br_no");
             var voId = '<c:out value="${vo.id}"/>';
-            var voM = ${vo.manager};
+            var voM = '<c:out value="${vo.manager}"/>';
             BoardReplyService.get(br_no, function (br_content) {
-                if (br_content.id != voId && voM != 0) {
+                if (br_content.id != voId && voM != '0') {
                     modalInputBr_content.val(br_content.br_content).attr("readonly", "readonly");
                     modalInputid.val(br_content.id).attr("readonly", "readonly");
                     modalInputBr_regtime.val(BoardReplyService.displayTime(br_content.br_regTime)).attr("readonly", "readonly");
