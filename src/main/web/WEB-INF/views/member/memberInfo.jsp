@@ -2,7 +2,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<jsp:include page="../includes/header.jsp"/>
+<jsp:include page="../includeslogin/header.jsp"/>
 <style>
     table {
         margin: auto auto;
@@ -199,11 +199,11 @@
                 </div>
                 <div class="form-group">
                     <label>면적</label>
-                    <input class="form-control" name="e_area" value="">
+                    <input class="form-control onlyNo" name="e_area" value="">
                 </div>
                 <div class="form-group">
                     <label>예산</label>
-                    <input class="form-control" name="e_price" value="">
+                    <input class="form-control onlyNo" name="e_price" value="">
                 </div>
                 <div class="form-group">
                     <label>시공항목</label>
@@ -378,9 +378,9 @@ $(function () {
         }
 
         userService.update(user, function () {
-            alert("수정 완료. 다시 로그인해주세요.");
+            alert("수정 완료.");
             infoModal.modal("hide");
-            location.replace("/member/login");
+            location.reload();
         });
     });
 
@@ -405,6 +405,10 @@ $(function () {
             delModal.modal("hide");
             location.replace("/member/logout");
         });
+    });
+
+    $('.onlyNo').on("keyup", function () {
+        $(this).val($(this).val().replace(/[^0-9]/g,""));
     });
 });
 </script>

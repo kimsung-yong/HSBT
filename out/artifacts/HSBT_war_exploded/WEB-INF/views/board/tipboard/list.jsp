@@ -41,9 +41,7 @@
                                 <td>
                                     <a id="detailPage" href='<c:out value="${tip.t_no}"/>'>
                                         <c:out value="${tip.t_title}"/>
-                                        <c:if test="${tip.replyCnt > 0}">
-                                            <b id="rCnt">[ <c:out value="${tip.replyCnt}"/> ]</b>
-                                        </c:if>
+                                        <c:if test="${tip.replyCnt > 0}">[ <c:out value="${tip.replyCnt}"/> ]</c:if>
                                     </a>
                                 </td>
                                 <td><c:out value="${tip.id}"/></td>
