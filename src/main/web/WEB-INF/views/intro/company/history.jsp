@@ -100,13 +100,13 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+                        <img class="d-block img-fluid" src="/resourcesKIM/img/intro/history1.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+                        <img class="d-block img-fluid" src="/resourcesKIM/img/intro/history2.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
+                        <img class="d-block img-fluid" src="/resourcesKIM/img/intro/history3.jpg" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -144,9 +144,9 @@
                                 <a style="font-weight: bold">2016 -</a>
                             </h4>
                             <hr style="border: solid 2px;">
-                            <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
-                            <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                            <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                            <p class="card-text" style="font-size: 13px">03월 KNLS 대전 서구점 개장 (3호점)</p>
+                            <p class="card-text" style="font-size: 13px">04월 대전KNLS 오픈</p>
+                            <p class="card-text" style="font-size: 13px">10월 KNLS 대전 월평점 오픈</p>
                         </div>
 
                     </div>
@@ -160,9 +160,9 @@
                                     <a style="font-weight: bold">2017 -</a>
                                 </h4>
                                 <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                                <p class="card-text" style="font-size: 13px">03월 KNLS 대전 대덕점 개장 (4호점)</p>
                                 <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                                <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                                <p class="card-text" style="font-size: 13px">11월 KNLS 대전 대덕점 오픈</p>
                             </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                                     <a style="font-weight: bold">2018 -</a>
                                 </h4>
                                 <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                                <p class="card-text" style="font-size: 13px">03월 KNLS 강원 원주점 개장 (5호점)</p>
                                 <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
                                 <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
                             </div>
@@ -190,9 +190,9 @@
                                     <a style="font-weight: bold">2019 -</a>
                                 </h4>
                                 <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                                <p class="card-text" style="font-size: 13px">03월 KNLS 대전 용문점 개장 (6호점)</p>
                                 <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                                <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                                <p class="card-text" style="font-size: 13px">09월 KNLS 대전 용문점 오픈</p>
                             </div>
                     </div>
                 </div>
@@ -205,9 +205,9 @@
                                     <a style="font-weight: bold">2020 -</a>
                                 </h4>
                                 <hr style="border: solid 2px;">
-                                <p class="card-text" style="font-size: 13px">03월 KNLS 수원관교점 개장 (2호점)</p>
+                                <p class="card-text" style="font-size: 13px">03월 KNLS 강원 강름점 개장 (7호점)</p>
                                 <p class="card-text" style="font-size: 13px">04월 통합KNLS 오픈</p>
-                                <p class="card-text" style="font-size: 13px">09월 KNLS 하남 스타필드점 오픈</p>
+                                <p class="card-text" style="font-size: 13px">09월 KNLS 강원 강름점 오픈</p>
                             </div>
                     </div>
                 </div>
