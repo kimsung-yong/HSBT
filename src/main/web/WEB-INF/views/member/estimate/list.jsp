@@ -39,6 +39,7 @@
                             <th>시공항목</th>
                             <th>문의사항</th>
                             <th>신청날짜</th>
+                            <th><button class="btn-dark" id="check">삭제</button></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,7 @@
                                 <td><c:out value="${estimate.e_construction}"/></td>
                                 <td><c:out value="${estimate.e_content}"/></td>
                                 <td><fmt:formatDate value="${estimate.e_regtime}" pattern="yyyy-MM-dd"/></td>
+                                <td><input type="checkbox" name="check" value="${estimate.e_no}"></td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -64,7 +66,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="searchForm" action="/board/freeboard/list" method="get" style="float: right">
+                            <form id="searchForm" action="/member/estimateList" method="get" style="float: right">
                                 <select name="type">
                                     <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >
                                         --
@@ -95,7 +97,7 @@
                             </form>
                         </div>
 
-                        <form id="actionForm" action="/board/freeboard/list" method="get">
+                        <form id="actionForm" action="/member/estimateList" method="get">
                             <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                             <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
                             <input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
@@ -197,6 +199,30 @@
 
             searchForm.find("input[name='pageNum']").val($(this).attr("href"));
             searchForm.submit();
+        });
+
+        $("#check").on("click",function (e) {
+            e.preventDefault();
+            var checkValues = [];
+            $("input[name=check]:checked").each(function () {
+                checkValues.push($(this).val());
+            });
+            var check = {"check":checkValues};
+            $.ajax({
+                url:"/member/delEstimate",
+                type:"GET",
+                data:check,
+                // dataType:"json",
+                contentType:"application/json; charset=utf-8",
+                success:function (data) {
+                    alert("sucess");
+                    location.reload();
+                },
+                error:function (e) {
+                    alert("error ");
+                    self.close();
+                }
+            });
         });
 
         $("a#detailPage").on("click", function (e) {
