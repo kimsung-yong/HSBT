@@ -90,8 +90,15 @@ public class UserControllerkim {
     @GetMapping("/member/estimateList")
     public String estimateList(Model model,Criteria cri){
         model.addAttribute("list",estimateService.getListWithPaging(cri));
-        model.addAttribute("pageMager",new PageDTO(cri,estimateService.total()));
+        model.addAttribute("pageMaker",new PageDTO(cri,estimateService.total()));
 
         return "/member/estimate/list";
+    }
+    @GetMapping("/member/delEstimate")
+    public String estimateDel(@RequestParam(value = "check[]") List<Long> checkParam ){
+        for(int i = 0; i<checkParam.size();i++){
+            estimateService.delete(checkParam.get(i));
+        }
+        return "redirect:/member/estimateList";
     }
 }
