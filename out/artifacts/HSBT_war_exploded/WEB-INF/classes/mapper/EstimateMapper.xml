@@ -3,10 +3,43 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.EstimateMapper">
-    <select id="getList" resultType="domain.estimate.EstimateVO">
+    <sql id="criteria">
+        <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+            <foreach item="type" collection="typeArr">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            b_title like '%' || #{keyword} || '%'
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            b_content like '%' || #{keyword} || '%'
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            id like '%' || #{keyword} || '%'
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+    <select id="getListWithPaging" resultType="domain.estimate.EstimateVO">
         <![CDATA[
-            select * from tbl_estimate where id = #{id} order by e_no
+            select e_no, e_area, e_content, e_address,id, e_price, e_construction,e_regtime,e_updatetime
+            from (
+                select rownum rn, e_no, e_area, e_content, e_address,id, e_price, e_construction,e_regtime,e_updatetime
+                from tbl_estimate
+                where
         ]]>
+        <include refid="criteria"></include>
+        <![CDATA[
+                rownum <= #{pageNum} * #{amount}
+            )
+            where rn > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="total" resultType="int">
+        select count(*) from tbl_estimate
     </select>
 
     <select id="read" resultType="domain.estimate.EstimateVO">

@@ -9,14 +9,17 @@
             <foreach item="type" collection="typeArr">
                 <trim prefix="OR">
                     <choose>
-                        <when test="type == 'T'.toString()">
+                        <when test="type == 'I'.toString()">
                             id like '%' || #{keyword} || '%'
                         </when>
-                        <when test="type == 'C'.toString()">
-                            b_content like '%' || #{keyword} || '%'
+                        <when test="type == 'N'.toString()">
+                            name like '%' || #{keyword} || '%'
                         </when>
-                        <when test="type == 'W'.toString()">
-                            id like '%' || #{keyword} || '%'
+                        <when test="type == 'A'.toString()">
+                            address like '%' || #{keyword} || '%'
+                        </when>
+                        <when test="type == 'M'.toString()">
+                            manager like '%' || #{keyword} || '%'
                         </when>
                     </choose>
                 </trim>
@@ -48,7 +51,7 @@
     <select id="read" resultType="domain.user.UserVO">
         select * from tbl_user where id = #{id} and pw = #{pw}
     </select>
-    <!--아이디로 정보 상제-->
+    <!--아이디로 정보 삭제-->
     <delete id="delete">
         delete from tbl_user where id = #{id}
     </delete>
@@ -58,7 +61,8 @@
         set pw = #{pw},
          phone = #{phone},
          name = #{name},
-         address = #{address}
+         address = #{address},
+         manager = #{manager}
          where id = #{id}
     </update>
 
