@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.RequestPartServletServerHttpRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.Board.UserService;
+import service.estimate.EstimateService;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,6 +23,10 @@ import java.util.Map;
 public class UserControllerkim {
 
     private UserService userService;
+
+    private EstimateService estimateService;
+
+
     @PostMapping("/member/join")
     public String createUser(UserVO user){
         userService.createUser(user);
@@ -31,8 +37,8 @@ public class UserControllerkim {
         String id = paramMap.get("id");
         String pw = paramMap.get("pw");
 
-        userService.get(id,pw,rttr);
-        return "redirect:/";
+
+        return userService.get(id,pw,rttr);
 
 //        return userService.get(id,pw,rttr);
     }
@@ -71,5 +77,21 @@ public class UserControllerkim {
 
 
         return "/member/list";
+    }
+
+    @GetMapping("/member/delList")
+    public String multiDel(@RequestParam(value = "check[]") List<String> checkParam){
+        for(int i = 0; i<checkParam.size();i++){
+            userService.delete(checkParam.get(i));
+        }
+
+        return "redirect:/member/list";
+    }
+    @GetMapping("/member/estimateList")
+    public String estimateList(Model model,Criteria cri){
+        model.addAttribute("list",estimateService.getListWithPaging(cri));
+        model.addAttribute("pageMager",new PageDTO(cri,estimateService.total()));
+
+        return "/member/estimate/list";
     }
 }

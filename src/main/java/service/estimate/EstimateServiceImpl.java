@@ -1,5 +1,6 @@
 package service.estimate;
 
+import domain.Criteria;
 import domain.estimate.EstimateVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -38,4 +39,15 @@ public class EstimateServiceImpl implements EstimateService {
     public List<EstimateVO> getList(String id) {
         return mapper.getList(id);
     }
+
+    @Override
+    public List<EstimateVO> getListWithPaging(Criteria cri) {
+        return mapper.getListWithPaging(cri);
+    }
+
+    @Override
+    public int total() {
+        return mapper.total();
+    }
+
 }

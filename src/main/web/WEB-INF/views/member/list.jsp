@@ -38,26 +38,37 @@
                                     <th>휴대폰번호</th>
                                     <th>주소</th>
                                     <th>관리자</th>
+                                    <th>
+                                        <button class="btn-dark" id="delete">삭제</button>
+<%--                                        <button class="btn-dark" id="allcheck">전체선택</button>--%>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <%--                                --%>
                                 <c:forEach items="${list}" var="list">
-                                    <tr>
-                                        <td><a id="detailPage" class="move" href="${list.id}">
-                                            <c:out value="${list.id}"/>
-                                        </a></td>
-                                            <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
-                                        <td>
-                                            <c:out value="${list.pw}"/>
-                                                <%--                                    <c:if test="${list.replyCnt !=0}">[${list.replyCnt}]</c:if>--%>
-                                        </td>
+                                    <form>
+                                        <tr>
+                                            <td><a id="detailPage" class="move" href="${list.id}">
+                                                <c:out value="${list.id}"/>
+                                            </a></td>
+                                                <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
+                                            <td>
+                                                <c:out value="${list.pw}"/>
+                                                    <%--                                    <c:if test="${list.replyCnt !=0}">[${list.replyCnt}]</c:if>--%>
+                                            </td>
 
-                                        <td><c:out value="${list.name}"/></td>
-                                        <td><c:out value="${list.phone}"/></td>
-                                        <td><c:out value="${list.address}"/></td>
-                                        <td><c:out value="${list.manager}"/></td>
-                                    </tr>
+                                            <td><c:out value="${list.name}"/></td>
+                                            <td><c:out value="${list.phone}"/></td>
+                                            <td><c:out value="${list.address}"/></td>
+                                            <td><c:out value="${list.manager}"/></td>
+                                            <td>
+
+                                                <input type="checkbox" name="delCheck" value="${list.id}">
+
+                                            </td>
+                                        </tr>
+                                    </form>
                                 </c:forEach>
                                 </tbody>
                             </table>
@@ -68,16 +79,32 @@
                                           style="float: right">
                                         <select name="type">
                                             <option value="" <c:out
-                                                    value="${pageMaker.cri.type == null ?'selected' : ''}"/> >--
+                                                    value="${pageMaker.cri.type == null ?'selected' : ''}"/> >
+                                                --
                                             </option>
-                                            <option value="T" <c:out
-                                                    value="${pageMaker.cri.type eq 'T' ?'selected' : ''}"/>>아이디
+                                            <option value="I" <c:out
+                                                    value="${pageMaker.cri.type eq 'I' ?'selected' : ''}"/>>
+                                                아이디
                                             </option>
+                                            <option value="N" <c:out
+                                                    value="${pageMaker.cri.type eq 'N' ?'selected' : ''}"/>>
+                                                이름
+                                            </option>
+                                            <option value="A" <c:out
+                                                    value="${pageMaker.cri.type eq 'A' ?'selected' : ''}"/>>
+                                                주소
+                                            </option>
+                                            <option value="M" <c:out
+                                                    value="${pageMaker.cri.type eq 'M' ?'selected' : ''}"/>>
+                                                관리자
+                                            </option>
+                                        </select>
                                         </select>
                                         <input type="text" name="keyword" value="${pageMaker.cri.keyword}"/>
                                         <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                         <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-                                        <button class="btn btn-dark">검색</button>
+
+                                        <button class="btn btn-dark" id="search">검색</button>
                                     </form>
                                 </div>
 
@@ -196,6 +223,39 @@
         var actionForm = $("#actionForm");
         var searchForm = $("#searchForm");
 
+        $("#delete").on("click", function (e) {
+            e.preventDefault();
+
+            console.log("delete click");
+            var checkboxValues = [];
+            $("input[name=delCheck]:checked").each(function () {//체크된 유저 아이디 저장
+                checkboxValues.push($(this).val());
+
+            });
+            var check = {"check":checkboxValues};
+            $.ajax({
+                url:"/member/delList",
+                type:"GET",
+                data:check,
+                // dataType:"json",
+                // contentType:"application/json; charset=utf-8",
+                success:function (data) {
+                    alert("sucess");
+                    location.reload();
+                },
+                error:function (e) {
+                    alert("error ");
+                    self.close();
+                }
+            });
+
+
+        });
+        $("#allcheck").on("click",function (e) {
+            e.preventDefault();
+
+
+        })
         $(".paginate_button a").on("click", function (e) {
             e.preventDefault();
 
