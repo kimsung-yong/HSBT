@@ -46,7 +46,7 @@
                         <%--                                --%>
                         <c:forEach items="${list}" var="estimate">
                             <tr>
-                                <td><c:out value="${estimate.e_no}"/></td>
+                                <td><a id="detailPage" class="move" href="${estimate.e_no}"><c:out value="${estimate.e_no}"/></a></td>
                                     <%--                                            /board/get?bno=<c:out value="${board.bno}"/> --%>
                                 <td><c:out value="${estimate.id}"/></td>
                                 <td><c:out value="${estimate.e_address}"/></td>
@@ -228,9 +228,9 @@
         $("a#detailPage").on("click", function (e) {
             e.preventDefault();
             console.log("글클릭");
-            actionForm.attr("action", "/board/freeboard/get");
+            actionForm.attr("action", "/member/estimate/get");
 
-            actionForm.append("<input type='hidden' name='b_no' value='" + $(this).attr("href") + "'>");
+            actionForm.append("<input type='hidden' name='e_no' value='" + $(this).attr("href") + "'>");
             actionForm.submit();
         });
 

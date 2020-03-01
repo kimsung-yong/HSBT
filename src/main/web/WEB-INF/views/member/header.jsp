@@ -99,7 +99,7 @@
             <div class="list-group">
 <%--                <a href="/board/noticeboard/list" class="list-group-item">공지사항</a>--%>
                 <a href="/member/list" class="list-group-item">사용자목록</a>
-                <a href="/member/estimateList" class="list-group-item">견적신청현황</a>
+                <a href="/member/estimate/list" class="list-group-item">견적신청현황</a>
 <%--                <a href="/board/reviewboard/list" class="list-group-item">후기</a>--%>
 <%--                <a href="/board/tipboard/list" class="list-group-item">Tip</a>--%>
 <%--                <a href="/board/qnaboard/list" class="list-group-item">Q＆A</a>--%>

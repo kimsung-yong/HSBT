@@ -37,7 +37,9 @@
             where rn > (#{pageNum} - 1) * #{amount}
         ]]>
     </select>
-
+    <select id="getList" resultType="domain.estimate.EstimateVO">
+        select * from tbl_estimate where id = #{id}
+    </select>
     <select id="total" resultType="int">
         select count(*) from tbl_estimate
     </select>
