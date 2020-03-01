@@ -23,21 +23,23 @@
         </trim>
     </sql>
     <select id="getListWithPaging" resultType="domain.estimate.EstimateVO">
-        <![CDATA[
+    <![CDATA[
             select e_no, e_area, e_content, e_address,id, e_price, e_construction,e_regtime,e_updatetime
             from (
                 select rownum rn, e_no, e_area, e_content, e_address,id, e_price, e_construction,e_regtime,e_updatetime
                 from tbl_estimate
                 where
         ]]>
-        <include refid="criteria"></include>
-        <![CDATA[
+    <include refid="criteria"></include>
+    <![CDATA[
                 rownum <= #{pageNum} * #{amount}
             )
             where rn > (#{pageNum} - 1) * #{amount}
         ]]>
     </select>
-
+    <select id="getList" resultType="domain.estimate.EstimateVO">
+        select * from tbl_estimate where id = #{id}
+    </select>
     <select id="total" resultType="int">
         select count(*) from tbl_estimate
     </select>

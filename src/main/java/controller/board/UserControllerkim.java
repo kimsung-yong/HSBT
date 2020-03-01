@@ -87,12 +87,12 @@ public class UserControllerkim {
 
         return "redirect:/member/list";
     }
-    @GetMapping("/member/estimateList")
-    public String estimateList(Model model,Criteria cri){
+    @GetMapping({"/member/estimate/list"})
+    public void estimateList(Model model,Criteria cri){
         model.addAttribute("list",estimateService.getListWithPaging(cri));
         model.addAttribute("pageMaker",new PageDTO(cri,estimateService.total()));
 
-        return "/member/estimate/list";
+
     }
     @GetMapping("/member/delEstimate")
     public String estimateDel(@RequestParam(value = "check[]") List<Long> checkParam ){
@@ -101,4 +101,9 @@ public class UserControllerkim {
         }
         return "redirect:/member/estimateList";
     }
+    @GetMapping("/member/estimate/get")
+    public void estimateGet(@RequestParam("e_no") Long e_no,@ModelAttribute("cri") Criteria cri,Model model){
+        model.addAttribute("estimate",estimateService.get(e_no));
+    }
+
 }
