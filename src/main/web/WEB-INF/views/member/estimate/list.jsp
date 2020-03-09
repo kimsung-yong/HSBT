@@ -66,7 +66,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="searchForm" action="/member/estimateList" method="get" style="float: right">
+                            <form id="searchForm" action="/member/estimate/list" method="get" style="float: right">
                                 <select name="type">
                                     <option value="" <c:out value="${pageMaker.cri.type == null ?'selected' : ''}"/> >
                                         --
@@ -97,7 +97,7 @@
                             </form>
                         </div>
 
-                        <form id="actionForm" action="/member/estimateList" method="get">
+                        <form id="actionForm" action="/member/estimate/list" method="get">
                             <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                             <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
                             <input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
