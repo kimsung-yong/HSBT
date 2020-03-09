@@ -39,7 +39,7 @@
                             <th>시공항목</th>
 <%--                            <th>문의사항</th>--%>
                             <th>신청날짜</th>
-                            <th><button class="btn-dark" id="check">삭제</button></th>
+                            <th style="text-align: center"><button class="btn-dark" id="check">삭제</button></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,7 @@
                                 <td><c:out value="${estimate.e_construction}"/></td>
 <%--                                <td><c:out value="${estimate.e_content}"/></td>--%>
                                 <td><fmt:formatDate value="${estimate.e_regtime}" pattern="yyyy-MM-dd"/></td>
-                                <td><input type="checkbox" name="check" value="${estimate.e_no}"></td>
+                                <td style="text-align: center"><input type="checkbox" name="check" value="${estimate.e_no}"></td>
                             </tr>
                         </c:forEach>
                         </tbody>
