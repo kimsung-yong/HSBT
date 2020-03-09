@@ -99,7 +99,7 @@ public class UserControllerkim {
         for(int i = 0; i<checkParam.size();i++){
             estimateService.delete(checkParam.get(i));
         }
-        return "redirect:/member/estimateList";
+        return "redirect:/member/estimate/list";
     }
     @GetMapping("/member/estimate/get")
     public void estimateGet(@RequestParam("e_no") Long e_no,@ModelAttribute("cri") Criteria cri,Model model){
