@@ -37,7 +37,7 @@
                             <th>면적</th>
                             <th>예산</th>
                             <th>시공항목</th>
-                            <th>문의사항</th>
+<%--                            <th>문의사항</th>--%>
                             <th>신청날짜</th>
                             <th><button class="btn-dark" id="check">삭제</button></th>
                         </tr>
@@ -53,7 +53,7 @@
                                 <td><c:out value="${estimate.e_area}"/></td>
                                 <td><c:out value="${estimate.e_price}"/></td>
                                 <td><c:out value="${estimate.e_construction}"/></td>
-                                <td><c:out value="${estimate.e_content}"/></td>
+<%--                                <td><c:out value="${estimate.e_content}"/></td>--%>
                                 <td><fmt:formatDate value="${estimate.e_regtime}" pattern="yyyy-MM-dd"/></td>
                                 <td><input type="checkbox" name="check" value="${estimate.e_no}"></td>
                             </tr>
