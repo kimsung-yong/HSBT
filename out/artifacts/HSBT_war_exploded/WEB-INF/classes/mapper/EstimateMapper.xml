@@ -26,7 +26,8 @@
     <![CDATA[
             select e_no, e_area, e_content, e_address,id, e_price, e_construction,e_regtime,e_updatetime
             from (
-                select rownum rn, e_no, e_area, e_content, e_address,id, e_price, e_construction,e_regtime,e_updatetime
+                select /*+ INDEX_DESC(tbl_estimate pk_e_n) */
+                rownum rn, e_no, e_area, e_content, e_address,id, e_price, e_construction,e_regtime,e_updatetime
                 from tbl_estimate
                 where
         ]]>
