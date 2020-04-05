@@ -1,1 +1,17 @@
-theme: jekyll-theme-cayman
+name: Jekyll Themes
+url: https://kimsung-yong.github.io/HSBT
+description: Insert tagline here
+
+permalink: /themes/:title/
+
+plugins: [jekyll-paginate]
+
+highlighter: pygments
+paginate: 20
+
+markdown: rdiscount
+rdiscount:
+    extensions: ['smart']
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', 'vendor']
+remote_theme : mmistakes/minimal-mistakes
