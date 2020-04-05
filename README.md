@@ -1,5 +1,5 @@
 
-It is a corporate homepage project using Spring.
-Use DB Oracle
-The main functions are application for quotation and bulletin board.
-Available when importing oracle knlsDB.
+This is an architectural design website for studying using Spring Bootstrap.
+The main function is the application for quotation and bulletin board.
+db is Oracle and is available in knlsDB sql plus and sqldevelopeer.
+If the db account is different, you need to correct it.
