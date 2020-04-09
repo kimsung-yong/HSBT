@@ -1,8 +1,7 @@
-[! [HitCount] (http://hits.dwyl.com/KimSeongyeon/HSBT.svg)] (http://hits.dwyl.com/KimSeongyeon/HSBT)
-This is an architectural design website for studying using Spring Bootstrap.
-The main function is the application for quotation and bulletin board.
-db is Oracle and is available in knlsDB sql plus and sqldevelopeer.
-If the db account is different, you need to correct it.
+[! [HitCount] ( http://hits.dwyl.com/KimSeongyeon/HSBT.svg )] ( http://hits.dwyl.com/KimSeongyeon/HSBT )
+스프링으로 구현 한 건축 디자인 홈페이지입니다.
+사용중 언어 java, spring, javascipt (jquery, ajax) db 오라클
+
 ![board_gongji](https://user-images.githubusercontent.com/56425918/78899601-97553d00-7ab0-11ea-868f-af6536e2a4d4.jpg)
 ![mainpage1](https://user-images.githubusercontent.com/56425918/78899605-98866a00-7ab0-11ea-9f28-085ba1e7fd56.jpg)
 ![mainpage2](https://user-images.githubusercontent.com/56425918/78899609-991f0080-7ab0-11ea-8c08-d4d2421af2bf.jpg)
