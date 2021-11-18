@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BoardServiceImp implements BoardService{
+public class  BoardServiceImp implements BoardService{
     @Setter(onMethod_ = @Autowired)
     BoardMapper mapper;
 
